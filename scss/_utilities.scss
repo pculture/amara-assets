@@ -1,0 +1,26 @@
+
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Spacing
+.content {
+  position: relative;
+  padding: 20px;
+  @extend .clearfix;
+}
+
+img.pull-left {
+  margin-right: 12px;
+}
+img.pull-right {
+  margin-left: 12px;
+}
