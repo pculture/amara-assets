@@ -1,18 +1,29 @@
 // Color Palette
 // -------------------------
 
-$gray-darker:            #222222;
-$gray-dark:              #272729;
-$gray:                   #757575;
-$gray-light:             #e9e9e3;
-$gray-lighter:           #eeeeee;
+$gray-darker:            #222626; // Charcoal
+$gray-dark:              #7e7f80; //
+$gray:                   #9fa0a1; // Medium Grey
+$gray-light:             #f4f4f7; // Light Grey
+$gray-lighter:           #F3F4F6; // 
 
-$body-bg:               #ffffff;
-$text-color:            #404041;
-$brand-primary:         #72b341;
+$teal:                   #30957b;
+$amaranth:               #e61972;
+$turquoise:              #3da285;
+$plum:                   #5a2747;
+$lime:                   #80bd3e;
+$cream:                  #fffdf8;
+
+
+$body-bg:                #ffffff;
+$text-color:             #5a2747;
+$brand-primary:          $plum;
 
 $link-color:            $brand-primary;
 $link-hover-color:      darken($link-color, 15%);
+
+$font-family-sans-serif:  'Open Sans', sans-serif;
+$headings-font-family:    'Raleway', sans-serif;
 
 // Media Queries
 $screen-md-max:           1199px;

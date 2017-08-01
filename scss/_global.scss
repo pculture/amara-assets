@@ -1,0 +1,31 @@
+/* -----------------------------------------
+Global
+----------------------------------------- */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-family-sans-serif;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+section {
+  padding: 50px 0;
+  clear: both;
+}
+
+a {
+  &:hover, &:focus, &:visited {
+    text-decoration: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings-font-family;
+  color: $brand-primary;
+}
+
+h1 { font-size: 45px;}
+h2 { font-size: 25px;}
+h3 { font-size: 21px;}

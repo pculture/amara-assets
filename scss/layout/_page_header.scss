@@ -1,5 +1,84 @@
+#topbar {
+  background: $gray-darker;
+  text-transform: uppercase;
+  line-height: 20px;
+  .navbar-nav {
+    >li {
+      >a {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+  }
+  .dropdown {
+    .btn {
+      background-color: $cream;
+      text-transform: uppercase;
+      color: $text-color;
+      font-weight: 400;
+    }
+  }
+  .btn {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
 #page-header {
-  
+  .navbar {
+    margin-bottom: 0;
+  }
+}
+
+#mainnav {
+  .container {
+    position: relative;
+  }
+  .navbar-brand {
+    display: block;
+    padding: 10px 5px 5px 30px;
+  }
+
+  .navbar-nav {
+    margin-left: 180px;
+    li {
+      a {
+        color: $gray-darker;
+        font-family: $headings-font-family;
+        height: 67px;
+        line-height: 67px;
+        padding: 0 20px;
+        font-size: 18px;
+        &:hover, &:active, &:focus {
+          background: transparent;
+          color: $teal;
+        }
+      }
+    }
+  }
+  .btn-lime {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #fff;
+    line-height: 1;
+    padding: 5px 20px;
+    text-transform: none;
+    font-family: $headings-font-family;
+    font-weight: 400;
+    font-size: 18px;
+    span {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+}
+
+#app-nav {
+  float: right;
+  margin-bottom: 0;
 }
 
 // Media Queries

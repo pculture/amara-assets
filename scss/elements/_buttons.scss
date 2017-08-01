@@ -1,0 +1,17 @@
+.btn {
+  border-radius: 0;
+  border: none;
+  padding: 15px 50px;
+  font-family: $headings-font-family;
+  font-weight: 700;
+  text-transform: uppercase;
+  &.btn-plum {
+    background-color: $plum;
+  }
+  &.btn-amaranth {
+    background-color: $amaranth;
+  }
+  &.btn-lime {
+    background-color: $lime;
+  }
+}

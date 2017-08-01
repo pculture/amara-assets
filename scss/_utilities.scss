@@ -25,6 +25,10 @@ img.pull-right {
   margin-left: 12px;
 }
 
+.bg-cream {
+  background-color: $cream;
+}
+
 
 // Media Queries
 @media(max-width: $screen-md-max) {
