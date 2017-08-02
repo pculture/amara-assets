@@ -1,0 +1,13 @@
+.company-profile {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .company-details {
+    padding-left: 120px;
+  }
+}
