@@ -1,0 +1,33 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings-font-family;
+  color: $brand-primary;
+}
+
+h1, .h1 { font-size: 45px; }
+h2, .h2 { font-size: 25px; }
+h3, .h3 { font-size: 21px; }
+h4, .h4 { font-size: 18px; }
+
+em {
+
+}
+
+.lead {
+  
+}
+
+
+
+
+// Media Queries
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+
+}
+
+@media(max-width: $screen-xs-max) {
+
+}

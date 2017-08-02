@@ -1,3 +1,12 @@
+// Layout
+.container {
+  position: relative;
+}
+.content {
+  position: relative;
+  padding: 20px;
+  @extend .clearfix;
+}
 
 .clearfix {
   *zoom: 1;
@@ -11,12 +20,6 @@
   }
 }
 
-// Spacing
-.content {
-  position: relative;
-  padding: 20px;
-  @extend .clearfix;
-}
 
 img.pull-left {
   margin-right: 12px;
@@ -62,17 +65,21 @@ img.pull-right {
   background-color: $gray-lighter;
 }
 
+
+
+// Text Utilities
 .text-white {
   color: #fff;
   h1, h2, h3, h4, h5, h6, p, blockquote {
     color: #fff;
   }
 }
+.text-capitalize { text-transform: capitalize; }
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
 
-.text-uppercase {
-  text-transform: uppercase;
-}
 
+// Patterns
 .pattern {
 
 }
