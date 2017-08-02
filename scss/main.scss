@@ -1,13 +1,11 @@
 @charset "utf-8";
 
-@import "variables";
-@import "mixins";
-@import "utilities";
-@import "animations";
-@import "fonts";
-@import "global";
-@import "home";
-@import "volunteer";
+@import "base/variables";
+@import "base/mixins";
+@import "base/utilities";
+@import "base/animations";
+@import "base/fonts";
+@import "base/global";
 
 // Import layout / global styles
 @import "layout/page_header";
@@ -22,3 +20,9 @@
 @import "elements/video_card";
 @import "elements/grid";
 
+// Views
+@import "views/home";
+@import "views/platform";
+@import "views/services";
+@import "views/about";
+@import "views/volunteer";

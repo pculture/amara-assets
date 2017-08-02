@@ -1,3 +1,7 @@
+.volunteer_view {
+
+}
+
 .company-profile {
   position: relative;
   margin-top: 20px;
@@ -10,4 +14,17 @@
   .company-details {
     padding-left: 120px;
   }
+}
+
+// Media Queries
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+
+}
+
+@media(max-width: $screen-xs-max) {
+
 }

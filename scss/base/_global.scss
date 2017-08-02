@@ -30,3 +30,16 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 45px;}
 h2 { font-size: 25px;}
 h3 { font-size: 21px;}
+
+// Media Queries
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+
+}
+
+@media(max-width: $screen-xs-max) {
+
+}
