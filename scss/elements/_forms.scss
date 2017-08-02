@@ -1,6 +1,6 @@
 //Wufoo form styles
 
-.wufoo {
+form {
   padding-top:20px;
   label {
     display: none;
@@ -27,7 +27,6 @@
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     border: none;
-    border-left: 10px solid $brand-primary;
   }
   textarea {
     background: $gray-lighter;
