@@ -25,10 +25,60 @@ img.pull-right {
   margin-left: 12px;
 }
 
+// Color utilities
+.bg-lime {
+  background-color: $lime;
+  &.gradient {
+    background-image: linear-gradient($teal, $lime);
+  }
+}
+
+.bg-teal {
+  background-color: $teal;
+  &.gradient {
+    background-image: linear-gradient($lime, $teal);
+  }
+}
+
+.bg-amaranth {
+  background-color: $amaranth;
+  &.gradient {
+    background-image: linear-gradient($plum, $amaranth);
+  }
+}
+
+.bg-plum {
+  background-color: $plum;
+  &.gradient {
+    background-image: linear-gradient($amaranth, $plum);
+  }
+}
+
 .bg-cream {
   background-color: $cream;
 }
 
+.bg-gray-lighter {
+  background-color: $gray-lighter;
+}
+
+.pattern {
+
+}
+
+.illustration {
+  position: absolute;
+  display: block;
+  max-width: 50%;
+  &.illustration-left {
+    left: 0;
+    right: auto;
+  }
+  &.illustration-right {
+    right: 0;
+    left: auto;
+  }
+}
 
 // Media Queries
 @media(max-width: $screen-md-max) {
