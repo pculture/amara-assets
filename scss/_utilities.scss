@@ -63,10 +63,14 @@ img.pull-right {
 }
 
 .text-white {
+  color: #fff;
   h1, h2, h3, h4, h5, h6, p, blockquote {
     color: #fff;
   }
-  
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }
 
 .pattern {

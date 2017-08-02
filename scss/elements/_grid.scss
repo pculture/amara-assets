@@ -1,0 +1,6 @@
+.grid {
+  display: flex;
+  &.between {
+    justify-content: space-between;
+  }
+}
