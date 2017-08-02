@@ -3,13 +3,13 @@ blockquote{
   position: relative;
   z-index: 1;
   /*Font*/
-  font-family: Georgia, serif;
+  font-family: $headings-font-family;
   font-size: 32px;
   font-style: italic;
   line-height: 1.2;
-  color: $text-color;
-  text-align: justify;
-
+  color: #fff;
+  text-align: center;
+  border-left: none;
   em {
     z-index: 9;
   }
@@ -20,15 +20,14 @@ blockquote::before{
   content: "\201C"; /*Unicode for Left Double Quote*/
   
   /*Font*/
-  font-family: Georgia, serif;
-  font-size: 200px;
-  font-weight: bold;
-  color: rgba($gray-darker, 0.1);
+  font-family: $headings-font-family;
+  font-size: 160px;
+  color: #fff;
   
   /*Positioning*/
   position: absolute;
   left: -60px;
-  top: -60px;
+  top: -20px;
   z-index: -1;
 }
 
@@ -37,15 +36,14 @@ blockquote::after{
   content: "\201D"; /*Unicode for Left Double Quote*/
   
   /*Font*/
-  font-family: Georgia, serif;
-  font-size: 200px;
-  font-weight: bold;
-  color: rgba($gray-darker, 0.1);
+  font-family: $headings-font-family;
+  font-size: 160px;
+  color: #fff;
   
   /*Positioning*/
   position: absolute;
-  right: -30px;
-  top: calc(100% - 90px);
+  right: -60px;
+  top: -20px;
   z-index: -1;
 }
 

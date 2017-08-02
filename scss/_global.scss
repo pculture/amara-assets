@@ -16,6 +16,7 @@ section {
 }
 
 a {
+  color: $teal;
   &:hover, &:focus, &:visited {
     text-decoration: none;
   }

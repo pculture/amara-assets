@@ -1,5 +1,19 @@
 #page-footer {
-  
+  .navbar-nav {
+    float: none;
+  }
+}
+
+.pcf {
+  padding-left: 50px;
+  position: relative;
+  line-height: 1;
+  padding: 20px 20px 20px 70px;
+  img {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+  }
 }
 
 // Media Queries

@@ -62,14 +62,26 @@ img.pull-right {
   background-color: $gray-lighter;
 }
 
+.text-white {
+  h1, h2, h3, h4, h5, h6, p, blockquote {
+    color: #fff;
+  }
+  
+}
+
 .pattern {
 
+}
+
+.illustration-section {
+  position: relative;
 }
 
 .illustration {
   position: absolute;
   display: block;
   max-width: 50%;
+  top: 0;
   &.illustration-left {
     left: 0;
     right: auto;
