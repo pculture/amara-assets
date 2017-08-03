@@ -4,7 +4,7 @@ blockquote{
   z-index: 1;
   /*Font*/
   font-family: $headings-font-family;
-  font-size: 26px;
+  font-size: 24px;
   font-style: italic;
   line-height: 1.2;
   color: #fff;
@@ -28,12 +28,12 @@ blockquote::before{
   
   /*Font*/
   font-family: $headings-font-family;
-  font-size: 160px;
+  font-size: 140px;
   color: #fff;
   
   /*Positioning*/
   position: absolute;
-  left: -60px;
+  left: -80px;
   top: -20px;
   z-index: -1;
 }
@@ -44,12 +44,12 @@ blockquote::after{
   
   /*Font*/
   font-family: $headings-font-family;
-  font-size: 160px;
+  font-size: 140px;
   color: #fff;
   
   /*Positioning*/
   position: absolute;
-  right: -60px;
+  right: -40px;
   top: -20px;
   z-index: -1;
 }

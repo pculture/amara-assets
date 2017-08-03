@@ -2,6 +2,17 @@
   .navbar-nav {
     float: none;
   }
+  a {
+    font-weight: 400;
+    color: $gray-darker;
+    &:hover {
+      color: $lime;
+      background-color: transparent;
+    }
+  }
+  p {
+    color: $gray-darker;
+  }
 }
 
 .pcf {

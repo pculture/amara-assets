@@ -11,7 +11,7 @@
   text-align: center;
   font-size: 19px;
   @include transition(0.4s);
-  &:hover {
+  &:hover, &:focus, &:visited {
     color: #fff;
   }
   &.button-plum {
