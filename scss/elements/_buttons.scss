@@ -9,24 +9,43 @@
   color: #fff;
   margin-top: 20px;
   text-align: center;
-  font-size: 20px;
+  font-size: 19px;
+  @include transition(0.4s);
+  &:hover {
+    color: #fff;
+  }
   &.button-plum {
     background-color: $plum;
+    &:hover {
+      background-color: $amaranth;
+    }
   }
   &.button-amaranth {
     background-color: $amaranth;
+    &:hover {
+      background-color: $plum;
+    }
   }
   &.button-lime {
     background-color: $lime;
+    &:hover {
+      background-color: $teal;
+    }
   }
   &.button-teal {
     background-color: $teal;
+    &:hover {
+      background-color: $lime;
+    }
   }
   &.button-transparent {
     background-color: transparent;
     color: $teal;
     text-transform: none;
     margin-top: 10px;
+    &:hover {
+      color: $lime;
+    }
   }
   &.button-block {
     display: block;

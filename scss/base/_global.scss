@@ -14,8 +14,10 @@ section {
 
 a {
   color: $teal;
+  font-weight: 600;
   &:hover, &:focus, &:visited {
     text-decoration: none;
+    color: $lime;
   }
 }
 
