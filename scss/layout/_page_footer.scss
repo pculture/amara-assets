@@ -13,17 +13,34 @@
   p {
     color: $gray-darker;
   }
+  i {
+    color: $teal;
+    font-size: 25px;
+  }
+}
+
+#footer-logo {
+  width: 250px;
+  margin-bottom: 20px;
 }
 
 .pcf {
   padding-left: 50px;
   position: relative;
   line-height: 1;
-  padding: 20px 20px 20px 70px;
+  padding: 25px 25px 25px 80px;
   img {
     position: absolute;
     left: 10px;
     top: 15px;
+  }
+}
+
+#legalnav {
+  padding: 0 25px;
+  a {
+    font-size: 12px;
+    padding: 10px;
   }
 }
 

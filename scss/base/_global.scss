@@ -15,7 +15,7 @@ section {
 a {
   color: $teal;
   font-weight: 600;
-  &:hover, &:focus, &:visited {
+  &:hover, &:focus {
     text-decoration: none;
     color: $lime;
   }

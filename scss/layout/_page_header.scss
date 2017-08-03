@@ -69,7 +69,10 @@
   }
   .navbar-brand {
     display: block;
-    padding: 10px 5px 5px 30px;
+    padding: 18px 5px 5px 30px;
+    img {
+      width: 140px;
+    }
   }
 
   .navbar-nav {

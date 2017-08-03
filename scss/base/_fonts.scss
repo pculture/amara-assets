@@ -1,18 +1,18 @@
-$custom-font-name: 'project_name';
 @font-face {
-  font-family: $custom-font-name;
-  src:  url('/fonts/${custom-font-name}.eot?i6fit0');
-  src:  url('/fonts/${custom-font-name}.eot?i6fit0#iefix') format('embedded-opentype'),
-    url('/fonts/${custom-font-name}.ttf?i6fit0') format('truetype'),
-    url('/fonts/${custom-font-name}.woff?i6fit0') format('woff'),
-    url('/fonts/${custom-font-name}.svg?i6fit0#${custom-font-name}') format('svg');
+  font-family: 'amara';
+  src:  url('/assets/fonts/amara.eot?5wa0dq');
+  src:  url('/assets/fonts/amara.eot?5wa0dq#iefix') format('embedded-opentype'),
+    url('/assets/fonts/amara.woff2?5wa0dq') format('woff2'),
+    url('/assets/fonts/amara.ttf?5wa0dq') format('truetype'),
+    url('/assets/fonts/amara.woff?5wa0dq') format('woff'),
+    url('/assets/fonts/amara.svg?5wa0dq#amara') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change /img/fonts */
-  font-family: '${custom-font-name}' !important;
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'amara' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -25,24 +25,48 @@ $custom-font-name: 'project_name';
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Content declarations
-/*
- .icon-example:before {
-   content: "\e900";
- }
-*/
-
-
-
-// Media Queries
-@media(max-width: $screen-md-max) {
-
+.icon-caret:before {
+  content: "\e900";
 }
-
-@media(max-width: $screen-sm-max) {
-
+.icon-download:before {
+  content: "\e901";
 }
-
-@media(max-width: $screen-xs-max) {
-
+.icon-external:before {
+  content: "\e902";
+}
+.icon-facebook:before {
+  content: "\e903";
+}
+.icon-instagram:before {
+  content: "\e904";
+}
+.icon-linkedin:before {
+  content: "\e905";
+}
+.icon-mail:before {
+  content: "\e906";
+}
+.icon-pin:before {
+  content: "\e907";
+}
+.icon-play:before {
+  content: "\e908";
+}
+.icon-print:before {
+  content: "\e909";
+}
+.icon-search:before {
+  content: "\e90a";
+}
+.icon-share:before {
+  content: "\e90b";
+}
+.icon-trash:before {
+  content: "\e90c";
+}
+.icon-twitter:before {
+  content: "\e90d";
+}
+.icon-youtube:before {
+  content: "\e90e";
 }

@@ -1,0 +1,18 @@
+// [object Object]
+[class^="sprite-"] {
+  display: inline-block;
+  background-image: url("../img/sprite.svg");
+  background-size: mq-px2em(24px) mq-px2em(18px);
+}
+
+  .sprite-menu {
+    background-position: mq-px2em(0px - 5) mq-px2em(0px - 5);
+    &:before {
+      display: block;
+      width: mq-px2em(32px);
+      height: mq-px2em(32px);
+      content: '';
+      // float: left;
+      // margin-right: 0.5em;
+    }
+  }
