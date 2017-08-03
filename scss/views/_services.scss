@@ -2,6 +2,25 @@
   
 }
 
+#how-it-works {
+  img {
+    margin: 30px auto;
+  }
+}
+
+#success-stories {
+  img {
+    margin-bottom: 20px;
+  }
+  p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  ul {
+    margin-bottom: 20px;
+  }
+}
+
 // Media Queries
 @media(max-width: $screen-md-max) {
 
