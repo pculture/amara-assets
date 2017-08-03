@@ -42,10 +42,6 @@
     li {
       a {
         font-family: $headings-font-family;
-        &:hover, &:active, &:focus {
-          background: transparent;
-          color: $teal;
-        }
       }
     }
   }
@@ -84,6 +80,11 @@
         padding: 0 20px;
         font-size: 18px;
         color: $gray-darker;
+        font-weight: 400;
+        &:hover, &:active, &:focus {
+          background: transparent;
+          color: $teal;
+        }
       }
     }
   }
@@ -125,15 +126,22 @@
       a {
         padding: 20px;
         color: $gray-darker;
+        font-weight: 400;
         &.button {
           color: #fff;
+          padding: 10px 0;
         }
-
       }
       button {
         color: #fff;
+        margin-top: 0;
       }
     }
+  }
+
+  .button {
+    margin-top: 0;
+    font-size: 16px;
   }
   
   .navbar-brand {
