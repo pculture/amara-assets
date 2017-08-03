@@ -1,7 +1,6 @@
 #topbar {
   background: $gray-darker;
   text-transform: uppercase;
-  line-height: 20px;
   .navbar-nav {
     >li {
       >a {
@@ -11,22 +10,25 @@
     }
   }
   .dropdown {
-    .btn {
+    .button {
       background-color: $cream;
       text-transform: uppercase;
       color: $text-color;
       font-weight: 400;
+      padding-top: 7px;
+      padding-bottom: 7px;
     }
   }
   .dropdown-menu {
     border-radius: 0;
     width: 100%;
   }
-  .btn {
+  .button {
     padding-top: 7px;
     padding-bottom: 7px;
     color: #fff;
     font-size: 12px;
+    margin-top: 0;
   }
 }
 
@@ -47,13 +49,15 @@
       }
     }
   }
-  .btn-lime {
+  .button-lime {
     color: #fff;
     line-height: 1;
     padding: 5px 20px;
     text-transform: none;
     font-family: $headings-font-family;
     font-weight: 400;
+    text-align: center;
+    margin-top: 0;
     span {
       text-transform: uppercase;
       font-weight: 700;
@@ -83,7 +87,7 @@
       }
     }
   }
-  .btn-lime {
+  .button-lime {
     position: absolute;
     right: 15px;
     top: 10px;
@@ -121,7 +125,7 @@
       a {
         padding: 20px;
         color: $gray-darker;
-        &.btn {
+        &.button {
           color: #fff;
         }
 
@@ -147,11 +151,11 @@
       background-color: #fff;
     }
   }
-  .top-btns {
+  .top-buttons {
     clear: both;
     display: flex;
     padding: 0 10px;
-    .btn {
+    .button {
       width: 50%;
       padding: 10px;
       float: left;

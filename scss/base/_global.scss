@@ -2,8 +2,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-family-sans-serif;
-  line-height: 1.8;
+  line-height: 1.4;
   font-size: 16px;
+  color: $brand-primary;
 }
 
 section {

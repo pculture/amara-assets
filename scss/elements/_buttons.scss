@@ -1,32 +1,43 @@
-.btn {
+.button {
+  display: inline-block;
   border-radius: 0;
   border: none;
-  padding: 15px 50px;
+  padding: 12px 60px;
   font-family: $headings-font-family;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-  &.btn-plum {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  &.button-plum {
     background-color: $plum;
   }
-  &.btn-amaranth {
+  &.button-amaranth {
     background-color: $amaranth;
   }
-  &.btn-lime {
+  &.button-lime {
     background-color: $lime;
   }
-  &.btn-teal {
+  &.button-teal {
     background-color: $teal;
+  }
+  &.button-transparent {
+    background-color: transparent;
+    color: $teal;
+    text-transform: none;
+    margin-top: 10px;
+  }
+  &.button-block {
+    display: block;
+    width: 100%;
   }
 }
 
-// TODO - Add these styles
 button {
 
 }
-.button {
 
-}
 
 // Media Queries
 @media(max-width: $screen-md-max) {
