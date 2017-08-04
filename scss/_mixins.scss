@@ -32,7 +32,7 @@
     border-color: lighten($color, 10%) !important;
   }
   &.gradient {
-    background-image: linear-gradient($bg, lighten($bg, 20%));
+    background-image: linear-gradient(lighten($bg, 10%), $bg);
   }
 }
 
