@@ -23,13 +23,16 @@
   fill: $bg !important;
   color: $color !important;
   h1, h2, h3, h4, .lead {
-    color: $color !important;
+    color: $color;
     small {
-      color: $color !important;
+      color: $color;
     }
   }
   hr {
     border-color: lighten($color, 10%) !important;
+  }
+  &.gradient {
+    background-image: linear-gradient($bg, lighten($bg, 20%));
   }
 }
 

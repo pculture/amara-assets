@@ -70,3 +70,32 @@
 .icon-youtube:before {
   content: "\e90e";
 }
+
+
+
+// Do these produce icons that should be handled in another way?
+.caret {
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+}
+
+.play-button {
+  position: relative;
+  padding: 25px 0 25px 50px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  &:hover {
+    i {
+      color: $amaranth;
+    }
+  }
+  i {
+    position: absolute;
+    top: 17px;
+    left: 0;
+    font-size: 40px;
+    color: $plum;
+  }
+}
+
