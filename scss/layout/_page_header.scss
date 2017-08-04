@@ -215,10 +215,17 @@
 #header-message {
   text-align: center;
   padding: 12px;
+  display: none;
   p {
     line-height: 1.4;
     font-size: 14px;
     margin-bottom: 0;
+  }
+}
+
+.has-message {
+  #header-message {
+    display: block;
   }
 }
 
