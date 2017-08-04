@@ -1,4 +1,5 @@
 require('jquery');
+require('venobox');
 var test = require('./hello');
 test.hello();
 
@@ -28,4 +29,7 @@ $(document).ready(function() {
       $('#page-header').removeClass('consolidate-header');
      }
   });
+
+  //Instantiate venobox
+  $('.venobox').venobox(); 
 });
