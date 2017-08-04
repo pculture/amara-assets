@@ -38,6 +38,12 @@
       background-color: $lime;
     }
   }
+  &.button-gray {
+    background-color: $gray;
+    &:hover {
+      background-color: $plum;
+    }
+  }
   &.button-transparent {
     background-color: transparent;
     color: $teal;
