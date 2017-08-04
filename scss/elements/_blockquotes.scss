@@ -13,6 +13,39 @@ blockquote{
   em {
     z-index: 9;
   }
+  p {
+    padding: 0 20px;
+    &:before {
+      display: block;
+      content: "\201C"; /*Unicode for Left Double Quote*/
+      
+      /*Font*/
+      font-family: $headings-font-family;
+      font-size: 140px;
+      color: #fff;
+      
+      /*Positioning*/
+      position: absolute;
+      left: -20px;
+      top: -20px;
+      z-index: -1;
+    }
+    &:after {
+      display: block;
+      content: "\201D"; /*Unicode for Left Double Quote*/
+      
+      /*Font*/
+      font-family: $headings-font-family;
+      font-size: 140px;
+      color: #fff;
+      
+      /*Positioning*/
+      position: absolute;
+      right: 20px;
+      top: -20px;
+      z-index: -1;
+    }
+  }
   small {
     display: block;
     margin-top: 20px;
@@ -20,49 +53,17 @@ blockquote{
     font-size: 19px;
     font-style: normal;
   }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: $brand-primary;
+    &:hover{
+     color: $gray-darker;
+    }
+  }
 }
 
-blockquote::before{
-  display: block;
-  content: "\201C"; /*Unicode for Left Double Quote*/
-  
-  /*Font*/
-  font-family: $headings-font-family;
-  font-size: 140px;
-  color: #fff;
-  
-  /*Positioning*/
-  position: absolute;
-  left: -80px;
-  top: -20px;
-  z-index: -1;
-}
 
-blockquote::after{
-  display: block;
-  content: "\201D"; /*Unicode for Left Double Quote*/
-  
-  /*Font*/
-  font-family: $headings-font-family;
-  font-size: 140px;
-  color: #fff;
-  
-  /*Positioning*/
-  position: absolute;
-  right: -40px;
-  top: -20px;
-  z-index: -1;
-}
-
-blockquote a{
-  text-decoration: none;
-  cursor: pointer;
-  color: $brand-primary;
-}
-
-blockquote a:hover{
- color: $gray-darker;
-}
 
 
 // Media Queries
