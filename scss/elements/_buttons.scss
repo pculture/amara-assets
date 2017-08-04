@@ -41,7 +41,7 @@
   &.button-transparent {
     background-color: transparent;
     color: $teal;
-    text-transform: none;
+    text-transform: capitalize;
     margin-top: 10px;
     &:hover {
       color: $lime;
