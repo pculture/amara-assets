@@ -124,11 +124,6 @@
   }
 }
 
-// Styles for header when .has-message class on body
-.has-message {
-
-}
-
 // Mobile nav styles
 
 #mobilenav {
@@ -270,12 +265,13 @@
           }
         }
       }
-    }
-    #mainnav {
-      #mainnav-cta {
-        top: 158px;
+      #mainnav {
+        #mainnav-cta {
+          top: 158px;
+        }
       }
     }
+    
   }
 }
 
