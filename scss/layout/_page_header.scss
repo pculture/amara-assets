@@ -2,6 +2,7 @@
   background: $gray-darker;
   text-transform: uppercase;
   @include transition(.5s);
+  height: auto;
   .dropdown {
     .button {
       background-color: $cream;
@@ -42,7 +43,8 @@
   background-color: #fff;
   &.consolidate-header {
     #topnav {
-      margin-top: -30px;
+      height: 0;
+      overflow: hidden;
     }
   }
   .navbar {
@@ -113,7 +115,7 @@
     font-family: $headings-font-family;
     font-weight: 400;
     font-size: 17px;
-    @include transition(.4s);
+    @include transition(.25s);
     span {
       display: block;
       text-transform: uppercase;
@@ -122,7 +124,10 @@
   }
 }
 
+// Styles for header when .has-message class on body
+.has-message {
 
+}
 
 // Mobile nav styles
 
@@ -207,6 +212,16 @@
 }
 
 
+#header-message {
+  text-align: center;
+  padding: 12px;
+  p {
+    line-height: 1.4;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
+
 // Media Queries
 
 @media(max-width: 1400px) {
@@ -232,6 +247,26 @@
       span {
         display: inline-block;
         margin-left: 3px;
+      }
+    }
+  }
+
+  //styles for when a message exists
+  #page-header {
+    &.has-message {
+      &.consolidate-header {
+        #mainnav {
+          #mainnav-cta {
+            top: 131px;
+            opacity: 0;
+            visibility: hidden;
+          }
+        }
+      }
+    }
+    #mainnav {
+      #mainnav-cta {
+        top: 158px;
       }
     }
   }
