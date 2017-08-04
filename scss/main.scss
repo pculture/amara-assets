@@ -1,7 +1,8 @@
 @charset "utf-8";
 
-@import "base/variables";
-@import "base/mixins";
+@import "variables";
+@import "mixins";
+
 @import "base/utilities";
 @import "base/global";
 @import "base/typography";
@@ -14,6 +15,7 @@
 @import "layout/page_footer";
 
 // Import additional elements or project specific styles
+@import "elements/illustrations";
 @import "elements/canvas";
 @import "elements/blockquotes";
 @import "elements/forms";
@@ -27,3 +29,20 @@
 @import "views/services";
 @import "views/about";
 @import "views/volunteer";
+
+
+
+// for internal pages with an intro section
+.intro {
+  h1 { 
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  h2 {
+    margin-top: 10px;
+  }
+  p {
+    margin-top: 35px;
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,41 @@
+
+.illustration-section {
+  position: relative;
+}
+
+.illustration {
+  position: absolute;
+  display: flex;
+  justify-content:  center;
+  align-items: center;
+  top: 0; bottom: 0;
+  left: 0; right: auto;
+  height: 100%;
+  width: 60%;
+  background-color: rgba(0,0,0,0.1);
+  &.illustration-left {
+    left: 0;
+    right: auto;
+  }
+  &.illustration-right {
+    right: 0;
+    left: auto;
+  }
+}
+
+// Media Queries
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+  .illustration {
+    position: relative;
+    width: 100%;
+    background-color: rgba(0,0,0,0.1);
+  }
+}
+
+@media(max-width: $screen-xs-max) {
+
+}
