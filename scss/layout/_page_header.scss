@@ -1,69 +1,3 @@
-#topnav {
-  background: $gray-darker;
-  text-transform: uppercase;
-  @include transition(.5s);
-  height: auto;
-  .dropdown {
-    .button {
-      background-color: $cream;
-      text-transform: uppercase;
-      color: $text-color;
-      font-weight: 400;
-      padding-top: 6px;
-      padding-bottom: 6px;
-    }
-  }
-  .dropdown-menu {
-    border-radius: 0;
-    width: 100%;
-  }
-  .button {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: #fff;
-    font-size: 11px;
-    margin-top: 0;
-  }
-}
-
-#appnav {
-  float: right;
-  margin-bottom: 0;
-  margin-top:0;
-  .button {
-    padding: 6px 20px;
-    background-color: $amaranth;
-    color: #fff;
-  }
-  .dropdown {
-    .button {
-      background-color: $amaranth;
-      color: #fff;
-      padding: 6px 35px 6px 20px;
-      .user-notifications {
-        display: inline-block;
-        height: 27px;
-        width: 25px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        background-color: #cd0027;
-        text-transform: none;
-        .notification-circle {
-          border-radius: 50%;
-          width: 14px;
-          height: 14px;
-          position: absolute;
-          top: 6px;
-          left: 5px;
-          background-color: #fff;
-          color: #cd0027;
-        }
-      }
-    }
-  }
-}
-
 #page-header, #mobile-header {
   position: fixed;
   width: 100%;
@@ -103,7 +37,92 @@
   }
 }
 
-// Desktop nav styles
+// Topbar
+#topnav {
+  background: $gray-darker;
+  text-transform: uppercase;
+  @include transition(.5s);
+  height: auto;
+  .dropdown {
+    .button {
+      background-color: $cream;
+      text-transform: uppercase;
+      color: $text-color;
+      font-weight: 400;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+  .dropdown-menu {
+    border-radius: 0;
+    width: 100%;
+  }
+  .button {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #fff;
+    font-size: 11px;
+    margin-top: 0;
+  }
+}
+
+// Application Navigation
+#appnav {
+  float: right;
+  margin-bottom: 0;
+  margin-top:0;
+  list-style: none;
+  .button {
+    padding: 6px 20px;
+    background-color: $amaranth;
+    color: #fff;
+  }
+  .dropdown {
+    .button {
+      background-color: $amaranth;
+      color: #fff;
+      padding: 6px 35px 6px 20px;
+      .user-notifications {
+        display: inline-block;
+        height: 27px;
+        width: 25px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #cd0027;
+        text-transform: none;
+        .notification-circle {
+          border-radius: 50%;
+          width: 14px;
+          height: 14px;
+          position: absolute;
+          top: 6px;
+          left: 5px;
+          background-color: #fff;
+          color: #cd0027;
+        }
+      }
+    }
+  }
+}
+
+#accessibilitynav {
+  list-style: none;
+  float: left;
+  margin: 0;
+  padding: 0;
+  >li {
+    float: left;
+    position: relative;
+    display: block;
+  }
+}
+
+
+
+
+
+// Primary Navigation: Desktop
 #mainnav {
   .container {
     position: relative;
@@ -153,8 +172,7 @@
   }
 }
 
-// Mobile nav styles
-
+// Primary Navigation: Mobile
 #mobilenav {
   margin-bottom: 0;
   border: none;
