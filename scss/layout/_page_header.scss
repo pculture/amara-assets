@@ -119,6 +119,12 @@
   .navbar-nav {
     margin-left: 180px;
     li {
+      &.active {
+        a {
+          color: $teal;
+          font-weight: 600;
+        }
+      }
       a {
         height: 67px;
         line-height: 67px;
