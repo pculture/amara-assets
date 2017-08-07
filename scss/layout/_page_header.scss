@@ -2,6 +2,7 @@
   background: $gray-darker;
   text-transform: uppercase;
   @include transition(.5s);
+  height: auto;
   .dropdown {
     .button {
       background-color: $cream;
@@ -31,6 +32,35 @@
   margin-top:0;
   .button {
     padding: 6px 20px;
+    background-color: $amaranth;
+    color: #fff;
+  }
+  .dropdown {
+    .button {
+      background-color: $amaranth;
+      color: #fff;
+      padding: 6px 35px 6px 20px;
+      .user-notifications {
+        display: inline-block;
+        height: 27px;
+        width: 25px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #cd0027;
+        text-transform: none;
+        .notification-circle {
+          border-radius: 50%;
+          width: 14px;
+          height: 14px;
+          position: absolute;
+          top: 6px;
+          left: 5px;
+          background-color: #fff;
+          color: #cd0027;
+        }
+      }
+    }
   }
 }
 
@@ -42,7 +72,8 @@
   background-color: #fff;
   &.consolidate-header {
     #topnav {
-      margin-top: -30px;
+      height: 0;
+      overflow: hidden;
     }
   }
   .navbar {
@@ -113,7 +144,7 @@
     font-family: $headings-font-family;
     font-weight: 400;
     font-size: 17px;
-    @include transition(.4s);
+    @include transition(.25s);
     span {
       display: block;
       text-transform: uppercase;
@@ -121,8 +152,6 @@
     }
   }
 }
-
-
 
 // Mobile nav styles
 
@@ -207,6 +236,23 @@
 }
 
 
+#header-message {
+  text-align: center;
+  padding: 12px;
+  display: none;
+  p {
+    line-height: 1.4;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
+
+.has-message {
+  #header-message {
+    display: block;
+  }
+}
+
 // Media Queries
 
 @media(max-width: 1400px) {
@@ -232,6 +278,26 @@
       span {
         display: inline-block;
         margin-left: 3px;
+      }
+    }
+  }
+
+  //styles for when a message exists
+  #page-header {
+    &.has-message {
+      &.consolidate-header {
+        #mainnav {
+          #mainnav-cta {
+            top: 131px;
+            opacity: 0;
+            visibility: hidden;
+          }
+        }
+      }
+      #mainnav {
+        #mainnav-cta {
+          top: 158px;
+        }
       }
     }
   }
