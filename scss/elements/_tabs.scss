@@ -1,0 +1,36 @@
+.nav-tabs {
+  border: none;
+  display: flex;
+  justify-content: center;
+  li {
+    float: none;
+    margin: 0 40px;
+    &.active {
+      a {
+        color: #fff;
+        border: none;
+        background-color: transparent;
+        &:hover, &:focus {
+          cursor: default;
+          pointer-events: none;
+          color: #fff;
+          border: none;
+          background-color: transparent;
+        }
+      }
+    }
+    a {
+      padding: 10px 50px;
+      border: none;
+      border-radius: 0;
+      color: #fff;
+      background-color: transparent;
+      &:hover, &:focus {
+        cursor: pointer;
+        pointer-events: all;
+        color: #fff;
+        background-color: transparent;
+      }
+    }
+  }
+}

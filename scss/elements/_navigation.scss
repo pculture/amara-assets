@@ -134,6 +134,14 @@
       padding: 0;
       li {
         display: inline-block;
+        &.active {
+          a {
+            font-weight: 700;
+            color: $teal;
+            cursor: default;
+            pointer-events: none;
+          }
+        }
         a {
           display: block;
           height: 68px;
