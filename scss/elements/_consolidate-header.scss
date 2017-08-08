@@ -1,0 +1,45 @@
+body {
+  padding-top: 131px;
+  @include transition();
+  &.consolidate-header {
+    padding-top: 68px;
+    #page-header {
+      margin-top: -30px;
+    }
+    #mainnav {
+      height: 68px;
+    }
+    .primary-cta {
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}
+
+
+
+// Media Queries
+@media(max-width: $screen-lg-max) {
+
+}
+
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+  body {
+    padding-top: 52px;
+     &.consolidate-header {
+      padding-top: 52px;
+      #page-header {
+        margin-top: 0;
+      }
+     }
+  }
+}
+
+@media(max-width: $screen-xs-max) {
+
+}

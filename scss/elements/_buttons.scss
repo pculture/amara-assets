@@ -1,47 +1,84 @@
+button {
+  padding: 0 20px;
+  color: $link-color;
+  border: none;
+  background: none;
+  background-color: transparent;
+  appearance: none;
+  i {
+    display: inline-block;
+    font-size: inherit;
+  }
+  &:active,
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+  &.inline {
+    padding: 0;
+    color: $link-color;
+    border: none;
+    background: none;
+    background-color: transparent;
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+  &.sort {
+    color: $text-color;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 13px;
+  }
+}
+
+
 .button {
   display: inline-block;
-  border-radius: 0;
-  border: none;
   padding: 12px 60px;
+  margin-top: 20px;
   font-family: $headings-font-family;
   font-weight: 700;
   text-transform: uppercase;
-  color: #fff;
-  margin-top: 20px;
   text-align: center;
   font-size: 19px;
+  border-radius: 0;
+  border: none;
+  background-color: $gray;
+  color: #fff;
   @include transition(0.4s);
   &:hover, &:focus, &:visited {
+    background-color: $gray-dark;
     color: #fff;
   }
   &.button-plum {
-    background-color: $plum;
+    background-color: $plum !important;
     &:hover {
-      background-color: $amaranth;
+      background-color: $amaranth !important;
     }
   }
   &.button-amaranth {
-    background-color: $amaranth;
+    background-color: $amaranth !important;
     &:hover {
-      background-color: $plum;
+      background-color: $plum !important;
     }
   }
   &.button-lime {
-    background-color: $lime;
+    background-color: $lime !important;
     &:hover {
-      background-color: $teal;
+      background-color: $teal !important;
     }
   }
   &.button-teal {
-    background-color: $teal;
+    background-color: $teal !important;
     &:hover {
-      background-color: $lime;
+      background-color: $lime !important;
     }
   }
   &.button-gray {
-    background-color: $gray;
+    background-color: $gray !important;
     &:hover {
-      background-color: $plum;
+      background-color: $plum !important;
     }
   }
   &.button-transparent {
@@ -57,10 +94,6 @@
     display: block;
     width: 100%;
   }
-}
-
-button {
-
 }
 
 

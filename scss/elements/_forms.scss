@@ -1,20 +1,26 @@
-input.text {
-  display: block;
-  height: 45px;
-  width: 100%;
-  padding: 6px 20px;
-  margin:15px 0;
-  font-size: 14px;
-  line-height: 1.42857;
-  color: #000;
-  vertical-align: middle;
-  background-color: #fff;
-  background-image: none;
+.form-control {
+  border: none;
   border-radius: 0;
   box-shadow: none;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  border: none;
 }
+
+// input.text {
+//   display: block;
+//   height: 45px;
+//   width: 100%;
+//   padding: 6px 20px;
+//   margin:15px 0;
+//   font-size: 14px;
+//   line-height: 1.42857;
+//   color: #000;
+//   vertical-align: middle;
+//   background-color: #fff;
+//   background-image: none;
+//   border-radius: 0;
+//   box-shadow: none;
+//   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+//   border: none;
+// }
 textarea {
   background: $gray-lighter;
   padding: 20px;

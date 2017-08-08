@@ -23,10 +23,10 @@ $(document).ready(function() {
 
   $(window).scroll(function(){
     if ($(window).scrollTop() >= 250) {
-      $('#page-header').addClass('consolidate-header');
+      $('body').addClass('consolidate-header');
      }
      else {
-      $('#page-header').removeClass('consolidate-header');
+      $('body').removeClass('consolidate-header');
      }
   });
 

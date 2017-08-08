@@ -1,8 +1,13 @@
-canvas {
-  width: 200px;
-  height: 200px;
-}
+#message {
+  display: none;
+  padding: 12px 30px;
+  background-color: $cream;
+  color: $gray;
+  text-align: center;
+  a {
 
+  }
+}
 // Media Queries
 @media(max-width: $screen-lg-max) {
 

@@ -18,6 +18,7 @@
 @import "libs/venobox";
 
 // Import additional elements or project specific styles
+@import "elements/navigation";
 @import "elements/illustrations";
 @import "elements/canvas";
 @import "elements/blockquotes";
@@ -26,7 +27,9 @@
 @import "elements/video_card";
 @import "elements/grid";
 @import "elements/login";
+@import "elements/message";
 @import "elements/sitemap";
+@import "elements/consolidate-header";
 
 // Views
 @import "views/home";

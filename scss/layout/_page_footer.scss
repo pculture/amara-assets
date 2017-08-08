@@ -1,4 +1,7 @@
 #page-footer {
+  #footernav {
+    float: right;
+  }
   .navbar-nav {
     float: none;
   }
@@ -25,14 +28,15 @@
 }
 
 .pcf {
-  padding-left: 50px;
-  position: relative;
   line-height: 1;
-  padding: 25px 25px 25px 80px;
-  img {
-    position: absolute;
-    left: 10px;
-    top: 15px;
+  a {
+    display: table;
+    // margin: 0 auto;
+    img, small {
+      display: table-cell;
+      padding: 0 5px;
+      vertical-align: middle;
+    }
   }
 }
 
@@ -50,7 +54,26 @@
 }
 
 @media(max-width: $screen-sm-max) {
+  #page-footer {
+    text-align: center;
+    #footernav {
+      float: none;
+      ul {
+        display: inline-block;
+        margin: 0 auto;
+      }
+    }
+  }
+  #footer-logo {
+    margin: 0 auto;
+  }
 
+  .pcf {
+    padding: 20px;
+    a {
+      margin: 0 auto;
+    }
+  }
 }
 
 @media(max-width: $screen-xs-max) {

@@ -20,6 +20,7 @@ a {
   &:hover, &:focus {
     text-decoration: none;
     color: $lime;
+    outline: none;
   }
 }
 
