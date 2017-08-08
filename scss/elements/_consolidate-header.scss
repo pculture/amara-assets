@@ -1,5 +1,5 @@
 body {
-  padding-top: 131px;
+  padding-top: 100px;
   @include transition();
   &.consolidate-header {
     padding-top: 68px;
@@ -25,7 +25,9 @@ body {
 }
 
 @media(max-width: $screen-md-max) {
-
+  body {
+    padding-top: 131px;
+  }
 }
 
 @media(max-width: $screen-sm-max) {
