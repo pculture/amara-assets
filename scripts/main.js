@@ -30,6 +30,14 @@ $(document).ready(function() {
      }
   });
 
+  // Attempt at scrolling to top when language menu is open, problem because menu is fixed position
+  // $('#lang').on('show.bs.dropdown', function () {
+  //   window.console.log('language menu clicked');
+  //   $('html, body').animate({
+  //       scrollTop: $("#lang").offset().top
+  //   }, 2000);
+  // })
+
   //Instantiate venobox
   $('.venobox').venobox(); 
 });
