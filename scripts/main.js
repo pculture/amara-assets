@@ -2,7 +2,8 @@ require('jquery');
 require('venobox');
 var test = require('./hello');
 test.hello();
-
+var scroll = require('./scroll');
+scroll.scroll();
 
 $(function() {
   console.log("HELLO jQuery and Modernizr loaded");
@@ -30,13 +31,11 @@ $(document).ready(function() {
      }
   });
 
-  // Attempt at scrolling to top when language menu is open, problem because menu is fixed position
-  // $('#lang').on('show.bs.dropdown', function () {
-  //   window.console.log('language menu clicked');
-  //   $('html, body').animate({
-  //       scrollTop: $("#lang").offset().top
-  //   }, 2000);
-  // })
+
+  //check for hash on page load
+  if (window.location.hash) {
+    window.console.log('hash exists', window.location.hash);
+  }
 
   //Instantiate venobox
   $('.venobox').venobox(); 
