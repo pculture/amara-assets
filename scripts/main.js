@@ -68,11 +68,14 @@ $(document).ready(function() {
 
   function resolveHash() {
     $('body').addClass('consolidate-header');
+    var hash = '#' + window.location.hash.substring(1);
+    window.console.log(hash);
+    $('html, body').animate({ scrollTop: $(hash).offset().top - 50}, 1000);
   }
   
   //check for hash on page load
   if (window.location.hash) {
-    window.console.log('hash exists', window.location.hash);
+    //window.console.log('hash exists', window.location.hash);
     resolveHash();
   }
 
