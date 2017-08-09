@@ -13,6 +13,12 @@
   padding-bottom: 0;
 }
 
+#how-to-use {
+  i {
+    font-size: 40px;
+  }
+}
+
 // Media Queries
 @media(max-width: $screen-md-max) {
 
