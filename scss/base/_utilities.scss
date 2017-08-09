@@ -99,7 +99,20 @@ img.pull-right {
   @include palette($gray-lighter, $plum);
 }
 
-
+.bg-pattern {
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(/assets/img/assets_pattern_test-27.svg);
+    background-size: cover;
+    display: block;
+  }
+}
 
 // Text Utilities
 .text-white { color: #fff !important; }
