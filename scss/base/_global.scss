@@ -12,6 +12,9 @@ section {
   padding: 50px 0;
   clear: both;
   overflow: hidden;
+  &:focus {
+    outline: none;
+  }
 }
 
 a {
