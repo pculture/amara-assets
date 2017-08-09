@@ -34,8 +34,15 @@
   &.gradient {
     background-image: linear-gradient(lighten($bg, 10%), $bg);
   }
+  &.pattern {
+    background-image: url(/assets/img/assets_pattern_test-27.svg);
+    background-repeat: repeat;
+  }
+  &.gradient.pattern {
+    background-image: url(/assets/img/assets_pattern_test-27.svg), linear-gradient(lighten($bg, 10%), $bg);
+    background-size: cover;
+  }
 }
-
 
 
 /**
