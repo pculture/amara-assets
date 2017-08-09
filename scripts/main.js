@@ -67,10 +67,10 @@ $(document).ready(function() {
   });
 
   function resolveHash() {
-    //check for hash on page load
     $('body').addClass('consolidate-header');
   }
   
+  //check for hash on page load
   if (window.location.hash) {
     window.console.log('hash exists', window.location.hash);
     resolveHash();
