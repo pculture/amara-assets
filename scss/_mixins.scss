@@ -31,11 +31,7 @@
   hr {
     border-color: lighten($color, 10%) !important;
   }
-  &.gradient {
-    background-image: linear-gradient(lighten($bg, 10%), $bg);
-  }
 }
-
 
 /**
  * The following variable and function originate from the sass-mq library.

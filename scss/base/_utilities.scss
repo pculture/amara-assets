@@ -89,6 +89,9 @@ img.pull-right {
 
 .bg-plum {
   @include palette($plum, #ffffff);
+  &.gradient {
+    background-image: linear-gradient(#872648, #592746);
+  }
 }
 
 .bg-cream {
@@ -99,7 +102,21 @@ img.pull-right {
   @include palette($gray-lighter, $plum);
 }
 
-.bg-pattern {
+.bg-sea-green {
+  @include palette($sea-green, #ffffff);
+  &.gradient {
+    background-image: linear-gradient(#468e43, #389873);
+  }
+}
+
+.bg-sea-green-dark {
+  @include palette($sea-green-dark, #ffffff);
+  &.gradient {
+    background-image: linear-gradient(#2f8665, #0f573c);
+  }
+}
+
+.bg-overlay {
   &:before {
     content: '';
     position: absolute;
@@ -108,9 +125,9 @@ img.pull-right {
     height: 100%;
     width: 100%;
     display: block;
+    opacity: .2;
     background-image: url(/assets/img/assets_pattern_test-27.svg);
     background-size: cover;
-    display: block;
   }
 }
 
