@@ -1,28 +1,11 @@
-.home_view {
+.home_view {}
 
-}
-
-#meet-amara {
-  .col-md-5 {
-    .content {
-      margin-top: 60px;
-    }
-  }
-  // svg {
-  //   width: 500px;
-  //   display: block;
-  //   margin: 0 auto;
-  // }
-}
-
-#volunteer {
-  .illustration {
-    top: auto;
-    bottom: 0;
-  }
-}
 
 // Media Queries
+@media(max-width: $screen-lg-max) {
+
+}
+
 @media(max-width: $screen-md-max) {
 
 }
