@@ -1,58 +1,45 @@
-@mixin animation($effect: fadeIn,  $duration: 0.5s, $delay: 0s) {
-  -webkit-animation-name: $effect;
-  animation-name: $effect;
+@import "../../../../bower_components/animate-sass/animate";
 
-  -webkit-animation-duration: $duration;
-  animation-duration: $duration;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+// @mixin animation($effect: fadeIn,  $duration: 0.5s, $delay: 0s) {
+//   -webkit-animation-name: $effect;
+//   animation-name: $effect;
 
-   -webkit-animation-delay: ($delay);
-  -moz-animation-delay: ($delay);
-  animation-delay: ($delay);
-}
+//   -webkit-animation-duration: $duration;
+//   animation-duration: $duration;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
 
-// CARD SLIDE IN
-@-webkit-keyframes cardSlideIn {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
+//    -webkit-animation-delay: ($delay);
+//   -moz-animation-delay: ($delay);
+//   animation-delay: ($delay);
+// }
 
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
+// // Illustrations
+// @keyframes illustrationFadeIn {
+//   from {
+//     opacity: 0;
+//     -webkit-transform: translate3d(0, 100%, 0);
+//     transform: translate3d(0, 100%, 0);
+//     visibility: visible;
+//   }
 
-@keyframes cardSlideIn {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
+//   to {
+//     opacity: 1;
+//     -webkit-transform: translate3d(0, 0, 0);
+//     transform: translate3d(0, 0, 0);
+//   }
+// }
 
 
-.card {
-    // Loop through the cards and delay the loading animation.
-  @for $i from 1 through 20 {
-    &:nth-child(#{$i}) { 
-      @include animation(cardSlideIn, 0.8s, 0.1s * $i);
-    }
-  }
+// .card {
+//     // Loop through the cards and delay the loading animation.
+//   @for $i from 1 through 20 {
+//     &:nth-child(#{$i}) { 
+//       @include animation(cardSlideIn, 0.8s, 0.1s * $i);
+//     }
+//   }
   
-}
+// }
 
 // Media Queries
 @media(max-width: $screen-md-max) {

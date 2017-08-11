@@ -12,7 +12,8 @@
   left: 0; right: auto;
   height: 100%;
   width: 60%;
-  background-color: rgba(0,0,0,0.1);
+  // background-color: rgba(0,0,0,0.1);
+  overflow: hidden;
   &.illustration-left {
     left: 0;
     right: auto;
@@ -20,6 +21,19 @@
   &.illustration-right {
     right: 0;
     left: auto;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    z-index: 0;
+  }
+  svg {
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    z-index: 0;
   }
 }
 
@@ -32,7 +46,6 @@
   .illustration {
     position: relative;
     width: 100%;
-    background-color: rgba(0,0,0,0.1);
   }
 }
 

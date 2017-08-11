@@ -24,5 +24,7 @@
 }
 
 @media(max-width: $screen-xs-max) {
-
+  .grid {
+    display: block;
+  }
 }

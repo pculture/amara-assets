@@ -76,5 +76,7 @@ blockquote{
 }
 
 @media(max-width: $screen-xs-max) {
-
+  blockquote {
+    font-size: 16px;
+  }
 }
