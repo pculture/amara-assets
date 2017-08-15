@@ -2,12 +2,14 @@
 
 @import "variables";
 @import "mixins";
+@import "utilities";
+@import "animations";
 
-@import "base/utilities";
+
 @import "base/global";
 @import "base/typography";
 @import "base/fonts";
-@import "base/animations";
+
 
 // Import layout / global styles
 @import "layout/page_header";
