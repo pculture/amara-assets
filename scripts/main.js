@@ -13,7 +13,6 @@ $(window).scroll(function(){
 
 $(document).ready(function() {
 
-
   // Select all links with hashes
   $('a[href*="#"]')
   // Remove links that don't actually link to anything
@@ -53,7 +52,10 @@ $(document).ready(function() {
 
   
   //check for hash on page load
-  if (window.location.hash) { resolveHash() }
+  if (window.location.hash) { 
+
+    resolveHash();
+  }
 
   //Instantiate venobox
   $('.venobox').venobox(); 
@@ -63,5 +65,16 @@ function resolveHash() {
   $('body').addClass('consolidate-header');
   var hash = '#' + window.location.hash.substring(1);
   window.console.log(hash);
-  $('html, body').animate({ scrollTop: $(hash).offset().top - 50}, 1000);
+  if ($(hash).hasClass('tab-pane') === true) {
+    window.console.log('has-class');
+    // need to figure out why .tab(show) not working
+    //$(hash).tab('show');
+    // temporary solution for activating tab on page load
+    $(hash).addClass('active');
+    $('html, body').animate({ scrollTop: $(hash).offset().top - 70}, 1000);
+  }
+  else {
+    $('html, body').animate({ scrollTop: $(hash).offset().top - 50}, 1000);
+  }
+  
 }
