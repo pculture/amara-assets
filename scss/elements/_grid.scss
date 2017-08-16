@@ -3,6 +3,9 @@
   &.between {
     justify-content: space-between;
   }
+  &.wrap {
+    flex-wrap: wrap;
+  }
   &.icons-grid {
     margin: 20px 0;
     .item {
@@ -11,6 +14,9 @@
       text-align: center;
       width: 60px;
     }
+  }
+  .col-* {
+    float: none;
   }
 }
 

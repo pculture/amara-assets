@@ -3,16 +3,15 @@
 }
 
 .company-profile {
-  position: relative;
+  display: flex;
+  align-items: flex-start;
   margin-top: 20px;
   margin-bottom: 20px;
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
+  h3 {
+    margin-top: 0;
   }
   .company-details {
-    padding-left: 120px;
+    padding-left: 25px;
   }
 }
 

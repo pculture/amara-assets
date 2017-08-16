@@ -20,6 +20,10 @@
   }
 }
 
+
+.break-33 {
+  width: 33% !important;
+}
 .break-50 {
   width: 50% !important;
 }
@@ -187,6 +191,7 @@ img.pull-right {
 
 @media(max-width: $screen-xs-max) {
   // breaks go to full width
+  .break-33,
   .break-50,
   .break-60,
   .break-70,
