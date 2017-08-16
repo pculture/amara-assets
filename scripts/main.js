@@ -1,6 +1,7 @@
 require('jquery');
 require('venobox');
 require('./animations');
+require('./carousel');
 
 $(window).scroll(function(){
   if ($(window).scrollTop() >= 250) {
