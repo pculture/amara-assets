@@ -19,6 +19,7 @@ $(document).ready(function() {
   .not('[href="#"]')
   .not('[href="#0"]')
   .click(function(event) {
+    window.console.log("HASH SCROLL FIRED");
     // On-page links
     if (
       location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
@@ -31,7 +32,7 @@ $(document).ready(function() {
       // Does a scroll target exist?
       if (target.length) {
         // Only prevent default if animation is actually gonna happen
-        //event.preventDefault();
+        // event.preventDefault();
         $('html, body').animate({
           scrollTop: target.offset().top - 50
         }, 1000, function() {
@@ -53,7 +54,6 @@ $(document).ready(function() {
   
   //check for hash on page load
   if (window.location.hash) { 
-
     resolveHash();
   }
 
