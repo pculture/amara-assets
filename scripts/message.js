@@ -5,7 +5,8 @@ window.console.log('HASH OBJECT:', hashObj);
 
 module.exports  = {
   check: function() {
-    return hashObj.message ? true : false;
+    return false;
+    // return hashObj.message ? true : false;
   },
   show: function() {
     $("#" + hashObj.anchor).find('.message').show();
