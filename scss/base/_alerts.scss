@@ -1,0 +1,25 @@
+.alert {
+  border-radius: 0;
+  background-color: $amaranth;
+  color: #FFFFFF;
+  .lead {
+    color: #FFFFFF;
+  }
+}
+
+// Media Queries
+@media(max-width: $screen-lg-max) {
+
+}
+
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+
+}
+
+@media(max-width: $screen-xs-max) {
+
+}
