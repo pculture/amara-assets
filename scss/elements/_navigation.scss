@@ -84,33 +84,36 @@
       background-color: $amaranth;
       font-weight: 700;
     }
-    // .dropdown {
-    //   .button {
-    //     background-color: $amaranth;
-    //     color: #fff;
-    //     padding: 6px 35px 6px 20px;
-    //     .user-notifications {
-    //       display: inline-block;
-    //       height: 27px;
-    //       width: 25px;
-    //       position: absolute;
-    //       top: 0;
-    //       right: 0;
-    //       background-color: #cd0027;
-    //       text-transform: none;
-    //       .notification-circle {
-    //         border-radius: 50%;
-    //         width: 14px;
-    //         height: 14px;
-    //         position: absolute;
-    //         top: 6px;
-    //         left: 5px;
-    //         background-color: #fff;
-    //         color: #cd0027;
-    //       }
-    //     }
-    //   }
-    // }
+    ul {
+      display: inline-block;
+    }
+    .dropdown {
+      .button {
+        padding: 0;
+        background-color: $amaranth;
+        color: #fff;
+        .user-notifications {
+          display: inline-block;
+          height: 27px;
+          width: 25px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: #cd0027;
+          text-transform: none;
+          .notification-circle {
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            background-color: #fff;
+            color: #cd0027;
+          }
+        }
+      }
+    }
   }
 }
 
