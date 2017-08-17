@@ -1,10 +1,8 @@
 require('jquery');
 require('venobox');
 require('./animations');
-require('./carousel');
 var message = require('./message');
 var consolidateOffset = 250;
-
 
 
 $(window).scroll(function(){
@@ -28,6 +26,19 @@ $(document).ready(function() {
   } else {
     // Remove message from DOM?
   }
+
+  //slider animation
+  var slider = $('.slider-row').first();
+
+  var slider_width = slider.width();
+
+  window.console.log(slider_width);
+
+  var slider_new = slider.clone();
+
+  slider_new.css({'left' : slider_width}).appendTo($('.slider-viewport'));
+
+  
 
   // // Select all links with hashes
   // $('a[href*="#"]')
@@ -65,6 +76,7 @@ $(document).ready(function() {
   //   }
   // });
 
+
   
   //check for hash on page load
   // if (window.location.hash) { 
@@ -88,3 +100,5 @@ $(document).ready(function() {
 //   }
   
 // }
+
+
