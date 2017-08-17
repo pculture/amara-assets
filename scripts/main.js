@@ -1,7 +1,6 @@
 require('jquery');
 require('venobox');
 require('./animations');
-require('./carousel');
 
 $(window).scroll(function(){
   if ($(window).scrollTop() >= 250) {
@@ -51,7 +50,6 @@ $(document).ready(function() {
       }
     }
   });
-
   
   //check for hash on page load
   if (window.location.hash) { 
@@ -60,6 +58,17 @@ $(document).ready(function() {
 
   //Instantiate venobox
   $('.venobox').venobox(); 
+
+  //slider animation
+  var slider = $('.slider-row').first();
+
+  var slider_width = slider.width();
+
+  window.console.log(slider_width);
+
+  var slider_new = slider.clone();
+
+  slider_new.css({'left' : slider_width}).appendTo($('.slider-viewport'));
 });
 
 function resolveHash() {
@@ -74,5 +83,4 @@ function resolveHash() {
   else {
     $('html, body').animate({ scrollTop: $(hash).offset().top - 50}, 1000);
   }
-  
 }

@@ -1,1 +1,0 @@
-window.console.log('carousel.js loaded');
