@@ -32,7 +32,7 @@ $(document).ready(function() {
 
   var slider_width = slider.width();
 
-  window.console.log(slider_width);
+  // window.console.log(slider_width);
 
   var slider_new = slider.clone();
 

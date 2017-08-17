@@ -9,7 +9,7 @@ module.exports  = {
     // return hashObj.message ? true : false;
   },
   show: function() {
-    $("#" + hashObj.anchor).find('.message').show();
+    // $("#" + hashObj.anchor).find('.message').show();
     return;
   }
 
