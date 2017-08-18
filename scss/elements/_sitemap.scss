@@ -5,7 +5,7 @@
 .sitemap {
   display: inline-block;
   min-width: 100%;
-  padding: 0;
+  padding: 0 40px;
   .primary {
     // > ul { border-left: 5px solid $gray-light; }
   }
@@ -61,7 +61,9 @@
 
 // Media Queries
 @media(max-width: $screen-md-max) {
-
+  .sitemap {
+    padding: 0 40px;
+  }
 }
 
 @media(max-width: $screen-sm-max) {
