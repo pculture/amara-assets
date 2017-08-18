@@ -5,18 +5,18 @@
 .team-profile {
   display: flex;
   align-items: flex-start;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 20px;
   h3 {
     margin-top: 0;
   }
   .team-logo {
-    width: 150px;
+    width: 25%;
     margin: 0;
-    margin-right: 25px;
   }
   .team-details {
-    margin: o;
+    width: 70%;
+    margin: 0;
+    margin-left: auto;
   }
 }
 
