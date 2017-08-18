@@ -49,5 +49,11 @@
 @media(max-width: $screen-xs-max) {
   .grid {
     display: block;
+    &.icons-grid {
+      display: flex;
+      .item {
+        width: 15%;
+      }
+    }
   }
 }
