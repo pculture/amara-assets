@@ -5,213 +5,54 @@
 .sitemap {
   display: inline-block;
   min-width: 100%;
-  padding: 40px;
-  .fa {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 16px;
-    vertical-align: middle;
+  padding: 0;
+  .primary {
+    // > ul { border-left: 5px solid $gray-light; }
   }
-
-  /* --- Root --- */
-
-  ul, li {
-    position: relative;
-    display: inline-block;
-  }
-
-  .primary ul li:before,
-  .primary ul li:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-color: #ddd;
-    border-width: 1px;
-    z-index: 0;
-  }
-
-  .primary ul li a { border-top-color: $brand-primary; width: auto; }
-  .primary ul li a:before, .primary ul li .fa { color: $brand-primary; }
-
-  /* --- Level 1 --- */
-  .primary ul ul {
-    white-space: nowrap;
-  }
-
-  .primary ul ul li {
-    position: relative;
-    vertical-align: top;
-    padding-top: 20px;
-    margin-right: 20px;
-    white-space: normal;
-    width: 100%;
-  }
-
-  .primary ul ul li:last-child {
-    padding-right: 0;
-  }
-
-  .primary ul ul li:before {
-    border-top-style: solid;
-    width: 30px;
-    top: 50px;
-    margin: 0 0 0 -30px;
-  }
-
-  .primary ul ul li:first-child:before {
-    border-top-style: none;
-    border-left-style: solid;
-    width: 0;
-    height: 30px;
-    top: 0;
-    left: 45px;
-    margin: 0 0 0 -30px;
-  }
-
-  .primary ul ul li a { border-top-color: $teal; width: auto; }
-  .primary ul ul li a:before, .primary ul ul li .fa { color: $teal; }
-
-  /* --- Level 2 --- */
-  .primary ul ul ul {
-    display: block;
-    white-space: normal;
-  }
-
-  .primary ul ul ul li {
-    display: block;
-    position: relative;
-    width: 100%;
-    padding-left: 30px;
-    margin-right: 0;
-  }
-
-  .primary ul ul ul li:before,
-  .primary ul ul ul li:first-child:before  {
-    border-top-style: none;
-    border-left-style: solid;
-    height: 100%;
-    top: 0;
-    left: 45px;
-  }
-
-  .primary ul ul ul li:last-child:before  {
-    height: 50px;
-  }
-
-  .primary ul ul ul li:after  {
-    border-top-style: solid;
-    top: 50px;
-    left: 15px;
-    width: 15px;
-  }
-
-  .primary ul ul ul li a { border-top-color: $lime; width: auto; }
-  .primary ul ul ul li a:before, .primary ul ul ul li .fa { color: $lime; }
-
-  /* --- Level 3 --- */
-  .primary ul ul ul ul li a { border-top-color: #e67e22; }
-  .primary ul ul ul ul li a:before, .primary ul ul ul ul li .fa { color: #e67e22; }
-
-  /* --- Level 4 --- */
-  .primary ul ul ul ul ul li a { border-top-color: $amaranth; }
-  .primary ul ul ul ul ul li a:before, .primary ul ul ul ul ul li .fa { color: $amaranth; }
-
-  /* --- Secondary --- */
   .secondary {
-    display: block;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: dotted 2px #eee;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid $gray-light;
   }
-
-  .secondary ul {
-    white-space: nowrap;
-  }
-
-  .secondary ul li {
-    display: inline-block;
-    white-space: normal;
-    padding: 0 20px 0 0;
-  }
-
-  .secondary ul li:before,
-  .secondary ul li:after {
-    display: none;
-  }
-
-  .secondary ul li:last-child {
+  ul {
     padding: 0;
-  }
-
-  /* --- Widths --- */
-  .primary > ul > li > a,
-  .primary > ul > li > ul > li,
-  .secondary li a {
-    width: auto;
-    min-width: 220px;
-  }
-
-  li a,
-  li a.multi:after {
-      position: relative;
-    display: block;
     margin: 0;
-    padding: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 16px;
-    white-space: normal;
-    color: #333;
-    background-color: white;
-    border: 1px solid #f5f5f5;
-    border-top: 4px solid #95a5a6;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-      z-index: 1;
-  }
-
-  li a {
-    -webkit-box-shadow: 1px 1px 2px rgba(106,113,127,0.2);
-      -moz-box-shadow: 1px 1px 2px rgba(106,113,127,0.2);
-      box-shadow: 1px 1px 2px rgba(106,113,127,0.2); 
-  }
-
-  li a.multi:after {
-    content: " ";
-    position: absolute;
-    left: 6px;
-    top: 6px;
-    width: 100%;
-    height: 100%;
-    border-width: 2px;
-    border-color: #eee;
-    border-top-width: 0 !important;
-    border-left-width: 0 !important;
-    background-color: transparent;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-bottom-right-radius: 8px;
-    -webkit-border-bottom-right-radius: 8px;
-    z-index: -1;
-  }
-
-  li a:before {
-    content: " "attr(href)" ";
-    display: block;
-    text-transform: uppercase;
-    font-size: 10px;
-    font-weight: bold;
-    word-wrap: break-word;
-    color: $amaranth;
-  }
-
-  li a small {
-    display: block;
-    font-weight: normal;
-    font-size: 12px;
-    margin-top: 10px;
+    list-style: none;
+    li {
+      a {
+        display: block;
+        padding: 5px 30px;
+        font-family: $headings-font-family;
+        font-size: 20px;
+        font-weight: 200;
+        color: $plum;
+        border-left: 5px solid $gray-light; 
+        text-transform: uppercase;
+        &:after {
+          content: " "attr(href)" ";
+          display: block;
+          text-transform: lowercase;
+          text-indent: 5px;
+          font-size: 10px;
+          word-wrap: break-word;
+          color: $gray-dark;
+        }
+        &:hover, &:focus {
+          background-color: rgba(0,0,0,0.01);
+          border-color: $plum;
+          &:after {
+            font-weight: bold;
+          }
+        }
+        &.home {
+          padding-left: 15px;
+        }
+        &.section {
+          font-size: 16px;
+          padding-left: 45px;
+        }
+      }
+    }
   }
 }
 
