@@ -2,7 +2,7 @@
 
 }
 
-.company-profile {
+.team-profile {
   display: flex;
   align-items: flex-start;
   margin-top: 20px;
@@ -10,8 +10,13 @@
   h3 {
     margin-top: 0;
   }
-  .company-details {
-    padding-left: 25px;
+  .team-logo {
+    width: 150px;
+    margin: 0;
+    margin-right: 25px;
+  }
+  .team-details {
+    margin: o;
   }
 }
 
