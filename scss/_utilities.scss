@@ -2,11 +2,26 @@
 .container {
   position: relative;
 }
+
+// Content padding and load
 .content {
   position: relative;
   padding: 20px;
   @extend .clearfix;
+  @include transition(1s);
 }
+// Hide content on load. (FOUT versus FOIT)
+.wf-loading {
+  .content { opacity: 0; }
+}
+.wf-active {
+  .content { opacity: 1; }
+}
+.wf-inactive {
+  .content { opacity: 1; }
+}
+
+
 
 .clearfix {
   *zoom: 1;
