@@ -17,6 +17,9 @@
   height: 30px;
   background: $gray-darker;
   @include transition(.5s);
+  .container {
+    position: relative;
+  }
   ul {
     list-style: none;
     margin: 0;
@@ -39,77 +42,69 @@
     &:hover, &:focus {
 
     }
-  }
-  .dropdown-menu {
-    border-radius: 0;
-    // border: none;
-    left: 0px;
-    min-width: 100%;
-    li {
-      display: block;
-      a {
-        display: block;
-        background-color: transparent;
-        color: $gray;
-        @include transition(.3s);
-        &:hover, &:focus {
-          background-color: $gray;
-          color: #fff;
-        }
-      }
+    &.plum {
+      background: $plum;
+      color: $cream;
     }
+    &.cream {
+      background: $cream;
+      color: $plum;
+    }
+
   }
   // Accessibility Navigation
   .accessnav {
     position: absolute;
     top: 0;
     left: 0;
-    a {
-      background-color: $plum;
-    }
-    button {
-      background-color: $cream;
-      color: $plum;
-    }
   }
   // Application Navigation
   .appnav {
     position: absolute;
     top: 0;
     right: 0;
-    padding-right: 10px;
-    background-color: $amaranth;
-    button {
-      padding: 0 20px;
+    a {
+      text-transform: none;
+    }
+    .dropdown-toggle {
       background-color: $amaranth;
-      font-weight: 700;
     }
-    ul {
+    .caret {
       display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      vertical-align: middle;
+      border-top: 4px solid $cream;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+      @include transition(.2s);
     }
-    .dropdown {
-      .button {
-        padding: 0;
-        background-color: $amaranth;
-        color: #fff;
-        .user-notifications {
-          display: inline-block;
-          height: 27px;
-          width: 25px;
-          position: absolute;
-          top: 0;
-          right: 0;
-          background-color: #cd0027;
-          text-transform: none;
-          .notification-circle {
-            border-radius: 50%;
-            width: 14px;
-            height: 14px;
-            position: absolute;
-            top: 6px;
-            left: 5px;
-            background-color: #fff;
-            color: #cd0027;
+    .dropdown.open .caret {
+      transform: rotate(180deg);
+    }
+    .dropdown-menu {
+      &:before {
+        content: none;
+      }
+      position: absolute;
+      right: 0;
+      left: auto;
+      li {
+        margin: 0;
+        display: block;
+        &.separator {
+          border-top: 1px solid $gray;
+        }
+        a {
+          display: block;
+          color: $gray-darker;
+          background-color: #fff;
+          background-image: none;
+          @include transition(.3s);
+          &:hover, &:focus {
+            background-color: $gray;
+            color: #fff;
           }
         }
       }
@@ -124,14 +119,18 @@
     padding: 0;
   }
   .brand {
-    display: flex;
     float: left;
     width: 150px;
-    margin-right: auto;
+    font-size: 30px;
+    line-height: 68px;
+    img.logo {
+      height: 68px;
+    }
   }
   .primarynav {
     display: block;
     float: left;
+    margin: 0 auto;
     ul {
       list-style: none;
       margin: 0;
@@ -164,8 +163,7 @@
   .primary-cta {
     display: inline-block;
     padding: 8px 20px;
-    margin: auto;
-    margin-right: 0;
+    margin: auto 0;
     line-height: 1;
     background-color: $lime;
     color: #fff;
@@ -274,28 +272,6 @@
           font-weight: 400;
           &:hover, &:focus {
             background-color: $plum;
-          }
-        }
-      }
-    }
-    .dropdown-menu {
-      position: relative;
-      float: none;
-      border-radius: 0;
-      border: none;
-      padding: 0;
-      li {
-        display: block;
-        width: 100%;
-        border-bottom: 1px solid $gray-lighter;
-        &:last-child {
-          border: none;
-        }
-        a {
-          color: $gray-darker;
-          background-color: #fff;
-          &:hover, &:focus {
-            background-color: $gray-lighter;
           }
         }
       }
