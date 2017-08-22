@@ -1,10 +1,13 @@
 require('jquery');
 require('venobox');
 require('./animations');
+var state   = require('./state');
 var slider = require('./slider');
 var message = require('./message');
 var consolidateOffset = 250;
+var pageOffset = 100;
 
+window.console.log(state);
 
 $(window).scroll(function(){
   if ($(window).scrollTop() >= consolidateOffset) {
@@ -50,7 +53,7 @@ $(document).ready(function() {
         // Only prevent default if animation is actually gonna happen
         event.preventDefault();
         $('html, body').animate({
-          scrollTop: target.offset().top - 100
+          scrollTop: target.offset().top - pageOffset
         }, 1000, function() {
           // Callback after animation
           // Must change focus!
@@ -82,12 +85,13 @@ function resolveHash() {
   var hash = '#' + window.location.hash.substring(1);
 
   if ($(hash).hasClass('tab-pane') === true) {
-    window.console.log('has-class');
     $('a[href*="' + hash + '"]').tab('show');
-    $('html, body').animate({ scrollTop: $(hash).offset().top - 100}, 1000);
+    // TODO - This should be modified to be more exact. Currently not in use though
+    var section = 
+    $('html, body').animate({ scrollTop: $(hash).offset().top - pageOffset + 80 }, 1000);
   }
   else {
-    $('html, body').animate({ scrollTop: $(hash).offset().top - 50}, 1000);
+    $('html, body').animate({ scrollTop: $(hash).offset().top - pageOffset}, 1000);
   }
   
 }
