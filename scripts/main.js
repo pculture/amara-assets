@@ -1,10 +1,12 @@
 require('jquery');
 require('venobox');
 require('./animations');
+var state   = require('./state');
 var slider = require('./slider');
 var message = require('./message');
 var consolidateOffset = 250;
 
+window.console.log(state);
 
 $(window).scroll(function(){
   if ($(window).scrollTop() >= consolidateOffset) {
@@ -84,10 +86,10 @@ function resolveHash() {
   if ($(hash).hasClass('tab-pane') === true) {
     window.console.log('has-class');
     $('a[href*="' + hash + '"]').tab('show');
-    $('html, body').animate({ scrollTop: $(hash).offset().top - 100}, 1000);
+    $('html, body').animate({ scrollTop: $(hash).offset().top - 120}, 1000);
   }
   else {
-    $('html, body').animate({ scrollTop: $(hash).offset().top - 50}, 1000);
+    $('html, body').animate({ scrollTop: $(hash).offset().top - 100}, 1000);
   }
   
 }
