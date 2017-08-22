@@ -44,7 +44,9 @@
   }
   svg {
     position: absolute;
-    display: block;
+    display: table;
+    vertical-align: middle;
+    height: 100%;
     max-width: 100%;
     height: auto;
     z-index: 0;
