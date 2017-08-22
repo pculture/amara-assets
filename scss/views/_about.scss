@@ -1,5 +1,7 @@
-.about_view {
-  
+#our-mission {
+  .illustration {
+
+  }
 }
 
 #amara-community, #core-team {
@@ -45,5 +47,10 @@
 }
 
 @media(max-width: $screen-xs-max) {
+  #our-mission {
+    .illustration {
+      margin-top: 80px;
+    }
+  }
 
 }

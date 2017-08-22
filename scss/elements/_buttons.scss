@@ -107,5 +107,7 @@ button {
 }
 
 @media(max-width: $screen-xs-max) {
-
+  .button {
+    font-size: 16px;
+  }
 }
