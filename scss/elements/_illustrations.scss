@@ -16,6 +16,7 @@
   pointer-events: none;
   &.logo-animation {
     width: 50%;
+    overflow: visible;
   }
   &.illustration-left {
     left: 0;
@@ -59,6 +60,9 @@
   .illustration {
     position: relative;
     width: 100%;
+    &.logo-animation {
+      display: none;
+    }
     &.illustration-full {
       width: 100%;
       left: 0;

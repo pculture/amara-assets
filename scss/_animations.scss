@@ -23,12 +23,30 @@
           fill: #DDDDDD !important;
         }
       }
+    }
+    #background-symbols {
+      .symbol {
         // Loop through the cards and delay the loading animation.
-      @for $i from 1 through 30 {
-        &:nth-child(#{$i}) { 
-          @include animation(symbol, 1.8s, 0.1s * $i);
+        @for $i from 1 through 30 {
+          &:nth-child(#{$i}) { 
+            @include animation(symbol, 1.8s, 0.1s * $i);
+          }
         }
       }
+    }
+    #final-symbols {
+      transform-origin: 50% 50%;
+      .finale {
+        opacity: 0;
+      }
+    }
+    #hands {
+      transform:
+        translate(450px,-60px)
+        rotate(46deg);
+      opacity: 0.0;
+      #hand-top {fill: url(#grad1)}
+      #hand-bottom {fill: url(#grad2)}
     }
   }
 }
