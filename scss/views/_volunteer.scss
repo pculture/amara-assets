@@ -1,27 +1,30 @@
 .volunteer_view {
 
 }
-
-.team-profile {
-  display: flex;
-  align-items: flex-start;
-  padding: 20px;
-  h3 {
-    margin-top: 0;
+#find-team {
+  .grid {
+    .item { width: 50%; }
   }
-  .team-logo {
-    width: 25%;
-    margin: 0;
-  }
-  .team-details {
-    width: 70%;
-    margin: 0;
-    margin-left: auto;
+  .team-profile {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    h3 {
+      margin-top: 0;
+    }
+    .team-logo {
+      width: 25%;
+      margin: 0;
+    }
+    .team-details {
+      width: 70%;
+      margin: 0;
+      margin-left: auto;
+    }
   }
 }
 
 // Media Queries
-
 
 @media(max-width: $screen-lg-max) {
 
@@ -40,9 +43,18 @@
 }
 
 @media(max-width: $screen-sm-max) {
+  #find-team {
+    .grid {
+      .item { width: 50%; }
+    }
+  }
 
 }
 
 @media(max-width: $screen-xs-max) {
-
+  #find-team {
+    .grid {
+      .item { width: 100%; }
+    }
+  }
 }

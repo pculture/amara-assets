@@ -35,6 +35,19 @@
   }
 }
 
+.grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  .item {
+    width: 33%;
+  }
+  .col-* {
+    float: none;
+  }
+}
+
 
 .break-33 {
   width: 33% !important;
@@ -201,10 +214,20 @@ img.pull-right {
 }
 
 @media(max-width: $screen-sm-max) {
-
+  .grid {
+    .item {
+      width: 50%;
+    }
+  }
 }
 
 @media(max-width: $screen-xs-max) {
+  .grid {
+    .item {
+      width: 100%;
+    }
+  }
+
   // breaks go to full width
   .break-33,
   .break-50,

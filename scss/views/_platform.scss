@@ -19,6 +19,19 @@
   }
 }
 
+#enterprise-platform,
+#free-platform {
+  .grid {
+    margin: 30px 0;
+    justify-content: flex-start;
+    .item {
+      width: 80px;
+      margin-right: 20px;
+      text-align: center;
+    }
+  }
+}
+
 // Media Queries
 @media(max-width: $screen-lg-max) {
 
