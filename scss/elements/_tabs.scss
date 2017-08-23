@@ -34,3 +34,23 @@
     }
   }
 }
+
+// Media Queries
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+
+}
+
+@media(max-width: $screen-xs-max) {
+  .nav-tabs {
+    li {
+      margin: 0 20px;
+      a {
+        padding: 10px 35px;
+      }
+    }
+  }
+}

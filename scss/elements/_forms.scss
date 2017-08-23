@@ -18,6 +18,12 @@ textarea {
   margin-top: 30px;
 }
 
+#form8 {
+  button {
+    width: 300px;
+  }
+}
+
 
 // Placeholders
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -49,5 +55,10 @@ textarea {
 }
 
 @media(max-width: $screen-xs-max) {
-
+  #form8 {
+    button {
+      width: auto;
+      padding: 12px 20px;
+    }
+  }
 }
