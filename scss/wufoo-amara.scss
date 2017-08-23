@@ -1,0 +1,136 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+
+ Title : Amara Custom CSS
+ URL :http://victorious-kookabura.cloudvent.net/
+
+ Last Updated : August 23, 2017
+
+- - - - - - - - - - - - - - - - - - - - - 
+*/
+
+/* - - - Default - - - */
+
+/* Logo */
+#logo a {background-image:url('http://victorious-kookabura.cloudvent.net/assets/img/logo.svg'); min-height:0; height:120px}
+* html #logo a {/* IE6 png Support */
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://victorious-kookabura.cloudvent.net/assets/img/logo.svg", sizingMethod="crop");
+}
+
+/* Backgrounds */
+html{
+  background-image:none;
+  background-color: transparent;
+}
+#logo{
+  background-image:none;
+  background-color: transparent;
+}
+#container{
+  background:transparent;
+}
+.wufoo input.text, .wufoo textarea.textarea{background: transparent;}
+.wufoo .focused{background: transparent;}
+.wufoo .instruct{background-color: transparent;}
+
+/* Borders */
+#container{
+  border: none;
+  box-shadow: none; 
+  background-color: #f2f0e7;
+}
+.wufoo .info{border-bottom: none;}
+.wufoo .instruct{
+  display: none;
+  border: none;
+}
+
+/* Typography */
+.wufoo .info h2{
+  font-size:160%;
+  font-family:inherit;
+  color:#000000
+}
+.wufoo .info div{
+  font-size:95%;
+  font-family:inherit;
+  color:#444444
+}
+.wufoo .section h3{
+  border-top: none;
+  text-indent: -9999em;
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+.wufoo .section div{
+  font-size:85%;
+  font-family:inherit;
+  color:#444444;
+}
+.wufoo label.desc, .wufoo legend.desc, .wufoo section h3, .wufoo .info h2{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+.wufoo li div, .wufoo li div label, .wufoo li span label{
+  font-family:inherit;
+  color:#444444
+}
+
+.wufoo input.text, .wufoo textarea.textarea {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.wufoo select.select, .wufoo label.choice{
+  width: 100%;
+  font-size:100%;
+  font-family:inherit;
+  background-color: #ffffff;
+}
+
+.wufoo input.btTxt {
+  display: block;
+  padding: 13px 70px;
+  margin: 0 auto;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 19px;
+  border-radius: 0;
+  border: none;
+  color: #fff;
+}
+
+#form8.wufoo input.btTxt {
+  background-color: #80bd3e;
+}
+
+
+
+.wufoo label.choice{color:#444444}
+.wufoo .instruct{font-size:80%;
+  font-family:inherit;
+  color:#444444;
+}
+
+//error messaging
+#errorLi, .error-container {
+  border: 1px solid #691a24;
+  border-radius: 0;
+}
+
