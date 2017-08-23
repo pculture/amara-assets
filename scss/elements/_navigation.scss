@@ -43,15 +43,24 @@
   .dropdown-menu {
     border-radius: 0;
     // border: none;
-    left: 0px;
+    right: 0;
+    left: auto;
     min-width: 100%;
+    &:before {
+      content: none;
+    }
     li {
       display: block;
+      &.separator {
+        border-top: 1px solid $gray;
+      }
       a {
         display: block;
-        background-color: transparent;
-        color: $gray;
+        background-color: #fff;
+        background-image: none;
+        color: $gray-darker;
         @include transition(.3s);
+        text-transform: none;
         &:hover, &:focus {
           background-color: $gray;
           color: #fff;
@@ -84,7 +93,6 @@
       font-weight: 700;
     }
     ul {
-      display: inline-block;
       li.dropdown {
         &.open {
           ul.dropdown-menu {
@@ -327,6 +335,24 @@
         }
       }
     }
+  }
+}
+
+#user-menu {
+  text-transform: none;
+  .caret {
+          display: inline-block;
+          width: 0;
+          height: 0;
+          margin-left: 2px;
+          vertical-align: middle;
+          border-top: 4px solid $cream;
+          border-right: 4px solid transparent;
+          border-left: 4px solid transparent;
+          @include transition(.2s);
+  }
+  .dropdown.open & .caret {
+          transform: rotate(180deg);
   }
 }
 
