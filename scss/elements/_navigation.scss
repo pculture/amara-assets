@@ -87,7 +87,9 @@
     top: 0;
     right: 0;
     padding-right: 10px;
-    button {
+    a.button, button {
+      border-radius: 0;
+      border: 0;
       padding: 0 20px;
       background-color: $amaranth;
       font-weight: 700;
