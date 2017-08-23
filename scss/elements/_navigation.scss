@@ -78,7 +78,6 @@
     top: 0;
     right: 0;
     padding-right: 10px;
-    background-color: $amaranth;
     button {
       padding: 0 20px;
       background-color: $amaranth;
@@ -91,7 +90,7 @@
           ul.dropdown-menu {
             display: block;
             left: auto;
-            right: -8px;
+            right: 0;
           }
         }
         ul.dropdown-menu {
@@ -101,7 +100,6 @@
     }
     .dropdown {
       .button {
-        padding: 0;
         background-color: $amaranth;
         color: #fff;
         .user-notifications {
@@ -126,6 +124,12 @@
         }
       }
     }
+    .count {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+    }
   }
 }
 
@@ -138,8 +142,19 @@
   .brand {
     display: flex;
     float: left;
-    width: 150px;
+    width: auto;
     margin-right: auto;
+    font-size: 24px;
+    white-space: nowrap;
+    line-height: 68px;
+    color: $brand-primary;
+    &:hover, &:focus {
+      color: $brand-primary;
+    }
+    img.logo {
+      max-width: 150px;
+      margin-right: 10px;
+    }
   }
   .primarynav {
     display: block;
