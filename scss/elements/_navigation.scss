@@ -162,6 +162,9 @@
     &:hover, &:focus {
       color: $brand-primary;
     }
+    img {
+      margin: auto 8px auto 0;
+    }
     img.logo {
       max-width: 150px;
       margin-right: 10px;
