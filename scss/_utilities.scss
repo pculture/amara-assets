@@ -12,13 +12,13 @@
 }
 // Hide content on load. (FOUT versus FOIT)
 .wf-loading {
-  .content { opacity: 0; }
+  nav, .content { opacity: 0; }
 }
 .wf-active {
-  .content { opacity: 1; }
+  nav, .content { opacity: 1; }
 }
 .wf-inactive {
-  .content { opacity: 1; }
+  nav, .content { opacity: 1; }
 }
 
 
