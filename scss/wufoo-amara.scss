@@ -29,6 +29,11 @@ html{
 #container{
   background:transparent;
 }
+
+.wufoo {
+  font-family: 'raleway', sans-serif;
+}
+
 .wufoo input.text, .wufoo textarea.textarea{background: transparent;}
 .wufoo .focused{background: transparent;}
 .wufoo .instruct{background-color: transparent;}
@@ -94,6 +99,7 @@ html{
   color: #555;
   background-color: #ffffff;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .wufoo select.select, .wufoo label.choice{
@@ -134,8 +140,12 @@ html{
   border-radius: 0;
 }
 
+.wufoo li.focused {
+  background-color: transparent;
+}
+
 .confirm h2 {
-  font-family: Raleway;
+  font-family: 'raleway', sans-serif;
   background-color: rgba(0,0,0,.1);
 }
 
