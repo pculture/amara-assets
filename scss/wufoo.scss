@@ -256,6 +256,7 @@ html{
           }
           .instruct {
             position: relative;
+            width: 100%;
             visibility: visible;
             left: auto;
             top: auto;
@@ -267,7 +268,7 @@ html{
           background-color: transparent;
           input {
             width: 100%;
-            padding: 20px;
+            padding: 12px;
           }
           .instruct {
             position: relative;
