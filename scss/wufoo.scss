@@ -189,7 +189,7 @@ html{
         }
       }
       // for showing instructions within li
-      .has-instructions {
+      &.has-instructions {
         position: relative;
         background: #fff;
         width: 100%;
@@ -205,7 +205,7 @@ html{
         }
       }
       // for showing instructions next to field
-      .instructions-right {
+      &.instructions-right {
         input {
           width: 50%;
         }
