@@ -31,7 +31,9 @@ html{
 .wufoo {
   font-family: $headings-font-family;
   box-sizing: border-box;
-  input.text, textarea.textarea{background: transparent;}
+  input.text, textarea.textarea{
+    background: transparent;
+  }
 
   input, textarea {
 
@@ -179,6 +181,7 @@ html{
 //specific styles for application
 #form11 {
   &.wufoo {
+    box-sizing: border-box;
     li {
       background-color: #fff;
       margin: 20px 0;
@@ -243,6 +246,7 @@ html{
       li {
         background-color: transparent;
         margin: 10px 0;
+        box-sizing: border-box;
         &.has-instructions {
           position: relative;
           background: transparent;
@@ -259,7 +263,7 @@ html{
         }
         // for showing instructions next to field
         &.instructions-right {
-          padding-left: 0;
+          margin-left: 10px;
           background-color: transparent;
           input {
             width: 100%;
@@ -267,6 +271,7 @@ html{
           }
           .instruct {
             position: relative;
+            width: 100%;
             left: auto;
             top: auto;
           }
