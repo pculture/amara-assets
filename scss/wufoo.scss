@@ -201,7 +201,9 @@ html{
           opacity: 1;
           display: block;
           left: 40%;
-          top: 10px;
+          top: 3px;
+          width: 50%;
+          padding: 5px;
         }
       }
       // for showing instructions next to field
@@ -215,6 +217,9 @@ html{
           opacity: 1;
           display: block;
         }
+      }
+      &.buttons {
+        background: transparent;
       }
     }
   }
