@@ -228,3 +228,55 @@ html{
   }
 }
 
+// media
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+
+}
+
+@media(max-width: $screen-xs-max) {
+  #form11 {
+    &.wufoo {
+      li {
+        background-color: transparent;
+        margin: 10px 0;
+        &.has-instructions {
+          position: relative;
+          background: transparent;
+          width: 100%;
+          input {
+            width: 100%;
+          }
+          .instruct {
+            position: relative;
+            visibility: visible;
+            left: auto;
+            top: auto;
+          }
+        }
+        // for showing instructions next to field
+        &.instructions-right {
+          padding-left: 0;
+          background-color: transparent;
+          input {
+            width: 100%;
+            padding: 20px;
+          }
+          .instruct {
+            position: relative;
+            left: auto;
+            top: auto;
+          }
+        }
+        &.leftHalf, &.rightHalf {
+          width: 100% !important;
+          float: none;
+        }
+      }
+    }
+  }
+}
+
