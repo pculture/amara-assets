@@ -208,8 +208,11 @@ html{
       }
       // for showing instructions next to field
       &.instructions-right {
+        padding-left: 0;
+        background-color: transparent;
         input {
-          width: 50%;
+          width: 49%;
+          padding: 20px;
         }
         .instruct {
           left: 50%;
