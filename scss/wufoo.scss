@@ -185,21 +185,43 @@ html{
   background-color: rgba(0,0,0,.1);
 }
 
-//custom instructions
-.has-instructions {
-  position: relative;
-  background: #fff;
-  width: 100%;
-  margin: 20px 0;
-  input {
-    width: 40%;
-  }
-  .instruct {
-    visibility: visible;
-    opacity: 1;
-    display: block;
-    left: 40%;
-    top: 10px;
+
+//specific styles for application
+#form11 {
+  .wufoo {
+    li {
+      background-color: #fff;
+      margin: 20px 0;
+      width: 100%;
+      // for showing instructions within li
+      .has-instructions {
+        position: relative;
+        background: #fff;
+        width: 100%;
+        input {
+          width: 40%;
+        }
+        .instruct {
+          visibility: visible;
+          opacity: 1;
+          display: block;
+          left: 40%;
+          top: 10px;
+        }
+      }
+      // for showing instructions next to field
+      .instructions-right {
+        input {
+          width: 50%;
+        }
+        .instruct {
+          left: 50%;
+          visibility: visible;
+          opacity: 1;
+          display: block;
+        }
+      }
+    }
   }
 }
 
