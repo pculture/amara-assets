@@ -163,16 +163,6 @@ html{
   }
 }
 
-#form11 {
-  &.wufoo {
-    input {
-      &.btTxt {
-        background-color: #5a2747;
-      }
-    }
-  }
-}
-
 // Error Messaging
 #errorLi, .error-container {
   border: 1px solid #691a24;
@@ -188,11 +178,16 @@ html{
 
 //specific styles for application
 #form11 {
-  .wufoo {
+  &.wufoo {
     li {
       background-color: #fff;
       margin: 20px 0;
       width: 100%;
+      input {
+        &.btTxt {
+          background-color: #5a2747;
+        }
+      }
       // for showing instructions within li
       .has-instructions {
         position: relative;
