@@ -171,6 +171,11 @@ html{
   border-radius: 0;
 }
 
+//class for adding margins
+.marginBottom {
+  margin-bottom: 20px;
+}
+
 // Confirmation Messaging
 .confirm h2 {
   font-family: $headings-font-family;
@@ -232,6 +237,18 @@ html{
         background: transparent;
         padding: 0;
         text-align: center;
+      }
+    }
+  }
+}
+
+//specific styles for subtitle request
+
+#form8 {
+  &.wufoo {
+    input {
+      &.btTxt {
+        background-color: #80bd3e;
       }
     }
   }
