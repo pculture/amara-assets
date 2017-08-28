@@ -46,6 +46,9 @@
     right: 0;
     left: auto;
     min-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 500px;
     &:before {
       content: none;
     }
