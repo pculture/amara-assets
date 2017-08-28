@@ -250,20 +250,8 @@ html{
   #form11 {
     &.wufoo {
       li {
-        background-color: transparent;
-        margin: 10px 0;
-        box-sizing: border-box;
-        // &.has-instructions {
-        //   position: relative;
-        //   background: transparent;
-        //   width: 100%;
-        //   input {
-        //     width: 100%;
-        //   }
-        // }
         // for showing instructions next to field
         &.instructions-right {
-          background-color: transparent;
           input {
             width: 100%;
             padding: 12px;
