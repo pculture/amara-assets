@@ -197,15 +197,16 @@ html{
         background: #fff;
         width: 100%;
         input {
-          width: 40%;
+          width: 100%;
         }
         .instruct {
           visibility: visible;
-          opacity: 1;
+          position: relative;
           display: block;
-          left: 40%;
-          top: 3px;
-          width: 50%;
+          opacity: 1;
+          left: auto;
+          top: auto;
+          width: 100%;
           padding: 5px;
         }
       }
@@ -213,9 +214,10 @@ html{
       &.instructions-right {
         padding-left: 0;
         background-color: transparent;
+        box-sizing: border-box;
         input {
           width: 49%;
-          padding: 20px;
+          padding: 10px 0;
         }
         .instruct {
           left: 50%;
