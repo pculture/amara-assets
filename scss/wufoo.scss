@@ -183,7 +183,7 @@ html{
 }
 
 
-//specific styles for application
+//specific styles for application form
 #form11 {
   &.wufoo {
     box-sizing: border-box;
@@ -244,11 +244,15 @@ html{
 
 //specific styles for subtitle request
 
-#form8 {
+#form9 {
   &.wufoo {
     input {
+      padding: 6px 12px;
       &.btTxt {
-        background-color: #80bd3e;
+        background-color: $plum;
+        &:hover {
+          background-color: $brand-primary;
+        }
       }
     }
   }
@@ -264,13 +268,23 @@ html{
 }
 
 @media(max-width: $screen-xs-max) {
+  .wufoo {
+    li {
+      &.leftHalf, &.rightHalf {
+        width: 100% !important;
+        float: none;
+      }
+      input {
+        width: 100%;
+      }
+    }
+  }
   #form11 {
     &.wufoo {
       li {
         // for showing instructions next to field
         &.instructions-right {
           input {
-            width: 100%;
             padding: 12px;
           }
           .instruct {
