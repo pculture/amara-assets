@@ -208,6 +208,7 @@ html{
           top: auto;
           width: 100%;
           padding: 5px;
+          font-style: italic;
         }
       }
       // for showing instructions next to field
@@ -252,21 +253,14 @@ html{
         background-color: transparent;
         margin: 10px 0;
         box-sizing: border-box;
-        &.has-instructions {
-          position: relative;
-          background: transparent;
-          width: 100%;
-          input {
-            width: 100%;
-          }
-          .instruct {
-            position: relative;
-            width: 100%;
-            visibility: visible;
-            left: auto;
-            top: auto;
-          }
-        }
+        // &.has-instructions {
+        //   position: relative;
+        //   background: transparent;
+        //   width: 100%;
+        //   input {
+        //     width: 100%;
+        //   }
+        // }
         // for showing instructions next to field
         &.instructions-right {
           background-color: transparent;
