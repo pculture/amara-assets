@@ -246,8 +246,9 @@ html{
     input {
       padding: 15px 12px;
       &.btTxt {
-        background-color: $brand-primary;
-        padding: 20px 50px;
+        background-color: $amaranth;
+        padding: 15px 60px;
+        max-width: 100%;
         color: #fff;
         &:hover {
           background-color: $plum;
