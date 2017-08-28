@@ -1,0 +1,287 @@
+@import "variables";
+@import "mixins";
+@import "base/global";
+@import "base/typography";
+
+
+// Logos
+#logo {
+  display: none;
+}
+
+/* Backgrounds */
+html{
+  background-image:none;
+  background-color: transparent;
+}
+#logo{
+  background-image:none;
+  background-color: transparent;
+}
+
+// Container
+#container{
+  background:transparent;
+  border: none;
+  box-shadow: none; 
+  background-color: #f2f0e7;
+}
+
+// Form
+.wufoo {
+  font-family: $headings-font-family;
+  box-sizing: border-box;
+  input.text, textarea.textarea{
+    background: transparent;
+  }
+
+  input, textarea {
+
+    &.text {}
+    &.number {}
+  }
+
+  label {
+
+  }
+
+  // TODO - Organize
+  label.desc, legend.desc, section h3, .info h2{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+  li div, li div label, li span label{
+    font-family:inherit;
+    color:#444444
+  }
+
+  input.text, textarea.textarea {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #ffffff;
+    width: 100%;
+    font-weight: 400;
+    font-family: $headings-font-family;
+    box-sizing: border-box;
+  }
+
+  select.select, label.choice{
+    width: 100%;
+    font-size:100%;
+    font-family:inherit;
+    background-color: #ffffff;
+  }
+
+  input.btTxt {
+    display: inline-block;
+    padding: 13px 70px;
+    margin: 20px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 19px;
+    border-radius: 0;
+    border: none;
+    background-color: #80bd3e;
+    color: #fff;
+  }
+
+
+
+  label.choice{color:#444444}
+
+
+   // TODO - End Organize
+  ////////////////
+
+  li.focused {
+    background-color: transparent;
+  }
+  .focused{
+    background: transparent;
+  }
+
+
+  .instruct {
+    // display: none;
+    font-size:80%;
+    font-family:inherit;
+    color:#444444;
+    border: none;
+    background-color: transparent;
+  }
+
+  .info {
+    border-bottom: none;
+    h2{
+      font-size:160%;
+      font-family:inherit;
+      color:#000000
+    }
+    div{
+      font-size:95%;
+      font-family:inherit;
+      color:#444444
+    }
+  }
+
+  .section {
+    h3 {
+      border-top: none;
+      text-indent: -9999em;
+      visibility: hidden;
+      height: 0;
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      font-size:85%;
+      font-family:inherit;
+      color:#444444;
+    }
+  }
+
+}
+
+//custom button colors
+#form8 {
+  &.wufoo {
+    input {
+      &.btTxt {
+        background-color: #80bd3e;
+      }
+    }
+  }
+}
+
+// Error Messaging
+#errorLi, .error-container {
+  border: 1px solid #691a24;
+  border-radius: 0;
+}
+
+// Confirmation Messaging
+.confirm h2 {
+  font-family: $headings-font-family;
+  background-color: rgba(0,0,0,.1);
+}
+
+
+//specific styles for application
+#form11 {
+  &.wufoo {
+    box-sizing: border-box;
+    li {
+      background-color: #fff;
+      margin: 20px 0;
+      width: 100%;
+      input {
+        &.btTxt {
+          background-color: #5a2747;
+        }
+      }
+      // for showing instructions within li
+      &.has-instructions {
+        position: relative;
+        background: #fff;
+        width: 100%;
+        input {
+          width: 40%;
+        }
+        .instruct {
+          visibility: visible;
+          opacity: 1;
+          display: block;
+          left: 40%;
+          top: 3px;
+          width: 50%;
+          padding: 5px;
+        }
+      }
+      // for showing instructions next to field
+      &.instructions-right {
+        padding-left: 0;
+        background-color: transparent;
+        input {
+          width: 49%;
+          padding: 20px;
+        }
+        .instruct {
+          left: 50%;
+          visibility: visible;
+          opacity: 1;
+          display: block;
+        }
+      }
+      &.buttons {
+        background: transparent;
+      }
+    }
+  }
+}
+
+// media
+@media(max-width: $screen-md-max) {
+
+}
+
+@media(max-width: $screen-sm-max) {
+
+}
+
+@media(max-width: $screen-xs-max) {
+  #form11 {
+    &.wufoo {
+      li {
+        background-color: transparent;
+        margin: 10px 0;
+        box-sizing: border-box;
+        &.has-instructions {
+          position: relative;
+          background: transparent;
+          width: 100%;
+          input {
+            width: 100%;
+          }
+          .instruct {
+            position: relative;
+            width: 100%;
+            visibility: visible;
+            left: auto;
+            top: auto;
+          }
+        }
+        // for showing instructions next to field
+        &.instructions-right {
+          background-color: transparent;
+          input {
+            width: 100%;
+            padding: 12px;
+          }
+          .instruct {
+            position: relative;
+            width: 100%;
+            left: auto;
+            top: auto;
+          }
+        }
+        &.leftHalf, &.rightHalf {
+          width: 100% !important;
+          float: none;
+        }
+      }
+    }
+  }
+}
+
