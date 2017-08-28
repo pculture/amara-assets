@@ -97,11 +97,13 @@ html{
     color: #fff;
   }
 
-
-
   label.choice{color:#444444}
 
-
+  .buttons {
+    background: transparent;
+    padding: 0;
+    text-align: center;
+  }
    // TODO - End Organize
   ////////////////
 
@@ -154,6 +156,23 @@ html{
 
 }
 
+// Error Messaging
+#errorLi, .error-container {
+  border: 1px solid #691a24;
+  border-radius: 0;
+}
+
+// Confirmation Messaging
+.confirm h2 {
+  font-family: $headings-font-family;
+  background-color: rgba(0,0,0,.1);
+}
+
+//class for adding margins
+.marginBottom {
+  margin-bottom: 20px;
+}
+
 //custom button colors
 #form8 {
   &.wufoo {
@@ -164,24 +183,6 @@ html{
     }
   }
 }
-
-// Error Messaging
-#errorLi, .error-container {
-  border: 1px solid #691a24;
-  border-radius: 0;
-}
-
-//class for adding margins
-.marginBottom {
-  margin-bottom: 20px;
-}
-
-// Confirmation Messaging
-.confirm h2 {
-  font-family: $headings-font-family;
-  background-color: rgba(0,0,0,.1);
-}
-
 
 //specific styles for application form
 #form11 {
@@ -233,27 +234,28 @@ html{
           display: block;
         }
       }
-      &.buttons {
-        background: transparent;
-        padding: 0;
-        text-align: center;
-      }
+      
     }
   }
 }
 
-//specific styles for subtitle request
+//specific styles for subtitle request form
 
 #form9 {
   &.wufoo {
     input {
-      padding: 6px 12px;
+      padding: 15px 12px;
       &.btTxt {
-        background-color: $plum;
+        background-color: $brand-primary;
+        padding: 20px 50px;
+        color: #fff;
         &:hover {
-          background-color: $brand-primary;
+          background-color: $plum;
         }
       }
+    }
+    textarea {
+      height: 52px
     }
   }
 }
@@ -268,6 +270,9 @@ html{
 }
 
 @media(max-width: $screen-xs-max) {
+  .marginBottom {
+    margin-bottom: 0;
+  }
   .wufoo {
     li {
       &.leftHalf, &.rightHalf {
