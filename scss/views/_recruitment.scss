@@ -1,0 +1,27 @@
+#languages-needed {
+  .grid {
+    .item {
+      width: 25%;
+    }
+  }
+}
+
+// Media Queries
+@media(min-width: $screen-xl-min) {}
+
+@media(max-width: $screen-md-max) {}
+
+@media(max-width: $screen-sm-max) {}
+
+@media(max-width: $screen-xs-max) {
+  #languages-needed {
+    .grid {
+      .item {
+        width: 100%;
+        ul {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
