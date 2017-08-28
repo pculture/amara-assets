@@ -170,7 +170,7 @@ html{
 
 //class for adding margins
 .marginBottom {
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 
 //custom button colors
@@ -253,6 +253,11 @@ html{
         &:hover {
           background-color: $plum;
         }
+      }
+    }
+    li {
+      &.buttons {
+        padding: 6px;
       }
     }
     textarea {
