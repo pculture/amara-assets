@@ -164,14 +164,14 @@ html{
     cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
-    color: $gray-light;
+    color: $gray;
     line-height: 60px;
     padding: 0 20px;
     border: none;
     box-shadow: none;
     margin: 0;
     display: inline-block;
-    background: #fff;
+    background: #fff !important;
     &:focus {
      outline: none;
     }
