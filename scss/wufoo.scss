@@ -36,7 +36,7 @@ html{
     margin: 0;
     padding: 0;
     li {
-
+      width: auto;
     }
   }
   input.text, textarea.textarea{
@@ -226,7 +226,7 @@ html{
     li {
       background-color: transparent;
       margin: 10px 0;
-      width: 100%;
+      width: auto;
       input {
         padding: 20px 15px;
         &.btTxt {
@@ -241,7 +241,7 @@ html{
       // for showing instructions within li
       &.has-instructions {
         position: relative;
-        width: 100%;
+        width: auto;
         input {
           width: 100%;
         }
