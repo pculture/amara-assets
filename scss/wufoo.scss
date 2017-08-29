@@ -118,12 +118,15 @@ html{
 
 
   .instruct {
-    // display: none;
-    font-size:80%;
+    margin: 0;
     font-family:inherit;
+    font-style: normal;
     color:#444444;
     border: none;
     background-color: transparent;
+    small {
+      font-size: 90%;
+    }
   }
 
   .info {
