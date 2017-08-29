@@ -167,7 +167,8 @@ html{
 // Confirmation Messaging
 .confirm h2 {
   font-family: $headings-font-family;
-  background-color: rgba(0,0,0,.1);
+  color: $brand-primary;
+  background-color: rgba(255,255,255,.7);
 }
 
 //class for adding margins
@@ -250,7 +251,6 @@ html{
 }
 
 //specific styles for subtitle request form
-
 #form9 {
   &.wufoo {
     input {
@@ -293,7 +293,7 @@ html{
   .wufoo {
     li {
       &.leftHalf, &.rightHalf {
-        width: 100% !important;
+        width: auto !important;
         float: none;
       }
       input {
