@@ -61,7 +61,7 @@ html{
     color:#444444
   }
 
-  input.text, textarea.textarea {
+  input.text, textarea.textarea, select.select {
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -156,6 +156,24 @@ html{
       font-size:85%;
       font-family:inherit;
       color:#444444;
+    }
+  }
+
+  select.select {
+    position: relative;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: $gray-light;
+    line-height: 60px;
+    padding: 0 20px;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    display: inline-block;
+    background: #fff;
+    &:focus {
+     outline: none;
     }
   }
 
