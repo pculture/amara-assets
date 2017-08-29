@@ -6,6 +6,11 @@
   }
 }
 
+#apply-now {
+  iframe {
+    // min-height: 740px;
+  }
+}
 // Media Queries
 @media(min-width: $screen-xl-min) {}
 
@@ -22,6 +27,13 @@
           margin-bottom: 0;
         }
       }
+    }
+  }
+
+  #apply-now {
+    iframe {
+      height: 1474px;
+      min-height: 1474px;
     }
   }
 }
