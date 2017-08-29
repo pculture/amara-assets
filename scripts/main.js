@@ -4,10 +4,9 @@ require('./animations');
 var state   = require('./state');
 var slider = require('./slider');
 var message = require('./message');
+var testimonials = require('./testimonials');
 var consolidateOffset = 250;
 var pageOffset = 100;
-
-window.console.log(state);
 
 $(window).scroll(function(){
   if ($(window).scrollTop() >= consolidateOffset) {
@@ -18,8 +17,6 @@ $(window).scroll(function(){
    }
 });
 
-
-
 $(document).ready(function() {
   // Instantiate venobox
   $('.venobox').venobox();
@@ -27,12 +24,20 @@ $(document).ready(function() {
   // Animate sliders
   slider.animate();
 
+  // Messages
   if(message.check) {
     // Show the message
     message.show();
   } else {
     // Remove message from DOM?
   }
+
+  // Display random testimonials
+  $('.testimonials').each(function() {
+    var quotes = $(this).find('blockquote');
+    testimonials.showRandom(quotes);
+  });
+  
 
   // Select all links with hashes
   $('a[href*="#"]')

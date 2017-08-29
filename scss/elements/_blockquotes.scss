@@ -1,5 +1,5 @@
 blockquote{
-  display:block;
+  display:none;
   position: relative;
   z-index: 1;
   /*Font*/
@@ -10,6 +10,9 @@ blockquote{
   color: #fff;
   text-align: center;
   border-left: none;
+  &.active {
+    display: block;
+  }
   em {
     z-index: 9;
   }
