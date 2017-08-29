@@ -39,6 +39,10 @@ html{
       width: auto;
     }
   }
+  section {
+    padding: 0;
+    border-top: 1px solid $gray-light;
+  }
   input.text, textarea.textarea{
     background: transparent;
   }
@@ -76,7 +80,7 @@ html{
     padding: 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #555;
+    color: $gray-darker;
     background-color: #ffffff;
     width: 100%;
     font-weight: 400;
