@@ -95,6 +95,8 @@ html{
     border: none;
     background-color: #80bd3e;
     color: #fff;
+    cursor: pointer;
+    @include transition(.5s);
   }
 
   label.choice{color:#444444}
@@ -173,12 +175,15 @@ html{
   margin-bottom: 35px;
 }
 
-//custom button colors
+//specific styles for enterprise sign up form
 #form8 {
   &.wufoo {
     input {
       &.btTxt {
-        background-color: #80bd3e;
+        background-color: $lime;
+        &:hover {
+          background-color: $teal;
+        }
       }
     }
   }
