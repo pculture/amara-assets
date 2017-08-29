@@ -195,7 +195,12 @@ html{
       input {
         padding: 20px 15px;
         &.btTxt {
-          background-color: #5a2747;
+          background-color: $brand-primary;
+          padding: 15px 60px;
+          max-width: 100%;
+          &:hover {
+            background-color: $amaranth;
+          }
         }
       }
       // for showing instructions within li
@@ -250,6 +255,7 @@ html{
         padding: 15px 60px;
         max-width: 100%;
         color: #fff;
+        @include transition(.5s);
         &:hover {
           background-color: $plum;
         }
