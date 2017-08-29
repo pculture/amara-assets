@@ -202,6 +202,35 @@ img.pull-right {
   border-left: 3px solid transparent;
 }
 
+
+@media (max-width: $screen-xs-max) and (min-width: 0) {
+  .visible-xs {
+    display: block!important;
+  }
+  .hidden-xs {
+    display: none!important;
+  }
+}
+
+@media (max-width: $screen-sm-max) and (min-width: $screen-sm-min) {
+  .visible-sm {
+    display: block!important;
+  }
+  .hidden-sm {
+    display: none!important;
+  }
+}
+
+@media (max-width: $screen-md-max) and (min-width: $screen-md-min) {
+  .visible-md {
+    display: block!important;
+  }
+  .hidden-md {
+    display: none!important;
+  }
+}
+
+
 // Media Queries
 @media(min-width: $screen-xl-min) {
   .container {
