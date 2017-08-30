@@ -25,11 +25,74 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-alert:before {
+  content: "\e901";
+}
+.icon-approve_outline:before {
+  content: "\e907";
+  color: #444d4d;
+}
+.icon-approve:before {
+  content: "\e90a";
+}
+.icon-arrow:before {
+  content: "\e90c";
+}
+.icon-avatar-default:before {
+  content: "\e90f";
+}
+.icon-avatar-team:before {
+  content: "\e910";
+}
+.icon-clock:before {
+  content: "\e911";
+}
+.icon-complete:before {
+  content: "\e912";
+  color: #444d4d;
+}
+.icon-deny:before {
+  content: "\e913";
+}
+.icon-evaluate:before {
+  content: "\e914";
+}
+.icon-incomplete:before {
+  content: "\e915";
+}
+.icon-info:before {
+  content: "\e916";
+}
+.icon-initial-work:before {
+  content: "\e917";
+  color: #444d4d;
+}
+.icon-mail:before {
+  content: "\e918";
+}
+.icon-review:before {
+  content: "\e919";
+  color: #444d4d;
+}
+.icon-search:before {
+  content: "\e91a";
+}
+.icon-star:before {
+  content: "\e91b";
+}
+.icon-transcribe:before {
+  content: "\e91c";
+  color: #444d4d;
+}
+.icon-translate:before {
+  content: "\e91d";
+  color: #444d4d;
+}
+.icon-trash:before {
+  content: "\e91e";
+}
 .icon-caret:before {
   content: "\e900";
-}
-.icon-download:before {
-  content: "\e901";
 }
 .icon-external:before {
   content: "\e902";
@@ -43,26 +106,14 @@
 .icon-linkedin:before {
   content: "\e905";
 }
-.icon-mail:before {
-  content: "\e906";
-}
-.icon-pin:before {
-  content: "\e907";
-}
 .icon-play:before {
   content: "\e908";
 }
 .icon-print:before {
   content: "\e909";
 }
-.icon-search:before {
-  content: "\e90a";
-}
 .icon-share:before {
   content: "\e90b";
-}
-.icon-trash:before {
-  content: "\e90c";
 }
 .icon-twitter:before {
   content: "\e90d";
