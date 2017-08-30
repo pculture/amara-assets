@@ -28,6 +28,10 @@
         color: $plum;
         border-left: 5px solid $gray-light; 
         text-transform: uppercase;
+        i {
+          font-size:13px;
+          opacity: 0.5;
+        }
         &:after {
           content: " "attr(href)" ";
           display: block;
