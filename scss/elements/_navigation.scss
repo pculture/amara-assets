@@ -145,6 +145,24 @@
       line-height: 20px;
     }
   }
+  
+  #user-menu {
+    text-transform: none;
+    .caret {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 2px;
+            vertical-align: middle;
+            border-top: 4px solid $cream;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+            @include transition(.2s);
+    }
+    .dropdown.open & .caret {
+            transform: rotate(180deg);
+    }
+  }
 }
 
 #mainnav {
@@ -347,23 +365,6 @@
   }
 }
 
-#user-menu {
-  text-transform: none;
-  .caret {
-          display: inline-block;
-          width: 0;
-          height: 0;
-          margin-left: 2px;
-          vertical-align: middle;
-          border-top: 4px solid $cream;
-          border-right: 4px solid transparent;
-          border-left: 4px solid transparent;
-          @include transition(.2s);
-  }
-  .dropdown.open & .caret {
-          transform: rotate(180deg);
-  }
-}
 
 
 // Media Queries
