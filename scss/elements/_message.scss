@@ -1,11 +1,12 @@
 #message {
-  display: none;
-  padding: 12px 30px;
-  background-color: $cream;
-  color: $gray;
+  display: block;
+  padding: 20px 30px;
+  margin: 0;
+  background-color: $brand-primary;
+  color: #ffffff;
   text-align: center;
   a {
-
+    color: $amaranth;
   }
 }
 // Media Queries
