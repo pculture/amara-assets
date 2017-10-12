@@ -1,0 +1,304 @@
+// Baseline Modal
+// 
+// This example includes both a title and sub-title wrapped in the modal header.
+//
+// Example:
+// <!-- Trigger -->
+// <button type="button" class="button cta" data-toggle="modal" data-target="#modal_baseline">
+//   Launch baseline example
+// </button>
+// <!-- Modal -->
+// <div id="modal_baseline" class="modal fade">
+//   <div class="modal-dialog modal-md">
+//     <div class="modal-content">
+//       <header class="dialogHeader">
+//         <h4 class="dialogTitle">Modal Title</h4>
+//         <h5 class="dialogSubTitle">Modal Subtitle</h5>
+//       </header>
+//       <form>
+//         <div class="form-group">
+//           <label>Field Name</label>
+//           <input type="text" placeholder="Field">
+//         </div>
+//         <div class="text-right">
+//           <button class="button borderless" data-dismiss="modal">Cancel</a>
+//           <button class="button cta" type="submit">Save</button>
+//         </div>
+//       </form>
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide modalbaseline
+
+// Tabbed Content in Modal
+// 
+// Example:
+// <!-- Trigger -->
+// <button type="button" class="button cta" data-toggle="modal" data-target="#modal_tabbed">
+//   Launch baseline example
+// </button>
+// <!-- Modal -->
+// <div id="modal_tabbed" class="modal fade">
+//   <div class="modal-dialog modal-md">
+//     <div class="modal-content">
+//       <header class="dialogHeader">
+//         <h4 class="dialogTitle">Modal Title</h4>
+//         <h5 class="dialogSubTitle">Modal Subtitle</h5>
+//       </header>
+//       <ul class="nav nav-tabs">
+//         <li class="active"><a href="#modal_tab_one" data-toggle="tab">Tab One</a></li>
+//         <li><a href="#modal_tab_two" data-toggle="tab">Tab Two</a></li>
+//         <li><a href="#modal_tab_three" data-toggle="tab">Tab Three</a></li>
+//       </ul>
+//       <div class="tab-content">
+//         <div id="modal_tab_one" class="tab-pane active">
+//           Tab One Content...
+//         </div>
+//         <div id="modal_tab_two" class="tab-pane">
+//           Tab Two Content...
+//         </div>
+//         <div id="modal_tab_three" class="tab-pane">
+//           Tab Three Content...
+//         </div>
+//       </div>
+//       <div class="text-right">
+//         <button class="button borderless" data-dismiss="modal">Cancel</a>
+//         <button class="button cta" type="submit">Save</button>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide modaltabbed
+
+// Messaging / Validation
+// 
+// Example:
+// <!-- Trigger -->
+// <button type="button" class="button cta" data-toggle="modal" data-target="#modal_message">
+//   Launch messaging / validation example
+// </button>
+// <!-- Modal -->
+// <div id="modal_message" class="modal fade">
+//   <div class="modal-dialog modal-md">
+//     <div class="modal-content">
+//       <header class="dialogHeader">
+//         <h4 class="dialogTitle">Modal Title</h4>
+//         <h5 class="dialogSubTitle">Modal Subtitle</h5>
+//       </header>
+//       <form>
+//         <div class="alert alert-error alert-dismissible" role="alert">
+//           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//           <strong>Error!</strong> You're not too happy now.
+//         </div>
+//         <div class="form-group has-error">
+//           <label class="control-label">Field Name</label>
+//           <input type="text" placeholder="Field" class="form-control">
+//           <span class="help-block"><i class="icon icon-alert"></i>Error message</span>
+//         </div>
+//         <div class="text-right">
+//           <button class="button borderless" data-dismiss="modal">Cancel</a>
+//           <button class="button cta" type="submit">Save</button>
+//         </div>
+//       </form>
+//     </div>
+//   </div>
+// </div>
+// 
+// Styleguide modalvalidation
+
+// Confirmation Dialog
+//
+// Example:
+// <!-- Trigger -->
+// <button type="button" class="button cta" data-toggle="modal" data-target="#dialog_confirmation">
+//   Launch confirmation example
+// </button>
+// <!-- Modal / Dialog -->
+// <div id="dialog_confirmation" class="modal fade">
+//   <div class="modal-dialog modal-sm">
+//     <div class="modal-content">
+//       <div class="dialogHeader text-center">
+//         <h4 class="dialogTitle">Are you sure that you want to delete selected subtitle videos?</h4>
+//       </div>
+//       <form class="text-center">
+//         <div class="checkbox">
+//           <input id="" type="checkbox" value="">
+//           <label for=""><span></span>Include all XX filtered videos</label>
+//         </div>
+//         <button class="button cta-reverse" data-dismiss="modal">Cancel</a>
+//         <button class="button cta" type="submit">Delete</button>
+//       </form>
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide dialogconfirmation
+
+// Remove Video Dialog
+// 
+// Example:
+// <button type="button" class="button cta" data-toggle="modal" data-target="#modal_remove_video">
+//   Launch Remove Video Example
+// </button>
+// <!-- Modal -->
+// <div id="modal_remove_video" class="modal fade">
+//   <div class="modal-dialog modal-md">
+//     <div class="modal-content">
+//       <header class="dialogHeader">
+//         <h4 class="dialogTitle">Remove Video</h4>
+//         <h5>You can choose to remove the video from the Jenny_testing_Amara team or to delete the video (and all of its subtitles) from the system entirely. What would you like to do?</h5>
+//       </header>
+//       <form>
+//         <p></p>
+//        <div class="form-group">
+//         <div class="radio">
+//           <input type="radio" name="remove_video" id="remove_team" value="team">
+//           <label for="remove_team"><span></span>Just remove the video from the team.</label>
+//           <p class="helpBlock helpBlock-radio">It will remain on Amara but will no longer be subject to the team's permissions and workflows. Any outstanding tasks will be deleted.</p>
+//         </div>
+//        </div> 
+//        <div class="form-group">
+//         <div class="radio">
+//           <input type="radio" name="remove_video" id="delete_video" value="delete">
+//           <label for="delete_video"><span></span>Delete the video entirely</label>
+//         </div>
+//        </div>
+//         <div class="text-right">
+//          <button class="button borderless" data-dismiss="modal">Cancel</button>
+//          <button class="button cta" type="submit">Remove</button>
+//        </div>
+//       </form>
+//     </div>
+//   </div>
+// </div>
+// 
+// Styleguide removevideo
+
+// Many Choices Dialog
+//
+// Example:
+// <!-- Trigger -->
+// <button type="button" class="button cta" data-toggle="modal" data-target="#dialog_choices">
+//   Choose Language
+// </button>
+// <!-- Modal / Dialog -->
+// <div id="dialog_choices" class="modal fade">
+//   <div class="modal-dialog modal-lg">
+//     <div class="modal-content">
+//       <div class="dialogHeader">
+//         <h4 class="dialogTitle">Select your language</h4>
+//       </div>
+//       <form>
+//         <div class="form-group searchbar searchbarFilter" data-target="languageChoice">
+//           <label class="sr-only">Search languages</label>
+//           <input type="text" placeholder="Search languages">
+//         </div>
+//         <ul id="languageChoice" class="col3 filteredList">
+//           <li><a href="#">Espanol (Internacional)</a></li>
+//           <li><a href="#">Bahasa Indonesia</a></li>
+//           <li><a href="#">Bahasa Indonesia</a></li>
+//           <li><a href="#">Dansk</a></li>
+//           <li><a href="#">Espanol (Internacional)</a></li>
+//           <li><a href="#">Espanol (Internacional)</a></li>
+//           <li><a href="#">Portugues (Brasil)</a></li>
+//           <li><a href="#">English</a></li>
+//           <li><a href="#">English</a></li>
+//           <li><a href="#">Dansk</a></li>
+//           <li><a href="#">Espanol (Internacional)</a></li>
+//           <li><a href="#">Espanol (Internacional)</a></li>
+//           <li><a href="#">Espanol (Internacional)</a></li>
+//           <li><a href="#">Bahasa Indonesia</a></li>
+//           <li><a href="#">Bahasa Indonesia</a></li>
+//           <li><a href="#">Dansk</a></li>
+//           <li><a href="#">Espanol (Internacional)</a></li>
+//           <li><a href="#">Portugues (Brasil)</a></li>
+//         </ul>
+//       </form>
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide dialogchoices
+
+.modal {
+  z-index: $z-index-modal;
+}
+
+.modal-backdrop {
+  z-index: $z-index-overlay;
+}
+
+.modal-dialog {
+  &.modal-sm { width: 300px; }
+  &.modal-md { width: 500px; }
+  &.modal-lg {}
+  .modal-content {
+    position: relative;
+    padding: 20px;
+    background-color: $gray-lighter;
+    // TODO - remove form specific styles from here. These should be refadtored and added to other stylesheets
+    form {
+      margin-bottom: 0;
+      .checkbox {
+        margin-bottom: 10px;
+        font-size: 12px;
+        label { color: $gray-darker; }
+      }
+      .select {
+        padding: 5px 16px;
+        margin-bottom: 10px;
+        background: #ffffff;
+        border: 1px solid $gray-light;
+        border-radius: 4px;
+        color: $gray-light;
+        &:after { display: none; }
+        .select2-selection__rendered { display: block; color: $gray; }
+        .select2-selection__rendered:after { float: right; color: $gray-light; }
+      }
+    }
+    .button {
+      &.cta-reverse{
+        margin-right: 5px;
+      }
+    }
+  }
+  .dialogHeader {
+    margin-bottom: 10px;
+    padding-bottom: 0;
+  }
+  .dialogTitle {
+    font-family: $font-family-sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.0;
+    margin-bottom: 5px;
+    color: $gray-base;
+  }
+  .dialogSubTitle {
+    font-family: $font-family-sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.0;
+    color: $gray-dark;
+    @include clamp(1, 1.0);
+  }
+
+  .dialogButton-closeModal {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 24px;
+    font-weight: 400;
+    color: $gray-darker;
+    opacity: 0.2;
+    background-color: transparent;
+    border: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+}
+
+

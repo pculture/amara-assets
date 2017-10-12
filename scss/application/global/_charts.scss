@@ -1,0 +1,84 @@
+.ct-label {
+  color: $text-color;
+  fill: $text-color;
+}
+
+.ct-chart-line {
+  .ct-label {
+    font-size: 13px;
+    &.ct-horizontal {
+      text-anchor: middle;
+      &:first-child {
+        text-anchor: start;
+      }
+      &:nth-child(9) {
+        text-anchor: end;
+      }
+    }
+  }
+}
+
+.ct-chart-bar {
+  .ct-label {
+    font-size: 12px;
+  }
+}
+
+.ct-series-a, .ct-series-b {
+  .ct-line {
+    stroke: $teal;
+    stroke-width:1px;
+  }
+  .ct-area {
+    fill: $teal;
+    fill-opacity: 1;
+  }
+  .ct-bar {
+    stroke: $teal;
+    stroke-width: 20px;
+  }
+  .ct-point {
+    stroke: $turquoise;
+  }
+}
+
+.chartist-tooltip {
+  position: absolute;
+  display: inline-block;
+  min-width: 5em;
+  background: $gray-dark;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  z-index: $z-index-tooltip;
+  -webkit-transition: opacity .2s linear;
+  -moz-transition: opacity .2s linear;
+  -o-transition: opacity .2s linear;
+  transition: opacity .2s linear;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 0;
+    height: 0;
+    margin-left: -15px;
+  }
+ } 
+
+@media (max-width: 768px) {
+  .ct-series-a, .ct-series-b {
+    .ct-bar {
+      stroke-width: 10px;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .ct-chart-line, .ct-chart-bar {
+    .ct-label {
+      font-size: 10px;
+    }
+  }
+}

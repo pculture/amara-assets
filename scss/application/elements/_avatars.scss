@@ -1,0 +1,198 @@
+// Avatars
+// 
+// Avatars are implemented by wrapping an img `.avatar` selector. Sizes are
+// `.avatar-md`, `.avatar-lg`, `.avatar-xl`.  Use `.in-progress` when
+// the avatar is for the current step of a subtitle request
+// 
+// Example:
+// <ul class="inline">
+//   <li>
+//     <span class="avatar avatar-lg">
+//       <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-100.png">
+//     </span><br>
+//     Default
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//      <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-inverse-100.png">
+//     </span><br>
+//     Inverse
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//      <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-teal-100.png">
+//     </span><br>
+//     Teal
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//       <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-plum-100.png">
+//     </span><br>
+//     Plum
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//       <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-lime-100.png">
+//     </span><br>
+//     Lime green
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg in-progress">
+//       <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-100.png">
+//     </span><br>
+//     In progress
+//   </li>
+// </ul>
+// 
+// Example:
+// <ul class="inline">
+//   <li>
+//     <span class="avatar avatar-lg">
+//      <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-team-default-100.png">
+//     </span><br>
+//     Default
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//      <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-team-inverse-100.png">
+//     </span><br>
+//     Inverse
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//      <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-team-teal-100.png">
+//     </span><br>
+//     Teal
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//      <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-team-plum-100.png">
+//     </span><br>
+//     Plum
+//   </li>
+//   <li>
+//     <span class="avatar avatar-lg">
+//      <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-team-lime-100.png">
+//     </span><br>
+//     Lime green
+//   </li>
+// </ul>
+// 
+// Example:
+// <span class="avatar">
+//  <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-30.png">
+// </span>
+// <p>Default Size: 30x30</p>
+// <span class="avatar avatar-md">
+//  <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-50.png">
+// </span>
+// <p>Medium Size: 50x50</p>
+// <span class="avatar avatar-lg">
+//  <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-100.png">
+// </span>
+// <p>Large Size: 100x100</p>
+// 
+// Example:
+// <span class="avatar avatar-alert">
+//   <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/default-50.png">
+// </span>
+// <p>Avatar alert</p>
+//
+// Styleguide avatars
+
+.avatar {
+  position: relative;
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'amara' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: middle;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Default color palette */
+  color: $gray-base;
+  background-color: #cccccc;
+
+  // &:before {
+  //   content: "\e90e";
+  // }
+
+  &.in-progress {
+    opacity: 0.6;
+  }
+
+  &.avatar-alert {
+    &:after {
+      font-family: 'amara' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: middle;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      content: "\e912";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      color: rgba($magenta, 0.8);
+      font-size: 20px;
+      text-align: center;
+      line-height: 30px;
+      background: rgba(255,255,255,0.5);
+      background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(255,255,255,0.94) 13%,rgba(255,255,255,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+  }
+
+  // Sizes
+  &.avatar-md {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px 0 0;
+    font-size: 50px;
+  }
+  &.avatar-lg {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px 0 0;
+    font-size: 60px;
+  }
+  &.avatar-xl {
+    width: 110px;
+    height: 110px;
+    font-size: 110px;
+  }
+
+  // Child avatar image
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+

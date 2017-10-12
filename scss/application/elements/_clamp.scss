@@ -1,0 +1,188 @@
+// Constrained content
+// 
+// Use the `clamp` class to clamp content.  If there is a element with the
+// clamp-lines class inside, then we clamp using line count.  If there is a
+// ul/ol element with the clamp-list class, then we clamp by list items.
+// Customization is possible on predefined screen sizes using a naming
+// convention that follows the grid pattern. `.clamp-lines .clamp-xs-[#lines]`.
+// The maximum number of lines is currently 20.
+//
+// To allow users to expand/collapse the content, use the clamp-expand and
+// clamp-collapse classes on a link.
+//
+// Example:
+// <div class="clamp">
+//   <div class="clamp-lines clamp-sm-3 clamp-xs-2">
+//     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+//       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+//       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+//       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+//       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+//       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+//     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+//       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+//       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+//       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+//       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+//       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+//   </div>
+//   <a class="clamp-expand">More <i class="icon icon-down"></i></a>
+//   <a class="clamp-collapse">Less <i class="icon icon-up"></i></a>
+// </div>
+//
+// Example:
+// <div class="clamp">
+//   <div class="clamp-lines clamp-sm-3 clamp-xs-2">
+//     <p>No clamp needed</p>
+//   </div>
+//   <a class="clamp-expand">more &raquo;</a>
+//   <a class="clamp-collapse">&laquo; less</a>
+// </div>
+//
+// Example:
+// <div class="clamp">
+//   <ul class="clamp-list clamp-sm-3 clamp-xs-2">
+//     <li>One</li>
+//     <li>Two</li>
+//     <li>Three</li>
+//     <li>Four</li>
+//     <li>Five</li>
+//   </ul>
+//   <a class="clamp-expand">More <i class="icon icon-down"></i></a>
+//   <a class="clamp-collapse">Less <i class="icon icon-up"></i></a>
+// </div>
+//
+// Example:
+// <div class="clamp">
+//   <ul class="clamp-list clamp-xs-2">
+//     <li>No clamp</li>
+//     <li>Needed</li>
+//   </ul>
+//   <a class="clamp-expand">more &raquo;</a>
+//   <a class="clamp-collapse">&laquo; less</a>
+// </div>
+//
+// Styleguide constrainContent
+
+
+// Shared variables
+$line-height: 1.2em;
+$max-lines: 10;
+
+.clamp-lines {
+  position: relative;
+
+  height: $line-height;
+  line-height: $line-height;
+  overflow: hidden;
+  padding: 0 !important;
+
+  p {
+    // Make the margin be exactly one line, so we don't end up cutting off between lines
+    margin-bottom: $line-height;
+  }
+
+  .clamp.overflowing &:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: $line-height;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  }
+
+  @mixin clamp-lines-height($num) {
+    // Do some extra work to try to avoid rounding errors where you see 1 or 2 px of the following line.
+    // This effectively cuts off the text bottom of the font's height on the
+    // last line -- no extra space for the line height.  Then we use
+    // margin-bottom to add the extra height at the end.
+    height: $line-height * ($num - 1) + 1;
+    margin-bottom: $line-height - 1;
+  }
+
+  @for $num from 1 through $max-lines {
+    &.clamp-xs-#{$num} {
+      @include clamp-lines-height($num);
+    }
+  }
+
+  @each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $size: nth($breakpoint, 2);
+
+    @media only screen and (min-width: $size) {
+      @for $num from 1 through $max-lines {
+        &.clamp-#{$name}-#{$num} {
+          @include clamp-lines-height($num);
+        }
+      }
+    }
+  }
+
+  .clamp.expanded & {
+    height: auto;
+  }
+}
+
+.clamp-list {
+  li {
+    display: none;
+  }
+
+  @for $num from 1 through $max-lines {
+    &.clamp-xs-#{$num} {
+      $selector: "li:nth-child(1)";
+      @for $i from 2 through $num {
+        $selector: "#{$selector}, li:nth-child(#{$i})";
+      }
+      #{$selector} {
+        display: flex;
+      }
+    }
+  }
+
+  @each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $size: nth($breakpoint, 2);
+
+    @media only screen and (min-width: $size) {
+      @for $num from 1 through $max-lines {
+        &.clamp-#{$name}-#{$num} {
+          $selector: "li:nth-child(1)";
+          @for $i from 2 through $num {
+            $selector: "#{$selector}, li:nth-child(#{$i})";
+          }
+          #{$selector} {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
+  .clamp.expanded & li {
+    display: flex;
+  }
+}
+
+.clamp-expand, .clamp-collapse {
+  display: none;
+  color: $text-color;
+  font-weight: 600;
+}
+.clamp.overflowing {
+  .clamp-expand {
+    display: inline;
+  }
+
+  &.expanded {
+    .clamp-expand {
+      display: none;
+    }
+    .clamp-collapse {
+      display: inline;
+    }
+  }
+}

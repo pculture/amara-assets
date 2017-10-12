@@ -1,0 +1,187 @@
+// Selects
+//
+// Selects are used to pick an option from a list of choices.  There are 3 basic cases:
+//
+//   - Static list of choices.  For these just create a normal HTML select option
+//   - Dynamic list of choices.  Use the data-ajax attribute to specify a URL
+//     fetch options from based on the current search query.
+//   - Language choices.  Use the data-language-options to display a list of
+//     language choices.  Include a space separated list with any number of these choice types:
+//     "null", "my", "popular", "all", 
+//
+// You can customize the list using attributes on the select element:
+//
+//  - Use the data-placeholder attribute to change the text when nothing is selected.  Make sure to include a blank option if you do this.
+//  - Use the disabled attribute to disable changing the selection
+//  - Use the multiple attribute to allow multiple selection
+//  - Use the data-extra-optoins to include extra options that get displayed
+//    specially.  These options are always available for ajax selects.
+//  - Once the user selects an option, will get an extra option to clear the
+//    select.  If you want to disable this, don't include a blank choice in the
+//    list of options.  For ajax selects, use the data-clear="false" attribute
+//  - Selects with many options will get a searchbox to filter out the choices.  Ajax and language selects always have this searchbox.
+//  - Use the border class to add a border to the outside of the select
+//
+//
+// Example:
+//   <select class="select" data-placeholder="Select an option">
+//     <option></option>
+//     <option>Option 1</option>
+//     <option>Option 2</option>
+//   </select>
+//
+// Example:
+//   <select multiple class="select border" data-placeholder="Multiple select">
+//     <option></option>
+//     <option>Option 1</option>
+//     <option>Option 2</option>
+//     <option>Option 3</option>
+//     <option>Option 4</option>
+//     <option>Option 5</option>
+//     <option>Option 6</option>
+//     <option>Option 7</option>
+//     <option>Option 8</option>
+//   </select>
+//
+// Example:
+//   <select class="select" data-extra-options='[["extra1", "Extra option"], ["extra2","Extra option #2"]]'>
+//     <option selected>Option 1</option>
+//     <option>Option 2</option>
+//   </select>
+//
+// Example:
+//   <select name="" id="" class="select" data-language-options="null popular any" data-placeholder="Select Language"></select>
+//
+// Example:
+//   <select name="" id="" class="select" data-ajax="member-search" data-placeholder="Search members" data-clear="false" data-extra-options='[["unassign", "Unassign"]]'></select>
+//
+// Example:
+//   <select class="select" disabled>
+//     <option></option>
+//     <option selected>Option 1</option>
+//     <option>Option 2</option>
+//   </select>
+//
+// Styleguide selects
+
+select.select {
+  // Style for our select before we replace it with the select2 box.  The goal
+  // here is to have the transition be as smooth as possible
+  visibility: hidden;
+  height: 32px;
+}
+
+.select2-container.select2-container--amara {
+  width: 100% !important;
+
+  .select2-selection {
+    min-height: 32px;
+    line-height: 32px;
+    padding: 0px 10px;
+    outline: 0; // We create our own focus ring below
+  }
+
+  &.border .select2-selection {
+    border-radius: 4px;
+    border: 1px solid lighten($gray, 15%);
+  }
+
+  &.select2-container--focus:not(.select2-container--open) .select2-selection {
+    // Match the focus style to our other fields
+    // TODO we should refactor this into a SASS mixin class
+    border: 1px solid #66afe9;
+    border-radius: 4px;
+    outline: thin dotted \9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  }
+  &.select2-container--disabled .select2-selection {
+    cursor: not-allowed;
+  }
+
+  .select2-selection__rendered {
+    display: block;
+    color: $gray-dark;
+    padding: 0;
+    margin: 0;
+
+    &:after {
+      content: "\e901";
+      display: inline-block;
+      margin-left: 5px;
+      font-family: 'amara' !important;
+      speak: none;
+      transform: rotate(90deg);
+      @include transition(0.2s);
+      pointer-events: none;
+
+    }
+  }
+
+  .select2-selection__placeholder {
+    display: inline;
+  }
+
+  .select2-selection__choice {
+    float: left;
+    color: $gray-dark;
+    background: $gray-lighter;
+    border: 1px solid $gray-light;
+    border-radius: 4px;
+    height: 24px;
+    line-height: 24px;
+    list-style-type: none;
+    margin-top: 3px;
+    margin-right: 6px;
+    padding: 0px 8px;
+  }
+  .select2-selection__choice__remove {
+    float: right;
+    margin-left: 13px;
+    color: $gray;
+  }
+
+  &.select2-container--open .select2-selection__rendered:after {
+    transform: rotate(270deg);
+  }
+  &.select2-container.border .select2-selection__rendered:after {
+    position: absolute;
+    top: 0px; right: 10px;
+  }
+
+  .select2-dropdown {
+    top: 5px;
+    border: 1px solid $gray-lighter;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  }
+  .select2-search--dropdown {
+    padding: 4px 0px;
+  }
+  .select2-search__field {
+    padding: 4px 8px;
+    color: $gray-darker;
+    border: none;
+    border-bottom: 1px solid $gray-light;
+  }
+  .select2-results > .select2-results__options {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .select2-results__option {
+    display: block;
+    padding: 6px 18px;
+  }
+  .select2-results__option--highlighted {
+    background: $teal;
+    color: white;
+  }
+  .select2-results__option[aria-selected=true] {
+    border-left: 3px solid $teal;
+    padding-left: 15px;
+  }
+  .select2-results__option .avatar {
+      margin-right: 20px;
+  }
+  .select2-results__option--border {
+      border-top: 1px solid $gray-light
+  }
+}

@@ -1,0 +1,87 @@
+// Typography
+// 
+// Amara uses two typefaces: Raleway and Open Sans. Raleway, primarily used for titling and headers provides the clear messaging of a sans serif, but with a subtle, accessible playfulness. Used for subheaders and body copy, open sans provides a more precise counterpoint to Raleway’s unconventional nature, and champions readability, especially in smaller point sizes.
+// Amara's global default font-size is 14px, with a line-height of 1.428. This is applied to the `<body>` and all paragraphs. In addition, `<p>` (paragraphs) receive a bottom margin of half their computed line-height (10px by default).
+// 
+// <h3><em>Titling & headers</em></h3>
+// <h1>Raleway</h1>
+// <h1>ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxy<br>
+// 0123456789</h1>
+// <hr>
+// <h3><em>Sub-headers, CTAs & body copy</em></h3>
+// <h1 class="type-open-sans">Open Sans</h1>
+// <h1 class="type-open-sans">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz<br>0123456789</h1>
+// <hr>
+// <h1><em>Usage</em></h1>
+// Here are examples of the most commonly used type specifications. This list is not exlcusive, and may be ammended in the future as more type solutions prove necessary or appropriate.
+// 
+// Example:
+// <h1>h1. Amara heading</h1>
+// <h2>h2. Amara heading</h2>
+// <h3>h3. Amara heading</h3>
+// <h4>h4. Amara heading</h4>
+// <h5>h5. Amara heading</h5>
+// <h6>h6. Amara heading</h6>
+//
+// Styleguide typography
+
+
+
+body {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  line-height: 1.42857143;
+  color: $text-color;
+  background-color: #fff;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  color: inherit;
+  .number {
+    font-family: $font-family-sans-serif;
+  }
+}
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+h1 {
+  font-family: $headings-font-family;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: normal;
+  color: $gray-darker;
+  margin: 0;
+}
+h2 {
+  font-family: $headings-font-family;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: bold;
+  color: $gray-darker;
+}
+h3 {
+  font-family: $headings-font-family;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold; 
+}
+h4 {
+  font-family: $font-family-sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  // margin-bottom: 0;
+}
+h5 {
+  font-family: $font-family-sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}
+h6 {
+  font-family: $font-family-sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+}

@@ -1,0 +1,85 @@
+// Filters
+//
+// Example:
+// <div class="filterList">
+//   <h3>Project</h3>
+//   <ul>
+//     <li>
+//       <div class="radio">
+//         <input type="radio" name="radiogroup_id" id="project-any" value="" checked="">
+//         <label for="project-any"><span></span> Any project</label>
+//       </div>
+//     </li>
+//     <li>
+//       <div class="radio">
+//         <input type="radio" name="radiogroup_id" id="project-ted-talks" value="">
+//         <label for="project-ted-talks"><span></span> TED Talks</label>
+//       </div>
+//     </li>
+//     <li>
+//       <div class="radio">
+//         <input type="radio" name="radiogroup_id" id="project-ted-ed" value="">
+//         <label for="project-ted-ed"><span></span> TED-Ed</label>
+//       </div>
+//     </li>
+//     <li>
+//       <div class="radio">
+//         <input type="radio" name="radiogroup_id" id="project-otp-resources" value="">
+//         <label for="project-otp-resources"><span></span> OTP Resources</label>
+//       </div>
+//     </li>
+//   </ul>
+// </div>
+//
+// Example:
+// <div class="filterList">
+//   <h3>Assignment State</h3>
+//   <div class="filterList-select">
+//     <div class="select">
+//       <select name="" id="" class="select_autofill" style="width:100%;">
+//         <option>In progress</option>
+//         <optgroup label="Available">
+//           <option>Any available</option>
+//           <option>Subtitles needed</option>
+//           <option>Review needed</option>
+//           <option>Approval needed</option>
+//         </optgroup>
+//         <optgroup label="Assigned">
+//           <option>Any assigned</option>
+//           <option>Subtitles in progress</option>
+//           <option>Review in progress</option>
+//           <option>Approval in progress</option>
+//         </optgroup>
+//       </select>
+//     </div>
+//   </div>
+// </div>
+// 
+// Styleguide filterList
+
+.filterList {
+  margin-bottom: 20px;
+  h3 {
+    background: $gray-light;
+    padding: 10px;
+    font-weight: 300;
+  }
+  ul {
+    padding-left: 10px;
+    list-style-type: none;
+    li {
+      padding: 2px 0;
+    }
+  }
+}
+
+.filterList-content {
+    max-height: 154px;
+}
+
+
+.filterList-select {
+  .select2-selection {
+    margin-left: 10px;
+  }
+}

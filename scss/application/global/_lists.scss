@@ -1,0 +1,110 @@
+// Lists
+//
+// Example:
+// <dl>
+//   <dt>First Item</dt>
+//   <dd>Here is a short description of this item</dd>
+//   <dt>Second Item</dt>
+//   <dd>Here is a short description of this item</dd>
+//   <dt>Third Item</dt>
+//   <dd>Here is a short description of this item</dd>
+// </dl>
+// 
+// Example:
+// <ul>
+//   <li>List item One</li>
+//   <li>List item Two</li>
+//   <li>List item Three</li>
+// </ul>
+// 
+// Example:
+// <ul class="tight">
+//   <li>List item One</li>
+//   <li>List item Two</li>
+//   <li>List item Three</li>
+// </ul>
+// 
+// Example:
+// <ul class="bullets">
+//   <li>List item One</li>
+//   <li>List item Two</li>
+//   <li>List item Three</li>
+// </ul>
+// 
+// Styleguide lists
+dl {
+  margin: 0;
+  &.inline {
+    dt,dd{display:inline; font-weight: 100;}
+    dd {margin-right: 10px;}
+  }
+  &.inline-description {
+    dt,
+    dd {
+      display: inline-block;
+      margin: 5px 0;
+      float: left;
+      
+    }
+    dt {
+      width: 20%;
+    }
+    dd {
+      width: 79%;
+      &.constrain {
+        max-height: 95px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+        &:after {
+          content: 'more >>';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 40px;
+          width:100%;
+          background: #fff;
+          background: linear-gradient(transparent, rgba(255,255,255,.5), #fff, #fff);
+          padding-top: 25px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        &.opened {
+          max-height: none;
+          &:after {
+            display: none;
+            content: '<< less';
+          }
+        }
+      }
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+ul {
+  &.tight {
+    margin: 0;
+  }
+  &.inline {
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        font-weight: 500;
+        margin-right: 10px;
+        color: $gray;
+      }
+      strong {
+        font-weight: 300;
+        color: $gray-darker;
+      }
+  }
+  &.bullets {
+    padding-left: 20px;
+    list-style-type: disc; 
+    list-style-position: outside;
+  }
+}

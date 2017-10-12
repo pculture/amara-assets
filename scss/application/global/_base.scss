@@ -1,0 +1,158 @@
+html {
+  font-size: 100%;
+}
+
+body {}
+
+main {}
+
+section {
+  padding: 30px 0px 30px 0px;
+}
+header {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  &.borderless {
+    border-bottom: none;
+  }
+  h1, h2, h3, h4 { margin: 0; }
+}
+
+a {
+  color: $teal;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover,
+  &:focus,
+  &:active {
+    color: darken($teal, 10%);
+    outline: none;
+    text-decoration: none;
+  }
+  &.block {
+    display: inline-block;
+  }
+  &.disabled {
+    cursor: default;
+    color: $gray-light;
+    pointer-events: none;
+  }
+  &.text {
+    color: inherit;
+  }
+}
+
+em {
+  color: $teal;
+  font-style: normal;
+  &.italic {
+    color: inherit;
+    font-style: italic;
+  }
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top-color: $gray-lighter;
+}
+
+
+
+// Content Spacing
+.content {
+  position: relative;
+  padding: 10px;
+  margin: 0;
+  h1, h2, h3, h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  dd {
+    word-wrap: break-word;
+  }
+}
+
+.row {
+  section {
+    padding: 0 0 30px 0;
+  }
+}
+
+
+// TODO - Sort
+
+// Color Palette
+.gray-light {
+  background-color: $gray-light;
+}
+.gray-lighter {
+  background-color: $gray-lighter;
+}
+
+.profileWell {
+  min-height: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  background-color: $gray-lighter;
+  color: $gray-dark;
+  .icon.icon-mail {
+    margin-left: 15px;
+    font-size: 22px;
+  }
+  .col-xs {
+    flex-basis: auto;
+    flex-grow: 0;
+  }
+  .switch {
+    float: right;
+    margin-top: 13px;
+    margin-bottom: 0;
+    margin-right: 40px;
+  }
+  h3, h4 { color: $gray-darker; }
+  hr {
+    border-top: 1px solid $gray-light;
+    margin: 1rem -10px;
+  }
+}
+
+.player {
+  min-height: 350px;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+@media(max-width: 1199px) {
+  .container {
+    width:100%;
+  }
+}
+
+@media(max-width: 991px) {
+  h1 {
+    font-size: 19px;
+  }
+}
+
+$z-index-behind: -1;
+// page layer
+$z-index-menu: 20;
+$z-index-action-bar: 30;
+// modal dialog layer
+$z-index-overlay: 100;
+$z-index-modal: 110;
+// top layer
+$z-index-tooltip: 200;

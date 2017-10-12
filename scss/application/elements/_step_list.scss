@@ -1,0 +1,60 @@
+// Step lists
+//
+// Step lists are for showing the list of steps needed to complete a request.  Each step is:
+//   - An icon for available assignments
+//   - An user avatar for assigned assignments
+//   - An team avatar for assignments being handled by another team
+//
+// Use the tight class to removing most of the spacing between icons, and also the margin below the lits
+// 
+// Example:
+// <ul class="stepList">
+//   <li>
+//     <i class="icon icon-transcribe"></i>
+//   </li>
+//   <li>
+//     <span class="avatar">
+//       <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/default-50.png">
+//     </span>
+//   </li>
+//   <li>
+//     <span class="avatar avatar-team"></span>
+//   </li>
+// </ul>
+//
+// Example:
+// <ul class="stepList wide">
+//   <li>
+//     <i class="icon icon-transcribe"></i>
+//   </li>
+//   <li>
+//     <span class="avatar">
+//       <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/default-50.png">
+//     </span>
+//   </li>
+//   <li>
+//     <span class="avatar avatar-team"></span>
+//   </li>
+// </ul>
+//
+// Styleguide stepList
+.stepList {
+  margin: 5px 0;
+  > li {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    margin-right: 20px;
+  }
+  i.icon {
+    font-size: 25px;
+    color: $gray;
+  }
+
+  &.tight {
+    margin: 0;
+    > li {
+     margin-right: 0;
+    }
+  }
+}

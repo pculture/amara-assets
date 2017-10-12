@@ -1,0 +1,76 @@
+// Navigation
+
+.nav-table {
+  display: table;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 35px;
+  width: 100%;
+  li {
+    position: relative;
+    display: table-row;
+    &:hover {
+      background-color: rgba(0,0,0,.05);
+      cursor: pointer;
+    }
+    .td {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 8px;
+    }
+    a {
+      color: $gray-base;
+      padding: 0;
+      &:after {
+        position: absolute;
+        display: block;
+        right: 30px;
+        top: 50%;
+        margin-top: -10px;
+        content: "\e901";
+        font-family: 'amara';
+        font-size: 17px;
+        color: $turquoise;
+      }
+    }
+  }
+}
+
+.nav-actions {
+  position: relative;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  .checkbox { display: inline-block; }
+  a, button {
+    margin-left: 15px;
+  }
+}
+
+.pagination {
+  li {
+    a {
+      color: $text-color;
+      padding: 5px 12px;
+    }
+    &.active {
+      a, span {
+        color: #fff;
+        background-color: $teal;
+        &:hover, &:focus {
+          color: #fff;
+          background-color: $teal;
+        }
+      }
+    }
+  }
+}
+
+
+@media(max-width: 767px) {
+  .nav-actions {
+    .pull-right {
+      float: none !important;
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+// Action Bar
+//
+// Example:
+// <div id="styleGuide-actionBar" class="actionBar">
+//   <button class="button cta" data-toggle="modal" data-target="#modal_id">Move</button>
+//   <button class="button cta">Mark complete</button>
+//   <button class="button cta">Manage assignments</button>
+//   <button class="button cta-reverse">Delete</button>
+//   <button class="button inline">Deselect</button>
+// </div>
+// <button class="actionBar-open button cta" data-target="#styleGuide-actionBar">Open Action Bar</button>
+// 
+// Styleguide actionBar
+
+.actionBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: -100px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+
+  background-color: $gray-lighter;
+  color: $text-color;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,0.3);
+  z-index: $z-index-action-bar;
+
+  @include transition(0.5s);
+  &.open {
+    bottom: 0;
+  }
+  .button {
+    margin: 0 10px;
+  }
+}

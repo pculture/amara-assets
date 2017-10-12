@@ -1,0 +1,207 @@
+// Video Cards
+//
+// Example:
+// <div class="videoCard">
+//   <header class="videoCard-header">
+//     <span class="videoCard-priority"><i class="icon icon-star"></i></span>
+//     <span class="videoCard-duration">2 min</span>
+//   </header>
+//   <a href="#" class="videoCard-thumbnail">
+//     <div class="thumbWrapper">
+//       <img src="media/images/styleguide/placehold4.3.png" alt="Placeholder Image">
+//     </div>
+//     <div class="videoCard-caption"> 
+//       <h4 class="videoCard-title">Video Title</h4>
+//       <h5 class="videoCard-subtitle">Video Subtitle</h5>
+//     </div>
+//   </a>
+//   <footer class="videoCard-footer">
+//     <p>Portuguese, Brazilian to <strong>English</strong></p>
+//   </footer>
+//   <a href="#" 
+//     class="button cta" 
+//     title="Review">
+//     <i class="icon icon-review"></i>
+//     Review
+//   </a>
+//   <span>Due in 2 days</span>
+//   <a href="#" class="pull-right" data-toggle="modal" data-target="#">Decline</a>
+// </div>
+// 
+// Example:
+// <a href="#" class="videoCardSimple">
+//   <div class="thumbWrapper">
+//     <img src="media/images/styleguide/placehold4.3.png" alt="Placeholder Image">
+//   </div>
+//   <div class="videoCardSimple-caption">
+//     <h4 class="videoCardSimple-title">The Future Of News? Virtual Reality</h4>
+//     <h5 class="videoCardSimple-subtitle">Carl Safina</h5>
+//   </div>
+// </a>
+//
+// Styleguide videoCards
+
+.videoCard {
+  display: block;
+  position: relative;
+  height: auto;
+  margin: 0 0 40px 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  @extend .col-xs-12;
+  @extend .col-sm-6;
+  @extend .col-md-4;
+
+  .button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  &.pending {
+    .button {
+      background-color: $gray;
+      i { display: none; }
+    }
+  }
+}
+
+.videoCard-header {
+  position: relative;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border-radius: $border-radius-base $border-radius-base 0 0;
+  border: 1px solid $gray-light;
+  border-bottom: none;
+}
+.videoCard-footer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 $border-radius-base $border-radius-base;
+  border: 1px solid $gray-light;
+  border-top: none;
+  p {
+    display: inline-block;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+}
+.videoCard-duration {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding-left: 20px;
+  font-size: 12px;
+  &:before {
+    font-family: 'amara';
+    content: "\e902";
+    display: inline-block;
+    width: 16px;
+    height: 20px;
+    vertical-align: middle;
+  }
+}
+.videoCard-priority {
+  display: inline-block;
+  height: 31px;
+  line-height: 31px;
+  padding: 0 10px;
+  background-color: $magenta;
+  border-radius: $border-radius-base 0 0 0;
+  i {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #ffffff;
+    font-size: 20px;
+  }
+}
+
+.videoCard-thumbnail {
+  position: relative;
+  display: block;
+}
+
+.videoCard-caption {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 60px 30px 10px 10px;
+  color: #ffffff;
+  background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.7));
+}
+.videoCard-title {
+  @include clamp(2, 1.2);
+  font-weight: 500;
+}
+.videoCard-subtitle {
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+
+.videoCardSimple {
+  display: block;
+  position: relative;
+  width: 260px;
+  height: auto;
+  margin: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: $gray-base;
+  color: #ffffff;
+  text-align: left;
+  &:after {
+    font-family: 'amara';
+    content: "\e901";
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #ffffff;
+    font-size: 25px;
+  }
+  &.videoCardSimple-summary {
+    display: flex;
+    color: #ffffff;
+    &:after {
+      display: none;
+    }
+    span {
+      margin: auto;
+      font-size: 40px;
+      margin-left: 40px;
+      margin-right: 10px;
+      font-weight: 300;
+    }
+    h3 {
+      margin: auto;
+      margin-right: 40px;
+      font-size: 15px;
+      font-weight: 300;
+    }
+  }
+}
+
+.videoCardSimple-caption {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 60px 30px 10px 10px;
+  color: #ffffff;
+  background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.7));
+}
+.videoCardSimple-title {
+  @include clamp(2, 1.2);
+  font-weight: 500;
+}
+.videoCardSimple-subtitle {
+  margin-top: 3px;
+  margin-bottom: 0;
+}

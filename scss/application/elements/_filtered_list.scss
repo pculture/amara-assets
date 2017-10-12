@@ -1,0 +1,32 @@
+// Filtered lists
+//
+// Filtered lists are for showing a list of options. 
+// 
+// Example:
+// <ul class="col3 filteredList">
+//   <li><a href="#">Espanol (Internacional)</a></li>
+//   <li><a href="#">Bahasa Indonesia</a></li>
+//   <li><a href="#">Bahasa Indonesia</a></li>
+//   <li><a href="#">Dansk</a></li>
+//   <li><a href="#">Espanol (Internacional)</a></li>
+//   <li><a href="#">Espanol (Internacional)</a></li>
+//   <li><a href="#">Portugues (Brasil)</a></li>
+//   <li><a href="#">English</a></li>
+//   <li><a href="#">English</a></li>
+//   <li><a href="#">Dansk</a></li>
+//   <li><a href="#">Espanol (Internacional)</a></li>
+//   <li><a href="#">Espanol (Internacional)</a></li>
+//   <li><a href="#">Espanol (Internacional)</a></li>
+//   <li><a href="#">Bahasa Indonesia</a></li>
+//   <li><a href="#">Bahasa Indonesia</a></li>
+//   <li><a href="#">Dansk</a></li>
+//   <li><a href="#">Espanol (Internacional)</a></li>
+//   <li><a href="#">Portugues (Brasil)</a></li>
+// </ul>
+//
+// Styleguide filteredList
+.filteredList {
+  > li {
+    margin-bottom: 3px;
+  }
+}

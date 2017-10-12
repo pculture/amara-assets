@@ -1,0 +1,157 @@
+#styleGuide-toc {
+  ul {
+    li {
+      a {
+
+      }
+      ul {
+        li {
+
+        }
+      }
+    }
+  }
+}
+.styleGuide-navLink {
+  padding-left: 10px;
+  border-left: 4px solid transparent;
+  &.active {
+    border-left-color: $teal;
+  }
+}
+
+.styleGuide-section {
+  display: none;
+  &.active {
+    display: block;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+}
+
+.styleGuide-exampleBox {
+  position: relative;
+  border: 1px solid $gray-light;
+}
+
+.styleGuide-exampleTitle {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 3px 5px;
+  background-color: darken($gray-lighter, 15%);
+  color: $gray-lighter;
+  border-radius: 0 0 0 4px;
+  font-size: 12px;
+}
+
+.styleGuide-exampleBoxHeader {
+  background: $gray-lighter;
+  margin: 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid $gray-light;
+}
+
+.styleGuide-exampleSource {
+  padding: 20px;
+  padding-top: 30px;
+  margin-bottom: 0;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid $gray-light;
+  color: $text-color;
+}
+
+.styleGuide-examples {
+  position: relative;
+  padding: 20px;
+}
+
+.styleGuide-example {
+  padding-bottom: 20px;
+}
+
+.styleGuide-exampleDescription {
+  font-weight: normal;
+  font-family: $font-family-sans-serif;
+  margin-left: 20px;
+}
+
+
+.styleGuide {
+  // Color Palette
+  ul.colorGrid {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    li {
+      display: inline-block;
+      width: 100px;
+      margin: 10px;
+      i {
+        display: block;
+        width: 100px;
+        height: 50px;
+        &.icon-gray-base { background-color: $gray-base; }
+        &.icon-gray-darker { background-color: $gray-darker; }
+        &.icon-gray-dark { background-color: $gray-dark; }
+        &.icon-gray { background-color: $gray; }
+        &.icon-gray-light { background-color: $gray-light; }
+        &.icon-gray-lighter { background-color: $gray-lighter; }
+        &.icon-teal { background-color: $teal; }
+        &.icon-magenta { background-color: $magenta; }
+        &.icon-turquoise { background-color: $turquoise; }
+        &.icon-plum { background-color: $plum; }
+        &.icon-lime-green { background-color: $lime-green; }
+      }
+    }
+  }
+  // Typography
+  .type-open-sans {
+    font-family: $font-family-sans-serif;
+  }
+  .type-raleway {
+    font-family: $headings-font-family;
+  }
+}
+
+// Icons
+ul.styleGuide-iconList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  li {
+    display: block;
+    width: 20%;
+    height: 120px;
+    padding: 10px;
+    margin: 10px;
+    background-color: $gray-lighter;
+    color: $gray;
+    text-align: center;
+    i {
+      display: block;
+      font-size: 30px;
+      padding: 10px;
+      &:before {
+        color: $gray-dark !important;
+      }
+    }
+    span {
+      display: block;
+      width: 100%;
+      clear: both;
+    }
+    &:hover {
+      background-color: $teal;
+      color: #fff;
+      i::before { color: #fff !important; } 
+    }
+  }
+}

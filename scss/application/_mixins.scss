@@ -1,0 +1,44 @@
+/* -----------------------------------------
+   Mixins
+----------------------------------------- */
+
+@mixin transition($duration: 0.3s, $property: all, $effect: ease-in-out) {
+  transition: $property $duration $effect;
+}
+
+
+@mixin clamp($num: 2, $line-height: 1.2) {
+  display: block;
+  display: -webkit-box;
+  position: relative;
+
+  max-height: 1em * $line-height * $num;
+  line-height: $line-height;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
+
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  // &:after {
+  //   display    : block;
+  //   position   : absolute;
+  //   height     : 1em * $line-height;
+  //   content    : '...';
+  //   text-align : right;
+  //   bottom     : 0;
+  //   right      : 0;
+  //   // width      : 25%;
+  //   background : linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 75%);
+  // }
+}
+
+
+// @supports (-webkit-line-clamp: 1)
+// {
+//   .line-clamp:after
+//   {
+//     display : none !important;
+//   }
+// }
+

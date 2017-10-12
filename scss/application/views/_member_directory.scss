@@ -1,0 +1,17 @@
+#member_directory {
+  .selectList {
+    li {
+      width: 50%;
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  #member_directory {
+    .selectList {
+      li {
+        width: 100%;
+      }
+    }
+  }
+}

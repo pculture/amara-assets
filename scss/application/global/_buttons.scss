@@ -1,0 +1,172 @@
+// Tags
+//
+// Used to provide a clickable action to the user.  These should typically be used for things that change state in some way. Use the button classes on an `<a>`, `<button>`, or `<input>` element. Use `<a>` tags for simple navigation.
+//
+// Example:
+// <a class="button" href="#" role="button">Link</a>
+// <button class="button">Button</button>
+// <input class="button" type="button" value="Input">
+// <input class="button" type="submit" value="Submit">
+//
+// Styleguide buttonTags
+
+
+button {
+  border: none;
+  background-color: transparent;
+  color: $teal;
+  &:disabled {
+    color: $gray-light;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+// Options
+// 
+// Use any of the available button classes to quickly create a styled button.
+// 
+// .small - Small sized button
+// .block - Full width button
+// .cta  - Call-to-action button.  Displayed with a plum color.  A typical use for this is the buttons to create subtitles
+// .cta-reverse  - Reversed call-to-action button.  Used for delete, remove, etc.
+// .borderless  - borderless button.  Used for cancelation, deselection, etc.
+// .inline  - inline button
+// .disabled  - A disabled button
+// 
+// Example:
+// <button type="button" class="button $modifier_class">Click me</button>
+// 
+// Styleguide buttonOptions
+
+.button {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 7px 30px;
+  font-family: $font-family-sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  white-space: nowrap;
+  line-height: 1.42857;
+  border-radius: 4px;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  color: #fff;
+  background-color: $teal;
+  border: 1px solid $teal;
+  &:hover, &:focus {
+    color: #fff;
+    background-color: darken($teal, 10%);
+    outline: none;
+  }
+  &.block {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  &.small {
+    padding: 2px 15px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5em;
+    border-radius: 3px;
+  }
+  &.disabled {
+    background-color: $gray-light;
+    border-color: $gray-light;
+    color: #393839;
+    cursor: default;
+  }
+  &.cta {
+    color: #fff;
+    background-color: $plum;
+    border-color: $plum;
+    &:hover, &:focus {
+      color: #fff;
+      background-color: darken($plum, 10%);
+    }
+  }
+  &.cta-reverse {
+    color: $plum;
+    background-color: transparent;
+    border-color: $plum;
+    &:hover, &:focus {
+      color: #fff;
+      background-color: darken($plum, 10%);
+    }
+  }
+  &.inline {
+    display: inline-block;
+    line-height: inherit;
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: inherit;
+  }
+  &.borderless {
+    color: inherit;
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: inherit;
+    &.inline {
+      margin: 0 10px;
+    }
+  }
+  i {
+    margin-right: 9px;
+  }
+}
+
+
+.collapseButton-moreLess {
+  color: $gray-darker;
+  font-weight: 600;
+  &:before {
+    display: inline-block;
+    position: relative;
+    content: "Less";
+  }
+  i {
+    display: inline-block;
+    margin-left: 10px;
+    transform: rotate(-90deg);
+  }
+  &.collapsed {
+    &:before {
+      content: "More";
+    }
+    i {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+// Async Buttons
+//
+// Used to provide user interaction feedback for buttons that fire asynchronous events
+//
+// Example:
+// <a class="button asyncButton" href="#" role="button">Link</a>
+// <a class="button asyncButton active" href="#" role="button">Link</a>
+//
+// Styleguide asyncButton
+
+.asyncButton {
+  &.active {
+    color: transparent;
+    background-image: url(/images/loading_ellipsis.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    pointer-events: none;
+  }
+}

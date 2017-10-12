@@ -1,0 +1,46 @@
+// Subtitles List
+ul.subtitlesList {
+  display: flex;
+  flex-wrap: wrap;
+  &.is-rtl {
+      text-align: right;
+  }
+  li {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    &:nth-of-type(odd) {
+      background-color: $gray-lighter;
+    }
+    .subtitlesList-time {
+      margin: 0 10px;
+    }
+    .subtitlesList-subtitle {
+      position: relative;
+      padding-left: 30px;
+      word-wrap: break-word;
+      width: 85%;
+      &.is-rtl {
+	  direction: rtl;
+      }
+      &.topicSentence {
+        &:before {
+          content: "\00B6";
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          left: 10px;
+          color: $gray;
+          font-weight: 100;
+        }
+      }
+    }
+  }
+  em {
+    color: inherit;
+    font-style: italic;
+  }
+}

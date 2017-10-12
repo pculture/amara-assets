@@ -1,0 +1,18 @@
+// pageFooter
+
+.pageFooter {
+  padding: 40px 0;
+  background-color: $gray-lighter;
+  a {
+    font-weight: 300;
+  }
+}
+.footerNav {
+  a {
+    color: $lime-green;
+    padding: 5px 15px;
+    &:hover {
+      color: $gray-base;
+    }
+  }
+}

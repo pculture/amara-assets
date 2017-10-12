@@ -1,0 +1,65 @@
+// Alerts
+//
+// Example:
+// <div class="alert alert-success alert-dismissible" role="alert">
+//   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//   <strong>Congratulations!</strong> You're happy now.
+// </div>
+// <div class="alert alert-info alert-dismissible" role="alert">
+//   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//   <strong>Info:</strong> Happiness is great for your health.
+// </div>
+// <div class="alert alert-warning alert-dismissible" role="alert">
+//   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//   <strong>Warning!</strong> You could be happy now.
+// </div>
+// <div class="alert alert-error alert-dismissible" role="alert">
+//   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//   <strong>Error!</strong> You're not too happy now.
+// </div>
+//
+// Styleguide alerts
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  &.alert-success {
+    background-image: none;
+    background-color: $state-success-bg;
+    border-color: $state-success-border;
+    color: $state-success-text;
+  }
+  &.alert-info {
+    background-image: none;
+    background-color: $state-info-bg;
+    border-color: $state-info-border;
+    color: $state-info-text;
+  }
+  &.alert-warning {
+    background-image: none;
+    background-color: $state-warning-bg;
+    border-color: $state-warning-border;
+    color: $state-warning-text;
+  }
+  &.alert-error, &.alert-danger {
+    background-image: none;
+    background-color: $state-danger-bg;
+    border-color: $state-danger-border;
+    color: $state-danger-text;
+  }
+  &.alert-dismissible {
+    .close {
+      right: 0;
+    }
+  }
+}
+
+// Page-wide messages
+#messages {
+  .alert {
+    margin: 10px;
+    margin-bottom: 0;
+  }
+}

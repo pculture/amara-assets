@@ -1,0 +1,157 @@
+#messaging_center {
+  ul.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    li {
+      min-height: 1.75em;
+      line-height: 1.75em;
+      a {
+        color: $text-color;
+        &:hover, &:focus, &:active {
+          color: $teal;
+        }
+      }
+      &.active {
+        a {
+          color: $teal;
+          cursor: default;
+        }
+      }
+    }
+    &.horizontal {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      li {
+        display: inline-block;
+        margin: 0 8px;
+      }
+    }
+  }
+}
+
+.message {
+  border-right: 1px solid $gray-light;
+  &:first-child {
+    border-top: 1px solid $gray-light;
+  }
+  .checkbox {
+    padding-top: 10px;
+  }
+  .number {
+    color: $text-color;
+  }
+  .message-title {
+    margin: 0;
+    font-weight: 400;
+    color: $teal;
+    .message-threadCount {
+      color: $text-color;
+    }
+  }
+
+  .message-author {
+    margin-bottom: 3px;
+  }
+
+  .message-summary {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid $gray-light;
+  }
+
+  .message-excerpt {
+    font-size: 12px;
+    @include clamp(2, 1.2);
+    &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      height: 2.4em;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background: #fff;
+      background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+  }
+
+  .message-date {
+    position: absolute;
+    display: inline-block;
+    top: 5px;
+    right: 10px;
+    font-size: 12px;
+  }
+
+  .message-time {}
+
+  &.message-unread {
+    .message-summary {
+      background-color: #f5f6f7;
+    }
+    .message-title {
+      color: $text-color;
+    }
+    .message-excerpt {
+      &:after {
+        background: #f5f6f7;
+        background: linear-gradient(rgba(#f5f6f7 ,0), rgba(#f5f6f7, 1));
+      }
+    }
+  }
+}
+
+.thread {
+  border: 1px solid $gray-light;
+  border-right: none;
+  ul.thread-actions {
+    @extend .navList;
+    @extend .horizontal;
+    line-height: 40px;
+    height: 40px;
+    margin-bottom: 0;
+    border-bottom: 1px solid $gray-light;
+  }
+  .thread-title {
+    margin: 0;
+    padding: 20px 10px;
+    color: $teal;
+    border-bottom: 1px solid $gray-light;
+  }
+  .thread-message {
+    padding: 20px 10px;
+  }
+  .thread-messageHeader {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .thread-messageDate {
+    position: relative;
+    display: block;
+    height: 1px;
+    text-align: center;
+    border-top: 1px solid $gray-light;
+    overflow: visible;
+    span {
+      position: relative;
+      display: inline-block;
+      top: -20px;
+      padding: 10px;
+      background-color: #ffffff;
+      color: $gray-light;
+    }
+  }
+  .thread-messageTime {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    color: $gray-light;
+  }
+  .thread-reply {
+    padding: 20px 10px;
+    margin-bottom: 50px;
+  }
+}

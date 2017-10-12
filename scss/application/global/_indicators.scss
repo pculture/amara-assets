@@ -1,0 +1,35 @@
+// Loading Indicators
+// 
+// Example:
+// <div class="loading pencil" style="height: 300px;"></div>
+// 
+// Example:
+// <div class="loading glasses" style="height: 300px;"></div>
+// 
+// Styleguide indicators
+
+.loading {
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 120px 120px;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: $z-index-behind;
+  }
+  &.pencil {
+    background-size: 125px 120px;
+    background-image: url("../images/loading_pencil.gif");
+  }
+  &.glasses {
+    background-size: 157px 120px;
+    background-image: url("../images/loading_glasses.gif");
+  }
+}

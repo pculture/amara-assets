@@ -1,0 +1,104 @@
+// Color palette
+// 
+// <ul class="colorGrid">
+//   <li><i class="icon-gray-base"></i>Gray Base<br>#222626</li>
+//   <li><i class="icon-gray-darker"></i>Gray Darker<br>#393839</li>
+//   <li><i class="icon-gray-dark"></i>Gray Dark<br>#7e7f80</li>
+//   <li><i class="icon-gray"></i>Gray<br>#9fa0a1</li>
+//   <li><i class="icon-gray-light"></i>Gray Light<br>#d9d9d9</li>
+//   <li><i class="icon-gray-lighter"></i>Gray Lighter<br>#F3F4F6</li>
+// </ul>
+// 
+// 
+// <ul class="colorGrid">
+//   <li><i class="icon-teal"></i>Teal<br>#1d806a</li>
+//   <li><i class="icon-magenta"></i>Magenta<br>#e61972</li>
+//   <li><i class="icon-turquoise"></i>Turquoise<br>#3da285</li>
+//   <li><i class="icon-plum"></i>Plum<br>#632e50</li>
+//   <li><i class="icon-lime-green"></i>Lime Dark<br>#77a841</li>
+// </ul>
+// <hr>
+// <h3><em>Color Do’s</em></h3>
+// <ul>
+//  <li>Headers and copy use Dark Grey, #222626</li>
+//  <li>For all linkable text, use Turquoise, #3da285</li>
+//  <li>For Primary CTAs, use Plum, #632e50</li>
+//  <li>Secondary Buttons use Teal #1d806a</li>
+// </ul>
+// <h3><em>Color Dont’s</em></h3>
+// TBD
+// 
+// Styleguide palette
+
+/* -----------------------------------------
+   Variables
+----------------------------------------- */
+
+$gray-base:              #222626; // 
+$gray-darker:            #393839; // #4c4c4d
+$gray-dark:              #7e7f80; //
+$gray:                   #9fa0a1; // #979899
+$gray-light:             #d9d9d9; //
+$gray-lighter:           #F3F4F6; // #f0f1f2
+
+
+$teal:              #1d806a;
+$magenta:           #e61972;
+$turquoise:         #3da285;
+$plum:              #632e50;
+$lime-green:         #77a841;
+
+
+// Form states and alerts
+// Define colors for form feedback states and, by default, alerts.
+
+$state-success-text:             $lime-green;
+$state-success-bg:               #dff0d8;
+$state-success-border:           $lime-green;
+
+$state-info-text:                $teal;
+$state-info-bg:                  #E5F2F0;
+$state-info-border:              $teal;
+
+$state-warning-text:             $plum;
+$state-warning-bg:               #F7EFF5;
+$state-warning-border:           $plum;
+
+$state-danger-text:              $magenta;
+$state-danger-bg:                #FAEFF4;
+$state-danger-border:            $magenta;
+
+
+
+
+$text-color:            $gray-base;
+$hr-border:             $gray-light;
+
+// typography
+$font-size-base:          14px;
+$font-family-sans-serif:  'Open Sans', sans-serif;
+$headings-font-family:    'Raleway', sans-serif;
+$headings-font-weight:    300;
+$headings-color:          inherit;
+
+$font-size-h1:            22px;
+$font-size-h2:            22px;
+$font-size-h3:            16px;
+$font-size-h4:            14px;
+$font-size-h5:            $font-size-base;
+$font-size-h6:            15px;
+
+
+
+$border-radius-base:        4px;
+$input-border-radius:       none;
+
+
+
+// Amara Variables
+$base-line-height:        32px;
+
+// Media Queries
+$screen-md-max:           1199px;
+$screen-sm-max:           1023px;
+$screen-xs-max:           767px;

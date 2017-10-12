@@ -1,0 +1,68 @@
+/* -----------------------------------------
+  Landing Page
+----------------------------------------- */
+#landing_page {
+  h1 {
+    margin-bottom: 30px;
+  }
+  ol {
+
+    li {
+      counter-increment: step-counter;
+      display: inline;
+      color: $gray-darker;
+      font-size: 30px;
+      font-weight: 200;
+      margin-right: 16px;
+      line-height: 1.85em;
+      &:before {
+        content: counter(step-counter)'.';
+        margin-right: 5px;
+        color: $gray-light;
+      }
+      &:nth-of-type(3):after { content:"\a"; white-space: pre; }
+      &:nth-of-type(n+4) {
+        font-size: 17px;
+      }
+      &:nth-of-type(7):after { content:"\a"; white-space: pre; }
+      &:nth-of-type(n+8) {
+        font-size: 14px;
+        line-height: 2.25em;
+      }
+
+    }
+  }
+  .hero {
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .stat {
+    padding-top: 5px;
+    em {
+      font-size: 40px;
+    }
+  }
+}
+
+#project_stats {
+  .stat {
+    em {
+      font-size: 26px;
+    }
+  }
+}
+
+/* -----------------------------------------
+Responsive
+----------------------------------------- */
+@media (max-width: 1199px) {
+
+}
+@media(max-width: 991px) {
+
+}
+@media(max-width: 767px) {
+
+}

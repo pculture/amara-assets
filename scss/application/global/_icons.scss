@@ -1,0 +1,275 @@
+// Icons
+//
+// Icons are implemented via a custom font-family. The basic syntax is `<i class="icon icon-filename">`.
+// Icons are normally sized the same as the surrounding text.  Use the `icon-sm`,
+// `icon-md`, `icon-lg` classes to manually size them.  Those sizes match up with
+// `avatar-default`, `avatar-md`, and `avatar-lg` respectively.
+// 
+// <ul class="styleGuide-iconList">
+//   <li>
+//     <i class="icon icon-alert"></i>
+//     <span>icon-alert</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-approve"></i>
+//     <span>icon-approve</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-approve_outline"></i>
+//     <span>icon-approve_outline</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-complete"></i>
+//     <span>icon-complete</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-incomplete"></i>
+//     <span>icon-incomplete</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-deny"></i>
+//     <span>icon-deny</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-evaluate"></i>
+//     <span>icon-evaluate</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-review"></i>
+//     <span>icon-review</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-transcribe"></i>
+//     <span>icon-transcribe</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-translate"></i>
+//     <span>icon-translate</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-initial-work"></i>
+//     <span>icon-initial-work</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-clock"></i>
+//     <span>icon-clock</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-mail"></i>
+//     <span>icon-mail</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-search"></i>
+//     <span>icon-search</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-star"></i>
+//     <span>icon-star</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-trash"></i>
+//     <span>icon-trash</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-arrow"></i>
+//     <span>icon-arrow</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-forward"></i>
+//     <span>icon-forward</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-back"></i>
+//     <span>icon-back</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-up"></i>
+//     <span>icon-up</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-down"></i>
+//     <span>icon-down</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-check"></i>
+//     <span>icon-check</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-close"></i>
+//     <span>icon-close</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-edit"></i>
+//     <span>icon-edit</span>
+//   </li>
+// </ul>
+//
+// Example:
+//   <ul class="inline">
+//     <li>
+//       <span class="avatar">
+//         <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-30.png">
+//       </span>
+//       <i class="icon icon-review icon-sm"></i>
+//     </li>
+//     <li>
+//       <span class="avatar avatar-md">
+//         <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-50.png">
+//       </span>
+//       <i class="icon icon-review icon-md"></i>
+//     </li>
+//     <li>
+//       <span class="avatar avatar-lg">
+//         <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-100.png">
+//       </span>
+//       <i class="icon icon-review icon-lg"></i>
+//     </li>
+//   </ul>
+//
+// Styleguide icons
+@font-face {
+    font-family: 'amara';
+    src:    url("../fonts/amara.eot");
+    src:    url("../fonts/amara.eot?#iefix") format('embedded-opentype'),
+        url("../fonts/amara.woff2") format('woff2'),
+        url("../fonts/amara.ttf") format('truetype'),
+        url("../fonts/amara.woff") format('woff'),
+        url("../fonts/amara.svg#amara") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'amara' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+///////////////////////////
+.icon-alert:before {
+  content: "\e912";
+}
+.icon-approve:before {
+  content: "\e900";
+}
+.icon-approve_outline:before {
+  content: "\e909";
+}
+.icon-incomplete:before {
+  content: "\e911";
+}
+.icon-complete:before {
+  content: "\e90c";
+}
+.icon-deny:before {
+  content: "\e90a";
+}
+.icon-evaluate:before {
+  content: "\e90b";
+}
+.icon-review:before {
+  content: "\e904";
+}
+.icon-transcribe:before {
+  content: "\e907";
+}
+.icon-translate:before {
+  content: "\e908";
+}
+.icon-initial-work:before {
+  content: "\e90f";
+}
+.icon-provider-request:before {
+// This is still to be implemented.  Let's use the transcribe icon as a
+// placeholder
+  content: "\e907";
+}
+
+
+.icon-clock:before {
+  content: "\e902";
+}
+.icon-mail:before {
+  content: "\e903";
+  color: $teal !important;
+}
+.icon-search:before {
+  content: "\e905";
+}
+.icon-star:before {
+  content: "\e906";
+}
+.icon-trash:before {
+  content: "\e910";
+}
+
+.icon-loading:before {
+  // TODO: replace this with a new, animated, loading icon
+  content: "\e902";
+}
+
+
+
+// Arrows
+.icon-arrow:before {
+  content: "\e901";
+}
+.icon-forward:before {
+  content: "\e901";
+}
+.icon-back:before {
+  content: "\e901";
+  display: inline-block;
+  transform: rotate(180deg);
+}
+.icon-up:before {
+  content: "\e901";
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+.icon-down:before {
+  content: "\e901";
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+
+///////////////////////////
+// Using the same icon in a different context. 
+// These may need to be removed or refactored at some point to avoid confusion
+
+.icon-check:before {
+  content: "\e900";
+}
+
+.icon-close:before {
+  content: "\e90a";
+}
+
+.icon-edit:before {
+  content: "\e907";
+}
+
+// sizes
+.icon-sm {
+  font-size: 25px;
+}
+
+.icon-md {
+  font-size: 41.67px
+}
+
+.icon-lg {
+  font-size: 83.33px;
+}

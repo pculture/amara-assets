@@ -1,0 +1,61 @@
+// Zero State
+//
+// <ul>
+//   <li>The content padding for a zero-state element is currently set to `20px` which matches our global content spacing.</li>
+//   <li>Additional perceived spacing is determined by the content of the zero-state element.</li>
+//   <li>Margin top and bottom is set to 27px by default.</li>
+//   <li>The border color is `#F3F4F6` for all zero-state elements but it is overwritten on the dashboard where the borders required more contrast to match comps. We are also adding a `border-radius: 4px;` on the dashboard.</li>
+// </ul>
+// 
+// Example:
+// <div class="zero-state">
+//   <p>Zero state message</p>
+// </div>
+// 
+// Example:
+// <h2>This is an example of a heading or video title</h2>
+// <div class="zero-state">
+//   <p>Zero state message</p>
+// </div>
+// 
+// Example:
+// <select name="" id="" class="select" data-ajax="member-search" placeholder="Search members"></select>
+// <div class="zero-state">
+//   <p>Zero state message</p>
+// </div>
+// 
+// Example:
+// <div id="dashboard">
+//   <div class="zero-state">
+//     <p>DASHBOARD Zero state message</p>
+//   </div>
+// </div>
+//
+// Styleguide zeroState
+
+.zero-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 20px;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid $gray-lighter;
+  margin: 27px 0;
+  h3 {
+    font-size: 15px;
+    font-weight: 200;
+    small { font-size: 12px; }
+  }
+  p {
+    font-size: 13px;
+  }
+}
+
+// @media all and (max-width: $screen-md-max) {}
+
+// @media all and (max-width: $screen-sm-max) {}
+
+// @media all and (max-width: $screen-xs-max) {}

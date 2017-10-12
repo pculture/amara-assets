@@ -1,0 +1,347 @@
+// Standard Fields
+//
+// Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with .form-control are set to width: 100%; by default. Wrap labels and controls in .form-group for optimum spacing.
+// 
+// Example:
+// <div class="form-group">
+//   <label for="">Text Input</label>
+//   <input type="text" class="form-control" id="" placeholder="Enter Text">
+// </div>
+// <div class="form-group">
+//   <label for="">Email</label>
+//   <input type="email" class="form-control" id="" placeholder="Enter Email">
+// </div>
+// <div class="form-group">
+//   <label for="">Password</label>
+//   <input type="password" class="form-control" id="" placeholder="Enter Password">
+// </div>
+// <div class="form-group">
+//   <label for="">Collaborator</label>
+//   <input type="text" class="form-control" id="" placeholder="+ Add Collaborator">
+// </div>
+// <div class="form-group">
+//   <label for="">Date</label>
+//   <input type="text" class="form-control" id="" placeholder="+ Add date">
+// </div>
+// <div class="form-group">
+//   <label for="">URL</label>
+//   <input type="text" class="form-control" id="" placeholder="http://video.tube.com/8Sc2i7z">
+// </div>
+// <div class="form-group">
+//   <label for="">Textarea</label>
+//   <textarea class="form-control"></textarea>
+// </div>
+// <div class="form-group">
+//   <button type="submit" class="button cta">Submit</button>
+//   <button class="button cta-reverse">Cancel</button>
+// </div>
+//
+// Styleguide fields
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: inherit;
+  color: $gray-darker;
+}
+textarea {
+  resize: vertical;
+}
+select {
+  appearance: none;
+  &:focus {
+   outline: none;
+  }
+}
+input,
+select {
+  line-height: 22px;
+  width: 100%;
+  padding: 9px 10px 6px 10px;
+  margin: 0;
+  border: 1px solid lighten($gray, 15%);
+  border-radius: $border-radius-base;
+  background-color: #fff;
+  color: $gray-dark;
+  &:focus {
+    outline: none;
+  }
+}
+
+// placeholders
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $gray-dark;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $gray-dark;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $gray-dark;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $gray-dark;
+}
+
+
+// File Uploads
+//
+// TODO - needs refactor to match new design direction
+// 
+// Example:
+// <div class="form-group">
+//   <label for="">Change thumbnail</label>
+//   <div class="input-group fileUpload">
+//     <input type="text" class="form-control" readonly>
+//     <label class="input-group-btn">
+//         <span class="button buttonFile">
+//             Browse&hellip; <input type="file" style="display: none;" multiple>
+//         </span>
+//     </label>
+//   </div>
+// </div>
+//
+// Styleguide fileUpload
+
+.buttonFile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 4px 4px 0;
+  padding: 0 10px;
+  line-height: 32px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+.buttonFile input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+
+// Checkboxes and radios
+//
+// Example:
+// <div class="form-group">
+//   <div class="radio">
+//     <input type="checkbox" id="" value="" checked>
+//     <label for=""><span></span> Selected</label>
+//   </div>
+// </div>
+// <div class="form-group">
+//   <div class="radio">
+//     <input type="checkbox" id="" value="">
+//     <label for=""><span></span> unselected</label>
+//   </div>
+// </div>
+// <div class="form-group">
+//   <div class="radio">
+//     <input type="checkbox" id="" value="">
+//     <label for=""><span></span> unselected</label>
+//   </div>
+// </div>
+// <hr>
+// <div class="form-group">
+//   <div class="checkbox">
+//     <input type="checkbox" id="" value="" checked="">
+//     <label for=""><span></span>Selected</label>
+//   </div>
+// </div>
+// <div class="form-group">
+//   <div class="checkbox">
+//     <input type="checkbox" id="" value="">
+//     <label for=""><span></span>Unselected</label>
+//   </div>
+// </div>
+// <div class="form-group">
+//   <div class="checkbox">
+//     <input type="checkbox" id="" value="">
+//     <label for=""><span></span>Unselected</label>
+//   </div>
+// </div>
+//
+// Styleguide checkboxes
+
+// Help blocks
+//
+// Example:
+// <div class="form-group">
+//   <div class="radio">
+//     <input type="radio" name="remove_video" id="remove_team" value="team">
+//     <label for="remove_team"><span></span>Just remove the video from the team.</label>
+//     <p class="helpBlock helpBlock-radio">It will remain on Amara but will no longer be subject to the team's permissions and workflows. Any outstanding tasks will be deleted.</p>
+//   </div>
+// </div>
+// 
+// Styleguide helpBlocks
+
+.checkbox, .radio {
+  margin: 0;
+  input[type="radio"],
+  input[type="checkbox"] {
+    display: none;
+    margin-left: 0;
+    &+label {
+      span {
+        position: relative;
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin-right: 8px;
+        vertical-align: middle;
+        background: #ffffff;
+        border: 1px solid $gray-light;
+        border-radius: 50%;
+        cursor: pointer;
+        &:after {
+          font-family: 'amara';
+          display: block;
+          content: "";
+          position: absolute;
+          height: 8px;
+          width: 8px;
+          top: 3px;
+          left: 3px;
+          border-radius: 50%;
+          background-color: transparent;
+        }
+      }
+    }
+    &:checked {
+      &+label {
+        font-weight: 600;
+        span {
+          &:after {
+            background-color: $gray-light;
+          }
+        }
+      }
+    }
+  }
+  label {
+    min-height: 20px;
+    padding-left: 0px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+.checkbox {
+  input[type="radio"],
+  input[type="checkbox"] {
+    &+label {
+      span {
+        border-radius: 2px;
+      }
+    }
+    &:checked {
+      &+label {
+        span {
+          background-color: $gray-light;
+          &:after {
+            content: "\e900";
+            display: block;
+            position: absolute;
+            height: 1rem;
+            line-height: 1rem;
+            width: 1rem;
+            top: 0;
+            left: -1px;
+            text-align: center;
+            background-color: transparent;
+            color: #fff;
+            font-size: 10px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// Input States
+// 
+// Example:
+// <div class="form-group">
+//   <label for="">Email address</label>
+//   <input type="text" class="form-control" id="" placeholder="Enter email address" value="email@email.com">
+// </div>
+// <div class="form-group">
+//   <label for="">Email address</label>
+//   <input type="text" class="form-control" id="" placeholder="Enter email address" value="email@email.com" disabled>
+//   <span class="help-block">Disabled message</span>
+// </div>
+// <div class="form-group has-success">
+//   <label class="control-label" for="inputSuccess1">Input with success</label>
+//   <input type="text" class="form-control" id="inputSuccess1" value="email@email.com">
+//   <span class="help-block">Success message</span>
+// </div>
+// <div class="form-group has-warning">
+//   <label class="control-label" for="inputWarning1">Input with warning</label>
+//   <input type="text" class="form-control" id="inputWarning1" value="email@email.com">
+//   <span class="help-block">Warning message</span>
+// </div>
+// <div class="form-group has-error">
+//   <label class="control-label" for="inputError1">Input with error</label>
+//   <input type="text" class="form-control" id="inputError1" value="email@email.com">
+//   <span class="help-block">Error message</span>
+// </div>
+//
+// Styleguide inputstates
+
+.form-group {
+  &.has-success {
+    .form-control,
+    label,
+    .help-block,
+    .input-control { border-color: $state-success-border !important; color: $state-success-text !important; }
+  }
+  &.has-warning {
+   .form-control,
+   label,
+    .help-block,
+    .input-control { border-color: $state-warning-border !important; color: $state-warning-text !important; }
+  }
+  &.has-error {
+    .form-control,
+    label,
+    .help-block,
+    .input-control { border-color: $state-danger-border !important; color: $state-danger-text !important; }
+    .help-block {
+      i {
+        padding: 0 5px 0 0;
+      }
+    }
+  }
+}
+
+
+
+.helpBlock {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: $gray;
+}
+
+.helpBlock-radio {
+  margin-left: 20px;
+}
+
+
