@@ -11,12 +11,12 @@
 .searchbar {
   position: relative;
   &:after {
-    content: "\e905";
+    font-family: 'amara' !important;
+    content: "\e91a";
     display: block;
     position: absolute;
     right: 16px;
     top: 0;
-    font-family: 'amara' !important;
     speak: none;
     text-transform: none;
     font-size: 1.4325rem;

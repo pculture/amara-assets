@@ -105,10 +105,10 @@ select.select {
     margin: 0;
 
     &:after {
-      content: "\e901";
+      font-family: 'amara' !important;
+      content: "\e90c";
       display: inline-block;
       margin-left: 5px;
-      font-family: 'amara' !important;
       speak: none;
       transform: rotate(90deg);
       @include transition(0.2s);

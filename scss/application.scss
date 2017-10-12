@@ -1,7 +1,8 @@
 // Utils
 @import 'variables';
 @import 'mixins';
-@import 'utilities';
+@import 'base/font_icons';
+@import 'application/utils';
 
 // Global
 @import 'application/global/base';
@@ -14,7 +15,7 @@
 @import 'application/global/navs';
 @import 'application/global/dropdowns';
 @import 'application/global/lists';
-@import 'application/global/icons';
+
 @import 'application/global/forms';
 @import 'application/global/alerts';
 @import 'application/global/progressbars';

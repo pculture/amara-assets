@@ -251,7 +251,8 @@ select {
         span {
           background-color: $gray-light;
           &:after {
-            content: "\e900";
+            font-family: 'amara';
+            content: "\e90a";
             display: block;
             position: absolute;
             height: 1rem;
