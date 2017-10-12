@@ -1,20 +1,11 @@
 @mixin transition($duration: 0.3s, $property: all, $effect: ease-in-out) {
-  -webkit-transition: $property $duration $effect;
-  -moz-transition: $property $duration $effect;
   transition: $property $duration $effect;
 }
 
 @mixin animation($effect: fadeIn,  $duration: 0.5s, $delay: 0s) {
-  -webkit-animation-name: $effect;
   animation-name: $effect;
-
-  -webkit-animation-duration: $duration;
   animation-duration: $duration;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-
-   -webkit-animation-delay: ($delay);
-  -moz-animation-delay: ($delay);
   animation-delay: ($delay);
 }
 
@@ -33,33 +24,29 @@
   }
 }
 
-/**
- * The following variable and function originate from the sass-mq library.
- * If you have already included it, you can eliminate the below
- * https://github.com/sass-mq/sass-mq/blob/master/_mq.scss
- */
 
-/// Base font size on the `<body>` element
-/// @type Number (unit)
-$mq-base-font-size: 16px !default;
+@mixin clamp($num: 2, $line-height: 1.2) {
+  display: block;
+  display: -webkit-box;
+  position: relative;
 
-/// Convert pixels to ems
-///
-/// @param {Number} $px - value to convert
-/// @param {Number} $base-font-size ($mq-base-font-size) - `<body>` font size
-///
-/// @example scss
-///  $font-size-in-ems: mq-px2em(16px);
-///  p { font-size: mq-px2em(16px); }
-///
-/// @requires $mq-base-font-size
-/// @returns {Number}
-@function mq-px2em($px, $base-font-size: $mq-base-font-size) {
-    @if unitless($px) {
-        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
-        @return mq-px2em($px + 0px); // That may fail.
-    } @else if unit($px) == em {
-        @return $px;
-    }
-    @return ($px / $base-font-size) * 1em;
+  max-height: 1em * $line-height * $num;
+  line-height: $line-height;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
+
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  // &:after {
+  //   display    : block;
+  //   position   : absolute;
+  //   height     : 1em * $line-height;
+  //   content    : '...';
+  //   text-align : right;
+  //   bottom     : 0;
+  //   right      : 0;
+  //   // width      : 25%;
+  //   background : linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 75%);
+  // }
 }

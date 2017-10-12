@@ -1,5 +1,34 @@
-// Color Palette
-// -------------------------
+// Color palette
+// 
+// <ul class="colorGrid">
+//   <li><i class="icon-gray-base"></i>Gray Base<br>#222626</li>
+//   <li><i class="icon-gray-darker"></i>Gray Darker<br>#393839</li>
+//   <li><i class="icon-gray-dark"></i>Gray Dark<br>#7e7f80</li>
+//   <li><i class="icon-gray"></i>Gray<br>#9fa0a1</li>
+//   <li><i class="icon-gray-light"></i>Gray Light<br>#d9d9d9</li>
+//   <li><i class="icon-gray-lighter"></i>Gray Lighter<br>#F3F4F6</li>
+// </ul>
+// 
+// 
+// <ul class="colorGrid">
+//   <li><i class="icon-teal"></i>Teal<br>#1d806a</li>
+//   <li><i class="icon-magenta"></i>Magenta<br>#e61972</li>
+//   <li><i class="icon-turquoise"></i>Turquoise<br>#3da285</li>
+//   <li><i class="icon-plum"></i>Plum<br>#632e50</li>
+//   <li><i class="icon-lime-green"></i>Lime Dark<br>#77a841</li>
+// </ul>
+// <hr>
+// <h3><em>Color Do’s</em></h3>
+// <ul>
+//  <li>Headers and copy use Dark Grey, #222626</li>
+//  <li>For all linkable text, use Turquoise, #3da285</li>
+//  <li>For Primary CTAs, use Plum, #632e50</li>
+//  <li>Secondary Buttons use Teal #1d806a</li>
+// </ul>
+// <h3><em>Color Dont’s</em></h3>
+// TBD
+// 
+// Styleguide palette
 
 $gray-darker:            #222626; // Charcoal
 $gray-dark:              #7e7f80; //
@@ -46,3 +75,26 @@ $use-fadeInLeft     : true;
 $use-fadeInRight    : true;
 $use-pulse          : true;
 
+
+// From application styles
+$border-radius-base:        4px;
+
+
+// Form states and alerts
+// Define colors for form feedback states and, by default, alerts.
+
+$state-success-text:             $lime;
+$state-success-bg:               #dff0d8;
+$state-success-border:           $lime;
+
+$state-info-text:                $teal;
+$state-info-bg:                  #E5F2F0;
+$state-info-border:              $teal;
+
+$state-warning-text:             $plum;
+$state-warning-bg:               #F7EFF5;
+$state-warning-border:           $plum;
+
+$state-danger-text:              $amaranth;
+$state-danger-bg:                #FAEFF4;
+$state-danger-border:            $amaranth;
