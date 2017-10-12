@@ -4,6 +4,14 @@
 @import 'base/font_icons';
 @import 'application/utils';
 
+// Layout Elements
+@import 'layout/page_header';
+@import 'layout/page_footer';
+
+// Navigation Elements
+@import "elements/navigation";
+@import "elements/consolidate_header";
+
 // Global
 @import 'application/global/base';
 @import 'application/global/typography';
@@ -24,9 +32,6 @@
 @import 'application/global/charts';
 
 // Elements
-@import 'application/elements/page_header';
-@import 'application/elements/page_footer';
-
 @import 'application/elements/avatars';
 @import 'application/elements/step_list';
 @import 'application/elements/filtered_list';
