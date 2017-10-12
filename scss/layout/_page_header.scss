@@ -3,14 +3,28 @@
   top: 0;
   left: 0;
   width: 100%;
+  padding: 0;
+  margin: 0;
   z-index: 100;
   background-color: #fff;
   font-family: $headings-font-family;
   box-shadow: 0 0px 10px rgba(0,0,0,0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   @include transition();
+  .container {
+    position: relative;
+  }
 }
 
 // Media Queries
+@media(min-width: $screen-xl-min) {
+  #page-header {
+    .container {
+      width: 1400px;
+    }
+  }
+}
 
 @media(max-width: $screen-lg-max) {
 
