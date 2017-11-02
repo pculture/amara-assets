@@ -129,12 +129,12 @@
 // Styleguide icons
 @font-face {
   font-family: 'amara';
-  src:  url('/assets/fonts/amara.eot?5wa0dq');
-  src:  url('/assets/fonts/amara.eot?5wa0dq#iefix') format('embedded-opentype'),
-    url('/assets/fonts/amara.woff2?5wa0dq') format('woff2'),
-    url('/assets/fonts/amara.ttf?5wa0dq') format('truetype'),
-    url('/assets/fonts/amara.woff?5wa0dq') format('woff'),
-    url('/assets/fonts/amara.svg?5wa0dq#amara') format('svg');
+  src:  url('../assets/fonts/amara.eot');
+  src:  url('../assets/fonts/amara.eot#iefix') format('embedded-opentype'),
+    url('../assets/fonts/amara.woff2') format('woff2'),
+    url('../assets/fonts/amara.ttf') format('truetype'),
+    url('../assets/fonts/amara.woff') format('woff'),
+    url('../assets/fonts/amara.svg#amara') format('svg');
   font-weight: normal;
   font-style: normal;
 }

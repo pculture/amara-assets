@@ -1,0 +1,29 @@
+{
+  "name": "amara-assets",
+  "version": "1.0.0",
+  "description": "Amara CSS/JS/other assets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pculture/amara-assets.git"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "almond": "^0.3.3",
+    "animate-sass": "^0.6.6",
+    "browserify": "^14.5.0",
+    "chartist": "^0.11.0",
+    "chartist-plugin-tooltip": "0.0.11",
+    "jquery": "^3.2.1",
+    "jquery-form": "^4.2.2",
+    "jquery-mousewheel": "^3.1.13",
+    "jscrollpane": "^2.0.22",
+    "requirejs": "^2.3.5",
+    "rjs": "^4.0.2",
+    "select2": "github:select2/select2",
+    "uglify-js": "^3.1.6",
+    "underscore": "^1.8.3",
+    "webfontloader": "^1.6.28"
+  }
+}
