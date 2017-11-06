@@ -1,5 +1,7 @@
-require('jquery');
+window.$ = window.jQuery = require('jquery');
 require('venobox');
+require('waypoints');
+require('inview');
 require('./animations');
 var state   = require('./state');
 var slider = require('./slider');

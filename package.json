@@ -6,6 +6,18 @@
     "type": "git",
     "url": "https://github.com/pculture/amara-assets.git"
   },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "venobox": "./node_modules/venobox/venobox/venobox.js",
+    "inview": "./node_modules/waypoints/lib/shortcuts/inview.js",
+    "waypoints": "./node_modules/waypoints/lib/jquery.waypoints.js"
+  },
+  "browserify-shim": {},
   "devDependencies": {},
   "author": "",
   "license": "ISC",
@@ -13,17 +25,35 @@
     "almond": "^0.3.3",
     "animate-sass": "^0.6.6",
     "browserify": "^14.5.0",
+    "browserify-shim": "^3.8.14",
     "chartist": "^0.11.0",
     "chartist-plugin-tooltip": "0.0.11",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-buffer": "0.0.2",
+    "gulp-changed": "^3.1.1",
+    "gulp-cli": "^1.4.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-tap": "^1.0.1",
+    "gulp-uglify": "^3.0.0",
+    "inview": "0.0.10",
     "jquery": "^3.2.1",
     "jquery-form": "^4.2.2",
     "jquery-mousewheel": "^3.1.13",
     "jscrollpane": "^2.0.22",
+    "npm": "^5.5.1",
+    "pump": "^1.0.2",
     "requirejs": "^2.3.5",
     "rjs": "^4.0.2",
     "select2": "github:select2/select2",
     "uglify-js": "^3.1.6",
     "underscore": "^1.8.3",
+    "venobox": "^1.8.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "waypoints": "^4.0.1",
     "webfontloader": "^1.6.28"
   }
 }
