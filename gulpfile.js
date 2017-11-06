@@ -6,11 +6,13 @@ var changed = require('gulp-changed');
 var debug = require('gulp-debug');
 var del = require('del');
 var gulp = require('gulp');
+var path = require('path');
 var pump = require('pump');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
+var source = require('vinyl-source-stream');
 var tap = require('gulp-tap');
+var uglify = require('gulp-uglify');
 var util = require('gulp-util');
 
 var paths = {
@@ -67,26 +69,54 @@ gulp.task('css', function(cb) {
     ], cb);
 });
 
-gulp.task('js', function(cb) {
-    pump([
-        gulp.src(paths.js),
-        tap(function (file) {
-            file.contents = browserify(file.path, {debug: true}).bundle();
-        }),
-        buffer(),
-        sourcemaps.init({loadMaps: true}),
-        uglify(),
-        sourcemaps.write('./maps'),
-        gulp.dest(dest_paths.js),
-    ], cb);
+gulp.task('js', function(task_cb) {
+    var count = 0;
+    function single_cb() {
+        count += 1;
+        if(count == paths.js.length) {
+            task_cb();
+        }
+    }
+    paths.js.forEach(function(script) {
+        run_browserify(script, false, single_cb);
+    });
 });
+
+function run_browserify(script, watch, cb) {
+    var b = browserify(script, {debug: true, cache: {}, pluginCache: {}});
+    if(watch) {
+        var watchify = require('watchify');
+        b.plugin(watchify);
+        b.on('update', function() {
+            console.log('updating ' + script);
+            run(function() {
+                console.log('finished building ' + script);
+            });
+        });
+    }
+    run(cb);
+
+    function run(cb) {
+        pump([
+            b.bundle(),
+            source(path.basename(script)),
+            buffer(),
+            sourcemaps.init({loadMaps: true}),
+            uglify(),
+            sourcemaps.write('./maps'),
+            gulp.dest(dest_paths.js),
+        ], cb);
+    }
+}
 
 gulp.task('build', ['images', 'fonts', 'css', 'js']);
 gulp.task('watch', function () {
     gulp.watch(paths.images, ['images']);
     gulp.watch(paths.fonts, ['fonts']);
     gulp.watch('scss/**', ['css']);
-    gulp.watch('scripts/**', ['js']);
+    paths.js.forEach(function(script) {
+        run_browserify(script, true);
+    });
 });
 gulp.task('default', ['build', 'watch']);
 

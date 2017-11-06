@@ -1,4 +1,3 @@
-// require('modernizr');
 var WebFont = require('webfontloader');
 
 WebFont.load({
