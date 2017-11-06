@@ -3,7 +3,10 @@ var WebFont = require('webfontloader');
 
 WebFont.load({
   google: {
-    families: ['Open Sans']
+    families: [
+        'Open Sans',
+        'Raleway',
+    ]
   },
   typekit: { id: 'wrr8upm' },
   loading: function() {
