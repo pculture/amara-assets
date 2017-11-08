@@ -8,7 +8,6 @@
   },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js",
-    "jquery-behaviors": "./scripts/third-party/behaviors.js",
     "jquery-form": "./node_modules/jquery-form/src/jquery.form.js",
     "venobox": "./node_modules/venobox/venobox/venobox.js",
     "inview": "./node_modules/waypoints/lib/shortcuts/inview.js",

@@ -1,10 +1,10 @@
 // require jquery and all plugins first, this way if other modules depend on jquery they will get the plugins too
 window.jQuery = window.$ = require('jquery');
 require('bootstrap');
-require('jquery-behaviors');
 require('jquery-form')(window, $);
 require('select2')(window, $);
 require('jscrollpane');
+require('./third-party/behaviors');
 
 // require all the other modules
 // Third party libraries
