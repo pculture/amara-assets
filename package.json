@@ -6,13 +6,10 @@
     "type": "git",
     "url": "https://github.com/pculture/amara-assets.git"
   },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js",
+    "jquery-behaviors": "./scripts/third-party/behaviors.js",
+    "jquery-form": "./node_modules/jquery-form/src/jquery.form.js",
     "venobox": "./node_modules/venobox/venobox/venobox.js",
     "inview": "./node_modules/waypoints/lib/shortcuts/inview.js",
     "waypoints": "./node_modules/waypoints/lib/jquery.waypoints.js"
@@ -24,6 +21,7 @@
   "dependencies": {
     "almond": "^0.3.3",
     "animate-sass": "^0.6.6",
+    "bootstrap": "^3.3.7",
     "browserify": "^14.5.0",
     "browserify-shim": "^3.8.14",
     "chartist": "^0.11.0",

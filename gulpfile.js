@@ -13,16 +13,18 @@ var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
 var tap = require('gulp-tap');
 var uglify = require('gulp-uglify');
-var util = require('gulp-util');
+var gutil = require('gulp-util');
 
 var paths = {
     images: 'img/**',
     fonts: 'fonts/**',
     css: 'scss/[^_]*.scss',
     js: [
-        'scripts/head.js',
-        'scripts/marketing.js',
+        'scripts/head/head.js',
+        'scripts/marketing/marketing.js',
+        'scripts/application/application.js',
     ]
+
 }
 var dest_paths = {
     base: 'dist',
@@ -83,7 +85,11 @@ gulp.task('js', function(task_cb) {
 });
 
 function run_browserify(script, watch, cb) {
-    var b = browserify(script, {debug: true, cache: {}, pluginCache: {}});
+    var opts = {debug: true, cache: {}, pluginCache: {}};
+    var filename = path.basename(script);
+
+    var b = browserify(script, opts);
+
     if(watch) {
         var watchify = require('watchify');
         b.plugin(watchify);
@@ -94,15 +100,18 @@ function run_browserify(script, watch, cb) {
             });
         });
     }
+    b.transform("browserify-shim");
     run(cb);
 
     function run(cb) {
         pump([
-            b.bundle(),
-            source(path.basename(script)),
+            b.bundle().on('error', function(err) {
+                gutil.log(err.name + ': ' + err.message)
+            }),
+            source(filename),
             buffer(),
             sourcemaps.init({loadMaps: true}),
-            uglify(),
+            uglify({compress: {drop_debugger: false}}),
             sourcemaps.write('./maps'),
             gulp.dest(dest_paths.js),
         ], cb);

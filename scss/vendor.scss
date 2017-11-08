@@ -1,3 +1,4 @@
-@import "application/libs/chartist.min";
-@import "application/libs/select2";
-@import "application/libs/select2-bootstrap";
+@import "../node_modules/chartist/dist/chartist";
+@import "../node_modules/select2/dist/css/select2";
+@import "bootstrap/bootstrap-theme.min";
+@import "bootstrap/bootstrap.min";

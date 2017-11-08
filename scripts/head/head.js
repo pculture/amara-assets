@@ -7,7 +7,6 @@ WebFont.load({
         'Raleway',
     ]
   },
-  typekit: { id: 'wrr8upm' },
   loading: function() {
     console.log("LOADING FONTS");
   },
