@@ -5,6 +5,7 @@ var buffer = require('gulp-buffer');
 var changed = require('gulp-changed');
 var debug = require('gulp-debug');
 var del = require('del');
+var fs = require('fs');
 var gulp = require('gulp');
 var path = require('path');
 var pump = require('pump');
@@ -89,6 +90,13 @@ function run_browserify(script, watch, cb) {
     var filename = path.basename(script);
 
     var b = browserify(script, opts);
+    if(filename == 'application.js' && process.env.JS_EXTENSIONS) {
+        process.env.JS_EXTENSIONS.split(',').forEach(function(filename) {
+            // Add the file as a stream, because it's the only way I can make
+            // it use the package.json file from amara-assets
+            b.add(fs.createReadStream(filename));
+        });
+    }
 
     if(watch) {
         var watchify = require('watchify');
