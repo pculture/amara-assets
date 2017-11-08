@@ -2,11 +2,12 @@
 
 var browserify = require('browserify');
 var buffer = require('gulp-buffer');
-var changed = require('gulp-changed');
+var count = require('gulp-count');
 var debug = require('gulp-debug');
 var del = require('del');
 var fs = require('fs');
 var gulp = require('gulp');
+var newer = require('gulp-newer');
 var path = require('path');
 var pump = require('pump');
 var sass = require('gulp-sass');
@@ -49,26 +50,30 @@ gulp.task('clean', function(cb) {
 gulp.task('images', function(cb) {
     pump([
         gulp.src(paths.images),
-        changed(dest_paths.images),
+        newer(dest_paths.images),
         gulp.dest(dest_paths.images),
+        count('## files copied'),
     ], cb);
 });
 
 gulp.task('fonts', function(cb) {
     pump([
         gulp.src(paths.fonts),
-        changed(dest_paths.fonts),
+        newer(dest_paths.fonts),
         gulp.dest(dest_paths.fonts),
+        count('## files copied'),
     ], cb);
 });
 
 gulp.task('css', function(cb) {
     pump([
         gulp.src(paths.css),
+        newer({'dest': dest_paths.css, ext: '.css', 'extra': 'scss/**'}),
         sourcemaps.init(),
         sass({outputStyle: 'compressed'}).on('error', sass.logError),
         sourcemaps.write('./maps'),
         gulp.dest(dest_paths.css),
+        count('## files built'),
     ], cb);
 });
 
@@ -81,7 +86,13 @@ gulp.task('js', function(task_cb) {
         }
     }
     paths.js.forEach(function(script) {
-        run_browserify(script, false, single_cb);
+        isSourceJSNewer(script, (newer) => {
+            if(newer) {
+                run_browserify(script, false, single_cb);
+            } else {
+                single_cb();
+            }
+        });
     });
 });
 
@@ -122,8 +133,21 @@ function run_browserify(script, watch, cb) {
             uglify({compress: {drop_debugger: false}}),
             sourcemaps.write('./maps'),
             gulp.dest(dest_paths.js),
+            count({logFiles: true}),
         ], cb);
     }
+}
+
+function isSourceJSNewer(script, cb) {
+    var newerSourceFile = false;
+    function callCallback() {
+        cb(newerSourceFile)
+    }
+    pump([
+        gulp.src(script),
+        newer({dest: dest_paths.js, extra: path.dirname(script) + '/**'}),
+        tap((file) => {newerSourceFile = true})
+    ], callCallback);
 }
 
 gulp.task('build', ['images', 'fonts', 'css', 'js']);
