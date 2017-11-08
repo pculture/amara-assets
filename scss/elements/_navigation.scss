@@ -8,6 +8,7 @@
       }
     }
   }
+
 }
 
 // Primary Navigation: Desktop
@@ -22,9 +23,12 @@
     margin: 0;
     padding: 0;
     li {
-      display: inline-block;
+      float: left;
       margin: 0 -2px;
       padding: 0;
+      i.icon {
+         font-size: 18px;
+      }
     }
   }
   a, button {
@@ -53,7 +57,7 @@
       content: none;
     }
     li {
-      display: block;
+      float: none;
       &.separator {
         border-top: 1px solid $gray;
       }
