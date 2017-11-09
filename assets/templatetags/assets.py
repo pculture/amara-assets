@@ -30,12 +30,12 @@ if settings.DEBUG:
     @register.simple_tag
     def asset(path):
         return '/assets/' + path
-elif settings.STATIC_URL:
+elif settings.ASSETS_URL:
     @register.simple_tag
     def asset(path):
-        return settings.STATIC_URL + path
+        return settings.ASSETS_URL + path
 else:
-    logger.warn("Neither DEBUG no STATIC_URL set, static assets "
+    logger.warn("Neither DEBUG no ASSETS_URL set, static assets "
                 "can't be served")
     @register.simple_tag
     def asset(path):
