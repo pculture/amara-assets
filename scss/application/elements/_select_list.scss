@@ -276,6 +276,11 @@ ul.selectList {
 // TODO - refactor this. Probably can be generalized.
 
 .selectList-members {
+  display: block !important;
+  columns: 2;
+  webkit-columns: 2;
+  -moz-columns: 2;
+
   div {
     margin-right: 5px;
   }
