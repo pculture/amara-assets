@@ -30,7 +30,7 @@ if settings.DEBUG:
     @register.simple_tag
     def asset(path):
         return '/assets/' + path
-elif settings.ASSETS_URL:
+elif getattr(settings, 'ASSETS_URL', None):
     @register.simple_tag
     def asset(path):
         return settings.ASSETS_URL + path
