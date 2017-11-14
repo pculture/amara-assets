@@ -2,7 +2,6 @@
 
 var browserify = require('browserify');
 var buffer = require('gulp-buffer');
-var count = require('gulp-count');
 var debug = require('gulp-debug');
 var del = require('del');
 var fs = require('fs');
@@ -52,7 +51,6 @@ gulp.task('images', function(cb) {
         gulp.src(paths.images),
         newer(dest_paths.images),
         gulp.dest(dest_paths.images),
-        count('## files copied'),
     ], cb);
 });
 
@@ -61,7 +59,6 @@ gulp.task('fonts', function(cb) {
         gulp.src(paths.fonts),
         newer(dest_paths.fonts),
         gulp.dest(dest_paths.fonts),
-        count('## files copied'),
     ], cb);
 });
 
@@ -73,7 +70,6 @@ gulp.task('css', function(cb) {
         sass({outputStyle: 'compressed'}).on('error', sass.logError),
         sourcemaps.write('./maps'),
         gulp.dest(dest_paths.css),
-        count('## files built'),
     ], cb);
 });
 
@@ -133,7 +129,6 @@ function run_browserify(script, watch, cb) {
             uglify({compress: {drop_debugger: false}}),
             sourcemaps.write('./maps'),
             gulp.dest(dest_paths.js),
-            count({logFiles: true}),
         ], cb);
     }
 }
