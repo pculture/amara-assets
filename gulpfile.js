@@ -5,6 +5,7 @@ var buffer = require('gulp-buffer');
 var debug = require('gulp-debug');
 var del = require('del');
 var fs = require('fs');
+var glob = require('glob');
 var gulp = require('gulp');
 var newer = require('gulp-newer');
 var path = require('path');
@@ -97,13 +98,11 @@ function run_browserify(script, watch, cb) {
     var filename = path.basename(script);
 
     var b = browserify(script, opts);
-    if(filename == 'application.js' && process.env.JS_EXTENSIONS) {
-        process.env.JS_EXTENSIONS.split(',').forEach(function(filename) {
-            // Add the file as a stream, because it's the only way I can make
-            // it use the package.json file from amara-assets
-            b.add(fs.createReadStream(filename));
-        });
-    }
+    extensionScripts(filename).forEach(function (filename) {
+        // Add the file as a stream, because it's the only way I can make
+        // it use the package.json file from amara-assets
+        b.add(fs.createReadStream(filename));
+    });
 
     if(watch) {
         var watchify = require('watchify');
@@ -133,15 +132,44 @@ function run_browserify(script, watch, cb) {
     }
 }
 
+function findJSExtensions() {
+   var baseDir = process.env.BASE_DIR || '/mnt';
+   try {
+       var gitmodules = fs.readFileSync(path.join(baseDir, '.gitmodules'));
+    } catch(err) {
+        return [];
+    }
+
+    var re = /path *= *(.*?) *\n/g,
+        rv = [],
+        m;
+    while(m = re.exec(gitmodules)) {
+        var globSpec = path.join(baseDir, m[1], 'assets/js-extensions/*.js');
+        rv.push.apply(rv, glob.sync(globSpec));
+    }
+    return rv;
+}
+
+function extensionScripts(script) {
+    if(path.basename(script) == 'application.js') {
+        return findJSExtensions();
+    } else {
+        return [];
+    }
+}
+
 function isSourceJSNewer(script, cb) {
     var newerSourceFile = false;
+    var sources = [script];
+    sources.push.apply(sources, extensionScripts(script));
+    var dest = path.join(dest_paths.js, path.basename(script));
     function callCallback() {
         cb(newerSourceFile)
     }
     pump([
-        gulp.src(script),
-        newer({dest: dest_paths.js, extra: path.dirname(script) + '/**'}),
-        tap((file) => {newerSourceFile = true})
+        gulp.src(sources),
+        newer({dest: dest, extra: path.dirname(script) + '/**'}),
+        tap((file) => {newerSourceFile = true;})
     ], callCallback);
 }
 

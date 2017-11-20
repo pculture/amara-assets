@@ -15,6 +15,6 @@ we're all useing the same nodejs version.
 
 You can customize the build with env variables:
 
-  - `JS_EXTENSIONS`: Extry entrypoints for application.js (comma separated)
+  - `BASE_DIR`: Base directory that contains the root git repo.  (defaults to /mnt)
 
-For Amara, we use these to add extra JS from the amara-enterprise repo.
+For Amara, we use this to add extra JS from the amara-enterprise repo.
