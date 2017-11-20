@@ -51,6 +51,15 @@
   float: right;
 }
 
+// FIXME: This is just here to make the language selector look correct in the
+// application pages.  We should implement pculture/amara-enterprise#1571 and
+// remove this hack.
+.bg-gray-lighter {
+  background-color: #F3F4F6 !important;
+  fill: #F3F4F6 !important;
+  color: #5a2747 !important;
+}
+
 // Text
 //
 // TODO - Please add documentation here...

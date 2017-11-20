@@ -3,6 +3,10 @@ require('venobox');
 require('waypoints');
 require('inview');
 require('./animations');
+require('./third-party/behaviors');
+require('./ajax');
+require('./languageSwitcher');
+
 var state   = require('./state');
 var slider = require('./slider');
 var message = require('./message');

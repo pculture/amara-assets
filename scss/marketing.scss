@@ -42,7 +42,7 @@
 @import "views/about";
 @import "views/volunteer";
 @import "views/recruitment";
-
+@import "language_selector_hack";
 
 // TODO - Refactor these styles into partials
 
@@ -61,22 +61,3 @@
   }
 }
 
-// Placeholders
-::-webkit-input-placeholder { /* WebKit browsers */
-  color: $gray-darker !important;
-  font-family: $font-family-sans-serif;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: $gray-darker !important;
-   opacity:  1;
-   font-family: $font-family-sans-serif;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: $gray-darker !important;
-   opacity:  1;
-   font-family: $font-family-sans-serif;
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-   color: $gray-darker !important;
-   font-family: $font-family-sans-serif;
-}

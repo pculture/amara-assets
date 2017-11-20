@@ -1,0 +1,39 @@
+// TODO: combine marketing/application CSS for this
+$z-index-overlay: 100;
+$z-index-modal: 110;
+.modal-dialog {
+    font-size: 14px;
+
+    .col3 {
+      column-gap: 0;
+    }
+    .col3 li {
+      margin: 0 0 3px 0;
+      line-height: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    a {
+      font-weight: normal;
+    }
+
+    button.cta-reverse {
+    color: #5a2747;
+    background-color: transparent;
+    border-color: #5a2747;
+    border-radius: 4px;
+    border: 1px solid;
+    padding: 7px 30px;
+    text-transform: none;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    margin-top: 0;
+    }
+}
+@import "application/elements/dialogs";
+@import "application/elements/searchbar";
+@import "application/global/forms";
+
