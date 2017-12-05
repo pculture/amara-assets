@@ -47,8 +47,7 @@ class Command(BaseCommand):
         self.bucket = s3.Bucket(settings.STATIC_MEDIA_S3_BUCKET)
 
     def upload_file(self, path, s3_path, gzip):
-        if settings.ASSETS_S3_PREFIX:
-            s3_path = settings.ASSETS_S3_PREFIX + s3_path
+        s3_path = '{}/{}'.format(settings.LAST_COMMIT_GUID, s3_path)
         with open(path) as f:
             content = f.read()
         kwargs = self.kwargs_for_file(path)

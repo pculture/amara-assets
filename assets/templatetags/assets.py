@@ -33,7 +33,8 @@ if settings.DEBUG:
 elif getattr(settings, 'ASSETS_URL', None):
     @register.simple_tag
     def asset(path):
-        return settings.ASSETS_URL + path
+        return '{}{}/{}'.format(
+            settings.ASSETS_URL, settings.LAST_COMMIT_GUID, path)
 else:
     logger.warn("Neither DEBUG no ASSETS_URL set, static assets "
                 "can't be served")
