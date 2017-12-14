@@ -27,11 +27,11 @@
 @import 'application/global/lists';
 
 @import 'application/global/forms';
-@import 'application/global/alerts';
 @import 'application/global/progressbars';
 @import 'application/global/indicators';
 @import 'application/global/scrollbars';
 @import 'application/global/charts';
+@import "elements/alerts";
 
 // Elements
 @import 'application/elements/avatars';

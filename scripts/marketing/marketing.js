@@ -3,7 +3,8 @@ require('venobox');
 require('waypoints');
 require('inview');
 require('./animations');
-require('./third-party/behaviors');
+require('../shared/third-party/behaviors');
+require('../shared/announcements');
 require('./ajax');
 require('./languageSwitcher');
 

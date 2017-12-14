@@ -4,7 +4,8 @@ require('bootstrap');
 require('jquery-form')(window, $);
 require('select2')(window, $);
 require('jscrollpane');
-require('./third-party/behaviors');
+require('../shared/third-party/behaviors');
+require('../shared/announcements');
 
 // require all the other modules
 // Third party libraries
