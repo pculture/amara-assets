@@ -5,6 +5,7 @@ require('inview');
 require('./animations');
 require('../shared/third-party/behaviors');
 require('../shared/announcements');
+require('../shared/messages');
 require('./ajax');
 require('./languageSwitcher');
 

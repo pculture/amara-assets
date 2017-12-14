@@ -19,18 +19,14 @@
 
 var $ = require('jquery');
 var cookies = require('browser-cookies');
-var cookieName = 'lastHiddenAnnouncement';
+var cookieName = 'hide_new_messages';
 
-$.behaviors('.announcement', function(elt) {
+$.behaviors('.newMessages', function(elt) {
     var elt = $(elt);
-    var announcementId = elt.attr('data-id'); // use attr() instead of data(), because we want to avoid jQuery converting the value to an int
-    var lastHiddenId = cookies.get(cookieName);
-    if(announcementId == lastHiddenId) {
-        elt.hide();
-    }
+    var lastUnread = elt.attr('data-last-unread'); // use attr() instead of data(), because we want to avoid jQuery converting the value to an int
 
-    $('.announcement-hide', elt).click(function(evt) {
-        cookies.set(cookieName, announcementId);
+    $('.newMessages-hide', elt).click(function(evt) {
+        cookies.set(cookieName, lastUnread);
         elt.hide();
         evt.preventDefault();
         evt.cancelPropagation();

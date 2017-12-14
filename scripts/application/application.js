@@ -6,6 +6,7 @@ require('select2')(window, $);
 require('jscrollpane');
 require('../shared/third-party/behaviors');
 require('../shared/announcements');
+require('../shared/messages');
 
 // require all the other modules
 // Third party libraries
