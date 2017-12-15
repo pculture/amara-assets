@@ -24,10 +24,8 @@ var cookieName = 'lastHiddenAnnouncement';
 $.behaviors('.announcement', function(elt) {
     var elt = $(elt);
     var announcementId = elt.attr('data-id'); // use attr() instead of data(), because we want to avoid jQuery converting the value to an int
-    var lastHiddenId = cookies.get(cookieName);
-    if(announcementId == lastHiddenId) {
-        elt.hide();
-    }
+
+    // Note that the code to hide the announcement is inline in the HTML.  This prevents flashing the announcment when the page is first loaded
 
     $('.announcement-hide', elt).click(function(evt) {
         cookies.set(cookieName, announcementId);
