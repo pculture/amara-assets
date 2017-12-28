@@ -41,8 +41,8 @@
 label {
   display: inline-block;
   max-width: 100%;
-  margin-bottom: 5px;
-  font-weight: inherit;
+  margin-bottom: 0;
+  font-weight: bold;
   color: $gray-darker;
 }
 textarea {
@@ -67,6 +67,10 @@ select {
   &:focus {
     outline: none;
   }
+}
+
+.form-group {
+  margin-bottom: 20px;
 }
 
 // placeholders
@@ -285,22 +289,22 @@ select {
 // <div class="form-group">
 //   <label for="">Email address</label>
 //   <input type="text" class="form-control" id="" placeholder="Enter email address" value="email@email.com" disabled>
-//   <span class="help-block">Disabled message</span>
+//   <span class="helpBlock">Disabled message</span>
 // </div>
 // <div class="form-group has-success">
 //   <label class="control-label" for="inputSuccess1">Input with success</label>
 //   <input type="text" class="form-control" id="inputSuccess1" value="email@email.com">
-//   <span class="help-block">Success message</span>
+//   <span class="helpBlock">Success message</span>
 // </div>
 // <div class="form-group has-warning">
 //   <label class="control-label" for="inputWarning1">Input with warning</label>
 //   <input type="text" class="form-control" id="inputWarning1" value="email@email.com">
-//   <span class="help-block">Warning message</span>
+//   <span class="helpBlock">Warning message</span>
 // </div>
 // <div class="form-group has-error">
 //   <label class="control-label" for="inputError1">Input with error</label>
 //   <input type="text" class="form-control" id="inputError1" value="email@email.com">
-//   <span class="help-block">Error message</span>
+//   <span class="helpBlock">Error message</span>
 // </div>
 //
 // Styleguide inputstates
@@ -309,21 +313,21 @@ select {
   &.has-success {
     .form-control,
     label,
-    .help-block,
+    .helpBlock,
     .input-control { border-color: $state-success-border !important; color: $state-success-text !important; }
   }
   &.has-warning {
    .form-control,
    label,
-    .help-block,
-    .input-control { border-color: $state-warning-border !important; color: $state-warning-text !important; }
+   .helpBlock,
+   .input-control { border-color: $state-warning-border !important; color: $state-warning-text !important; }
   }
   &.has-error {
     .form-control,
     label,
-    .help-block,
+    .helpBlock,
     .input-control { border-color: $state-danger-border !important; color: $state-danger-text !important; }
-    .help-block {
+    .helpBlock {
       i {
         padding: 0 5px 0 0;
       }
@@ -335,10 +339,9 @@ select {
 
 .helpBlock {
   display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: 4px;
   font-size: 13px;
-  color: $gray;
+  color: $gray-darker;
 }
 
 .helpBlock-radio {
