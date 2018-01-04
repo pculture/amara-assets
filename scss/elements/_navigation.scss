@@ -179,6 +179,8 @@
   grid-template-areas: "brand nav cta";
   align-items: center;
 
+  padding: 0;
+
   .primarynav {
     ul {
       list-style: none;
@@ -397,45 +399,39 @@
   }
 }
 
+@media(max-width: $screen-lg-max) {
+  #mainnav {
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "cta cta"
+                         "brand nav";
+
+    width: 100%;
+  }
+
+  .mainnav-brand {
+    padding-left: 20px;
+  }
+
+  .mainnav-nav {
+    justify-self: right;
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .mainnav-cta {
+    width: 100%;
+    display: table-caption;
+  }
+
+  #mainnav .primary-cta span {
+    display: inline-block;
+    margin-left: 3px;
+  }
+}
 
 
 // Media Queries
-@media(max-width: $screen-lg-max) {
-  #mainnav {
-    .container {
-      width: 100%;
-      flex-wrap: wrap;
-    }
-    .brand {
-      margin-left: 20px;
-    }
-    .primarynav {
-      margin-right: 20px;
-    }
-    .primary-cta {
-      width: 100%;
-      span {
-        display: inline-block;
-        margin-left: 3px;
-      }
-    }
-  }
-}
-
-@media(max-width: $screen-md-max) {
-  #mainnav {
-    .navbar-nav {
-      margin-left: 60px;
-      li {
-        a {
-          padding: 0 12px;
-          font-size: 17px;
-        }
-      }
-    }
-  }
-}
-
 @media(max-width: $screen-sm-max) {
   #mainnav {
     .navbar-brand {
