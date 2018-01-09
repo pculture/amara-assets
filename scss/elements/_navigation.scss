@@ -24,24 +24,7 @@
     padding: 0;
     li {
       float: left;
-      margin: 0 -2px;
       padding: 0;
-      i.icon {
-         font-size: 18px;
-      }
-    }
-  }
-  a, button {
-    display: inline-block;
-    margin: 0;
-    padding: 0 20px;
-    font-size: 14px;
-    line-height: 30px;
-    color: #fff;
-    font-weight: 400;
-    text-transform: uppercase;
-    &:hover, &:focus {
-
     }
   }
   .dropdown-menu {
@@ -58,6 +41,7 @@
     }
     li {
       float: none;
+      margin: 0;
       &.separator {
         border-top: 1px solid $gray;
       }
@@ -68,6 +52,7 @@
         color: $gray-darker;
         @include transition(.3s);
         text-transform: none;
+        padding: 4px 20px;
         &:hover, &:focus {
           background-color: $gray;
           color: #fff;
@@ -80,12 +65,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    a {
-      background-color: $plum;
-    }
-    button {
-      background-color: $gray-lighter;
-      color: $plum;
+    > ul > li {
+      margin-right: 4px;
     }
   }
   // Application Navigation
@@ -93,13 +74,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding-right: 10px;
-    a.button, button {
-      border-radius: 0;
-      border: 0;
-      padding: 0 20px;
-      background-color: $amaranth;
-      font-weight: 700;
+    > ul > li {
+      margin-left: 4px;
     }
     ul {
       display: inline-block;
@@ -169,14 +145,63 @@
   }
 }
 
+.topnav-button {
+  display: inline-block;
+  margin: 0;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 400;
+
+  &:hover {
+    color: #fff;
+    background-color: lighten($gray-darker, 10%);
+  }
+
+  &.amaranth {
+    background-color: $amaranth;
+    &:hover {
+      background-color: lighten($amaranth, 7%);
+    }
+  }
+
+  &.plum {
+    background-color: $plum;
+    &:hover {
+      background-color: lighten($plum, 10%);
+    }
+  }
+
+  &.gray {
+    background-color: $gray-lighter;
+    color: $plum;
+    &:hover {
+      color: lighten($plum, 30%);
+    }
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+}
+
+.topnav-search {
+  font-size: 18px;
+}
+
+
 #mainnav {
   // Fallback for browsers that don't support grid
   display: table;
   // Use CSS grid for modern browsers
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
+  grid-template-columns: 200px 1fr;
   grid-template-rows: 100%;
-  grid-template-areas: "brand nav cta";
+  grid-template-areas: "brand nav";
   align-items: center;
 
   padding: 0;
@@ -211,27 +236,6 @@
       }
     }
   }
-
-  .primary-cta {
-    display: block;
-    padding: 8px 20px;
-    margin: auto 0;
-    line-height: 1;
-    background-color: $lime;
-    color: #fff;
-    text-align: center;
-    font-weight: 400;
-    font-size: 17px;
-    @include transition();
-    span {
-      display: block;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    &:hover, &:focus {
-      background-color: $teal;
-    }
-  }
 }
 
 .mainnav-brand {
@@ -242,7 +246,6 @@
   // Use CSS grid for modern browsers
   grid-area: brand;
   justify-self: left;
-
 
   font-size: 24px;
   white-space: nowrap;
@@ -269,15 +272,13 @@
   // Use CSS grid for modern browsers
   grid-area: nav;
   justify-self: center;
-}
-.mainnav-cta {
-  // Fallback for browsers that don't support grid
-  display: table-cell;
-  width: 200px;
-  vertical-align: middle;
-  // Use CSS grid for modern browsers
-  grid-area: cta;
-  justify-self: right;
+  // Common code
+  margin-right: 200px;
+  &.wide {
+    justify-self: right;
+    text-align: right;
+    margin-right: 0;
+  }
 }
 
 // Primary Navigation: Mobile
@@ -360,18 +361,6 @@
         display: block;
         width: 100%;
         border-bottom: 1px solid $gray-lighter;
-        a, button {
-          display: block;
-          width: 100%;
-          padding: 12px 20px;
-          background-color: $gray;
-          color: #fff;
-          text-align: left;
-          font-weight: 400;
-          &:hover, &:focus {
-            background-color: $plum;
-          }
-        }
       }
     }
     .dropdown-menu {
@@ -387,13 +376,6 @@
         &:last-child {
           border: none;
         }
-        a {
-          color: $gray-darker;
-          background-color: #fff;
-          &:hover, &:focus {
-            background-color: $gray-lighter;
-          }
-        }
       }
     }
   }
@@ -407,26 +389,13 @@
                          "brand nav";
 
     width: 100%;
-  }
-
-  .mainnav-brand {
-    padding-left: 20px;
+    padding: 0 20px;
   }
 
   .mainnav-nav {
     justify-self: right;
     text-align: right;
-    padding-right: 20px;
-  }
-
-  .mainnav-cta {
-    width: 100%;
-    display: table-caption;
-  }
-
-  #mainnav .primary-cta span {
-    display: inline-block;
-    margin-left: 3px;
+    margin-right: 0;
   }
 }
 
