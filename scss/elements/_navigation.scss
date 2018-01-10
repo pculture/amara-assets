@@ -152,13 +152,18 @@
   border: 0;
   border-radius: 0;
   font-size: 14px;
+  font-family: $headings_font_family;
   line-height: 30px;
   color: #fff;
+  background-color: $gray-darker;
   text-transform: uppercase;
   font-weight: 400;
 
-  &:hover {
+  &:hover, &:visited {
     color: #fff;
+  }
+
+  &:hover {
     background-color: lighten($gray-darker, 10%);
   }
 
@@ -179,6 +184,9 @@
   &.gray {
     background-color: $gray-lighter;
     color: $plum;
+    &:visited {
+      color: $plum;
+    }
     &:hover {
       color: lighten($plum, 30%);
     }
