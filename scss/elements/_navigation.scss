@@ -145,7 +145,10 @@
   }
 }
 
-.topnav-button {
+// Include the element to increase specificity.  This is mostly for the
+// old-style pages and we could probably remove it once we are using only
+// futurueui
+a.topnav-button, button.topnav-button {
   display: inline-block;
   margin: 0;
   padding: 0 20px;
