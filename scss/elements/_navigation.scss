@@ -391,6 +391,16 @@ a.topnav-button, button.topnav-button {
       }
     }
   }
+
+  .topnav-button {
+    width: 100%;
+    padding: 8px 20px;
+  }
+
+  .mainnav-nav {
+    display: block;
+    text-align: left;
+  }
 }
 
 @media(max-width: $screen-lg-max) {
