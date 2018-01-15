@@ -138,58 +138,64 @@ select {
 // Checkboxes and radios
 //
 // Example:
-// <div class="form-group">
-//   <div class="radio">
-//     <input type="checkbox" id="" value="" checked>
-//     <label for=""><span></span> Selected</label>
-//   </div>
-// </div>
-// <div class="form-group">
-//   <div class="radio">
-//     <input type="checkbox" id="" value="">
-//     <label for=""><span></span> unselected</label>
-//   </div>
-// </div>
-// <div class="form-group">
-//   <div class="radio">
-//     <input type="checkbox" id="" value="">
-//     <label for=""><span></span> unselected</label>
-//   </div>
-// </div>
-// <hr>
+//
 // <div class="form-group">
 //   <div class="checkbox">
-//     <input type="checkbox" id="" value="" checked="">
-//     <label for=""><span></span>Selected</label>
+//     <input type="checkbox" id="checkbox00" value="">
+//     <label for="checkbox00"><span></span> I can haz?</label>
 //   </div>
 // </div>
+//
 // <div class="form-group">
-//   <div class="checkbox">
-//     <input type="checkbox" id="" value="">
-//     <label for=""><span></span>Unselected</label>
-//   </div>
+//   <label>What's you're favorite sandwich?</label>
+//   <ul>
+//     <li class="radio">
+//       <input checked type="radio" id="radio00" value="club" name="delete">
+//       <label for="radio00"><span></span>Club</label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio01" value="blt" name="delete">
+//       <label for="radio01"><span></span>BLT</label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio02" value="sub" name="delete">
+//       <label for="radio02"><span></span>Submarine</label>
+//     </li>
+//   </ul>
 // </div>
+//
 // <div class="form-group">
-//   <div class="checkbox">
-//     <input type="checkbox" id="" value="">
-//     <label for=""><span></span>Unselected</label>
-//   </div>
+//   <label>Who is you're favorite Golden Girl?</label>
+//   <ul>
+//     <li class="radio">
+//       <input type="radio" id="radio10" value="dorthy" name="delete">
+//       <label for="radio10"><span></span>Dorthy
+//         <p class="helpBlock helpBlock-radio">Played by Bea Arthur</p>
+//       </label>
+//     </li>
+//     <li class="radio">
+//       <input checked type="radio" id="radio11" value="rose" name="delete">
+//       <label for="radio11"><span></span>rose
+//         <p class="helpBlock helpBlock-radio">Played by Betty White</p>
+//       </label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio12" value="blanch" name="delete">
+//       <label for="radio12"><span></span>blanch
+//         <p class="helpBlock helpBlock-radio">Played by Rue McClanahan</p>
+//       </label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio13" value="sophia" name="delete">
+//       <label for="radio13"><span></span>sophia
+//         <p class="helpBlock helpBlock-radio">Played by Estelle Getty</p>
+//       </label>
+//     </li>
+//   </ul>
 // </div>
+//
 //
 // Styleguide checkboxes
-
-// Help blocks
-//
-// Example:
-// <div class="form-group">
-//   <div class="radio">
-//     <input type="radio" name="remove_video" id="remove_team" value="team">
-//     <label for="remove_team"><span></span>Just remove the video from the team.</label>
-//     <p class="helpBlock helpBlock-radio">It will remain on Amara but will no longer be subject to the team's permissions and workflows. Any outstanding tasks will be deleted.</p>
-//   </div>
-// </div>
-// 
-// Styleguide helpBlocks
 
 .checkbox, .radio {
   margin: 0;
@@ -226,6 +232,10 @@ select {
     &:checked {
       &+label {
         font-weight: 600;
+
+        .helpBlock {
+          font-weight: normal;
+        }
         span {
           &:after {
             background-color: $gray-light;
@@ -275,9 +285,13 @@ select {
     }
   }
 }
-
-
-
+.radio + .radio, .checkbox + .checkbox {
+  // undo bootstrap's -5px
+  margin-top: 0;
+}
+.radio {
+    padding-bottom: 4px;
+}
 
 // Input States
 // 
@@ -345,7 +359,8 @@ select {
 }
 
 .helpBlock-radio {
-  margin-left: 20px;
+  margin-left: 24px;
+  margin-top: 0;
 }
 
 
