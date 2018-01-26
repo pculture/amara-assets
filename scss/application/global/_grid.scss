@@ -241,3 +241,10 @@ $name: xs;
 }
 
 
+.container-md {
+  max-width: nth(nth($breakpoints, 2), 3);
+}
+
+.container-sm {
+  max-width: nth(nth($breakpoints, 1), 3);
+}
