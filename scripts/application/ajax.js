@@ -216,8 +216,14 @@ function ajaxLink(link) {
 
 function ajaxRefresh(body) {
     var seconds = $(body).data('seconds');
+    var query = $(body).data('query');
     if(seconds === undefined) {
         return;
+    }
+    if(query) {
+        var url = '?' + query;
+    } else {
+        var url = '';
     }
 
     function scheduleRefresh() {
@@ -225,7 +231,7 @@ function ajaxRefresh(body) {
     }
 
     function doRefresh() {
-        $.ajax('', {
+        $.ajax(url, {
             success: processAjaxResponse,
             complete: scheduleRefresh,
         });
