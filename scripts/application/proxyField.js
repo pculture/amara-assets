@@ -26,7 +26,7 @@ function proxyField(container) {
     var container = $(container);
     var realField = $(container.data('proxyFor'));
     $(':input', container).change(updateRealField);
-    if(!container.hasClass('deferUpdate')) {
+    if(container.hasClass('updateOnKeyUp')) {
         $('input[type=text], textarea', container).keyup(updateRealField);
     }
     function updateRealField() {

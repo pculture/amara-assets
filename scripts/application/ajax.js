@@ -135,7 +135,7 @@ function ajaxForm(form) {
 
     if(form.hasClass('updateOnChange')) {
         $(':input', form).change(submitIfChanged);
-        $('input[type=text]', form).keyup(submitIfChanged);
+        $('input[type=text].updateOnKeyUp', form).keyup(submitIfChanged);
     }
 
     function schedulePeriodicSubmit() {
