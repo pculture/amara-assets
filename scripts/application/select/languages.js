@@ -71,6 +71,20 @@ function languageChoiceData(select) {
       });
     }
   }
+  if(sectionEnabled('dont-set')) {
+      var dontSetChoice = {
+          id: 'dont-set',
+          text: gettext("Don't set")
+      };
+      if(flat) {
+          data.push(dontSetChoice);
+      } else {
+          data.push({
+            text: gettext('Other'),
+            children: [dontSetChoice]
+          });
+      }
+  }
   return data;
 }
 
