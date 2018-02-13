@@ -84,6 +84,8 @@ select.select {
   &.border .select2-selection {
     border-radius: 4px;
     border: 1px solid lighten($gray, 15%);
+    min-height: 39px;
+    padding-top: 4px;
   }
 
   &.select2-container--focus:not(.select2-container--open) .select2-selection {
