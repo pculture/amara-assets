@@ -28,7 +28,12 @@ $.behaviors('.newMessages', function(elt) {
     $('.newMessages-hide', elt).click(function(evt) {
         cookies.set(cookieName, lastUnread);
         elt.hide();
+        $.post({
+            url: "/auth/set-hidden-message-id/",
+            data: { message_id: lastUnread },
+            headers: { "X-CSRFToken": cookies.get('csrftoken')}
+        })
         evt.preventDefault();
-        evt.cancelPropagation();
+        evt.stopPropagation();
     });
 });
