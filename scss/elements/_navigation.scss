@@ -404,16 +404,6 @@ a.topnav-button, button.topnav-button {
 }
 
 @media(max-width: $screen-lg-max) {
-  #mainnav {
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 100%;
-    grid-template-areas: "cta cta"
-                         "brand nav";
-
-    width: 100%;
-    padding: 0 20px;
-  }
-
   .mainnav-nav {
     justify-self: right;
     text-align: right;
