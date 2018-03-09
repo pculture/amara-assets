@@ -24,6 +24,7 @@
   - buttonOptions
   - asyncButton
 - - Forms
+  - forms
   - fields
   - fileUpload
   - checkboxes

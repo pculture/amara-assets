@@ -141,6 +141,10 @@ img.pull-right {
   @include palette($gray-lighter, $plum);
 }
 
+.bg-white {
+  @include palette($white, $gray);
+}
+
 .bg-sea-green {
   @include palette($sea-green, #ffffff);
   &.gradient {
