@@ -186,3 +186,68 @@ table.historyTable {
     }
   }
 }
+
+// Assignment history table
+//
+// Used to display a history of assignment for a particular user.  The first column is the video title, the second column is the language, and the last column is the list of steps.
+//
+// Example:
+// <table class="assignmentHistoryTable">
+//   <tbody>
+//     <tr>
+//       <td>4 Lessons in Creativity | Julie Burstein | TED Talks</td>
+//       <td>English</td>
+//       <td>
+//         <ul class="stepList tight">
+//           <li>
+//             <a href="/en/teams/collab/member/pierre/">
+//               <span class="completed" data-toggle="tooltip" data-placement="top" title="Transcriber: Pierre">
+//                 <span class="avatar"><img src="https://www.gravatar.com/avatar/e51c0a53b4f3bcac53ec8925b4b7b344?s=30&amp;d=https%3A%2F%2Fs3.amazonaws.com%2Fs3.www.universalsubtitles.org%2Fgravatar%2Favatar-default-30.png"></span>
+//               </span>
+//             </a>
+//           </li>
+//           <li>
+//             <a href="/en/teams/collab/member/peter/">
+//               <span data-toggle="tooltip" data-placement="top" title="Reviewer: Peter">
+//                 <span class="avatar"><img src="https://www.gravatar.com/avatar/08246082c92c89bb256bf463b32bdc92?s=30&amp;d=https%3A%2F%2Fs3.amazonaws.com%2Fs3.www.universalsubtitles.org%2Fgravatar%2Favatar-default-30.png"></span>
+//               </span>
+//             </a>
+//           </li>
+//           <li>
+//             <a href="/en/teams/collab/member/ben/">
+//               <span data-toggle="tooltip" data-placement="top" title="Approver: ben">
+//                 <span class="avatar"><img src="https://www.gravatar.com/avatar/2c66f6142933ed5a97948f89cb1c7be0?s=30&amp;d=https%3A%2F%2Fs3.amazonaws.com%2Fs3.www.universalsubtitles.org%2Fgravatar%2Favatar-default-30.png"></span>
+//               </span>
+//             </a>
+//           </li>
+//           </ul>
+//           </td>
+//     </tr>
+//   </tbody>
+// </table>
+// Styleguide assignmentHistoryTable
+
+.assignmentHistoryTable {
+  @extend .table;
+  @extend .table-striped;
+  table-layout: fixed;
+  tr {
+    td, th {
+      padding: 0px 10px;
+      height: 40px;
+      line-height: 40px;
+      vertical-align: middle;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &:first-child {
+        width: 50%;
+      }
+      &:last-child {
+        width: 120px;
+        text-align: right;
+
+      }
+    }
+  }
+}

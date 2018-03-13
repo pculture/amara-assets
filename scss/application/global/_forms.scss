@@ -367,4 +367,11 @@ select {
   margin-top: 0;
 }
 
+.helpList {
+  margin-left: 24px;
+  font-size: 13px;
+  color: $gray-darker;
+  list-style-type: disc;
+  list-style-position: inside;
 
+}

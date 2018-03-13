@@ -21,7 +21,6 @@
 @import 'application/global/grid';
 
 @import 'application/global/buttons';
-@import 'application/global/tables';
 @import 'application/global/tabs';
 @import 'application/global/navs';
 @import 'application/global/dropdowns';
@@ -32,7 +31,6 @@
 @import 'application/global/indicators';
 @import 'application/global/scrollbars';
 @import 'application/global/charts';
-@import "elements/alerts";
 
 // Elements
 @import 'application/elements/avatars';
@@ -53,6 +51,8 @@
 @import 'application/elements/searchbar';
 @import 'application/elements/zero_state';
 @import 'application/elements/select';
+@import "elements/alerts";
+@import 'elements/tables';
 
 // Views
 @import 'application/views/style_guide';
