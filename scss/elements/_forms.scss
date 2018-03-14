@@ -1,16 +1,17 @@
 // Forms
 //
-// General form layout
+// Forms are used to request input from users.  They generally consist of a
+// list of inputs, followed by action buttons to submit the form.
 // 
 // Example:
-// <form class="form">
+// <form>
 //   <div class="form-group">
 //     <label for="">Email</label>
-//     <input type="email" class="form-control" id="" placeholder="Enter Email">
+//     <input type="email" id="">
 //   </div>
 //   <div class="form-group">
 //     <label for="">Password</label>
-//     <input type="password" class="form-control" id="" placeholder="Enter Password">
+//     <input type="password" id="">
 //   </div>
 //   <div class="form-actions">
 //     <button class="button borderless">Cancel</button>
@@ -20,43 +21,56 @@
 //
 // Styleguide forms
 
-.form {
-  padding-top: 12px;
-  padding-bottom: 18px;
-}
-
-// Standard Fields
+// Fields
 //
-// Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with .form-control are set to width: 100%; by default. Wrap labels and controls in .form-group for optimum spacing.
-// 
+// Fields input a single piece of data for a form.  Fields consist of an input,
+// along with supporting elements like labels, help text, error messages, etc.
+//
+// ### Layout
+//
+//   - We use a single column for everything.  This allows users to scan the forms easily.
+//   - We size inputs to 100% width of the containing element
+//   - Wrap the input and label together in a .form-group div.  This adds spacing between each field.
+//   - Inside a field, place the label first, followed by the form field, followed by optional help/error text.
+//
+// ### Labels and help text
+//   - Use labels for all fields.
+//   - For fields that are not obvious, add help text using the helpBlock class.
+//   - You can also use the helpList class to show a bullet list.
+//   - In general, use labels and help text instead of placeholder text.
+//
+// ### Required vs optional
+//   - Most fields in a form should be required.  This is for a couple reasons:
+//        - We want to limit the number of fields to create simlper forms .  If a field is not required, then consider removing it.
+//        - Users typically expect to fill in all fields.  Therefore the default should be required and the optional should be marked as an alternate.
+//   - Mark optional fields with "(optional)" in the label.  Use the fieldOptional class for this.
+//
 // Example:
 // <div class="form-group">
-//   <label for="">Text Input</label>
-//   <input type="text" class="form-control" id="" placeholder="Enter Text">
-// </div>
-// <div class="form-group">
 //   <label for="">Email</label>
-//   <input type="email" class="form-control" id="" placeholder="Enter Email">
+//   <input type="email" id="">
 // </div>
 // <div class="form-group">
 //   <label for="">Password</label>
-//   <input type="password" class="form-control" id="" placeholder="Enter Password">
+//   <input type="password" id="">
+//   <span class="helpBlock">See this <a href="https://www.wikihow.com/Create-a-Secure-Password">WikiHow article</a> for advice</span>
 // </div>
 // <div class="form-group">
-//   <label for="">Collaborator</label>
-//   <input type="text" class="form-control" id="" placeholder="+ Add Collaborator">
+//   <label for="">URL <span class="fieldOptional">(optional)</span></label>
+//   <input type="text" id="">
+// </div>
+// <div class="form-group">
+//   <label for="">Additional Information</label>
+//   <textarea class="form-control"></textarea>
+//   <ul class="helpList">
+//     <li>Keep your text concise</li>
+//     <li>Prefer active voice to passive</li>
+//     <li>Read your text aloud before submitting it</li>
+//   </ul>
 // </div>
 // <div class="form-group">
 //   <label for="">Date</label>
-//   <input type="text" class="form-control" id="" placeholder="+ Add date">
-// </div>
-// <div class="form-group">
-//   <label for="">URL</label>
-//   <input type="text" class="form-control" id="" placeholder="http://video.tube.com/8Sc2i7z">
-// </div>
-// <div class="form-group">
-//   <label for="">Textarea</label>
-//   <textarea class="form-control"></textarea>
+//   <input type="text" id="">
 // </div>
 // <div class="form-actions">
 //   <button class="button borderless">Cancel</button>
@@ -69,7 +83,7 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 0;
-  font-weight: bold;
+  font-weight: 600;
   color: $gray-darker;
 }
 textarea {
@@ -104,6 +118,10 @@ select {
   text-align: right;
 }
 
+.fieldOptional {
+  color: $gray-dark;
+}
+
 // placeholders
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -128,7 +146,7 @@ select {
 // <div class="form-group">
 //   <label for="">Change thumbnail</label>
 //   <div class="input-group fileUpload">
-//     <input type="text" class="form-control" readonly>
+//     <input type="text" readonly>
 //     <label class="input-group-btn">
 //         <span class="button buttonFile">
 //             Browse&hellip; <input type="file" style="display: none;" multiple>
@@ -324,35 +342,20 @@ select {
     padding-bottom: 4px;
 }
 
-// Input States
+// Field errors
+//
+// To display field errors:
+//   - Add the has-error class to the form-group
+//   - Replace the help text with the error message
 // 
 // Example:
-// <div class="form-group">
-//   <label for="">Email address</label>
-//   <input type="text" class="form-control" id="" placeholder="Enter email address" value="email@email.com">
-// </div>
-// <div class="form-group">
-//   <label for="">Email address</label>
-//   <input type="text" class="form-control" id="" placeholder="Enter email address" value="email@email.com" disabled>
-//   <span class="helpBlock">Disabled message</span>
-// </div>
-// <div class="form-group has-success">
-//   <label class="control-label" for="inputSuccess1">Input with success</label>
-//   <input type="text" class="form-control" id="inputSuccess1" value="email@email.com">
-//   <span class="helpBlock">Success message</span>
-// </div>
-// <div class="form-group has-warning">
-//   <label class="control-label" for="inputWarning1">Input with warning</label>
-//   <input type="text" class="form-control" id="inputWarning1" value="email@email.com">
-//   <span class="helpBlock">Warning message</span>
-// </div>
 // <div class="form-group has-error">
-//   <label class="control-label" for="inputError1">Input with error</label>
-//   <input type="text" class="form-control" id="inputError1" value="email@email.com">
-//   <span class="helpBlock">Error message</span>
+//   <label for="inputError1">Email</label>
+//   <input type="text" id="inputError1" value="email.com">
+//   <span class="helpBlock">Invalid Email Address</span>
 // </div>
 //
-// Styleguide inputstates
+// Styleguide fieldErrors
 
 .form-group {
   &.has-success {
@@ -400,5 +403,57 @@ select {
   color: $gray-darker;
   list-style-type: disc;
   list-style-position: inside;
+}
 
+// Fieldsets
+//
+// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header
+//
+// Example:
+// <form>
+//   <fieldset>
+//     <legend>Personal information</legend>
+//     <div class="form-group">
+//       <label for="name">Name</label>
+//       <input type="text" id="name">
+//     </div>
+//     <div class="form-group">
+//       <label for="email">Email</label>
+//       <input type="text" id="email">
+//     </div>
+//     <div class="form-group">
+//       <label for="phone_number">Phone number</label>
+//       <input type="text" id="phone_number">
+//     </div>
+//   </fieldset>
+//   <fieldset>
+//     <legend>Account information</legend>
+//     <div class="form-group">
+//       <label for="username">Username</label>
+//       <input type="text" id="username">
+//     </div>
+//     <div class="form-group">
+//       <label for="password1">Password</label>
+//       <input type="text" id="password1">
+//     </div>
+//     <div class="form-group">
+//       <label for="password2">Confirm password</label>
+//       <input type="text" id="password2">
+//     </div>
+//   </fieldset>
+//   <div class="form-actions">
+//     <button class="button borderless">Cancel</button>
+//     <button type="submit" class="button cta">Submit</button>
+//   </div>
+// </form>
+//
+// Styleguide fieldsets
+
+fieldset {
+  padding-bottom: 20px;
+}
+
+legend {
+  margin-bottom: 12px;
+  border-bottom: 1px solid $gray-light;
 }
