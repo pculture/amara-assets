@@ -83,6 +83,7 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 0;
+  font-size: 18px;
   font-weight: 600;
   color: $gray-darker;
 }
@@ -101,10 +102,10 @@ select {
   width: 100%;
   padding: 9px 10px 6px 10px;
   margin: 0;
-  border: 1px solid lighten($gray, 15%);
+  border: 1px solid $silver;
   border-radius: $border-radius-base;
   background-color: #fff;
-  color: $gray-dark;
+  color: $gray-darker;
   &:focus {
     outline: none;
   }
@@ -253,6 +254,7 @@ select {
     display: none;
     margin-left: 0;
     &+label {
+      font-size: 14px;
       span {
         position: relative;
         display: inline-block;

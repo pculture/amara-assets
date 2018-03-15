@@ -173,6 +173,8 @@ function handleClear(select, options) {
 function makeSelectionAdapter(select, options) {
   if(options.multiple) {
     var adapter = MultipleSelection;
+    // select2 doesn't create the dropdown arrow for multi-selects, so we need to do it ourselves
+    adapter = Utils.Decorate(adapter, AddSelectionArrow);
   } else {
     var adapter = SingleSelection;
   }
@@ -194,6 +196,18 @@ function makeDropdownAdapter(select) {
   return adapter;
 }
 
+
+function AddSelectionArrow() { }
+AddSelectionArrow.prototype.render = function (decorated) {
+  var $selection = decorated.call(this);
+  $selection.append($(
+    '<span class="select2-selection__arrow" role="presentation">' +
+    '<b role="presentation"></b>' +
+    '</span>'
+  ));
+  return $selection;
+}
+
 function DropdownSearchPlaceholder() { }
 DropdownSearchPlaceholder.prototype.render = function (decorated) {
   var $rendered = decorated.call(this);
@@ -206,16 +220,13 @@ function addContainerClasses(select, options) {
   if(options.multiple) {
     container.addClass('multiple');
   }
-  if(select.hasClass('border')) {
-    container.addClass('border');
+  if(select.hasClass('selectFilter')) {
+    container.addClass('selectFilter');
   }
 }
 
 function templateResult(data, container) {
   var text = _.escape(data.text);
-  if(data.border) {
-    $(container).addClass('select2-results__option--border');
-  }
   if(data.avatar) {
     return data.avatar + text;
   } else {
