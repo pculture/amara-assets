@@ -18,7 +18,7 @@ require('./dialogs');
 require('./proxyField');
 require('./dependentSelect');
 require('./languageSwitcher');
-require('./select/main');
+require('../shared/select/main');
 require('./scrollBars');
 require('./selectList');
 require('./videoPage');

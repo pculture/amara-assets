@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+// 3rd party
+@import "../node_modules/select2/dist/css/select2";
+
 @import "variables";
 @import "mixins";
 @import "utilities";
@@ -34,6 +37,7 @@
 @import "elements/sitemap";
 @import "elements/consolidate_header";
 @import "elements/language_switcher";
+@import 'elements/select';
 
 // Views
 @import "views/home";

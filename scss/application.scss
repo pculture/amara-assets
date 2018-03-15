@@ -1,4 +1,8 @@
-@import 'vendor';
+// 3rd party
+@import "../node_modules/chartist/dist/chartist";
+@import "../node_modules/select2/dist/css/select2";
+@import "bootstrap/bootstrap-theme.min";
+@import "bootstrap/bootstrap.min";
 // Utils
 @import 'variables';
 @import 'application/variables';
@@ -50,7 +54,7 @@
 @import 'application/elements/switches';
 @import 'application/elements/searchbar';
 @import 'application/elements/zero_state';
-@import 'application/elements/select';
+@import 'elements/select';
 @import "elements/alerts";
 @import 'elements/tables';
 
@@ -64,9 +68,5 @@
 @import 'application/views/member_directory';
 @import 'application/views/activity_page';
 
-
-
-
 // Responsive
 @import 'application/media_queries';
-
