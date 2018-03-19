@@ -23,7 +23,7 @@ require('./scrollBars');
 require('./selectList');
 require('./videoPage');
 require('./videoSubtitles');
-require('./fileUpload');
+require('../shared/fileUpload');
 require('./clamp');
 require('./staffControls');
 require('./styleGuide');

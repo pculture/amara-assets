@@ -8,6 +8,7 @@ require('../shared/third-party/behaviors');
 require('../shared/announcements');
 require('../shared/messages');
 require('../shared/select/main');
+require('../shared/fileUpload');
 require('./ajax');
 require('./languageSwitcher');
 

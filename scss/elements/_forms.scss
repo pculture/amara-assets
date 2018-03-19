@@ -98,9 +98,9 @@ select {
 }
 input,
 select {
-  line-height: 22px;
+  line-height: 37px;
   width: 100%;
-  padding: 9px 10px 6px 10px;
+  padding: 0 10px;
   margin: 0;
   border: 1px solid $silver;
   border-radius: $border-radius-base;
@@ -147,7 +147,7 @@ select {
 // <div class="form-group">
 //   <label for="">Change thumbnail</label>
 //   <div class="input-group fileUpload">
-//     <input type="text" readonly>
+//     <input type="text" class="fileInputText" readonly>
 //     <label class="input-group-btn">
 //         <span class="button buttonFile">
 //             Browse&hellip; <input type="file" style="display: none;" multiple>
@@ -161,12 +161,15 @@ select {
 .buttonFile {
   position: relative;
   overflow: hidden;
+  border: 1px solid $silver;
+  border-width-left: 0;
   border-radius: 0 $border-radius-base $border-radius-base 0;
   padding: 0 10px;
-  line-height: 32px;
+  line-height: 37px;
   margin: 0;
   font-size: 12px;
   font-weight: 400;
+  background-color: $teal;
 }
 .buttonFile input[type=file] {
   position: absolute;
@@ -182,6 +185,11 @@ select {
   background: white;
   cursor: inherit;
   display: block;
+}
+.fileInputText {
+  border-radius: $border-radius-base 0 0 $border-radius-base;
+  border-right-width: 0;
+  background-color: $gray-light;
 }
 
 
@@ -409,7 +417,7 @@ select {
 
 // Fieldsets
 //
-// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header
+// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header.  Use .fieldsetHelpBlock to display help for the fieldset
 //
 // Example:
 // <form>
@@ -430,6 +438,7 @@ select {
 //   </fieldset>
 //   <fieldset>
 //     <legend>Account information</legend>
+//     <div class="fieldsetHelpBlock">Details for your Amara acount</div>
 //     <div class="form-group">
 //       <label for="username">Username</label>
 //       <input type="text" id="username">
@@ -460,6 +469,14 @@ legend {
   border-bottom: 1px solid $gray-light;
 }
 
+.fieldsetHelpBlock {
+  margin-top: -8px;
+  font-size: 13px;
+  color: $gray-darker;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
 // Hack to make the forms on marketing pages work.  We should unify the button code
 .form-actions .button {
   display: inline-block;
@@ -476,6 +493,7 @@ legend {
   background-image: none;
   white-space: nowrap;
   line-height: 1.42857;
+  text-transform: none;
   border-radius: 4px;
   user-select: none;
   touch-action: manipulation;
@@ -545,4 +563,8 @@ legend {
   i {
     margin-right: 9px;
   }
+}
+.buttonFile {
+  text-transform: none;
+  font-family: $font-family-sans-serif;
 }
