@@ -19,14 +19,12 @@
 
 var $ = require('jquery');
 var cookies = require('browser-cookies');
-var cookieName = 'hide_new_messages';
 
 $.behaviors('.newMessages', function(elt) {
     var elt = $(elt);
     var lastUnread = elt.attr('data-last-unread'); // use attr() instead of data(), because we want to avoid jQuery converting the value to an int
 
     $('.newMessages-hide', elt).click(function(evt) {
-        cookies.set(cookieName, lastUnread);
         elt.hide();
         $.post({
             url: "/auth/set-hidden-message-id/",
