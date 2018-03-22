@@ -83,7 +83,7 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   color: $gray-darker;
 }
@@ -105,6 +105,7 @@ select {
   border: 1px solid $silver;
   border-radius: $border-radius-base;
   background-color: #fff;
+  font-size: 14px;
   color: $gray-darker;
   &:focus {
     outline: none;
@@ -200,7 +201,7 @@ select {
 // <div class="form-group">
 //   <div class="checkbox">
 //     <input type="checkbox" id="checkbox00" value="">
-//     <label for="checkbox00"><span></span> I can haz?</label>
+//     <label for="checkbox00"><span class="checkbox-icon"></span> I can haz?</label>
 //   </div>
 // </div>
 //
@@ -209,15 +210,15 @@ select {
 //   <ul>
 //     <li class="radio">
 //       <input checked type="radio" id="radio00" value="club" name="delete">
-//       <label for="radio00"><span></span>Club</label>
+//       <label for="radio00"><span class="radio-icon"></span>Club</label>
 //     </li>
 //     <li class="radio">
 //       <input type="radio" id="radio01" value="blt" name="delete">
-//       <label for="radio01"><span></span>BLT</label>
+//       <label for="radio01"><span class="radio-icon"></span>BLT</label>
 //     </li>
 //     <li class="radio">
 //       <input type="radio" id="radio02" value="sub" name="delete">
-//       <label for="radio02"><span></span>Submarine</label>
+//       <label for="radio02"><span class="radio-icon"></span>Submarine</label>
 //     </li>
 //   </ul>
 // </div>
@@ -227,25 +228,25 @@ select {
 //   <ul>
 //     <li class="radio">
 //       <input type="radio" id="radio10" value="dorthy" name="delete">
-//       <label for="radio10"><span></span>Dorthy
+//       <label for="radio10"><span class="radio-icon"></span>Dorthy
 //         <p class="helpBlock helpBlock-radio">Played by Bea Arthur</p>
 //       </label>
 //     </li>
 //     <li class="radio">
 //       <input checked type="radio" id="radio11" value="rose" name="delete">
-//       <label for="radio11"><span></span>rose
+//       <label for="radio11"><span class="radio-icon"></span>rose
 //         <p class="helpBlock helpBlock-radio">Played by Betty White</p>
 //       </label>
 //     </li>
 //     <li class="radio">
 //       <input type="radio" id="radio12" value="blanch" name="delete">
-//       <label for="radio12"><span></span>blanch
+//       <label for="radio12"><span class="radio-icon"></span>blanch
 //         <p class="helpBlock helpBlock-radio">Played by Rue McClanahan</p>
 //       </label>
 //     </li>
 //     <li class="radio">
 //       <input type="radio" id="radio13" value="sophia" name="delete">
-//       <label for="radio13"><span></span>sophia
+//       <label for="radio13"><span class="radio-icon"></span>sophia
 //         <p class="helpBlock helpBlock-radio">Played by Estelle Getty</p>
 //       </label>
 //     </li>
@@ -261,87 +262,14 @@ select {
   input[type="checkbox"] {
     display: none;
     margin-left: 0;
-    &+label {
-      font-size: 14px;
-      span {
-        position: relative;
-        display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        margin-right: 8px;
-        vertical-align: middle;
-        background: #ffffff;
-        border: 1px solid $gray-light;
-        border-radius: 50%;
-        cursor: pointer;
-        &:after {
-          font-family: 'amara';
-          display: block;
-          content: "";
-          position: absolute;
-          height: 8px;
-          width: 8px;
-          top: 3px;
-          left: 3px;
-          border-radius: 50%;
-          background-color: transparent;
-        }
-      }
-    }
-    &:checked {
-      &+label {
-        font-weight: 600;
-
-        .helpBlock {
-          font-weight: normal;
-        }
-        span {
-          &:after {
-            background-color: $gray-light;
-          }
-        }
-      }
-    }
   }
   label {
     min-height: 20px;
+    font-size: 14px;
     padding-left: 0px;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
-  }
-}
-.checkbox {
-  input[type="radio"],
-  input[type="checkbox"] {
-    &+label {
-      span {
-        border-radius: 2px;
-      }
-    }
-    &:checked {
-      &+label {
-        span {
-          background-color: $gray-light;
-          &:after {
-            font-family: 'amara';
-            content: "\e90a";
-            display: block;
-            position: absolute;
-            height: 1rem;
-            line-height: 1rem;
-            width: 1rem;
-            top: 0;
-            left: -1px;
-            text-align: center;
-            background-color: transparent;
-            color: #fff;
-            font-size: 10px;
-            text-align: center;
-          }
-        }
-      }
-    }
   }
 }
 .radio + .radio, .checkbox + .checkbox {
@@ -350,6 +278,56 @@ select {
 }
 .radio {
     padding-bottom: 4px;
+}
+
+.radio-icon, .checkbox-icon {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: #ffffff;
+  border: 1px solid $gray-light;
+  cursor: pointer;
+}
+.radio-icon {
+  border-radius: 50%;
+  &:after {
+    display: block;
+    content: "";
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    top: 3px;
+    left: 3px;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+}
+input:checked + label .radio-icon:after {
+  background-color: $plum;
+}
+
+.checkbox-icon {
+  border-radius: 2px;
+}
+input:checked + label .checkbox-icon {
+  background-color: $plum;
+  &:after {
+    font-family: 'amara';
+    content: "\e90a";
+    display: block;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    font-size: 12px;
+    line-height: 12px;
+    top: 2px;
+    left: 0;
+    text-align: center;
+    color: #fff;
+  }
 }
 
 // Field errors
