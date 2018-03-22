@@ -92,6 +92,13 @@ select.select {
     background-color: #fff;
   }
 
+  &.select2-container--below .select2-selection {
+    border-radius: 4px 4px 0 0;
+  }
+  &.select2-container--above .select2-selection {
+    border-radius: 0 0 4px 4px;
+  }
+
   &.selectFilter .select2-selection {
     border-radius: 4px;
     background-color: transparent;
@@ -124,7 +131,7 @@ select.select {
     height: 24px;
     line-height: 24px;
     list-style-type: none;
-    margin-top: 3px;
+    margin-top: 6px;
     margin-right: 6px;
     padding: 0px 8px;
   }
@@ -135,10 +142,16 @@ select.select {
   }
 
   .select2-dropdown {
-    top: 5px;
-    border: 1px solid $gray-lighter;
+    border: 1px solid $silver;
     box-shadow: 0 6px 12px rgba(0,0,0,0.175);
   }
+  .select2-dropdown--below {
+    border-top: 0;
+  }
+  .select2-dropdown--above {
+    border-bottom: 0;
+  }
+
   .select2-search--dropdown {
     padding: 4px 0px;
   }
