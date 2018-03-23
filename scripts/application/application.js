@@ -24,6 +24,7 @@ require('./selectList');
 require('./videoPage');
 require('./videoSubtitles');
 require('../shared/fileUpload');
+require('../shared/compoundField');
 require('./clamp');
 require('./staffControls');
 require('./styleGuide');

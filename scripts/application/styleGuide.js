@@ -19,7 +19,7 @@
  */
 
 var $ = require('jquery');
-var contentUpdate = require('./contentUpdate');
+var contentUpdate = require('../shared/contentUpdate');
 
 $.behaviors('.styleGuide', styleGuide);
 

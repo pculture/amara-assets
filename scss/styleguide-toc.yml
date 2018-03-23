@@ -29,10 +29,11 @@
 - - Forms
   - forms
   - fields
+  - checkboxes
   - fieldsets
   - fieldErrors
   - fileUpload
-  - checkboxes
+  - compoundField
   - switch
   - searchbar
   - selects

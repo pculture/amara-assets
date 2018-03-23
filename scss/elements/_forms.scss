@@ -80,7 +80,7 @@
 // Styleguide fields
 
 label {
-  display: inline-block;
+  display: block;
   max-width: 100%;
   margin-bottom: 0;
   font-size: 14px;
@@ -97,7 +97,9 @@ select {
   }
 }
 input,
-select {
+select,
+textarea {
+  display: block;
   line-height: 21px;
   width: 100%;
   padding: 8px 10px;
@@ -547,3 +549,5 @@ legend {
   text-transform: none;
   font-family: $font-family-sans-serif;
 }
+
+@import "compound_field";
