@@ -1,0 +1,27 @@
+// Text center
+//
+// Use `.text-center` to center text inside a container
+// 
+// Example:
+// <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+// Styleguide textCenter
+
+// Block center
+//
+// Use `.blocks-center` to center a set of child block-level elements
+// 
+// Example:
+// <div class="block-center">
+//   <h2>Lorem ipsum</h2>
+//   <ul>
+//      <li>dolor sit amet, consectetur adipiscing elit</li>
+//      <li>Nulla viverra iaculis tellus, sed euismod magna dignissim</li>
+//   </ul>
+// </div>
+//
+// Styleguide blockCenter
+.block-center {
+  display: grid;
+  justify-content: center;
+}
+
