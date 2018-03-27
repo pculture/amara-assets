@@ -83,13 +83,17 @@ select.select {
   position: relative;
 
   .select2-selection {
-    padding: 0 40px 0 8px;
+    padding: 10px 40px 10px 8px;
     outline: 0; // We create our own focus ring below
     border-radius: 4px;
     border: 1px solid $silver;
-    height: 39px;
-    line-height: 37px;
+    min-height: 39px;
+    line-height: 19px;
     background-color: #fff;
+  }
+
+  .select2-selection--multiple {
+    padding: 3px 40px 3px 8px;
   }
 
   &.select2-container--below .select2-selection {
@@ -103,8 +107,8 @@ select.select {
     border-radius: 4px;
     background-color: transparent;
     border: 1px solid transparent;
-    height: 33px;
-    line-height: 31px;
+    padding: 6px 40px 6px 8px;
+    min-height: 31px;
   }
 
   &.select2-container--disabled .select2-selection {
@@ -119,7 +123,10 @@ select.select {
   }
 
   .select2-selection__placeholder {
-    display: inline;
+    color: $gray;
+  }
+  .select2-selection--multiple .select2-selection__placeholder {
+    margin-top: 7px;
   }
 
   .select2-selection__choice {
@@ -128,12 +135,9 @@ select.select {
     background: $gray-lighter;
     border: 1px solid $silver;
     border-radius: 4px;
-    height: 24px;
-    line-height: 24px;
     list-style-type: none;
-    margin-top: 6px;
-    margin-right: 6px;
-    padding: 0px 8px;
+    margin: 3px 6px 3px 0;
+    padding: 2px 8px;
   }
   .select2-selection__choice__remove {
     float: right;
