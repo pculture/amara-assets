@@ -38,12 +38,19 @@
 .compoundField {
   display: grid;
   grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "selector inputs" "help help";
   grid-column-gap: 12px;
   margin-top: 4px;
 }
 .compoundField-selector {
+  grid-area: selector;
 }
 .compoundField-inputs {
+  grid-area: inputs;
+}
+.compoundField .helpBlock {
+  grid-area: help;
 }
 
 @media(max-width: $screen-sm-max) {
