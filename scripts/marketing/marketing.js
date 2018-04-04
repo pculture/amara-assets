@@ -2,10 +2,14 @@ window.$ = window.jQuery = require('jquery');
 require('venobox');
 require('waypoints');
 require('inview');
+require('select2')(window, $);
 require('./animations');
 require('../shared/third-party/behaviors');
 require('../shared/announcements');
 require('../shared/messages');
+require('../shared/select/main');
+require('../shared/fileUpload');
+require('../shared/compoundField');
 require('./ajax');
 require('./languageSwitcher');
 

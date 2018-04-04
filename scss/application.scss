@@ -1,7 +1,10 @@
-@import 'vendor';
+// 3rd party
+@import "../node_modules/chartist/dist/chartist";
+@import "../node_modules/select2/dist/css/select2";
+@import "bootstrap/bootstrap-theme.min";
+@import "bootstrap/bootstrap.min";
 // Utils
 @import 'variables';
-@import 'application/variables';
 @import 'mixins';
 @import 'base/font_icons';
 @import 'application/utils';
@@ -9,6 +12,7 @@
 // Layout Elements
 @import 'layout/page_header';
 @import 'layout/page_footer';
+@import 'layout/utils';
 
 // Navigation Elements
 @import "elements/navigation";
@@ -26,7 +30,7 @@
 @import 'application/global/dropdowns';
 @import 'application/global/lists';
 
-@import 'application/global/forms';
+@import 'elements/forms';
 @import 'application/global/progressbars';
 @import 'application/global/indicators';
 @import 'application/global/scrollbars';
@@ -50,7 +54,7 @@
 @import 'application/elements/switches';
 @import 'application/elements/searchbar';
 @import 'application/elements/zero_state';
-@import 'application/elements/select';
+@import 'elements/select';
 @import "elements/alerts";
 @import 'elements/tables';
 
@@ -64,9 +68,5 @@
 @import 'application/views/member_directory';
 @import 'application/views/activity_page';
 
-
-
-
 // Responsive
 @import 'application/media_queries';
-

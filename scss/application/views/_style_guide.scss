@@ -97,17 +97,18 @@
         display: block;
         width: 100px;
         height: 50px;
-        &.icon-gray-base { background-color: $gray-darker; }
         &.icon-gray-darker { background-color: $gray-darker; }
         &.icon-gray-dark { background-color: $gray-dark; }
         &.icon-gray { background-color: $gray; }
+        &.icon-silver { background-color: $silver; }
         &.icon-gray-light { background-color: $gray-light; }
         &.icon-gray-lighter { background-color: $gray-lighter; }
         &.icon-teal { background-color: $teal; }
+        &.icon-magenta { background-color: $magenta; }
         &.icon-amaranth { background-color: $amaranth; }
         &.icon-turquoise { background-color: $turquoise; }
         &.icon-plum { background-color: $plum; }
-        &.icon-lime-green { background-color: $lime; }
+        &.icon-lime { background-color: $lime; }
       }
     }
   }

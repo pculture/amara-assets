@@ -15,6 +15,9 @@
   - scrollBars
   - tabs
   - tables
+- - Layout
+  - textCenter
+  - blockCenter
 - - Avatars, Icons, Steps
   - avatars
   - icons
@@ -24,12 +27,15 @@
   - buttonOptions
   - asyncButton
 - - Forms
+  - forms
   - fields
-  - fileUpload
   - checkboxes
+  - fieldsets
+  - fieldErrors
+  - fileUpload
+  - compoundField
   - switch
   - searchbar
-  - inputstates
   - selects
 
 - - Modals / Dialogs

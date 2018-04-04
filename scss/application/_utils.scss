@@ -52,12 +52,16 @@
 }
 
 // FIXME: This is just here to make the language selector look correct in the
-// application pages.  We should implement pculture/amara-enterprise#1571 and
-// remove this hack.
+// application pages.  We merge the _utilities.scss code into the application.
 .bg-gray-lighter {
   background-color: #F3F4F6 !important;
   fill: #F3F4F6 !important;
   color: #5a2747 !important;
+}
+.bg-white {
+  background-color: #fff !important;
+  fill: #fff !important;
+  color: #222626 !important;
 }
 
 // Text
@@ -70,17 +74,17 @@
 .text-right { text-align: right; }
 .text-center { text-align: center; }
 
-.text-gray-base { color: $gray-darker; }
 .text-gray-darker { color: $gray-darker; }
 .text-gray-dark { color: $gray-dark; }
 .text-gray { color: $gray; }
+.text-silver { color: $silver; }
 .text-gray-light { color: $gray-light; }
 .text-gray-lighter { color: $gray-lighter; }
 
 .text-plum { color: $plum; }
 .text-teal { color: $teal; }
 
-.text-lime-green { color: $lime; }
+.text-lime { color: $lime; }
 
 // Video Thumbnails
 //

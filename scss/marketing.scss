@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+// 3rd party
+@import "../node_modules/select2/dist/css/select2";
+
 @import "variables";
 @import "mixins";
 @import "utilities";
@@ -15,6 +18,7 @@
 @import "layout/page_header";
 @import "layout/page_content";
 @import "layout/page_footer";
+@import "layout/utils";
 
 // External Libraries
 @import "libs/venobox";
@@ -26,14 +30,15 @@
 @import "elements/canvas";
 @import "elements/slider";
 @import "elements/blockquotes";
-@import "elements/forms";
 @import "elements/buttons";
+@import "elements/forms";
 @import "elements/video_card";
 @import "elements/login";
 @import "elements/alerts";
 @import "elements/sitemap";
 @import "elements/consolidate_header";
 @import "elements/language_switcher";
+@import 'elements/select';
 
 // Views
 @import "views/home";

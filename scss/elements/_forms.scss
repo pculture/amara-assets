@@ -1,64 +1,553 @@
-.form-control {
-  height: 48px;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
+// Forms
+//
+// Forms are used to request input from users.  They generally consist of a
+// list of inputs, followed by action buttons to submit the form.
+// 
+// Example:
+// <form>
+//   <div class="form-group">
+//     <label for="">Email</label>
+//     <input type="email" id="">
+//   </div>
+//   <div class="form-group">
+//     <label for="">Password</label>
+//     <input type="password" id="">
+//   </div>
+//   <div class="form-actions">
+//     <button class="button borderless">Cancel</button>
+//     <button type="submit" class="button cta">Submit</button>
+//   </div>
+// </form>
+//
+// Styleguide forms
 
+// Fields
+//
+// Fields input a single piece of data for a form.  Fields consist of an input,
+// along with supporting elements like labels, help text, error messages, etc.
+//
+// ### Layout
+//
+//   - We use a single column for everything.  This allows users to scan the forms easily.
+//   - We size inputs to 100% width of the containing element
+//   - Wrap the input and label together in a .form-group div.  This adds spacing between each field.
+//   - Inside a field, place the label first, followed by the form field, followed by optional help/error text.
+//
+// ### Labels and help text
+//   - Use labels for all fields.
+//   - For fields that are not obvious, add help text using the helpBlock class.
+//   - You can also use the helpList class to show a bullet list.
+//   - In general, use labels and help text instead of placeholder text.
+//
+// ### Required vs optional
+//   - Most fields in a form should be required.  This is for a couple reasons:
+//        - We want to limit the number of fields to create simlper forms .  If a field is not required, then consider removing it.
+//        - Users typically expect to fill in all fields.  Therefore the default should be required and the optional should be marked as an alternate.
+//   - Mark optional fields with "(optional)" in the label.  Use the fieldOptional class for this.
+//
+// Example:
+// <div class="form-group">
+//   <label for="">Email</label>
+//   <input type="email" id="">
+// </div>
+// <div class="form-group">
+//   <label for="">Password</label>
+//   <input type="password" id="">
+//   <span class="helpBlock">See this <a href="https://www.wikihow.com/Create-a-Secure-Password">WikiHow article</a> for advice</span>
+// </div>
+// <div class="form-group">
+//   <label for="">URL <span class="fieldOptional">(optional)</span></label>
+//   <input type="text" id="">
+// </div>
+// <div class="form-group">
+//   <label for="">Additional Information</label>
+//   <textarea class="form-control"></textarea>
+//   <ul class="helpList">
+//     <li>Keep your text concise</li>
+//     <li>Prefer active voice to passive</li>
+//     <li>Read your text aloud before submitting it</li>
+//   </ul>
+// </div>
+// <div class="form-group">
+//   <label for="">Date</label>
+//   <input type="text" id="">
+// </div>
+// <div class="form-actions">
+//   <button class="button borderless">Cancel</button>
+//   <button type="submit" class="button cta">Submit</button>
+// </div>
+//
+// Styleguide fields
+
+label {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: $gray-darker;
+}
 textarea {
-  background: $gray-lighter;
-  padding: 20px;
-  border: none;
-  border-left: 10px solid $brand-primary;
-  height: 130px;
+  resize: vertical;
+}
+select {
+  appearance: none;
+  &:focus {
+   outline: none;
+  }
+}
+input,
+select,
+textarea {
+  display: block;
+  line-height: 21px;
   width: 100%;
-}
-#saveForm {
-  border: none;
-  margin-top: 30px;
-}
-
-#form8 {
-  button {
-    width: 300px;
+  padding: 8px 10px;
+  margin: 0;
+  border: 1px solid $silver;
+  border-radius: $border-radius-base;
+  background-color: #fff;
+  font-size: 14px;
+  color: $gray-darker;
+  &:focus {
+    outline: none;
   }
 }
 
-// Placeholders
-::-webkit-input-placeholder { /* WebKit browsers */
-  color: #000;
-  font-weight: 200;
+.form-group {
+  margin-bottom: 20px;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #000;
-   opacity:  1;
-   font-weight: 200;
+
+.form-actions {
+  text-align: right;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #000;
-   opacity:  1;
-   font-weight: 200;
+
+.fieldOptional {
+  color: $gray-dark;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-   color:    #000;
-   font-weight: 200;
+
+// placeholders
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $gray-dark;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $gray-dark;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $gray-dark;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $gray-dark;
+}
+
+
+// File Uploads
+//
+// TODO - needs refactor to match new design direction
+// 
+// Example:
+// <div class="form-group">
+//   <label for="">Change thumbnail</label>
+//   <div class="input-group fileUpload">
+//     <input type="text" class="fileUpload-text" readonly>
+//     <label class="input-group-btn">
+//         <span class="button buttonFile">
+//             Browse&hellip; <input type="file" style="display: none;" multiple>
+//         </span>
+//     </label>
+//   </div>
+// </div>
+//
+// Styleguide fileUpload
+
+.buttonFile {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $silver;
+  border-left-width: 0;
+  border-radius: 0 $border-radius-base $border-radius-base 0;
+  padding: 8px 10px;
+  line-height: 21px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: $teal;
+}
+.buttonFile input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+.fileUpload-text {
+  border-radius: $border-radius-base 0 0 $border-radius-base;
+  border-right-width: 0;
+  background-color: $gray-light;
 }
 
 
-// Media Queries
-@media(max-width: $screen-md-max) {
+// Checkboxes and radios
+//
+// Example:
+//
+// <div class="form-group">
+//   <div class="checkbox">
+//     <input type="checkbox" id="checkbox00" value="">
+//     <label for="checkbox00"><span class="checkbox-icon"></span> I can haz?</label>
+//   </div>
+// </div>
+//
+// <div class="form-group">
+//   <label>What's you're favorite sandwich?</label>
+//   <ul>
+//     <li class="radio">
+//       <input checked type="radio" id="radio00" value="club" name="delete">
+//       <label for="radio00"><span class="radio-icon"></span>Club</label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio01" value="blt" name="delete">
+//       <label for="radio01"><span class="radio-icon"></span>BLT</label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio02" value="sub" name="delete">
+//       <label for="radio02"><span class="radio-icon"></span>Submarine</label>
+//     </li>
+//   </ul>
+// </div>
+//
+// <div class="form-group">
+//   <label>Who is you're favorite Golden Girl?</label>
+//   <ul>
+//     <li class="radio">
+//       <input type="radio" id="radio10" value="dorthy" name="delete">
+//       <label for="radio10"><span class="radio-icon"></span>Dorthy
+//         <p class="helpBlock helpBlock-radio">Played by Bea Arthur</p>
+//       </label>
+//     </li>
+//     <li class="radio">
+//       <input checked type="radio" id="radio11" value="rose" name="delete">
+//       <label for="radio11"><span class="radio-icon"></span>rose
+//         <p class="helpBlock helpBlock-radio">Played by Betty White</p>
+//       </label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio12" value="blanch" name="delete">
+//       <label for="radio12"><span class="radio-icon"></span>blanch
+//         <p class="helpBlock helpBlock-radio">Played by Rue McClanahan</p>
+//       </label>
+//     </li>
+//     <li class="radio">
+//       <input type="radio" id="radio13" value="sophia" name="delete">
+//       <label for="radio13"><span class="radio-icon"></span>sophia
+//         <p class="helpBlock helpBlock-radio">Played by Estelle Getty</p>
+//       </label>
+//     </li>
+//   </ul>
+// </div>
+//
+//
+// Styleguide checkboxes
 
+.checkbox, .radio {
+  margin: 0;
+  input[type="radio"],
+  input[type="checkbox"] {
+    display: none;
+    margin-left: 0;
+  }
+  label {
+    min-height: 20px;
+    font-size: 14px;
+    padding-left: 0px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+.radio + .radio, .checkbox + .checkbox {
+  // undo bootstrap's -5px
+  margin-top: 0;
+}
+.radio {
+    padding-bottom: 4px;
 }
 
-@media(max-width: $screen-sm-max) {
-
+.radio-icon, .checkbox-icon {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: #ffffff;
+  border: 1px solid $gray-light;
+  cursor: pointer;
+}
+.radio-icon {
+  border-radius: 50%;
+  &:after {
+    display: block;
+    content: "";
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    top: 3px;
+    left: 3px;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+}
+input:checked + label .radio-icon:after {
+  background-color: $plum;
 }
 
-@media(max-width: $screen-xs-max) {
-  #form8 {
-    button {
-      width: auto;
-      padding: 12px 20px;
+.checkbox-icon {
+  border-radius: 2px;
+}
+input:checked + label .checkbox-icon {
+  background-color: $plum;
+  &:after {
+    font-family: 'amara';
+    content: "\e90a";
+    display: block;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    font-size: 12px;
+    line-height: 12px;
+    top: 2px;
+    left: 0;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+// Field errors
+//
+// To display field errors:
+//   - Add the has-error class to the form-group
+//   - Replace the help text with the error message
+// 
+// Example:
+// <div class="form-group has-error">
+//   <label for="inputError1">Email</label>
+//   <input type="text" id="inputError1" value="email.com">
+//   <span class="helpBlock">Invalid Email Address</span>
+// </div>
+//
+// Styleguide fieldErrors
+
+.form-group {
+  &.has-success {
+    .form-control,
+    label,
+    .helpBlock,
+    .input-control { border-color: $state-success-border !important; color: $state-success-text !important; }
+  }
+  &.has-warning {
+   .form-control,
+   label,
+   .helpBlock,
+   .input-control { border-color: $state-warning-border !important; color: $state-warning-text !important; }
+  }
+  &.has-error {
+    .form-control,
+    label,
+    .helpBlock,
+    .input-control { border-color: $state-danger-border !important; color: $state-danger-text !important; }
+    .helpBlock {
+      i {
+        padding: 0 5px 0 0;
+      }
     }
   }
 }
+
+
+
+.helpBlock {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: $gray-darker;
+}
+
+.helpBlock-radio {
+  margin-left: 24px;
+  margin-top: 0;
+}
+
+.helpList {
+  margin-left: 24px;
+  font-size: 13px;
+  color: $gray-darker;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+// Fieldsets
+//
+// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header.  Use .fieldsetHelpBlock to display help for the fieldset
+//
+// Example:
+// <form>
+//   <fieldset>
+//     <legend>Personal information</legend>
+//     <div class="form-group">
+//       <label for="name">Name</label>
+//       <input type="text" id="name">
+//     </div>
+//     <div class="form-group">
+//       <label for="email">Email</label>
+//       <input type="text" id="email">
+//     </div>
+//     <div class="form-group">
+//       <label for="phone_number">Phone number</label>
+//       <input type="text" id="phone_number">
+//     </div>
+//   </fieldset>
+//   <fieldset>
+//     <legend>Account information</legend>
+//     <div class="fieldsetHelpBlock">Details for your Amara acount</div>
+//     <div class="form-group">
+//       <label for="username">Username</label>
+//       <input type="text" id="username">
+//     </div>
+//     <div class="form-group">
+//       <label for="password1">Password</label>
+//       <input type="text" id="password1">
+//     </div>
+//     <div class="form-group">
+//       <label for="password2">Confirm password</label>
+//       <input type="text" id="password2">
+//     </div>
+//   </fieldset>
+//   <div class="form-actions">
+//     <button class="button borderless">Cancel</button>
+//     <button type="submit" class="button cta">Submit</button>
+//   </div>
+// </form>
+//
+// Styleguide fieldsets
+
+fieldset {
+  padding-bottom: 20px;
+}
+
+legend {
+  margin-bottom: 12px;
+  border-bottom: 1px solid $gray-light;
+  color: $gray-darker;
+}
+
+.fieldsetHelpBlock {
+  margin-top: -8px;
+  font-size: 13px;
+  color: $gray-darker;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+// Hack to make the forms on marketing pages work.  We should unify the button code
+.form-actions .button {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 7px 30px;
+  font-family: $font-family-sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  white-space: nowrap;
+  line-height: 1.42857;
+  text-transform: none;
+  border-radius: 4px;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  color: #fff;
+  background-color: $teal;
+  border: 1px solid $teal;
+  &:hover, &:focus {
+    color: #fff;
+    background-color: darken($teal, 10%);
+    outline: none;
+  }
+  &.block {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  &.small {
+    padding: 2px 15px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5em;
+    border-radius: 3px;
+  }
+  &.disabled {
+    background-color: $gray-light;
+    border-color: $gray-light;
+    color: #393839;
+    cursor: default;
+  }
+  &.cta {
+    color: #fff;
+    background-color: $plum;
+    border-color: $plum;
+    &:hover, &:focus {
+      color: #fff;
+      background-color: darken($plum, 10%);
+    }
+  }
+  &.cta-reverse {
+    color: $plum;
+    background-color: transparent;
+    border-color: $plum;
+    &:hover, &:focus {
+      color: #fff;
+      background-color: darken($plum, 10%);
+    }
+  }
+  &.inline {
+    display: inline-block;
+    line-height: inherit;
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: inherit;
+  }
+  &.borderless {
+    color: inherit;
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: inherit;
+    &.inline {
+      margin: 0 10px;
+    }
+  }
+  i {
+    margin-right: 9px;
+  }
+}
+.buttonFile {
+  text-transform: none;
+  font-family: $font-family-sans-serif;
+}
+
+@import "compound_field";

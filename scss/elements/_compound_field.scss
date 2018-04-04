@@ -1,0 +1,60 @@
+// Compound fields
+//
+// Allow users to input data using multiple methods.
+//
+// Example:
+// <form>
+//   <div class="form-group">
+//     <label for="">Resume/CV</label>
+//     <div class="compoundField">
+//       <div class="compoundField-selector">
+//         <ul>
+//           <li class="radio">
+//             <input type="radio" name="selector" id="compoundField-upload" value="upload" checked>
+//             <label for="compoundField-upload"><span class="radio-icon"></span>Upload File</label>
+//           </li>
+//           <li class="radio">
+//             <input type="radio" name="selector" id="compoundField-paste" value="paste">
+//             <label for="compoundField-paste"><span class="radio-icon"></span>Paste Text</label>
+//           </li>
+//         </ul>
+//       </div>
+//       <div class="compoundField-inputs">
+//         <div class="fileUpload input-group compoundField-input" data-for="upload">
+//           <input type="text" class="fileUpload-text" readonly>
+//           <label class="input-group-btn">
+//               <span class="button buttonFile">
+//                   Browse&hellip; <input type="file" style="display: none;" multiple>
+//               </span>
+//           </label>
+//         </div>
+//         <textarea rows="3" class="compoundField-input" data-for="paste"></textarea>
+//       </div>
+//     </div>
+//   </div>
+//  </form>
+// Styleguide compoundField
+
+.compoundField {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "selector inputs" "help help";
+  grid-column-gap: 12px;
+  margin-top: 4px;
+}
+.compoundField-selector {
+  grid-area: selector;
+}
+.compoundField-inputs {
+  grid-area: inputs;
+}
+.compoundField .helpBlock {
+  grid-area: help;
+}
+
+@media(max-width: $screen-sm-max) {
+  .compoundField {
+    display: block;
+  }
+}

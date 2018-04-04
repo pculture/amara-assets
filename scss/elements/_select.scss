@@ -20,7 +20,7 @@
 //    select.  If you want to disable this, don't include a blank choice in the
 //    list of options.  For ajax selects, use the data-clear="false" attribute
 //  - Selects with many options will get a searchbox to filter out the choices.  Ajax and language selects always have this searchbox.
-//  - Use the border class to add a border to the outside of the select
+//  - Use the selectFilter class to render select for filters
 //
 //
 // Example:
@@ -31,7 +31,7 @@
 //   </select>
 //
 // Example:
-//   <select multiple class="select border" data-placeholder="Multiple select">
+//   <select multiple class="select" data-placeholder="Multiple select">
 //     <option></option>
 //     <option>Option 1</option>
 //     <option>Option 2</option>
@@ -41,6 +41,13 @@
 //     <option>Option 6</option>
 //     <option>Option 7</option>
 //     <option>Option 8</option>
+//   </select>
+//
+// Example:
+//   <select class="select selectFilter" data-placeholder="Filter videos">
+//     <option></option>
+//     <option>English</option>
+//     <option>Non-english</option>
 //   </select>
 //
 // Example:
@@ -73,68 +80,64 @@ select.select {
 
 .select2-container.select2-container--amara {
   width: 100% !important;
+  position: relative;
 
   .select2-selection {
-    min-height: 32px;
-    line-height: 32px;
-    padding: 0px 10px;
+    padding: 10px 40px 10px 8px;
     outline: 0; // We create our own focus ring below
-  }
-
-  &.border .select2-selection {
     border-radius: 4px;
-    border: 1px solid lighten($gray, 15%);
+    border: 1px solid $silver;
     min-height: 39px;
-    padding-top: 4px;
+    line-height: 19px;
+    background-color: #fff;
   }
 
-  &.select2-container--focus:not(.select2-container--open) .select2-selection {
-    // Match the focus style to our other fields
-    // TODO we should refactor this into a SASS mixin class
-    border: 1px solid #66afe9;
-    border-radius: 4px;
-    outline: thin dotted \9;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  .select2-selection--multiple {
+    padding: 3px 40px 3px 8px;
   }
+
+  &.select2-container--below .select2-selection {
+    border-radius: 4px 4px 0 0;
+  }
+  &.select2-container--above .select2-selection {
+    border-radius: 0 0 4px 4px;
+  }
+
+  &.selectFilter .select2-selection {
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 6px 40px 6px 8px;
+    min-height: 31px;
+  }
+
   &.select2-container--disabled .select2-selection {
     cursor: not-allowed;
   }
 
   .select2-selection__rendered {
     display: block;
-    color: $gray-dark;
+    color: $gray-darker;
     padding: 0;
     margin: 0;
-
-    &:after {
-      font-family: 'amara' !important;
-      content: "\e90c";
-      display: inline-block;
-      margin-left: 5px;
-      speak: none;
-      transform: rotate(90deg);
-      @include transition(0.2s);
-      pointer-events: none;
-
-    }
   }
 
   .select2-selection__placeholder {
-    display: inline;
+    color: $gray;
+  }
+  .select2-selection--multiple .select2-selection__placeholder {
+    margin-top: 7px;
   }
 
   .select2-selection__choice {
     float: left;
-    color: $gray-dark;
+    color: $gray-darker;
     background: $gray-lighter;
-    border: 1px solid $gray-light;
+    border: 1px solid $silver;
     border-radius: 4px;
-    height: 24px;
-    line-height: 24px;
     list-style-type: none;
-    margin-top: 3px;
-    margin-right: 6px;
-    padding: 0px 8px;
+    margin: 3px 6px 3px 0;
+    padding: 2px 8px;
   }
   .select2-selection__choice__remove {
     float: right;
@@ -142,19 +145,17 @@ select.select {
     color: $gray;
   }
 
-  &.select2-container--open .select2-selection__rendered:after {
-    transform: rotate(270deg);
-  }
-  &.select2-container.border .select2-selection__rendered:after {
-    position: absolute;
-    top: 0px; right: 10px;
-  }
-
   .select2-dropdown {
-    top: 5px;
-    border: 1px solid $gray-lighter;
+    border: 1px solid $silver;
     box-shadow: 0 6px 12px rgba(0,0,0,0.175);
   }
+  .select2-dropdown--below {
+    border-top: 0;
+  }
+  .select2-dropdown--above {
+    border-bottom: 0;
+  }
+
   .select2-search--dropdown {
     padding: 4px 0px;
   }
@@ -185,5 +186,71 @@ select.select {
   }
   .select2-results__option--border {
       border-top: 1px solid $gray-light
+  }
+
+  // arrow handling
+
+  .select2-selection__arrow {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: $gray-lighter;
+    padding: 0 5px;
+    pointer-events: none;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid $silver;
+  }
+
+  .select2-selection__arrow b {
+    font-family: 'amara' !important;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 37px;
+    vertical-align: middle;
+    transform: rotate(90deg);
+    @include transition(0.2s);
+    &:after {
+      content: "\e90c";
+      speak: none;
+    }
+  }
+  &.select2-container--open .select2-selection__arrow b {
+    transform: rotate(270deg);
+  }
+
+  &.selectFilter .select2-selection__arrow {
+    display: none;
+  }
+  &.selectFilter .select2-selection__rendered:after {
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: 400;
+    font-family: 'amara' !important;
+    content: "\e90c";
+    speak: none;
+    transform: rotate(90deg);
+    @include transition(0.2s);
+  }
+  &.selectFilter.select2-container--open .select2-selection__rendered:after {
+    transform: rotate(270deg);
+  }
+
+  // selection handling
+  &.select2-container--focus:not(.select2-container--open) {
+    .select2-selection {
+      // Match the focus style to our other fields
+      // TODO we should refactor this into a SASS mixin class
+      border: 1px solid #66afe9;
+      outline: thin dotted \9;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    }
+    .select2-selection, .select2-selection__arrow {
+      border-right: 1px solid #66afe9;
+      border-top: 1px solid #66afe9;
+      border-bottom: 1px solid #66afe9;
+    }
   }
 }
