@@ -75,7 +75,6 @@ function selectList(list) {
         });
     });
     items.on('click', function() {
-        console.log('hi');
         var item = $(this);
         var checkbox = item.find('.selectList-checkbox');
         checkbox.prop('checked', !checkbox.prop('checked'));
