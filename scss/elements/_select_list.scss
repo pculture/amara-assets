@@ -4,14 +4,14 @@
 // <nav class="nav-actions">
 //   <div class="checkbox">
 //     <input id="styleGuide-selectAll" class="selectAll" type="checkbox" value="" data-target="#styleGuide-selectList">
-//     <label for="styleGuide-selectAll" class="text-gray"><span></span> Select all</label>
+//     <label for="styleGuide-selectAll" class="text-gray"><span class="checkbox-icon"></span> Select all</label>
 //   </div>
 // </nav>
 // <ul id="styleGuide-selectList" class="selectList" data-target="#styleGuide-selectList-actionBar">
 //   <li class="row condensed">
 //     <div class="checkbox">
 //       <input id="styleGuide_item_1" type="checkbox" class="selectList-checkbox" value="item_1">
-//       <label for="styleGuide_item_1"><span></span></label>
+//       <label for="styleGuide_item_1"><span class="checkbox-icon"></span></label>
 //     </div>
 //     <div class="context-menu">
 //       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
@@ -50,7 +50,7 @@
 //   <li class="row condensed">
 //     <div class="checkbox">
 //       <input id="styleGuide_item_2" type="checkbox" class="selectList-checkbox" value="item_2">
-//       <label for="styleGuide_item_2"><span></span></label>
+//       <label for="styleGuide_item_2"><span class="checkbox-icon"></span></label>
 //     </div>
 //     <div class="context-menu">
 //       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
@@ -89,7 +89,7 @@
 //   <li class="row condensed">
 //     <div class="checkbox">
 //       <input id="styleGuide_item_3" type="checkbox" class="selectList-checkbox" value="item_3">
-//       <label for="styleGuide_item_3"><span></span></label>
+//       <label for="styleGuide_item_3"><span class="checkbox-icon"></span></label>
 //     </div>
 //     <div class="context-menu">
 //       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
