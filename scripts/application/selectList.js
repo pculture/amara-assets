@@ -64,7 +64,7 @@ function selectList(list) {
     var checkboxesFromOtherLists = $('.selectList-checkbox').not(checkboxes);
 
     // Refactor this: Adding this to change other checkboxes when a user clicks an action on a single item
-    var items = list.find('.selectList-item');
+    var items = list.children();
     items.each(function() {
         var item = $(this);
         var checkbox = item.find('.selectList-checkbox');
@@ -73,6 +73,12 @@ function selectList(list) {
             checkbox.prop('checked', true);
             checkboxes.not(checkbox).prop('checked', false).trigger("change");
         });
+    });
+    items.on('click', function() {
+        console.log('hi');
+        var item = $(this);
+        var checkbox = item.find('.selectList-checkbox');
+        checkbox.prop('checked', !checkbox.prop('checked'));
     });
 
     checkboxes.each(function() {
