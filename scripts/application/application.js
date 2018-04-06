@@ -18,7 +18,6 @@ require('./proxyField');
 require('./dependentSelect');
 require('./languageSwitcher');
 require('../shared/select/main');
-require('./scrollBars');
 require('./selectList');
 require('./videoPage');
 require('./videoSubtitles');
