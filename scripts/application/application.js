@@ -3,7 +3,6 @@ window.jQuery = window.$ = require('jquery');
 require('bootstrap');
 require('jquery-form')(window, $);
 require('select2')(window, $);
-require('jscrollpane');
 require('../shared/third-party/behaviors');
 require('../shared/announcements');
 require('../shared/messages');
