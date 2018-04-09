@@ -27,7 +27,7 @@ var _ = require('underscore');
 var s2require = $.fn.select2.amd.require;
 
 Utils = s2require('select2/utils');
-ResultsList = s2require('select2/results');
+Results = s2require('select2/results');
 HidePlaceHolder = s2require('select2/dropdown/hidePlaceholder');
 
 // AddExtraBorder adds the border attribute to the between the last regular option and the first extra option.
@@ -58,11 +58,59 @@ AddExtraBorder.prototype.append = function(decorated, data) {
     return decorated.call(this, data);
 }
 
-module.exports = function makeResultsAdapter(select) {
-    var adapter = ResultsList;
+// PowerUserLanguageSelect handles the case where a user enters multiple language codes and hits enter
+function PowerUserLanguageSelect(decorated, $element, options, dataAdapter) {
+    decorated.call(this, $element, options, dataAdapter);
+}
+PowerUserLanguageSelect.prototype.bind = function(decorated, container, $container) {
+    var self = this;
+    var currentQuery = "";
+
+    container.on('results:select', function(params) {
+        var highlighted = self.getHighlightedResults();
+        if(highlighted.length == 0) {
+            self.tryMultipleSelect(container, currentQuery);
+        }
+    });
+    container.on('query', function(params) {
+        currentQuery = params.term;
+    });
+    return decorated.call(this, container, $container);
+}
+
+PowerUserLanguageSelect.prototype.tryMultipleSelect = function(decorated, container, currentQuery) {
+    var self = this;
+    var terms = currentQuery.split(/\s+/);
+    var options = container.$element.find('option');
+    var toSelect = [];
+    for(var i=0; i < terms.length; i++) {
+        var term = terms[i];
+        if(term == "") {
+            continue;
+        }
+        var matches = options.filter(function() {
+            return term == $(this).data().data.id
+        });
+        if(matches.length == 1) {
+            toSelect.push(term);
+        } else {
+            // Only select things if every term has a match
+            return;
+        }
+    }
+    container.$element.val(toSelect).trigger('change');
+    self.trigger('close');
+}
+
+
+module.exports = function makeResultsAdapter(select, options) {
+    var adapter = Results;
     if(select.data('placeholder')) {
         adapter = Utils.Decorate(adapter, HidePlaceHolder);
     }
     adapter = Utils.Decorate(adapter, AddExtraBorder);
+    if(options.type == 'language' && options.multiple) {
+        adapter = Utils.Decorate(adapter, PowerUserLanguageSelect);
+    }
     return adapter;
 }
