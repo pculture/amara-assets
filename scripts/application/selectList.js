@@ -64,7 +64,8 @@ function selectList(list) {
     var checkboxesFromOtherLists = $('.selectList-checkbox').not(checkboxes);
 
     // Refactor this: Adding this to change other checkboxes when a user clicks an action on a single item
-    var items = list.children();
+    var items = list.find('.selectList-item');
+    console.log(items);
     items.each(function() {
         var item = $(this);
         var checkbox = item.find('.selectList-checkbox');
