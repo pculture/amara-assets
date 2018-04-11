@@ -63,9 +63,7 @@ function selectList(list) {
     var checkboxes = list.find('.selectList-checkbox');
     var checkboxesFromOtherLists = $('.selectList-checkbox').not(checkboxes);
 
-    // Refactor this: Adding this to change other checkboxes when a user clicks an action on a single item
     var items = list.find('.selectList-item');
-    console.log(items);
     items.each(function() {
         var item = $(this);
         var checkbox = item.find('.selectList-checkbox');
@@ -75,10 +73,16 @@ function selectList(list) {
             checkboxes.not(checkbox).prop('checked', false).trigger("change");
         });
     });
-    items.on('click', function() {
+    items.on('click', function(evt) {
+        if(evt.target.nodeName == 'A') {
+            return;
+        }
         var item = $(this);
         var checkbox = item.find('.selectList-checkbox');
         checkbox.prop('checked', !checkbox.prop('checked'));
+        updateActionBar();
+        evt.preventDefault();
+        evt.stopPropagation();
     });
 
     checkboxes.each(function() {
