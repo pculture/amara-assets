@@ -11,7 +11,7 @@ require('../shared/select/main');
 require('../shared/fileUpload');
 require('../shared/compoundField');
 require('./ajax');
-require('./languageSwitcher');
+require('../shared/languageSwitcher');
 
 var state   = require('./state');
 var slider = require('./slider');
