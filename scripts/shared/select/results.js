@@ -80,7 +80,7 @@ PowerUserLanguageSelect.prototype.bind = function(decorated, container, $contain
 
 PowerUserLanguageSelect.prototype.tryMultipleSelect = function(decorated, container, currentQuery) {
     var self = this;
-    var terms = currentQuery.split(/\s+/);
+    var terms = currentQuery.split(/[,\s]+/);
     var options = container.$element.find('option');
     var toSelect = [];
     for(var i=0; i < terms.length; i++) {
