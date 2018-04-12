@@ -74,7 +74,7 @@ function selectList(list) {
         });
     });
     items.on('click', function(evt) {
-        if(evt.target.nodeName == 'A') {
+        if($(evt.target).closest('a, button').length > 0) {
             return;
         }
         var item = $(this);
