@@ -1,17 +1,17 @@
 // Search results / Select List
 //
 // Example:
-// <nav class="nav-actions">
+// <nav class="selectList-actions">
 //   <div class="checkbox">
 //     <input id="styleGuide-selectAll" class="selectAll" type="checkbox" value="" data-target="#styleGuide-selectList">
-//     <label for="styleGuide-selectAll" class="text-gray"><span></span> Select all</label>
+//     <label for="styleGuide-selectAll" class="text-gray"><span class="checkbox-icon"></span> Select all</label>
 //   </div>
 // </nav>
 // <ul id="styleGuide-selectList" class="selectList" data-target="#styleGuide-selectList-actionBar">
-//   <li class="row condensed">
+//   <li class="row condensed selectList-item">
 //     <div class="checkbox">
 //       <input id="styleGuide_item_1" type="checkbox" class="selectList-checkbox" value="item_1">
-//       <label for="styleGuide_item_1"><span></span></label>
+//       <label for="styleGuide_item_1"><span class="checkbox-icon"></span></label>
 //     </div>
 //     <div class="context-menu">
 //       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
@@ -47,10 +47,10 @@
 //       <p>Review due in 2 days</p>
 //     </div>
 //   </li>
-//   <li class="row condensed">
+//   <li class="row condensed selectList-item">
 //     <div class="checkbox">
 //       <input id="styleGuide_item_2" type="checkbox" class="selectList-checkbox" value="item_2">
-//       <label for="styleGuide_item_2"><span></span></label>
+//       <label for="styleGuide_item_2"><span class="checkbox-icon"></span></label>
 //     </div>
 //     <div class="context-menu">
 //       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
@@ -86,10 +86,10 @@
 //       <p>Review due in 2 days</p>
 //     </div>
 //   </li>
-//   <li class="row condensed">
+//   <li class="row condensed selectList-item">
 //     <div class="checkbox">
 //       <input id="styleGuide_item_3" type="checkbox" class="selectList-checkbox" value="item_3">
-//       <label for="styleGuide_item_3"><span></span></label>
+//       <label for="styleGuide_item_3"><span class="checkbox-icon"></span></label>
 //     </div>
 //     <div class="context-menu">
 //       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
@@ -163,9 +163,11 @@ ul.selectList {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-bottom: 30px;
+    padding: 8px;
     color: $gray-dark;
     &:hover {
+      background-color: $gray-lighter;
+
       .context-menu {
         display: block;
       }
@@ -222,8 +224,8 @@ ul.selectList {
   .context-menu {
     display: none;
     position: absolute;
-    top: 0;
-    right: 10px;
+    top: 8px;
+    right: 8px;
     .dropdown-toggle {
       width: 20px;
       height: 20px;
@@ -269,6 +271,25 @@ ul.selectList {
           color: #7e7f80;
         }
       }
+    }
+  }
+}
+
+.selectList-actions {
+  position: relative;
+  padding: 8px;
+  margin-bottom: 8px;
+  .checkbox { display: inline-block; }
+  a, button {
+    margin-left: 15px;
+  }
+}
+
+@media(max-width: 767px) {
+  .selectList-actions {
+    .pull-right {
+      float: none !important;
+      display: block;
     }
   }
 }

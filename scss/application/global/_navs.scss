@@ -36,16 +36,6 @@
   }
 }
 
-.nav-actions {
-  position: relative;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  .checkbox { display: inline-block; }
-  a, button {
-    margin-left: 15px;
-  }
-}
-
 .pagination {
   li {
     a {
@@ -61,16 +51,6 @@
           background-color: $teal;
         }
       }
-    }
-  }
-}
-
-
-@media(max-width: 767px) {
-  .nav-actions {
-    .pull-right {
-      float: none !important;
-      display: block;
     }
   }
 }
