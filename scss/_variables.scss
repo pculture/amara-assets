@@ -50,7 +50,7 @@ $sea-green:              #38957c;
 $sea-green-dark:         #2f8665;
 
 $body-bg:                #ffffff;
-$text-color:             #5a2747;
+$text-color:             $gray-darker;
 $brand-primary:          $plum;
 
 $link-color:            $brand-primary;
@@ -58,6 +58,9 @@ $link-hover-color:      darken($link-color, 15%);
 
 $font-family-sans-serif:  'Open Sans', sans-serif;
 $headings-font-family:    'Raleway', sans-serif;
+$font-size-normal: 16px;
+$font-size-small: 14px;
+$font-size-tiny: 13px;
 
 
 // Animations

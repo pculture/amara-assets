@@ -15,6 +15,7 @@
 .styleGuide-navLink {
   padding-left: 10px;
   border-left: 4px solid transparent;
+  font-size: $font-size-small;
   &.active {
     border-left-color: $teal;
   }

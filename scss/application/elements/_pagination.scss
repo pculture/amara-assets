@@ -24,7 +24,10 @@
 // 
 // Styleguide pagination
 
+.pagination {
+  margin-bottom: 0;
+}
+
 .pagination-objectCount {
   color: $gray;
-  margin-top: -12px;
 }

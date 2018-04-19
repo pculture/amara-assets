@@ -1,5 +1,5 @@
 // Search results / Select List
-//
+
 // Example:
 // <nav class="selectList-actions">
 //   <div class="checkbox">
@@ -158,6 +158,7 @@
 ul.selectList {
   display: flex;
   flex-wrap: wrap;
+  font-size: $font-size-small;
   > li {
     position: relative;
     display: flex;
@@ -176,6 +177,7 @@ ul.selectList {
   h3 {
     font-family: $headings-font-family;
     font-weight: 500;
+    font-size: 16px;
     margin: 0;
   }
   h4 {
@@ -277,6 +279,7 @@ ul.selectList {
 
 .selectList-actions {
   position: relative;
+  font-size: $font-size-small;
   padding: 8px;
   margin-bottom: 8px;
   .checkbox { display: inline-block; }

@@ -46,8 +46,9 @@
 
 .heading-link {
   font-family: $font-family-sans-serif;
-  font-size: 14px;
+  font-size: $font-size-small;
   font-weight: bold;
+  padding-top: 10px;
   float: right;
 }
 

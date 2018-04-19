@@ -2,30 +2,30 @@
 //
 // Example:
 // <div class="filterList">
-//   <h3>Project</h3>
+//   <h3 class="filterList-heading">Project</h3>
 //   <ul>
 //     <li>
 //       <div class="radio">
 //         <input type="radio" name="radiogroup_id" id="project-any" value="" checked="">
-//         <label for="project-any"><span></span> Any project</label>
+//         <label for="project-any"><span class="radio-icon"></span> Any project</label>
 //       </div>
 //     </li>
 //     <li>
 //       <div class="radio">
 //         <input type="radio" name="radiogroup_id" id="project-ted-talks" value="">
-//         <label for="project-ted-talks"><span></span> TED Talks</label>
+//         <label for="project-ted-talks"><span class="radio-icon"></span> TED Talks</label>
 //       </div>
 //     </li>
 //     <li>
 //       <div class="radio">
 //         <input type="radio" name="radiogroup_id" id="project-ted-ed" value="">
-//         <label for="project-ted-ed"><span></span> TED-Ed</label>
+//         <label for="project-ted-ed"><span class="radio-icon"></span> TED-Ed</label>
 //       </div>
 //     </li>
 //     <li>
 //       <div class="radio">
 //         <input type="radio" name="radiogroup_id" id="project-otp-resources" value="">
-//         <label for="project-otp-resources"><span></span> OTP Resources</label>
+//         <label for="project-otp-resources"><span class="radio-icon"></span> OTP Resources</label>
 //       </div>
 //     </li>
 //   </ul>
@@ -33,7 +33,7 @@
 //
 // Example:
 // <div class="filterList">
-//   <h3>Assignment State</h3>
+//   <h3 class="filterList-heading">Assignmnent State</h3>
 //   <div class="filterList-select">
 //     <div class="select">
 //       <select name="" id="" class="select_autofill" style="width:100%;">
@@ -54,16 +54,25 @@
 //     </div>
 //   </div>
 // </div>
-// 
+//
+// Example:
+// <div class="filters row">
+//   <div class="col-xs-12 col-sm-8">
+//     <div class="searchbar"><label class="sr-only">Search</label><input id="id_filters_q" name="q" placeholder="Search for videos" type="text"></div>
+//   </div>
+//   <div class="col-xs-12 col-sm-4">
+//     <select class="select select2-hidden-accessible" data-clear="false" id="id_filters_sort" name="sort" tabindex="-1" aria-hidden="true">
+//       <option value="due" selected="selected">Due first</option>
+//       <option value="-due">Due last</option>
+//     </select>
+//   </div>
+// </div>
+//
 // Styleguide filterList
 
 .filterList {
   margin-bottom: 20px;
-  h3 {
-    background: $gray-light;
-    padding: 10px;
-    font-weight: 300;
-  }
+  font-size: $font-size-small;
   ul {
     padding-left: 10px;
     list-style-type: none;
@@ -72,10 +81,17 @@
     }
   }
 }
+.filterList-heading {
+  background: $gray-light;
+  padding: 10px;
+  margin-top: 0;
+  color: $plum;
+  font-weight: 300;
+}
 
 .filterList-content {
-    max-height: 200px;
-    overflow: auto;
+  max-height: 200px;
+  overflow: auto;
 }
 
 
@@ -83,4 +99,8 @@
   .select2-selection {
     margin-left: 10px;
   }
+}
+
+.filters {
+  font-size: $font-size-small;
 }

@@ -90,6 +90,8 @@
   }
 }
 .videoSubtitles-revisions {
+  font-size: $font-size-small;
+  color: $plum;
   li {
     margin: 0 0 5px 0;
     &.currentRevision {
