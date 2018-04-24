@@ -61,11 +61,7 @@ button {
   color: #fff;
   background-color: $teal;
   border: 1px solid $teal;
-  &:hover, &:focus {
-    color: #fff;
-    background-color: darken($teal, 10%);
-    outline: none;
-  }
+  @include transition(0.4s);
   &.block {
     display: block;
     width: 100%;
@@ -82,24 +78,21 @@ button {
     border-color: $gray-light;
     color: #393839;
     cursor: default;
+    &:hover, &:focus {
+      color: #393839;
+      background-color: $gray-light;
+      border-color: $gray-light;
+    }
   }
   &.cta {
     color: #fff;
-    background-color: $plum;
-    border-color: $plum;
-    &:hover, &:focus {
-      color: #fff;
-      background-color: darken($plum, 10%);
-    }
+    background-color: $teal;
+    border-color: $teal;
   }
   &.cta-reverse {
-    color: $plum;
+    color: $teal;
     background-color: transparent;
-    border-color: $plum;
-    &:hover, &:focus {
-      color: #fff;
-      background-color: darken($plum, 10%);
-    }
+    border-color: $teal;
   }
   &.inline {
     display: inline-block;
@@ -109,6 +102,11 @@ button {
     background-color: transparent;
     border-color: transparent;
     font-weight: inherit;
+    &:hover, &:focus {
+      color: $lime;
+      background-color: transparent;
+      border-color: transparent;
+    }
   }
   &.borderless {
     color: inherit;
@@ -118,6 +116,12 @@ button {
     &.inline {
       margin: 0 10px;
     }
+  }
+  &:hover, &:focus {
+    color: #fff;
+    border-color: $lime;
+    background-color: $lime;
+    outline: none;
   }
   i {
     margin-right: 9px;

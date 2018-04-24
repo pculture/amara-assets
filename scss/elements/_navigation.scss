@@ -161,27 +161,14 @@ a.topnav-button, button.topnav-button {
   background-color: $gray-darker;
   text-transform: uppercase;
   font-weight: 400;
-
-  &:hover, &:visited {
-    color: #fff;
-  }
-
-  &:hover {
-    background-color: lighten($gray-darker, 10%);
-  }
+  @include transition(0.4s);
 
   &.amaranth {
     background-color: $amaranth;
-    &:hover {
-      background-color: lighten($amaranth, 7%);
-    }
   }
 
   &.plum {
     background-color: $plum;
-    &:hover {
-      background-color: lighten($plum, 10%);
-    }
   }
 
   &.gray {
@@ -191,8 +178,17 @@ a.topnav-button, button.topnav-button {
       color: $plum;
     }
     &:hover {
-      color: lighten($plum, 30%);
+      background-color: $lime;
+      color: $white;
     }
+  }
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: $lime;
   }
 
   &.bold {

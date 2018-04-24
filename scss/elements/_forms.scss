@@ -498,11 +498,6 @@ legend {
   color: #fff;
   background-color: $teal;
   border: 1px solid $teal;
-  &:hover, &:focus {
-    color: #fff;
-    background-color: darken($teal, 10%);
-    outline: none;
-  }
   &.block {
     display: block;
     width: 100%;
@@ -524,19 +519,11 @@ legend {
     color: #fff;
     background-color: $plum;
     border-color: $plum;
-    &:hover, &:focus {
-      color: #fff;
-      background-color: darken($plum, 10%);
-    }
   }
   &.cta-reverse {
     color: $plum;
     background-color: transparent;
     border-color: $plum;
-    &:hover, &:focus {
-      color: #fff;
-      background-color: darken($plum, 10%);
-    }
   }
   &.inline {
     display: inline-block;
@@ -555,6 +542,12 @@ legend {
     &.inline {
       margin: 0 10px;
     }
+  }
+  &:hover, &:focus {
+    color: #fff;
+    background-color: $lime;
+    border-color: $lime;
+    outline: none;
   }
   i {
     margin-right: 9px;
