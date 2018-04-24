@@ -90,26 +90,14 @@
     justify-content: flex-start;
     align-items: center;
     li {
-      display: inline-block;
+      display: flex;
       width: 100px;
-      margin: 10px;
-      i {
-        display: block;
-        width: 100px;
-        height: 50px;
-        &.icon-gray-darker { background-color: $gray-darker; }
-        &.icon-gray-dark { background-color: $gray-dark; }
-        &.icon-gray { background-color: $gray; }
-        &.icon-silver { background-color: $silver; }
-        &.icon-gray-light { background-color: $gray-light; }
-        &.icon-gray-lighter { background-color: $gray-lighter; }
-        &.icon-teal { background-color: $teal; }
-        &.icon-magenta { background-color: $magenta; }
-        &.icon-amaranth { background-color: $amaranth; }
-        &.icon-turquoise { background-color: $turquoise; }
-        &.icon-plum { background-color: $plum; }
-        &.icon-lime { background-color: $lime; }
-      }
+      height: 60px;
+      margin: 8px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid silver;
     }
   }
   // Typography

@@ -1,36 +1,3 @@
-// Color palette
-// 
-// <ul class="colorGrid">
-//   <li><i class="icon-gray-darker"></i>Gray Darker<br>#393839</li>
-//   <li><i class="icon-gray-dark"></i>Gray Dark<br>#7e7f80</li>
-//   <li><i class="icon-gray"></i>Gray<br>#9fa0a1</li>
-//   <li><i class="icon-silver"></i>Silver<br>#c6c6c7</li>
-//   <li><i class="icon-gray-light"></i>Gray Light<br>#d9d9d9</li>
-//   <li><i class="icon-gray-lighter"></i>Gray Lighter<br>#F3F4F6</li>
-// </ul>
-// 
-// 
-// <ul class="colorGrid">
-//   <li><i class="icon-teal"></i>Teal<br>#30957b</li>
-//   <li><i class="icon-amaranth"></i>Amaranth<br>#f3254d</li>
-//   <li><i class="icon-magenta"></i>Magenta<br>#e61972</li>
-//   <li><i class="icon-turquoise"></i>Turquoise<br>#3da285</li>
-//   <li><i class="icon-plum"></i>Plum<br>#632e50</li>
-//   <li><i class="icon-lime"></i>Lime<br>#77a841</li>
-// </ul>
-// <hr>
-// <h3><em>Color Do’s</em></h3>
-// <ul>
-//  <li>Headers and copy use Dark Grey, #222626</li>
-//  <li>For all linkable text, use Turquoise, #3da285</li>
-//  <li>For Primary CTAs, use Plum, #632e50</li>
-//  <li>Secondary Buttons use Teal #1d806a</li>
-// </ul>
-// <h3><em>Color Dont’s</em></h3>
-// TBD
-// 
-// Styleguide palette
-
 $gray-darker:            #222626;
 $gray-dark:              #7e7f80;
 $gray:                   #9fa0a1;
@@ -39,15 +6,14 @@ $gray-light:             #d9d9d9;
 $gray-lighter:           #F3F4F6;
 $white:                  #FFFFFF;
 
-$teal:                   #30957b;
-$magenta:                #e61972;
-$amaranth:               #f3254d;
-$turquoise:              #3da285;
 $plum:                   #5a2747;
+$teal:                   #30957b;
+$amaranth:               #f3254d;
 $lime:                   #80bd3e;
-$cream:                  #fffdf8;
+$turquoise:              #3da285;
 $sea-green:              #38957c;
 $sea-green-dark:         #2f8665;
+$cream:                  #fffdf8;
 
 $body-bg:                #ffffff;
 $text-color:             $gray-darker;
