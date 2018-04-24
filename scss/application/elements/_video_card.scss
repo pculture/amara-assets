@@ -71,7 +71,6 @@
   height: 30px;
   margin: 0;
   padding: 0;
-  border-radius: $border-radius-base $border-radius-base 0 0;
   border: 1px solid $gray-light;
   border-bottom: none;
 }
@@ -80,7 +79,6 @@
   height: 50px;
   display: flex;
   align-items: center;
-  border-radius: 0 0 $border-radius-base $border-radius-base;
   border: 1px solid $gray-light;
   border-top: none;
   p {
@@ -111,7 +109,6 @@
   line-height: 31px;
   padding: 0 10px;
   background-color: $amaranth;
-  border-radius: $border-radius-base 0 0 0;
   i {
     width: 30px;
     height: 30px;

@@ -47,7 +47,6 @@
   padding: 3px 5px;
   background-color: darken($gray-lighter, 15%);
   color: $gray-lighter;
-  border-radius: 0 0 0 4px;
   font-size: 12px;
 }
 
@@ -62,9 +61,9 @@
   padding: 20px;
   padding-top: 30px;
   margin-bottom: 0;
-  border-radius: 0;
   border: none;
   border-bottom: 1px solid $gray-light;
+  border-radius: 0;
   color: $text-color;
 }
 

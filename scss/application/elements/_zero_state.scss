@@ -1,17 +1,12 @@
 // Zero State
 //
-// <ul>
-//   <li>The content padding for a zero-state element is currently set to `20px` which matches our global content spacing.</li>
-//   <li>Additional perceived spacing is determined by the content of the zero-state element.</li>
-//   <li>Margin top and bottom is set to 27px by default.</li>
-//   <li>The border color is `#F3F4F6` for all zero-state elements but it is overwritten on the dashboard where the borders required more contrast to match comps. We are also adding a `border-radius: 4px;` on the dashboard.</li>
-// </ul>
-// 
+// Used to represent the absense of objects, like no videos on a team, no requests available, etc.
+//
 // Example:
 // <div class="zero-state">
 //   <p>Zero state message</p>
 // </div>
-// 
+//
 // Example:
 // <h2>This is an example of a heading or video title</h2>
 // <div class="zero-state">

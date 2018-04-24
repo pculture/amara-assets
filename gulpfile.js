@@ -66,7 +66,7 @@ gulp.task('fonts', function(cb) {
 gulp.task('css', function(cb) {
     pump([
         gulp.src(paths.css),
-        newer({'dest': dest_paths.css, ext: '.css', 'extra': 'scss/**'}),
+        newer({'dest': dest_paths.css, ext: '.css', 'extra': 'scss/**/*.scss'}),
         sourcemaps.init(),
         sass({outputStyle: 'compressed'}).on('error', sass.logError),
         sourcemaps.write('./maps'),

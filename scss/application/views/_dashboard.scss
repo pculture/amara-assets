@@ -24,8 +24,6 @@ Dashboard Sections
   .zero-state {
     border: 1px solid $gray-light;
     text-align: center;
-    border-radius: 4px;
-    text-align: center;
     height: 80px;
     display: flex;
     flex-direction: column;
@@ -65,7 +63,6 @@ Dashboard Sections
     padding: 0;
     list-style: none;
     border: 1px solid $gray-light;
-    border-radius: $border-radius-base;
     li {
       width: 100%;
       a {
@@ -94,23 +91,6 @@ Dashboard Sections
           i {
             margin-right: 10px;
             font-size: 20px;
-          }
-        }
-      }
-      
-      &:first-child {
-        span {
-          border-radius: 0 $border-radius-base 0 0;
-          &.total {
-            border-radius: $border-radius-base 0 0 0;
-          }
-        }
-      }
-      &:last-child {
-        span {
-          border-radius: 0 0 $border-radius-base 0;
-          &.total {
-            border-radius: 0 0 0 $border-radius-base;
           }
         }
       }
@@ -250,7 +230,6 @@ Dashboard Sections
 .users {
   height: 275px;
   padding: 5px;
-  border-radius: $border-radius-base;
   background-color: #ffffff;
   overflow-y: auto;
   overflow-x: hidden;

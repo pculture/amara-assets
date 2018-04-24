@@ -85,7 +85,6 @@ select.select {
   .select2-selection {
     padding: 10px 40px 10px 8px;
     outline: 0; // We create our own focus ring below
-    border-radius: 4px;
     border: 1px solid $silver;
     min-height: 39px;
     line-height: 19px;
@@ -96,15 +95,7 @@ select.select {
     padding: 3px 40px 3px 8px;
   }
 
-  &.select2-container--below .select2-selection {
-    border-radius: 4px 4px 0 0;
-  }
-  &.select2-container--above .select2-selection {
-    border-radius: 0 0 4px 4px;
-  }
-
   &.selectFilter .select2-selection {
-    border-radius: 4px;
     font-size: $font-size-small;
     background-color: transparent;
     border: 1px solid transparent;
@@ -135,7 +126,6 @@ select.select {
     color: $gray-darker;
     background: $gray-lighter;
     border: 1px solid $silver;
-    border-radius: 4px;
     list-style-type: none;
     margin: 3px 6px 3px 0;
     padding: 2px 8px;
@@ -200,7 +190,6 @@ select.select {
     background: $gray-lighter;
     padding: 0 5px;
     pointer-events: none;
-    border-radius: 0 4px 4px 0;
     border: 1px solid $silver;
   }
 

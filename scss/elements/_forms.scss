@@ -104,7 +104,6 @@ textarea {
   padding: 8px 10px;
   margin: 0;
   border: 1px solid $silver;
-  border-radius: $border-radius-base;
   background-color: #fff;
   color: $gray-darker;
   &:focus {
@@ -164,7 +163,6 @@ textarea {
   overflow: hidden;
   border: 1px solid $silver;
   border-left-width: 0;
-  border-radius: 0 $border-radius-base $border-radius-base 0;
   padding: 8px 10px;
   line-height: 21px;
   margin: 0;
@@ -188,7 +186,6 @@ textarea {
   display: block;
 }
 .fileUpload-text {
-  border-radius: $border-radius-base 0 0 $border-radius-base;
   border-right-width: 0;
   background-color: $gray-light;
 }
@@ -323,9 +320,6 @@ input:checked + label .radio-icon:after {
   background-color: $plum;
 }
 
-.checkbox-icon {
-  border-radius: 2px;
-}
 input:checked + label .checkbox-icon {
   background-color: $plum;
   &:after {
@@ -498,7 +492,6 @@ legend {
   white-space: nowrap;
   line-height: 1.42857;
   text-transform: none;
-  border-radius: 4px;
   user-select: none;
   touch-action: manipulation;
   cursor: pointer;
@@ -520,7 +513,6 @@ legend {
     font-size: 13px;
     font-weight: 300;
     line-height: 1.5em;
-    border-radius: 3px;
   }
   &.disabled {
     background-color: $gray-light;
