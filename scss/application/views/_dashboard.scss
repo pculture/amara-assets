@@ -78,7 +78,7 @@ Dashboard Sections
           line-height: 60px;
           padding: 0 0 0 20px;
           text-align: left;
-          background-color: $turquoise;
+          background-color: light($plum);
           &.total{
             width: 25%;
             padding: 0 10px;
@@ -96,7 +96,7 @@ Dashboard Sections
       }
       &:nth-of-type(odd) {
         span {
-          background-color: $teal;
+          background-color: $plum;
           width: 75%;
           &.total {
             background-color: $gray-lighter;

@@ -10,10 +10,25 @@ $plum:                   #5a2747;
 $teal:                   #30957b;
 $amaranth:               #f3254d;
 $lime:                   #80bd3e;
-$turquoise:              #3da285;
 $sea-green:              #38957c;
-$sea-green-dark:         #2f8665;
 $cream:                  #fffdf8;
+
+// Map color names to tuples of (color, alternate_color) where alternate_color is the text color to use when color is the background
+$colorscheme: (
+  plum: ($plum, $white),
+  teal: ($teal, $white),
+  amaranth: ($amaranth, $white),
+  lime: ($lime, $white),
+  sea-green: ($sea-green, $white),
+
+  gray: ($gray, $white),
+  gray-darker: ($gray-darker, $white),
+  gray-dark: ($gray-dark, $white),
+  silver: ($silver, $white),
+  gray-light: ($gray-light, $plum),
+  gray-lighter: ($gray-lighter, $plum),
+  white: ($white, $gray),
+);
 
 $body-bg:                #ffffff;
 $text-color:             $gray-darker;
