@@ -77,7 +77,7 @@
   align-items: center;
   height: 0;
   padding-bottom: 56.25%;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   overflow: hidden;
   img {
     position: absolute;

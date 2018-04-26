@@ -35,7 +35,7 @@
 
 .styleGuide-exampleBox {
   position: relative;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
 }
 
 .styleGuide-exampleTitle {
@@ -45,16 +45,16 @@
   right: 0;
   margin: 0;
   padding: 3px 5px;
-  background-color: $gray-light;
-  color: $solitude;
+  background-color: light($gray);
+  color: $snow;
   font-size: 12px;
 }
 
 .styleGuide-exampleBoxHeader {
-  background: $solitude;
+  background: $snow;
   margin: 0;
   padding: 10px 20px;
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid light($gray);
 }
 
 .styleGuide-exampleSource {
@@ -62,7 +62,7 @@
   padding-top: 30px;
   margin-bottom: 0;
   border: none;
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid light($gray);
   border-radius: 0;
   color: $text-color;
 }
@@ -97,7 +97,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      border: 1px solid $gray-light;
+      border: 1px solid light($gray);
     }
   }
   // Typography
@@ -121,7 +121,7 @@ ul.styleGuide-iconList {
     height: 120px;
     padding: 10px;
     margin: 10px;
-    background-color: $solitude;
+    background-color: $snow;
     color: $gray;
     text-align: center;
     i {
@@ -129,7 +129,7 @@ ul.styleGuide-iconList {
       font-size: 30px;
       padding: 10px;
       &:before {
-        color: $gray-dark !important;
+        color: dark($gray) !important;
       }
     }
     span {

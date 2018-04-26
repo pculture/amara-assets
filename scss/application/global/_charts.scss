@@ -46,7 +46,7 @@
   position: absolute;
   display: inline-block;
   min-width: 5em;
-  background: $gray-dark;
+  background: dark($gray);
   color: #fff;
   font-weight: 700;
   text-align: center;

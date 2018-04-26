@@ -1,8 +1,6 @@
 $charcoal:               #222626;
 $gray:                   #9fa0a1;
-$gray-dark:              dark($gray);
-$gray-light:             light($gray);
-$solitude:               #F3F4F6;
+$snow:               #F3F4F6;
 $white:                  #FFFFFF;
 
 $plum:                   #5a2747;
@@ -22,9 +20,7 @@ $colorscheme: (
 
   "charcoal": ($charcoal, $white),
   "gray": ($gray, $white),
-  "gray-dark": ($gray-dark, $white),
-  "gray-light": ($gray-light, $charcoal),
-  "solitude": ($solitude, $plum),
+  "snow": ($snow, $plum),
   "white": ($white, $gray),
 );
 

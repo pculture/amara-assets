@@ -165,9 +165,9 @@ ul.selectList {
     flex-direction: row;
     width: 100%;
     padding: 8px;
-    color: $gray-dark;
+    color: dark($gray);
     &:hover {
-      background-color: $solitude;
+      background-color: $snow;
 
       .context-menu {
         display: block;
@@ -202,7 +202,7 @@ ul.selectList {
     top: 0;
     right: 0;
     a, button {
-      color: $gray-light;
+      color: light($gray);
       &:hover, &:focus, &:active {
         color: $teal;
       }

@@ -71,7 +71,7 @@
   height: 30px;
   margin: 0;
   padding: 0;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   border-bottom: none;
 }
 .videoCard-footer {
@@ -79,7 +79,7 @@
   height: 50px;
   display: flex;
   align-items: center;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   border-top: none;
   p {
     display: inline-block;

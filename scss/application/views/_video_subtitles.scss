@@ -46,7 +46,7 @@
       }
       &.current {
         color: $plum;
-        background-color: $gray-light;
+        background-color: light($gray);
         &:before {
           border: 2px solid $plum;
           border-radius: 50%;
@@ -57,7 +57,7 @@
 
   .subtitleStatus {
     color: $plum;
-    background-color: $gray-light;
+    background-color: light($gray);
     padding: 10px 5px 10px;
     margin-bottom: 30px;
     text-align: center;
@@ -95,7 +95,7 @@
   li {
     margin: 0 0 5px 0;
     &.currentRevision {
-      border: 1px solid $gray-light;
+      border: 1px solid light($gray);
     }
     &.private {
       color: $lime;

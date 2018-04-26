@@ -85,7 +85,7 @@ select.select {
   .select2-selection {
     padding: 10px 40px 10px 8px;
     outline: 0; // We create our own focus ring below
-    border: 1px solid $gray-light;
+    border: 1px solid light($gray);
     min-height: 39px;
     line-height: 19px;
     background-color: #fff;
@@ -124,8 +124,8 @@ select.select {
   .select2-selection__choice {
     float: left;
     color: $charcoal;
-    background: $solitude;
-    border: 1px solid $gray-light;
+    background: $snow;
+    border: 1px solid light($gray);
     list-style-type: none;
     margin: 3px 6px 3px 0;
     padding: 2px 8px;
@@ -137,7 +137,7 @@ select.select {
   }
 
   .select2-dropdown {
-    border: 1px solid $gray-light;
+    border: 1px solid light($gray);
     box-shadow: 0 6px 12px rgba(0,0,0,0.175);
   }
   .select2-dropdown--below {
@@ -154,7 +154,7 @@ select.select {
     padding: 4px 8px;
     color: $charcoal;
     border: none;
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid light($gray);
   }
   .select2-results > .select2-results__options {
     max-height: 200px;
@@ -176,7 +176,7 @@ select.select {
       margin-right: 20px;
   }
   .select2-results__option--border {
-      border-top: 1px solid $gray-light
+      border-top: 1px solid light($gray)
   }
 
   // arrow handling
@@ -187,10 +187,10 @@ select.select {
     top: 0;
     right: 0;
     bottom: 0;
-    background: $solitude;
+    background: $snow;
     padding: 0 5px;
     pointer-events: none;
-    border: 1px solid $gray-light;
+    border: 1px solid light($gray);
   }
 
   .select2-selection__arrow b {

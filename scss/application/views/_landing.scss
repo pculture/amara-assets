@@ -18,7 +18,7 @@
       &:before {
         content: counter(step-counter)'.';
         margin-right: 5px;
-        color: $gray-light;
+        color: light($gray);
       }
       &:nth-of-type(3):after { content:"\a"; white-space: pre; }
       &:nth-of-type(n+4) {

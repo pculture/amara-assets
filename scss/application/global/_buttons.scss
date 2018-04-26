@@ -16,7 +16,7 @@ button {
   background-color: transparent;
   color: $teal;
   &:disabled {
-    color: $gray-light;
+    color: light($gray);
   }
   &:focus {
     outline: none;
@@ -74,14 +74,14 @@ button {
     line-height: 1.5em;
   }
   &.disabled {
-    background-color: $gray-light;
-    border-color: $gray-light;
+    background-color: light($gray);
+    border-color: light($gray);
     color: #393839;
     cursor: default;
     &:hover, &:focus {
       color: #393839;
-      background-color: $gray-light;
-      border-color: $gray-light;
+      background-color: light($gray);
+      border-color: light($gray);
     }
   }
   &.cta {

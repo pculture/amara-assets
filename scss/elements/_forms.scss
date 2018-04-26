@@ -103,7 +103,7 @@ textarea {
   width: 100%;
   padding: 8px 10px;
   margin: 0;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   background-color: #fff;
   color: $charcoal;
   &:focus {
@@ -120,22 +120,22 @@ textarea {
 }
 
 .fieldOptional {
-  color: $gray-dark;
+  color: dark($gray);
 }
 
 // placeholders
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: $gray-dark;
+  color: dark($gray);
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: $gray-dark;
+  color: dark($gray);
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: $gray-dark;
+  color: dark($gray);
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: $gray-dark;
+  color: dark($gray);
 }
 
 
@@ -161,7 +161,7 @@ textarea {
 .buttonFile {
   position: relative;
   overflow: hidden;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   border-left-width: 0;
   padding: 8px 10px;
   line-height: 21px;
@@ -187,7 +187,7 @@ textarea {
 }
 .fileUpload-text {
   border-right-width: 0;
-  background-color: $gray-light;
+  background-color: light($gray);
 }
 
 
@@ -299,7 +299,7 @@ textarea {
   margin-right: 8px;
   vertical-align: middle;
   background: #ffffff;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   cursor: pointer;
 }
 .radio-icon {
@@ -340,7 +340,7 @@ input:checked + label .checkbox-icon {
 
 .radio, .checkbox {
     input:disabled + label, input[disabled] + label {
-        color: $gray-dark;
+        color: dark($gray);
     }
 }
 
@@ -463,7 +463,7 @@ fieldset {
 
 legend {
   margin-bottom: 12px;
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid light($gray);
   color: $charcoal;
 }
 
@@ -510,8 +510,8 @@ legend {
     line-height: 1.5em;
   }
   &.disabled {
-    background-color: $gray-light;
-    border-color: $gray-light;
+    background-color: light($gray);
+    border-color: light($gray);
     color: #393839;
     cursor: default;
   }

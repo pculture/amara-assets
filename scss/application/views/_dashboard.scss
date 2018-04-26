@@ -14,15 +14,15 @@ Dashboard Sections
   .pageSection {
     &:nth-of-type(even) {
       background: #f8f8f8;
-      border-top: 1px solid $gray-light;
-      border-bottom: 1px solid $gray-light;
+      border-top: 1px solid light($gray);
+      border-bottom: 1px solid light($gray);
       .dashboardContrasting {
         background-color: #fff;
       }
     }
   }
   .zero-state {
-    border: 1px solid $gray-light;
+    border: 1px solid light($gray);
     text-align: center;
     height: 80px;
     display: flex;
@@ -62,7 +62,7 @@ Dashboard Sections
     width: 100%;
     padding: 0;
     list-style: none;
-    border: 1px solid $gray-light;
+    border: 1px solid light($gray);
     li {
       width: 100%;
       a {
@@ -99,7 +99,7 @@ Dashboard Sections
           background-color: $plum;
           width: 75%;
           &.total {
-            background-color: $solitude;
+            background-color: $snow;
           }
         }
       }
@@ -155,7 +155,7 @@ Dashboard Sections
       justify-content: flex-start;
       flex-wrap: nowrap;
       &:nth-child(odd) {
-        border-right: 1px solid $gray-light;
+        border-right: 1px solid light($gray);
         span {
           &:last-child {
             margin: auto;
@@ -366,7 +366,7 @@ Responsive
         padding-top: 20px;
         padding-bottom: 20px;
         &:nth-of-type(even) {
-          background: $solitude;
+          background: $snow;
           padding-top: 20px;
           padding-bottom: 20px;
         }

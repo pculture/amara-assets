@@ -172,7 +172,7 @@ a.topnav-button, button.topnav-button {
   }
 
   &.gray {
-    background-color: $solitude;
+    background-color: $snow;
     color: $plum;
     &:visited {
       color: $plum;
@@ -341,7 +341,7 @@ a.topnav-button, button.topnav-button {
       li {
         display: block;
         width: 100%;
-        border-bottom: 1px solid $solitude;
+        border-bottom: 1px solid $snow;
         &:last-child {
           border: none;
         }
@@ -352,7 +352,7 @@ a.topnav-button, button.topnav-button {
           color: $charcoal;
           font-weight: 400;
           &:hover, &:focus {
-            background-color: $solitude;
+            background-color: $snow;
           }
         }
       }
@@ -368,7 +368,7 @@ a.topnav-button, button.topnav-button {
       li {
         display: block;
         width: 100%;
-        border-bottom: 1px solid $solitude;
+        border-bottom: 1px solid $snow;
       }
     }
     .dropdown-menu {
@@ -380,7 +380,7 @@ a.topnav-button, button.topnav-button {
       li {
         display: block;
         width: 100%;
-        border-bottom: 1px solid $solitude;
+        border-bottom: 1px solid $snow;
         &:last-child {
           border: none;
         }
