@@ -62,7 +62,7 @@ ul, ol {
 hr {
   margin-top: 10px;
   margin-bottom: 10px;
-  border-top-color: $gray-lighter;
+  border-top-color: $solitude;
 }
 
 
@@ -94,8 +94,8 @@ hr {
 .gray-light {
   background-color: $gray-light;
 }
-.gray-lighter {
-  background-color: $gray-lighter;
+.solitude {
+  background-color: $solitude;
 }
 
 .profileWell {
@@ -105,7 +105,7 @@ hr {
   border: none;
   border-radius: 0px;
   box-shadow: none;
-  background-color: $gray-lighter;
+  background-color: $solitude;
   color: $gray-dark;
   .icon.icon-mail {
     margin-left: 15px;
@@ -121,7 +121,7 @@ hr {
     margin-bottom: 0;
     margin-right: 40px;
   }
-  h3, h4 { color: $gray-darker; }
+  h3, h4 { color: $charcoal; }
   hr {
     border-top: 1px solid $gray-light;
     margin: 1rem -10px;

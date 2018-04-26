@@ -3,7 +3,7 @@ ul.comments {
     position: relative;
     padding: 10px 0;
     &:nth-of-type(odd) {
-      background-color: $gray-lighter;
+      background-color: $solitude;
     }
     &:last-child {
       background-color: #fff;

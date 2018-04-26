@@ -1,9 +1,8 @@
-$gray-darker:            #222626;
-$gray-dark:              #7e7f80;
+$charcoal:               #222626;
 $gray:                   #9fa0a1;
-$silver:                 #c6c6c7;
-$gray-light:             #d9d9d9;
-$gray-lighter:           #F3F4F6;
+$gray-dark:              dark($gray);
+$gray-light:             light($gray);
+$solitude:               #F3F4F6;
 $white:                  #FFFFFF;
 
 $plum:                   #5a2747;
@@ -15,27 +14,26 @@ $cream:                  #fffdf8;
 
 // Map color names to tuples of (color, alternate_color) where alternate_color is the text color to use when color is the background
 $colorscheme: (
-  plum: ($plum, $white),
-  teal: ($teal, $white),
-  amaranth: ($amaranth, $white),
-  lime: ($lime, $white),
-  sea-green: ($sea-green, $white),
+  "plum": ($plum, $white),
+  "teal": ($teal, $white),
+  "amaranth": ($amaranth, $white),
+  "lime": ($lime, $white),
+  "sea-green": ($sea-green, $white),
 
-  gray: ($gray, $white),
-  gray-darker: ($gray-darker, $white),
-  gray-dark: ($gray-dark, $white),
-  silver: ($silver, $white),
-  gray-light: ($gray-light, $plum),
-  gray-lighter: ($gray-lighter, $plum),
-  white: ($white, $gray),
+  "charcoal": ($charcoal, $white),
+  "gray": ($gray, $white),
+  "gray-dark": ($gray-dark, $white),
+  "gray-light": ($gray-light, $charcoal),
+  "solitude": ($solitude, $plum),
+  "white": ($white, $gray),
 );
 
 $body-bg:                #ffffff;
-$text-color:             $gray-darker;
+$text-color:             $charcoal;
 $brand-primary:          $plum;
 
-$link-color:            $brand-primary;
-$link-hover-color:      darken($link-color, 15%);
+$link-color:            $teal;
+$link-hover-color:      $lime;
 
 $font-family-sans-serif:  'Open Sans', sans-serif;
 $headings-font-family:    'Raleway', sans-serif;

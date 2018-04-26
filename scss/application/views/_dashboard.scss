@@ -99,7 +99,7 @@ Dashboard Sections
           background-color: $plum;
           width: 75%;
           &.total {
-            background-color: $gray-lighter;
+            background-color: $solitude;
           }
         }
       }
@@ -186,7 +186,7 @@ Dashboard Sections
   .cardGrid {
     .cardGrid-videoCard {
       width: 260px;
-      background-color: $gray-darker;
+      background-color: $charcoal;
       color: #ffffff;
       &:after {
         font-family: 'amara';
@@ -366,7 +366,7 @@ Responsive
         padding-top: 20px;
         padding-bottom: 20px;
         &:nth-of-type(even) {
-          background: $gray-lighter;
+          background: $solitude;
           padding-top: 20px;
           padding-bottom: 20px;
         }

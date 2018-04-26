@@ -167,7 +167,7 @@ ul.selectList {
     padding: 8px;
     color: $gray-dark;
     &:hover {
-      background-color: $gray-lighter;
+      background-color: $solitude;
 
       .context-menu {
         display: block;
@@ -183,7 +183,7 @@ ul.selectList {
   h4 {
     font-size: 13px;
     font-weight: 600;
-    color: $gray-darker;
+    color: $charcoal;
     margin: 0;
   }
   h3, h4 {
@@ -194,7 +194,7 @@ ul.selectList {
   dl {
     margin-bottom: 10px;
     dt,dd{display:inline; font-weight: 100;}
-    dt {color: $gray-darker;}
+    dt {color: $charcoal;}
     dd {margin-right: 10px;}
   }
   .actions {

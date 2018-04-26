@@ -45,13 +45,13 @@
   right: 0;
   margin: 0;
   padding: 3px 5px;
-  background-color: darken($gray-lighter, 15%);
-  color: $gray-lighter;
+  background-color: $gray-light;
+  color: $solitude;
   font-size: 12px;
 }
 
 .styleGuide-exampleBoxHeader {
-  background: $gray-lighter;
+  background: $solitude;
   margin: 0;
   padding: 10px 20px;
   border-bottom: 1px solid $gray-light;
@@ -97,7 +97,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      border: 1px solid silver;
+      border: 1px solid $gray-light;
     }
   }
   // Typography
@@ -121,7 +121,7 @@ ul.styleGuide-iconList {
     height: 120px;
     padding: 10px;
     margin: 10px;
-    background-color: $gray-lighter;
+    background-color: $solitude;
     color: $gray;
     text-align: center;
     i {

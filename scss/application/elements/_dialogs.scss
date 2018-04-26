@@ -237,14 +237,14 @@
   .modal-content {
     position: relative;
     padding: 20px;
-    background-color: $gray-lighter;
+    background-color: $solitude;
     // TODO - remove form specific styles from here. These should be refadtored and added to other stylesheets
     form {
       margin-bottom: 0;
       .checkbox {
         margin-bottom: 10px;
         font-size: 12px;
-        label { color: $gray-darker; }
+        label { color: $charcoal; }
       }
       .select {
         padding: 5px 16px;
@@ -273,7 +273,7 @@
     font-weight: 500;
     line-height: 1.0;
     margin-bottom: 5px;
-    color: $gray-darker;
+    color: $charcoal;
   }
   .dialogSubTitle {
     font-family: $font-family-sans-serif;
@@ -291,7 +291,7 @@
     right: 5px;
     font-size: 24px;
     font-weight: 400;
-    color: $gray-darker;
+    color: $charcoal;
     opacity: 0.2;
     background-color: transparent;
     border: none;
