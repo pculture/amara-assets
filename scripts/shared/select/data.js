@@ -56,6 +56,7 @@ function AmaraArrayData($element, data) {
     });
 }
 Utils.Extend(AmaraArrayData, ArrayData);
+
 AmaraArrayData.prototype.updateExtraOptions = function(extraOptions) {
     if(this.extraOptions) {
         _.each(this.extraOptions, function(option) {
@@ -120,7 +121,5 @@ module.exports = function makeDataAdapter(select) {
         var adapter = AmaraArrayData;
     }
 
-    adapter = Utils.Decorate(adapter, Tags);
-    adapter = Utils.Decorate(adapter, Tokenizer);
     return adapter;
 }

@@ -198,29 +198,44 @@ textarea {
 
 // Checkboxes and radios
 //
+// We style our checkboxes and radioboxes.  Use the HTML below to ensure yours looks correct.
+//
+// Use the .checkbox-spacer class to add empty width the size of a checkbox.  This is usefull to align items in a list where one is missing a checkbox.
+//
 // Example:
 //
 // <div class="form-group">
 //   <div class="checkbox">
 //     <input type="checkbox" id="checkbox00" value="">
-//     <label for="checkbox00"><span class="checkbox-icon"></span> I can haz?</label>
+//     <label for="checkbox00"><span class="checkbox-icon"></span> I agree</label>
 //   </div>
+// </div>
+//
+// <div class="form-group">
+//   <div class="checkbox">
+//     <input type="checkbox" id="checkbox01" value="" disabled>
+//     <label for="checkbox01"><span class="checkbox-icon"></span> I disagree (disabled)</label>
+//   </div>
+// </div>
+//
+// <div class="form-group">
+//   <div class="checkbox-spacer"></div> Spacer example
 // </div>
 //
 // <div class="form-group">
 //   <label>What's you're favorite sandwich?</label>
 //   <ul>
 //     <li class="radio">
-//       <input checked type="radio" id="radio00" value="club" name="delete">
+//       <input checked type="radio" id="radio00" value="club" name="sandwich">
 //       <label for="radio00"><span class="radio-icon"></span>Club</label>
 //     </li>
 //     <li class="radio">
-//       <input type="radio" id="radio01" value="blt" name="delete">
+//       <input type="radio" id="radio01" value="blt" name="sandwich">
 //       <label for="radio01"><span class="radio-icon"></span>BLT</label>
 //     </li>
 //     <li class="radio">
-//       <input type="radio" id="radio02" value="sub" name="delete">
-//       <label for="radio02"><span class="radio-icon"></span>Submarine</label>
+//       <input type="radio" id="radio02" value="sub" name="sandwich" disabled>
+//       <label for="radio02"><span class="radio-icon"></span>Submarine (disabled)</label>
 //     </li>
 //   </ul>
 // </div>
@@ -229,25 +244,25 @@ textarea {
 //   <label>Who is you're favorite Golden Girl?</label>
 //   <ul>
 //     <li class="radio">
-//       <input type="radio" id="radio10" value="dorthy" name="delete">
+//       <input type="radio" id="radio10" value="dorthy" name="golden_girl">
 //       <label for="radio10"><span class="radio-icon"></span>Dorthy
 //         <p class="helpBlock helpBlock-radio">Played by Bea Arthur</p>
 //       </label>
 //     </li>
 //     <li class="radio">
-//       <input checked type="radio" id="radio11" value="rose" name="delete">
+//       <input checked type="radio" id="radio11" value="rose" name="golden_girl">
 //       <label for="radio11"><span class="radio-icon"></span>rose
 //         <p class="helpBlock helpBlock-radio">Played by Betty White</p>
 //       </label>
 //     </li>
 //     <li class="radio">
-//       <input type="radio" id="radio12" value="blanch" name="delete">
+//       <input type="radio" id="radio12" value="blanch" name="golden_girl">
 //       <label for="radio12"><span class="radio-icon"></span>blanch
 //         <p class="helpBlock helpBlock-radio">Played by Rue McClanahan</p>
 //       </label>
 //     </li>
 //     <li class="radio">
-//       <input type="radio" id="radio13" value="sophia" name="delete">
+//       <input type="radio" id="radio13" value="sophia" name="golden_girl">
 //       <label for="radio13"><span class="radio-icon"></span>sophia
 //         <p class="helpBlock helpBlock-radio">Played by Estelle Getty</p>
 //       </label>
@@ -330,6 +345,17 @@ input:checked + label .checkbox-icon {
     text-align: center;
     color: #fff;
   }
+}
+
+.radio, .checkbox {
+    input:disabled + label, input[disabled] + label {
+        color: $gray-dark;
+    }
+}
+
+.checkbox-spacer {
+    display: inline-block;
+    width: 26px;
 }
 
 // Field errors

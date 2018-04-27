@@ -40,7 +40,6 @@
     "jquery": "^3.2.1",
     "jquery-form": "^4.2.2",
     "jquery-mousewheel": "^3.1.13",
-    "jscrollpane": "^2.0.22",
     "pump": "^1.0.2",
     "requirejs": "^2.3.5",
     "rjs": "^4.0.2",
