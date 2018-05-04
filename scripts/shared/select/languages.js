@@ -32,7 +32,7 @@ function languageChoiceData(select) {
   var limitTo = select.data('limitTo');
   var flat = select.data('flat');
 
-  if(select.data('initial')) {
+  if(select.data('initial') !== undefined) {
     var initial = select.data('initial').split(':');
   } else {
     var initial = [];
@@ -72,19 +72,22 @@ function languageChoiceData(select) {
     }
   }
   if(sectionEnabled('dont-set')) {
-      var dontSetChoice = {
-          id: 'dont-set',
-          text: gettext("Don't set")
-      };
+      addUnsetOption(gettext("Don't set"));
+  } else if(sectionEnabled('unset')) {
+      addUnsetOption(gettext("Unset"));
+  }
+  function addUnsetOption(text) {
+      var choice = { id: 'null', text: text };
       if(flat) {
-          data.push(dontSetChoice);
+          data.push(choice);
       } else {
           data.push({
             text: gettext('Other'),
-            children: [dontSetChoice]
+            children: [choice]
           });
       }
   }
+
   return data;
 }
 

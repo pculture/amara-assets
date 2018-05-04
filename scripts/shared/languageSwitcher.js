@@ -1,5 +1,8 @@
+var $ = require('jquery');
+var cookies = require('browser-cookies');
 
 $.behaviors('.languageSwitcher', function(languageSwitcher) {
+    var links = $('.languageSwitcher-item', languageSwitcher);
     var input = $('.languageSwitcher_searchBar', languageSwitcher);
 
     input.on('keyup', function() {
@@ -13,5 +16,10 @@ $.behaviors('.languageSwitcher', function(languageSwitcher) {
                 li[i].style.display = "none";
             }
         }
+    });
+
+    links.on('click', function(evt) {
+        var languageCode = $(this).data('languageCode');
+        cookies.set('language', languageCode, {expires: 5 * 365});
     });
 });
