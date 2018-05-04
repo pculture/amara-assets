@@ -269,17 +269,15 @@
   }
   .dialogTitle {
     font-family: $font-family-sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 1.0;
     margin-bottom: 5px;
     color: $charcoal;
   }
   .dialogSubTitle {
     font-family: $font-family-sans-serif;
-    font-size: 12px;
+    font-size: $font-size-small;
     font-weight: 500;
-    line-height: 1.0;
     color: dark($gray);
     @include clamp(1, 1.0);
   }

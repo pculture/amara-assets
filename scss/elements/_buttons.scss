@@ -57,6 +57,9 @@ button {
   }
   &.button-lime {
     background-color: $lime !important;
+    &:hover {
+      background-color: $teal !important;
+    }
   }
   &.button-teal {
     background-color: $teal !important;
@@ -70,11 +73,13 @@ button {
     text-transform: capitalize;
     margin-top: 10px;
     &:hover {
+      background-color: transparent !important;
       color: $lime;
     }
   }
   &:hover {
     background-color: $lime !important;
+    color: $white;
   }
   &.button-block {
     display: block;
