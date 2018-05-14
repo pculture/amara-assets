@@ -20,11 +20,11 @@
 var $ = require('jquery');
 var cookies = require('browser-cookies');
 
-$.behaviors('.teamMemberRoleSelect', function(elt) {
-    var elt = $(elt);
-    var targets = $('.visibilityTogglerTarget')
+$.behaviors('.teamMemberRoleSelect', function(selector) {
+    var selector = $(selector);
+    var targets = $('.projectsAndLanguagesSelectors')
 
-    elt.on('change', function() {
+    selector.on('change', function() {
         new_value = this.value
         if (new_value == 'proj_lang_manager') {
             targets.show()
