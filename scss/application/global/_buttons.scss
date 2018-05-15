@@ -98,7 +98,7 @@ button {
     display: inline-block;
     line-height: inherit;
     padding: 0;
-    color: inherit;
+    color: $teal;
     background-color: transparent;
     border-color: transparent;
     font-weight: inherit;
@@ -109,7 +109,7 @@ button {
     }
   }
   &.borderless {
-    color: inherit;
+    color: $teal;
     background-color: transparent;
     border-color: transparent;
     font-weight: inherit;
