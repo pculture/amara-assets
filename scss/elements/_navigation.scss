@@ -228,8 +228,8 @@ a.topnav-button, button.topnav-button {
           a {
             font-weight: 700;
             color: $teal;
-            cursor: default;
-            pointer-events: none;
+            //cursor: pointer;
+            //pointer-events: none;
           }
         }
         a {
