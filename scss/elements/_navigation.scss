@@ -224,7 +224,6 @@ a.topnav-button, button.topnav-button {
         &.active {
           a {
             font-weight: 700;
-            color: $teal;
             cursor: default;
             pointer-events: none;
           }
@@ -234,10 +233,11 @@ a.topnav-button, button.topnav-button {
           height: 68px;
           line-height: 68px;
           padding: 0 12px;
-          color: $charcoal;
+          color: $plum;
           font-size: 17px;
           font-weight: 400;
           &:hover, &:focus {
+            color: $lime;
 
           }
         }
