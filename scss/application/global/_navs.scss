@@ -35,22 +35,3 @@
     }
   }
 }
-
-.pagination {
-  li {
-    a {
-      color: $text-color;
-      padding: 5px 12px;
-    }
-    &.active {
-      a, span {
-        color: #fff;
-        background-color: $teal;
-        &:hover, &:focus {
-          color: #fff;
-          background-color: $teal;
-        }
-      }
-    }
-  }
-}
