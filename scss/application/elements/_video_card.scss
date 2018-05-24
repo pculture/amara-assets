@@ -29,6 +29,7 @@
 // </div>
 // 
 // Example:
+// <div class="grid">
 // <a href="#" class="videoCardSimple">
 //   <div class="thumbWrapper">
 //     <img src="http://via.placeholder.com/800x600" alt="Placeholder Image">
@@ -37,7 +38,12 @@
 //     <h4 class="videoCardSimple-title">The Future Of News? Virtual Reality</h4>
 //     <h4 class="videoCardSimple-subtitle">Carl Safina</h4>
 //   </div>
+//  </a>
+//  <a class="videoCardSimple videoCardSimple-summary" href="/en/teams/collab/videos/">
+//    <span class="videoCardSimple-summaryCount">+2</span>
+//    <span class="videoCardSimple-summaryLabel">Videos</span>
 // </a>
+// </div>
 //
 // Styleguide videoCards
 
@@ -163,26 +169,28 @@
     color: #ffffff;
     font-size: 25px;
   }
-  &.videoCardSimple-summary {
-    display: flex;
-    color: #ffffff;
-    &:after {
-      display: none;
-    }
-    span {
-      margin: auto;
-      font-size: 40px;
-      margin-left: 40px;
-      margin-right: 10px;
-      font-weight: 300;
-    }
-    h3 {
-      margin: auto;
-      margin-right: 40px;
-      font-size: 15px;
-      font-weight: 300;
-    }
+}
+
+.videoCardSimple-summary {
+  display: flex;
+  color: #ffffff;
+  &:after {
+    display: none;
   }
+}
+
+.videoCardSimple-summaryCount {
+  margin: auto;
+  font-size: 40px;
+  margin-left: 40px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+
+.videoCardSimple-summaryLabel {
+  @extend .h2;
+  margin: auto;
+  margin-right: 40px;
 }
 
 .videoCardSimple-caption {
