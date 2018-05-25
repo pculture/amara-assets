@@ -33,6 +33,7 @@
   - fieldErrors
   - fileUpload
   - compoundField
+  - buttonField
   - switch
   - searchbar
   - selects
