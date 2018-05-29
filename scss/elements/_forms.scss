@@ -84,7 +84,6 @@ label {
   max-width: 100%;
   margin-bottom: 0;
   font-weight: 600;
-  color: $charcoal;
 }
 textarea {
   resize: vertical;
@@ -396,7 +395,6 @@ input:checked + label .checkbox-icon {
   display: block;
   margin-top: 4px;
   font-size: $font-size-tiny;
-  color: $charcoal;
 }
 
 .helpBlock-radio {
@@ -407,7 +405,6 @@ input:checked + label .checkbox-icon {
 .helpList {
   margin-left: 24px;
   font-size: $font-size-tiny;
-  color: $charcoal;
   list-style-type: disc;
   list-style-position: inside;
 }

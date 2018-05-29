@@ -13,7 +13,7 @@
 //   - small: 14px (less prominent elemens like filter fields)
 //   - tiny: 13px (help text, and other fine print)
 //
-//  Use the .small or .tiny classes to change the font size
+//  Use the .text-small or .text-tiny classes to change the font size
 // 
 // <h3><em>Titling</em></h3>
 // <h1>Raleway</h1>
@@ -88,12 +88,21 @@ h4, .h4 {
   margin-bottom: 12px;
 }
 
-small, .small {
-  font-size: $font-size-small;
+.text-normal {
+  font-size: $font-size-normal;
+  font-weight: 300;
 }
 
-.tiny {
+// .text-small is the preferred CSS class, but we also support the deprecated .small version
+
+small, .small, .text-small {
+  font-size: $font-size-small;
+  font-weight: 300;
+}
+
+.tiny, .text-tiny {
   font-size: $font-size-tiny;
+  font-weight: 300;
 }
 
 em {
