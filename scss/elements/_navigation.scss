@@ -224,12 +224,7 @@ a.topnav-button, button.topnav-button {
         &.active {
           a {
             font-weight: 700;
-	    // Old
-            //color: $teal;
-            //cursor: pointer;
-            //pointer-events: none;
-	    /***************************/
-            cursor: default;
+            cursor: pointer;
             //pointer-events: none;
           }
         }
