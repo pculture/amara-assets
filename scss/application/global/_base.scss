@@ -28,7 +28,7 @@ a {
   &:hover,
   &:focus,
   &:active {
-    color: darken($teal, 10%);
+    color: $lime;
     outline: none;
     text-decoration: none;
   }
@@ -37,7 +37,7 @@ a {
   }
   &.disabled {
     cursor: default;
-    color: $gray-light;
+    color: light($gray);
     pointer-events: none;
   }
   &.text {
@@ -62,7 +62,7 @@ ul, ol {
 hr {
   margin-top: 10px;
   margin-bottom: 10px;
-  border-top-color: $gray-lighter;
+  border-top-color: $snow;
 }
 
 
@@ -90,14 +90,6 @@ hr {
 
 // TODO - Sort
 
-// Color Palette
-.gray-light {
-  background-color: $gray-light;
-}
-.gray-lighter {
-  background-color: $gray-lighter;
-}
-
 .profileWell {
   min-height: 20px;
   padding: 10px;
@@ -105,8 +97,8 @@ hr {
   border: none;
   border-radius: 0px;
   box-shadow: none;
-  background-color: $gray-lighter;
-  color: $gray-dark;
+  background-color: $snow;
+  color: dark($gray);
   .icon.icon-mail {
     margin-left: 15px;
     font-size: 22px;
@@ -121,9 +113,9 @@ hr {
     margin-bottom: 0;
     margin-right: 40px;
   }
-  h3, h4 { color: $gray-darker; }
+  h3, h4 { color: $charcoal; }
   hr {
-    border-top: 1px solid $gray-light;
+    border-top: 1px solid light($gray);
     margin: 1rem -10px;
   }
 }

@@ -231,22 +231,23 @@ table.historyTable {
   @extend .table;
   @extend .table-striped;
   table-layout: fixed;
-  tr {
-    td, th {
-      padding: 0px 10px;
-      height: 40px;
-      line-height: 40px;
-      vertical-align: middle;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      &:first-child {
-        width: 50%;
-      }
-      &:last-child {
-        width: 120px;
-        text-align: right;
+  tbody {
+    tr {
+      td, th {
+        padding: 4px 8px;
+        line-height: 30px;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &:first-child {
+          width: 50%;
+        }
+        &:last-child {
+          width: 120px;
+          text-align: right;
 
+        }
       }
     }
   }

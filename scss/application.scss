@@ -4,8 +4,9 @@
 @import "bootstrap/bootstrap-theme.min";
 @import "bootstrap/bootstrap.min";
 // Utils
-@import 'variables';
+@import 'functions';
 @import 'mixins';
+@import 'variables';
 @import 'base/font_icons';
 @import 'application/utils';
 
@@ -21,11 +22,12 @@
 
 // Global
 @import 'application/global/base';
-@import 'application/global/typography';
+@import 'base/typography';
+@import 'base/colors';
 @import 'application/global/grid';
 
 @import 'application/global/buttons';
-@import 'application/global/tabs';
+@import 'elements/tabs';
 @import 'application/global/navs';
 @import 'application/global/dropdowns';
 @import 'application/global/lists';
@@ -33,7 +35,6 @@
 @import 'elements/forms';
 @import 'application/global/progressbars';
 @import 'application/global/indicators';
-@import 'application/global/scrollbars';
 @import 'application/global/charts';
 
 // Elements
@@ -48,7 +49,7 @@
 @import 'application/elements/action_bar';
 @import 'elements/filters';
 @import 'application/elements/comments';
-@import 'application/elements/pagination';
+@import 'elements/pagination';
 @import 'application/elements/hanging_links';
 @import 'application/elements/clamp';
 @import 'application/elements/switches';
@@ -57,6 +58,7 @@
 @import 'elements/select';
 @import "elements/alerts";
 @import 'elements/tables';
+@import 'elements/video-subtitles-list';
 
 // Views
 @import 'application/views/style_guide';

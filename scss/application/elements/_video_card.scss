@@ -12,7 +12,7 @@
 //     </div>
 //     <div class="videoCard-caption"> 
 //       <h4 class="videoCard-title">Video Title</h4>
-//       <h5 class="videoCard-subtitle">Video Subtitle</h5>
+//       <h4 class="videoCard-subtitle">Video Subtitle</h4>
 //     </div>
 //   </a>
 //   <footer class="videoCard-footer">
@@ -29,15 +29,21 @@
 // </div>
 // 
 // Example:
+// <div class="grid">
 // <a href="#" class="videoCardSimple">
 //   <div class="thumbWrapper">
 //     <img src="http://via.placeholder.com/800x600" alt="Placeholder Image">
 //   </div>
 //   <div class="videoCardSimple-caption">
 //     <h4 class="videoCardSimple-title">The Future Of News? Virtual Reality</h4>
-//     <h5 class="videoCardSimple-subtitle">Carl Safina</h5>
+//     <h4 class="videoCardSimple-subtitle">Carl Safina</h4>
 //   </div>
+//  </a>
+//  <a class="videoCardSimple videoCardSimple-summary" href="/en/teams/collab/videos/">
+//    <span class="videoCardSimple-summaryCount">+2</span>
+//    <span class="videoCardSimple-summaryLabel">Videos</span>
 // </a>
+// </div>
 //
 // Styleguide videoCards
 
@@ -71,8 +77,7 @@
   height: 30px;
   margin: 0;
   padding: 0;
-  border-radius: $border-radius-base $border-radius-base 0 0;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   border-bottom: none;
 }
 .videoCard-footer {
@@ -80,8 +85,7 @@
   height: 50px;
   display: flex;
   align-items: center;
-  border-radius: 0 0 $border-radius-base $border-radius-base;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   border-top: none;
   p {
     display: inline-block;
@@ -111,7 +115,6 @@
   line-height: 31px;
   padding: 0 10px;
   background-color: $amaranth;
-  border-radius: $border-radius-base 0 0 0;
   i {
     width: 30px;
     height: 30px;
@@ -153,7 +156,7 @@
   margin: 10px;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: $gray-darker;
+  background-color: $charcoal;
   color: #ffffff;
   text-align: left;
   &:after {
@@ -166,26 +169,28 @@
     color: #ffffff;
     font-size: 25px;
   }
-  &.videoCardSimple-summary {
-    display: flex;
-    color: #ffffff;
-    &:after {
-      display: none;
-    }
-    span {
-      margin: auto;
-      font-size: 40px;
-      margin-left: 40px;
-      margin-right: 10px;
-      font-weight: 300;
-    }
-    h3 {
-      margin: auto;
-      margin-right: 40px;
-      font-size: 15px;
-      font-weight: 300;
-    }
+}
+
+.videoCardSimple-summary {
+  display: flex;
+  color: #ffffff;
+  &:after {
+    display: none;
   }
+}
+
+.videoCardSimple-summaryCount {
+  margin: auto;
+  font-size: 40px;
+  margin-left: 40px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+
+.videoCardSimple-summaryLabel {
+  @extend .h2;
+  margin: auto;
+  margin-right: 40px;
 }
 
 .videoCardSimple-caption {

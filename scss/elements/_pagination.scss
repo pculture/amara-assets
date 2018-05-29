@@ -1,0 +1,84 @@
+// Pagination
+// 
+// Example:
+// <nav class="paginator">
+//   <ul class="paginator-list">
+//     <li>
+//       <a class="paginator-link disabled" href="#" aria-label="Previous">
+//         <span aria-hidden="true">&laquo;</span>
+//       </a>
+//     </li>
+//     <li><a class="paginator-link active" href="#">1</a></li>
+//     <li><a class="paginator-link" href="#">2</a></li>
+//     <li><a class="paginator-link" href="#">3</a></li>
+//     <li><a class="paginator-link" href="#">4</a></li>
+//     <li><a class="paginator-link" href="#">5</a></li>
+//     <li>
+//       <a class="paginator-link" href="#" aria-label="Next">
+//         <span aria-hidden="true">&raquo;</span>
+//       </a>
+//     </li>
+//   </ul>
+//   <p class="paginator-objectCount">999 total objects</p>
+// </nav>
+// 
+// Styleguide pagination
+
+.paginator {
+  text-align: center;
+}
+
+.paginator-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  > li {
+    border: 1px solid $plum;
+    border-left-width: 0;
+    display: inline-block;
+
+    &:first-child {
+      border-left-width: 1px;
+    }
+  }
+}
+
+.paginator-link {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: $plum;
+  color: $white;
+
+
+  &.active {
+    color: $plum;
+    background-color: white;
+    cursor: default;
+  }
+  &:hover:not(.active):not(.disabled) {
+    color: lime;
+  }
+}
+
+.paginator-objectCount {
+  color: $gray;
+}
+
+.pagination {
+  li {
+    a {
+      color: $text-color;
+      padding: 5px 12px;
+    }
+    &.active {
+      a, span {
+        color: #fff;
+        background-color: $teal;
+        &:hover, &:focus {
+          color: #fff;
+          background-color: $teal;
+        }
+      }
+    }
+  }
+}

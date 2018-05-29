@@ -3,8 +3,9 @@
 // 3rd party
 @import "../node_modules/select2/dist/css/select2";
 
-@import "variables";
+@import 'functions';
 @import "mixins";
+@import "variables";
 @import "utilities";
 @import "animations";
 
@@ -12,7 +13,7 @@
 @import "base/global";
 @import "base/typography";
 @import "base/font_icons";
-
+@import 'base/colors';
 
 // Import layout / global styles
 @import "layout/page_header";

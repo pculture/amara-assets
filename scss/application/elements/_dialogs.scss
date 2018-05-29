@@ -13,7 +13,7 @@
 //     <div class="modal-content">
 //       <header class="dialogHeader">
 //         <h4 class="dialogTitle">Modal Title</h4>
-//         <h5 class="dialogSubTitle">Modal Subtitle</h5>
+//         <h4 class="dialogSubTitle">Modal Subtitle</h4>
 //       </header>
 //       <form>
 //         <div class="form-group">
@@ -44,7 +44,7 @@
 //     <div class="modal-content">
 //       <header class="dialogHeader">
 //         <h4 class="dialogTitle">Modal Title</h4>
-//         <h5 class="dialogSubTitle">Modal Subtitle</h5>
+//         <h4 class="dialogSubTitle">Modal Subtitle</h4>
 //       </header>
 //       <ul class="nav nav-tabs">
 //         <li class="active"><a href="#modal_tab_one" data-toggle="tab">Tab One</a></li>
@@ -85,7 +85,7 @@
 //     <div class="modal-content">
 //       <header class="dialogHeader">
 //         <h4 class="dialogTitle">Modal Title</h4>
-//         <h5 class="dialogSubTitle">Modal Subtitle</h5>
+//         <h4 class="dialogSubTitle">Modal Subtitle</h4>
 //       </header>
 //       <form>
 //         <div class="alert alert-error alert-dismissible" role="alert">
@@ -148,7 +148,7 @@
 //     <div class="modal-content">
 //       <header class="dialogHeader">
 //         <h4 class="dialogTitle">Remove Video</h4>
-//         <h5>You can choose to remove the video from the Jenny_testing_Amara team or to delete the video (and all of its subtitles) from the system entirely. What would you like to do?</h5>
+//         <h4>You can choose to remove the video from the Jenny_testing_Amara team or to delete the video (and all of its subtitles) from the system entirely. What would you like to do?</h4>
 //       </header>
 //       <form>
 //         <p></p>
@@ -237,25 +237,24 @@
   .modal-content {
     position: relative;
     padding: 20px;
-    background-color: $gray-lighter;
+    background-color: $snow;
     // TODO - remove form specific styles from here. These should be refadtored and added to other stylesheets
     form {
       margin-bottom: 0;
       .checkbox {
         margin-bottom: 10px;
         font-size: 12px;
-        label { color: $gray-darker; }
+        label { color: $charcoal; }
       }
       .select {
         padding: 5px 16px;
         margin-bottom: 10px;
         background: #ffffff;
-        border: 1px solid $gray-light;
-        border-radius: 4px;
-        color: $gray-light;
+        border: 1px solid light($gray);
+        color: light($gray);
         &:after { display: none; }
         .select2-selection__rendered { display: block; color: $gray; }
-        .select2-selection__rendered:after { float: right; color: $gray-light; }
+        .select2-selection__rendered:after { float: right; color: light($gray); }
       }
     }
     .button {
@@ -270,18 +269,16 @@
   }
   .dialogTitle {
     font-family: $font-family-sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 1.0;
     margin-bottom: 5px;
-    color: $gray-darker;
+    color: $charcoal;
   }
   .dialogSubTitle {
     font-family: $font-family-sans-serif;
-    font-size: 12px;
+    font-size: $font-size-small;
     font-weight: 500;
-    line-height: 1.0;
-    color: $gray-dark;
+    color: dark($gray);
     @include clamp(1, 1.0);
   }
 
@@ -292,7 +289,7 @@
     right: 5px;
     font-size: 24px;
     font-weight: 400;
-    color: $gray-darker;
+    color: $charcoal;
     opacity: 0.2;
     background-color: transparent;
     border: none;

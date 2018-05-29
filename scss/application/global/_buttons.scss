@@ -16,7 +16,7 @@ button {
   background-color: transparent;
   color: $teal;
   &:disabled {
-    color: $gray-light;
+    color: light($gray);
   }
   &:focus {
     outline: none;
@@ -55,18 +55,13 @@ button {
   background-image: none;
   white-space: nowrap;
   line-height: 1.42857;
-  border-radius: 4px;
   user-select: none;
   touch-action: manipulation;
   cursor: pointer;
   color: #fff;
   background-color: $teal;
   border: 1px solid $teal;
-  &:hover, &:focus {
-    color: #fff;
-    background-color: darken($teal, 10%);
-    outline: none;
-  }
+  @include transition(0.4s);
   &.block {
     display: block;
     width: 100%;
@@ -77,49 +72,56 @@ button {
     font-size: 13px;
     font-weight: 300;
     line-height: 1.5em;
-    border-radius: 3px;
   }
   &.disabled {
-    background-color: $gray-light;
-    border-color: $gray-light;
+    background-color: light($gray);
+    border-color: light($gray);
     color: #393839;
     cursor: default;
+    &:hover, &:focus {
+      color: #393839;
+      background-color: light($gray);
+      border-color: light($gray);
+    }
   }
   &.cta {
     color: #fff;
-    background-color: $plum;
-    border-color: $plum;
-    &:hover, &:focus {
-      color: #fff;
-      background-color: darken($plum, 10%);
-    }
+    background-color: $teal;
+    border-color: $teal;
   }
   &.cta-reverse {
-    color: $plum;
+    color: $teal;
     background-color: transparent;
-    border-color: $plum;
-    &:hover, &:focus {
-      color: #fff;
-      background-color: darken($plum, 10%);
-    }
+    border-color: $teal;
   }
   &.inline {
     display: inline-block;
     line-height: inherit;
     padding: 0;
-    color: inherit;
+    color: $teal;
     background-color: transparent;
     border-color: transparent;
     font-weight: inherit;
+    &:hover, &:focus {
+      color: $lime;
+      background-color: transparent;
+      border-color: transparent;
+    }
   }
   &.borderless {
-    color: inherit;
+    color: $teal;
     background-color: transparent;
     border-color: transparent;
     font-weight: inherit;
     &.inline {
       margin: 0 10px;
     }
+  }
+  &:hover, &:focus {
+    color: #fff;
+    border-color: $lime;
+    background-color: $lime;
+    outline: none;
   }
   i {
     margin-right: 9px;
@@ -128,7 +130,7 @@ button {
 
 
 .collapseButton-moreLess {
-  color: $gray-darker;
+  color: $charcoal;
   font-weight: 600;
   &:before {
     display: inline-block;

@@ -85,8 +85,7 @@ select.select {
   .select2-selection {
     padding: 10px 40px 10px 8px;
     outline: 0; // We create our own focus ring below
-    border-radius: 4px;
-    border: 1px solid $silver;
+    border: 1px solid light($gray);
     min-height: 39px;
     line-height: 19px;
     background-color: #fff;
@@ -96,15 +95,8 @@ select.select {
     padding: 3px 40px 3px 8px;
   }
 
-  &.select2-container--below .select2-selection {
-    border-radius: 4px 4px 0 0;
-  }
-  &.select2-container--above .select2-selection {
-    border-radius: 0 0 4px 4px;
-  }
-
   &.selectFilter .select2-selection {
-    border-radius: 4px;
+    font-size: $font-size-small;
     background-color: transparent;
     border: 1px solid transparent;
     padding: 6px 40px 6px 8px;
@@ -117,7 +109,7 @@ select.select {
 
   .select2-selection__rendered {
     display: block;
-    color: $gray-darker;
+    color: $charcoal;
     padding: 0;
     margin: 0;
   }
@@ -131,10 +123,9 @@ select.select {
 
   .select2-selection__choice {
     float: left;
-    color: $gray-darker;
-    background: $gray-lighter;
-    border: 1px solid $silver;
-    border-radius: 4px;
+    color: $charcoal;
+    background: $snow;
+    border: 1px solid light($gray);
     list-style-type: none;
     margin: 3px 6px 3px 0;
     padding: 2px 8px;
@@ -146,7 +137,7 @@ select.select {
   }
 
   .select2-dropdown {
-    border: 1px solid $silver;
+    border: 1px solid light($gray);
     box-shadow: 0 6px 12px rgba(0,0,0,0.175);
   }
   .select2-dropdown--below {
@@ -161,9 +152,9 @@ select.select {
   }
   .select2-search__field {
     padding: 4px 8px;
-    color: $gray-darker;
+    color: $charcoal;
     border: none;
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid light($gray);
   }
   .select2-results > .select2-results__options {
     max-height: 200px;
@@ -185,7 +176,7 @@ select.select {
       margin-right: 20px;
   }
   .select2-results__option--border {
-      border-top: 1px solid $gray-light
+      border-top: 1px solid light($gray)
   }
 
   // arrow handling
@@ -196,11 +187,10 @@ select.select {
     top: 0;
     right: 0;
     bottom: 0;
-    background: $gray-lighter;
+    background: $snow;
     padding: 0 5px;
     pointer-events: none;
-    border-radius: 0 4px 4px 0;
-    border: 1px solid $silver;
+    border: 1px solid light($gray);
   }
 
   .select2-selection__arrow b {

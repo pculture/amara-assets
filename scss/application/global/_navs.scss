@@ -19,7 +19,7 @@
       padding: 8px;
     }
     a {
-      color: $gray-darker;
+      color: $charcoal;
       padding: 0;
       &:after {
         position: absolute;
@@ -30,26 +30,7 @@
         font-family: 'amara';
         content: "\e90c";
         font-size: 17px;
-        color: $turquoise;
-      }
-    }
-  }
-}
-
-.pagination {
-  li {
-    a {
-      color: $text-color;
-      padding: 5px 12px;
-    }
-    &.active {
-      a, span {
-        color: #fff;
-        background-color: $teal;
-        &:hover, &:focus {
-          color: #fff;
-          background-color: $teal;
-        }
+        color: $teal;
       }
     }
   }

@@ -1,0 +1,8 @@
+@function light($color) {
+  @return lighten($color, 15%);
+}
+
+@function dark($color) {
+  @return darken($color, 15%);
+}
+

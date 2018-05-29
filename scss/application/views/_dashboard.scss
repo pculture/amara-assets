@@ -14,17 +14,15 @@ Dashboard Sections
   .pageSection {
     &:nth-of-type(even) {
       background: #f8f8f8;
-      border-top: 1px solid $gray-light;
-      border-bottom: 1px solid $gray-light;
+      border-top: 1px solid light($gray);
+      border-bottom: 1px solid light($gray);
       .dashboardContrasting {
         background-color: #fff;
       }
     }
   }
   .zero-state {
-    border: 1px solid $gray-light;
-    text-align: center;
-    border-radius: 4px;
+    border: 1px solid light($gray);
     text-align: center;
     height: 80px;
     display: flex;
@@ -47,9 +45,6 @@ Dashboard Sections
       position: relative;
       padding-left: 10px;
       padding-right: 10px;
-      h6 { 
-        padding: 5px 0; 
-      }
       .topLanguages-count {
         float: right;
         color: $teal;
@@ -67,8 +62,7 @@ Dashboard Sections
     width: 100%;
     padding: 0;
     list-style: none;
-    border: 1px solid $gray-light;
-    border-radius: $border-radius-base;
+    border: 1px solid light($gray);
     li {
       width: 100%;
       a {
@@ -84,7 +78,7 @@ Dashboard Sections
           line-height: 60px;
           padding: 0 0 0 20px;
           text-align: left;
-          background-color: $turquoise;
+          background-color: light($plum);
           &.total{
             width: 25%;
             padding: 0 10px;
@@ -100,29 +94,12 @@ Dashboard Sections
           }
         }
       }
-      
-      &:first-child {
-        span {
-          border-radius: 0 $border-radius-base 0 0;
-          &.total {
-            border-radius: $border-radius-base 0 0 0;
-          }
-        }
-      }
-      &:last-child {
-        span {
-          border-radius: 0 0 $border-radius-base 0;
-          &.total {
-            border-radius: 0 0 0 $border-radius-base;
-          }
-        }
-      }
       &:nth-of-type(odd) {
         span {
-          background-color: $teal;
+          background-color: $plum;
           width: 75%;
           &.total {
-            background-color: $gray-lighter;
+            background-color: $snow;
           }
         }
       }
@@ -178,7 +155,7 @@ Dashboard Sections
       justify-content: flex-start;
       flex-wrap: nowrap;
       &:nth-child(odd) {
-        border-right: 1px solid $gray-light;
+        border-right: 1px solid light($gray);
         span {
           &:last-child {
             margin: auto;
@@ -209,7 +186,7 @@ Dashboard Sections
   .cardGrid {
     .cardGrid-videoCard {
       width: 260px;
-      background-color: $gray-darker;
+      background-color: $charcoal;
       color: #ffffff;
       &:after {
         font-family: 'amara';
@@ -253,7 +230,6 @@ Dashboard Sections
 .users {
   height: 275px;
   padding: 5px;
-  border-radius: $border-radius-base;
   background-color: #ffffff;
   overflow-y: auto;
   overflow-x: hidden;
@@ -390,7 +366,7 @@ Responsive
         padding-top: 20px;
         padding-bottom: 20px;
         &:nth-of-type(even) {
-          background: $gray-lighter;
+          background: $snow;
           padding-top: 20px;
           padding-bottom: 20px;
         }

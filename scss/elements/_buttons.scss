@@ -42,26 +42,18 @@ button {
   text-transform: uppercase;
   text-align: center;
   font-size: 19px;
-  border-radius: 0;
   border: none;
   background-color: $gray;
   color: #fff;
   @include transition(0.4s);
-  &:hover, &:focus, &:visited {
-    background-color: $gray-dark;
+  &:focus, &:visited {
     color: #fff;
   }
   &.button-plum {
     background-color: $plum !important;
-    &:hover {
-      background-color: $amaranth !important;
-    }
   }
   &.button-amaranth {
     background-color: $amaranth !important;
-    &:hover {
-      background-color: $plum !important;
-    }
   }
   &.button-lime {
     background-color: $lime !important;
@@ -71,15 +63,9 @@ button {
   }
   &.button-teal {
     background-color: $teal !important;
-    &:hover {
-      background-color: $lime !important;
-    }
   }
   &.button-gray {
     background-color: $gray !important;
-    &:hover {
-      background-color: $plum !important;
-    }
   }
   &.button-transparent {
     background-color: transparent;
@@ -87,8 +73,13 @@ button {
     text-transform: capitalize;
     margin-top: 10px;
     &:hover {
+      background-color: transparent !important;
       color: $lime;
     }
+  }
+  &:hover {
+    background-color: $lime !important;
+    color: $white;
   }
   &.button-block {
     display: block;
