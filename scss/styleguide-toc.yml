@@ -12,7 +12,6 @@
   - announcements
   - progressbars
   - indicators
-  - scrollBars
   - tabs
   - tables
 - - Layout
@@ -37,7 +36,6 @@
   - switch
   - searchbar
   - selects
-
 - - Modals / Dialogs
   - modalbaseline
   - dialogconfirmation
@@ -51,6 +49,7 @@
 
 - - Elements
   - videoCards
+  - videoSubtitlesList
   - filterList
   - actionBar
   - selectList

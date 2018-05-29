@@ -46,22 +46,10 @@
 
 .heading-link {
   font-family: $font-family-sans-serif;
-  font-size: 14px;
+  font-size: $font-size-small;
   font-weight: bold;
+  padding-top: 10px;
   float: right;
-}
-
-// FIXME: This is just here to make the language selector look correct in the
-// application pages.  We merge the _utilities.scss code into the application.
-.bg-gray-lighter {
-  background-color: #F3F4F6 !important;
-  fill: #F3F4F6 !important;
-  color: #5a2747 !important;
-}
-.bg-white {
-  background-color: #fff !important;
-  fill: #fff !important;
-  color: #222626 !important;
 }
 
 // Text
@@ -73,18 +61,6 @@
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 .text-center { text-align: center; }
-
-.text-gray-darker { color: $gray-darker; }
-.text-gray-dark { color: $gray-dark; }
-.text-gray { color: $gray; }
-.text-silver { color: $silver; }
-.text-gray-light { color: $gray-light; }
-.text-gray-lighter { color: $gray-lighter; }
-
-.text-plum { color: $plum; }
-.text-teal { color: $teal; }
-
-.text-lime { color: $lime; }
 
 // Video Thumbnails
 //
@@ -101,7 +77,7 @@
   align-items: center;
   height: 0;
   padding-bottom: 56.25%;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   overflow: hidden;
   img {
     position: absolute;
@@ -117,7 +93,6 @@
   right: 4px;
   background: black;
   padding: 1px 3px;
-  border-radius: $border-radius-base;
   font-size: 11px;
   color: #fff;
   font-weight: 600;

@@ -1,12 +1,155 @@
-.nav-tabs {
+// Tabs
+//
+// Used to display multiple pieces of content in a single logical space.  Tabs
+// be setup as normal links that cause a new page load or as javascript links
+// that show/hide content already loaded in the page.  Use the `vertical` class
+// to lay the tabs out vertically.
+//
+// Example:
+// <ul class="nav nav-tabs">
+//   <li class="active"><a href="#tab_11" data-toggle="tab">Tab One</a></li>
+//   <li><a href="#tab_12" data-toggle="tab">Tab Two</a></li>
+//   <li><a href="#tab_13" data-toggle="tab">Tab Three</a></li>
+// </ul>
+// <div class="tab-content">
+//   <div id="tab_11" class="tab-pane active">
+//     Tab One Content...
+//   </div>
+//   <div id="tab_12" class="tab-pane">
+//     Tab Two Content...
+//   </div>
+//   <div id="tab_13" class="tab-pane">
+//     Tab Three Content...
+//   </div>
+// </div>
+//
+// Example:
+//
+// <div class="row">
+//   <div class="col-xs-12 col-sm-4">
+//     <ul class="nav nav-tabs vertical">
+//       <li class="active"><a href="#tab_21" data-toggle="tab">Tab One</a></li>
+//       <li><a href="#tab_22" data-toggle="tab">Tab Two</a></li>
+//       <li><a href="#tab_23" data-toggle="tab">Tab Three</a></li>
+//     </ul>
+//   </div>
+//   <div class="col-xs-12 col-sm-8 tab-content">
+//     <div id="tab_21" class="tab-pane active">
+//       Tab One Content...
+//     </div>
+//     <div id="tab_22" class="tab-pane">
+//       Tab Two Content...
+//     </div>
+//     <div id="tab_23" class="tab-pane">
+//       Tab Three Content...
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide tabs
+ul.nav-tabs {
+  list-style: none;
+  border-bottom: none;
+  > li {
+    position: relative;
+    float: left;
+    margin: 0 10px;
+    list-style: none;
+    &:first-child {
+      margin-left: 0;
+    }
+    > a {
+      padding: 10px 0;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-weight: 400;
+      color: $plum;
+      background-color: transparent;
+      &:hover, &:focus {
+        background-color: transparent;
+        border-bottom: 2px solid transparent;
+      }
+    }
+    &.active {
+      > a {
+        border: none;
+        border-bottom: 2px solid $plum;
+        outline: none;
+        color: $plum;
+        background-color: transparent;
+        &:hover, &:focus, &:active {
+          color: $plum;
+          border: none;
+          border-bottom: 2px solid $plum;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.tab-pane {
+  position: relative;
+  padding: 15px 0;
+  min-height: 400px;
+  .tab-actions {
+    text-align: right;
+    margin-bottom: 10px;
+    .switch {
+      top: 8px;
+      margin-right: 20px;
+    }
+    form {
+      display: inline-block;
+    }
+  }
+  .tab-content {
+
+  }
+}
+
+ul.nav-tabs.vertical {
+  > li {
+    float: none;
+    font-size: $font-size-normal;
+    line-height: 24px;
+    margin: 0;
+    padding: 4px 0 4px 12px;
+    border-left: 4px solid light($gray);
+
+    > a {
+      border-bottom: none;
+    }
+
+    &.active {
+      border-left: 4px solid $plum;
+
+      > a {
+        border-bottom: none;
+      }
+    }
+
+    &:hover {
+      border-left: 4px solid $plum;
+      background: $snow;
+
+      > a {
+        border-bottom: none;
+      }
+    }
+
+  }
+}
+
+ul.nav-tabs.marketing {
   border: none;
   display: flex;
   justify-content: center;
-  li {
+  > li {
     float: none;
     margin: 0 40px;
     &.active {
-      a {
+      > a {
         color: #fff;
         border: none;
         background-color: transparent;
@@ -20,6 +163,7 @@
       }
     }
     a {
+      font-weight: 600;
       padding: 10px 50px;
       border: none;
       border-radius: 0;
@@ -45,7 +189,7 @@
 }
 
 @media(max-width: $screen-xs-max) {
-  .nav-tabs {
+  .nav-tabs.marketing {
     li {
       margin: 0 20px;
       a {

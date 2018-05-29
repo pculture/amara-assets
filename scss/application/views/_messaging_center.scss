@@ -33,9 +33,9 @@
 }
 
 .message {
-  border-right: 1px solid $gray-light;
+  border-right: 1px solid light($gray);
   &:first-child {
-    border-top: 1px solid $gray-light;
+    border-top: 1px solid light($gray);
   }
   .checkbox {
     padding-top: 10px;
@@ -59,7 +59,7 @@
   .message-summary {
     position: relative;
     padding: 10px;
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid light($gray);
   }
 
   .message-excerpt {
@@ -105,7 +105,7 @@
 }
 
 .thread {
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   border-right: none;
   ul.thread-actions {
     @extend .navList;
@@ -113,13 +113,13 @@
     line-height: 40px;
     height: 40px;
     margin-bottom: 0;
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid light($gray);
   }
   .thread-title {
     margin: 0;
     padding: 20px 10px;
     color: $teal;
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid light($gray);
   }
   .thread-message {
     padding: 20px 10px;
@@ -133,7 +133,7 @@
     display: block;
     height: 1px;
     text-align: center;
-    border-top: 1px solid $gray-light;
+    border-top: 1px solid light($gray);
     overflow: visible;
     span {
       position: relative;
@@ -141,14 +141,14 @@
       top: -20px;
       padding: 10px;
       background-color: #ffffff;
-      color: $gray-light;
+      color: light($gray);
     }
   }
   .thread-messageTime {
     position: absolute;
     top: 20px;
     right: 0;
-    color: $gray-light;
+    color: light($gray);
   }
   .thread-reply {
     padding: 20px 10px;

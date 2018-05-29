@@ -15,6 +15,7 @@
 .styleGuide-navLink {
   padding-left: 10px;
   border-left: 4px solid transparent;
+  font-size: $font-size-small;
   &.active {
     border-left-color: $teal;
   }
@@ -34,7 +35,7 @@
 
 .styleGuide-exampleBox {
   position: relative;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
 }
 
 .styleGuide-exampleTitle {
@@ -44,26 +45,25 @@
   right: 0;
   margin: 0;
   padding: 3px 5px;
-  background-color: darken($gray-lighter, 15%);
-  color: $gray-lighter;
-  border-radius: 0 0 0 4px;
+  background-color: light($gray);
+  color: $snow;
   font-size: 12px;
 }
 
 .styleGuide-exampleBoxHeader {
-  background: $gray-lighter;
+  background: $snow;
   margin: 0;
   padding: 10px 20px;
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid light($gray);
 }
 
 .styleGuide-exampleSource {
   padding: 20px;
   padding-top: 30px;
   margin-bottom: 0;
-  border-radius: 0;
   border: none;
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid light($gray);
+  border-radius: 0;
   color: $text-color;
 }
 
@@ -90,26 +90,14 @@
     justify-content: flex-start;
     align-items: center;
     li {
-      display: inline-block;
+      display: flex;
       width: 100px;
-      margin: 10px;
-      i {
-        display: block;
-        width: 100px;
-        height: 50px;
-        &.icon-gray-darker { background-color: $gray-darker; }
-        &.icon-gray-dark { background-color: $gray-dark; }
-        &.icon-gray { background-color: $gray; }
-        &.icon-silver { background-color: $silver; }
-        &.icon-gray-light { background-color: $gray-light; }
-        &.icon-gray-lighter { background-color: $gray-lighter; }
-        &.icon-teal { background-color: $teal; }
-        &.icon-magenta { background-color: $magenta; }
-        &.icon-amaranth { background-color: $amaranth; }
-        &.icon-turquoise { background-color: $turquoise; }
-        &.icon-plum { background-color: $plum; }
-        &.icon-lime { background-color: $lime; }
-      }
+      height: 60px;
+      margin: 8px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid light($gray);
     }
   }
   // Typography
@@ -133,7 +121,7 @@ ul.styleGuide-iconList {
     height: 120px;
     padding: 10px;
     margin: 10px;
-    background-color: $gray-lighter;
+    background-color: $snow;
     color: $gray;
     text-align: center;
     i {
@@ -141,7 +129,7 @@ ul.styleGuide-iconList {
       font-size: 30px;
       padding: 10px;
       &:before {
-        color: $gray-dark !important;
+        color: dark($gray) !important;
       }
     }
     span {

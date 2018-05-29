@@ -113,74 +113,7 @@ img.pull-right {
   margin-left: 12px;
 }
 
-// Color utilities
-.bg-lime {
-  @include palette($lime, #ffffff);
-}
-
-.bg-teal {
-  @include palette($teal, #ffffff);
-}
-
-.bg-amaranth {
-  @include palette($amaranth, #ffffff);
-}
-
-.bg-plum {
-  @include palette($plum, #ffffff);
-  &.gradient {
-    background-image: linear-gradient(#872648, #592746);
-  }
-}
-
-.bg-cream {
-  @include palette($cream, $gray);
-}
-
-.bg-gray-lighter {
-  @include palette($gray-lighter, $plum);
-}
-
-.bg-white {
-  @include palette($white, $gray);
-}
-
-.bg-sea-green {
-  @include palette($sea-green, #ffffff);
-  &.gradient {
-    background-image: linear-gradient(#468e43, #389873);
-  }
-}
-
-.bg-sea-green-dark {
-  @include palette($sea-green-dark, #ffffff);
-  &.gradient {
-    background-image: linear-gradient(#2f8665, #0f573c);
-  }
-}
-
-.bg-overlay {
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    display: block;
-    opacity: .2;
-    background-image: url(../img/assets_pattern_test-27.svg);
-    background-size: cover;
-  }
-}
-
 // Text Utilities
-.text-white { color: #fff !important; }
-.text-plum { color: $plum !important; }
-.text-lime { color: $lime !important; }
-.text-teal { color: $teal !important; }
-.text-amaranth { color: $amaranth !important; }
-.text-cream { color: $cream !important; }
 
 .text-nocase { text-transform: none !important; }
 .text-capitalize { text-transform: capitalize !important; }

@@ -1,0 +1,26 @@
+// Video subtitles list
+//
+// Used to list subtitles for a video
+// 
+// Example:
+// <div class="videoSubtitlesList">
+//   <h2 class="videoSubtitlesList-heading">Completed Subtitles <span class="count">(2)</span></h2>
+//   <ul>
+//     <li class="videoSubtitlesList-item">
+//       <a href="/en/videos/cGLD9hSJ9437/de/5/?team=collab">German [de]</a>
+//     </li>
+//     <li class="videoSubtitlesList-item">
+//       <a href="/en/videos/cGLD9hSJ9437/en/4/?team=collab">English [en]</a>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide videoSubtitlesList
+
+.videoSubtitlesList-heading {
+  border-bottom: 1px solid light($gray);
+}
+
+.videoSubtitlesList-item {
+  padding: 8px 0;
+}

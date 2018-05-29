@@ -13,7 +13,7 @@
   align-items: center;
   height: 0;
   padding-bottom: 56.25%;
-  border: 1px solid $gray-light;
+  border: 1px solid light($gray);
   overflow: hidden;
   img {
     position: absolute;
@@ -29,7 +29,6 @@
   right: 4px;
   background: black;
   padding: 1px 3px;
-  border-radius: 3px;
   font-size: 11px;
   color: #fff;
   font-weight: 600;

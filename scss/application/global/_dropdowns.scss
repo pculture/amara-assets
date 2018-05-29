@@ -18,7 +18,7 @@
   list-style: none;
   font-size: 14px;
   text-align: left;
-  background-color: $gray-darker;
+  background-color: $charcoal;
   border: none;
   border-radius: 0;
   box-shadow: 0 6px 12px rgba(0,0,0,0.175);
@@ -44,7 +44,7 @@
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid $gray-darker;
+    border-bottom: 8px solid $charcoal;
   }
 }
 
@@ -64,56 +64,13 @@
     overflow: scroll;
     ul {
       display: block !important;
-      background: $gray-darker;
+      background: $charcoal;
       border: none;
       li {
         line-height: 1.2;
         font-size: 12px;
         border: none;
         color: #fff;
-      }
-    }
-  }
-}
-
-.topNav {
-  .dropdown {
-    .dropdown-toggle {
-      padding: 0 10px 0 0;
-      line-height: 30px;
-      color: $text-color;
-      &:active, &:focus, &:hover, &:visited {
-        background: transparent;
-      }
-    }
-  }
-  .dropdown-menu {
-    left: auto;
-    right: 0;
-    width: auto;
-    background: #fff;
-    border: 1px solid $gray-light;
-    border-radius: $border-radius-base;
-    &:before, &:after {
-      content: '';
-      position: absolute;
-      display: block;
-      top: -9px;
-      right: 5px;
-      left: auto;
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-bottom: 8px solid $gray-light;
-    }
-    &:after {
-      top: -8px;
-      border-bottom-color: #fff;
-    }
-    li {
-      a {
-        color: $gray-dark;
       }
     }
   }

@@ -10,7 +10,7 @@
     li {
       counter-increment: step-counter;
       display: inline;
-      color: $gray-darker;
+      color: $charcoal;
       font-size: 30px;
       font-weight: 200;
       margin-right: 16px;
@@ -18,7 +18,7 @@
       &:before {
         content: counter(step-counter)'.';
         margin-right: 5px;
-        color: $gray-light;
+        color: light($gray);
       }
       &:nth-of-type(3):after { content:"\a"; white-space: pre; }
       &:nth-of-type(n+4) {
