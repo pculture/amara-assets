@@ -1,14 +1,15 @@
 @charset "utf-8";
 
+@import "variables";
+
 // 3rd party
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "../node_modules/select2/dist/css/select2";
 
-@import 'functions';
+@import "functions";
 @import "mixins";
-@import "variables";
 @import "utilities";
 @import "animations";
-
 
 @import "base/global";
 @import "base/typography";

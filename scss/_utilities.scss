@@ -1,7 +1,4 @@
 // Layout
-.container {
-  position: relative;
-}
 
 // Content padding and load
 .content {
@@ -182,11 +179,6 @@ img.pull-right {
 
 
 // Media Queries
-@media(min-width: $screen-xl-min) {
-  .container {
-    width: 1400px;
-  }
-}
 
 @media(max-width: $screen-md-max) {
 

@@ -1,12 +1,14 @@
+@import 'variables';
+
 // 3rd party
 @import "../node_modules/chartist/dist/chartist";
 @import "../node_modules/select2/dist/css/select2";
-@import "bootstrap/bootstrap-theme.min";
-@import "bootstrap/bootstrap.min";
-// Utils
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
 @import 'functions';
 @import 'mixins';
-@import 'variables';
+
+// Utils
 @import 'base/font_icons';
 @import 'application/utils';
 
@@ -69,6 +71,3 @@
 @import 'application/views/messaging_center';
 @import 'application/views/member_directory';
 @import 'application/views/activity_page';
-
-// Responsive
-@import 'application/media_queries';

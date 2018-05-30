@@ -400,7 +400,7 @@ a.topnav-button, button.topnav-button {
   }
 }
 
-@media(max-width: $screen-lg-max) {
+@include respond-to(laptop) {
   .mainnav-nav {
     justify-self: right;
     text-align: right;

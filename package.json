@@ -20,7 +20,7 @@
   "dependencies": {
     "almond": "^0.3.3",
     "animate-sass": "^0.6.6",
-    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
     "browser-cookies": "^1.1.0",
     "browserify": "^14.5.0",
     "browserify-shim": "^3.8.14",

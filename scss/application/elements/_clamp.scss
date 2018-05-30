@@ -108,7 +108,7 @@ $max-lines: 10;
     }
   }
 
-  @each $breakpoint in $breakpoints {
+  @each $breakpoint in $breakpoints_legacy {
     $name: nth($breakpoint, 1);
     $size: nth($breakpoint, 2);
 
