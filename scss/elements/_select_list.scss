@@ -304,6 +304,11 @@ ul.selectList {
   }
   .selectList-memberDetails {
     width: 35em;
+
+    .member-role {
+	color: $charcoal;
+	font-weight: bold;
+    }
   }
 
   .selectList-itemActions {
