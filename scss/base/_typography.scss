@@ -60,17 +60,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, .h1 {
-  font-size: 36px;
+  font-size: $font-size-h1;
   margin-bottom: 8px;
 }
 
 h2, .h2 {
-  font-size: 24px;
+  font-size: $font-size-h2;
   margin-bottom: 8px;
 }
 
 h3, .h3 {
-  font-size: 20px;
+  font-size: $font-size-h3;
   margin-bottom: 4px;
 }
 
@@ -79,12 +79,12 @@ h4, .h4 {
 }
 
 .mega {
-  font-size: 72px;
+  font-size: $font-size-mega;
   margin-bottom: 18px;
 }
 
 .jumbo {
-  font-size: 48px;
+  font-size: $font-size-jumbo;
   margin-bottom: 12px;
 }
 

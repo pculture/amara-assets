@@ -19,6 +19,10 @@
       font-weight: bold;
     }
   }
+
+  .tab-pane {
+    min-height: 400px;
+  }
 }
 .videoDetails-assignments {
   // Temp fix for responsive embedded players
