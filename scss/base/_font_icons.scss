@@ -102,6 +102,22 @@
 //     <i class="icon icon-edit"></i>
 //     <span>icon-edit</span>
 //   </li>
+//   <li>
+//     <i class="icon icon-check-circle"></i>
+//     <span>icon-check-circle</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-x-circle"></i>
+//     <span>icon-x-circle</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-loading"></i>
+//     <span>icon-loading</span>
+//   </li>
+//   <li>
+//     <i class="icon icon-provider-request"></i>
+//     <span>icon-provider-request</span>
+//   </li>
 // </ul>
 //
 // Example:
@@ -160,99 +176,90 @@ i {
 
 ///////////////////////////
 
-.icon-alert:before {
-  content: "\e901";
-}
-.icon-approve_outline:before {
-  content: "\e907";
-}
-.icon-approve:before {
+
+.icon-close:before {
   content: "\e90a";
 }
-.icon-arrow:before {
-  content: "\e90c";
-}
-.icon-avatar-default:before {
-  content: "\e90f";
-}
-.icon-avatar-team:before {
-  content: "\e910";
-}
-.icon-clock:before {
-  content: "\e911";
-}
-.icon-complete:before {
-  content: "\e912";
-}
-.icon-deny:before {
-  content: "\e913";
-}
-.icon-evaluate:before {
-  content: "\e914";
-}
-.icon-incomplete:before {
+.icon-check-circle:before {
   content: "\e915";
 }
+
+.icon-x-circle:before {
+  content: "\e914";
+}
+
 .icon-info:before {
-  content: "\e916";
+  content: "\e912";
+}
+.icon-alert:before {
+  content: "\e913";
+}
+.icon-incomplete:before {
+  content: "\e911";
 }
 .icon-initial-work:before {
-  content: "\e917";
+  content: "\e90f";
+  color: #444d4d;
 }
-.icon-mail:before {
-  content: "\e918";
-  color: $teal !important;
-}
-.icon-review:before {
-  content: "\e919";
-}
-.icon-search:before {
-  content: "\e91a";
-}
-.icon-star:before {
-  content: "\e91b";
-}
-.icon-transcribe:before {
-  content: "\e91c";
-}
-.icon-translate:before {
-  content: "\e91d";
-}
-.icon-trash:before {
-  content: "\e91e";
-}
-.icon-caret:before {
-  content: "\e900";
-}
-.icon-external:before {
-  content: "\e902";
-}
-.icon-facebook:before {
-  content: "\e903";
-}
-.icon-instagram:before {
-  content: "\e904";
-}
-.icon-linkedin:before {
-  content: "\e905";
-}
-.icon-play:before {
-  content: "\e908";
-}
-.icon-print:before {
-  content: "\e909";
-}
-.icon-share:before {
-  content: "\e90b";
-}
-.icon-twitter:before {
+.icon-avatar-team:before {
   content: "\e90d";
 }
-.icon-youtube:before {
+.icon-avatar-default:before {
   content: "\e90e";
 }
-
-
+.icon-complete:before {
+  content: "\e90c";
+  color: #444d4d;
+}
+.icon-evaluate:before {
+  content: "\e90b";
+}
+.icon-approve_outline:before {
+  content: "\e909";
+  color: #444d4d;
+}
+.icon-deny:before {
+  content: "\e90a";
+  color: #333;
+}
+.icon-trash:before {
+  content: "\e910";
+}
+.icon-approve:before {
+  content: "\e900";
+  color: #333;
+}
+.icon-arrow:before {
+  content: "\e901";
+  color: #333;
+}
+.icon-clock:before {
+  content: "\e902";
+  color: #333;
+}
+.icon-mail:before {
+  content: "\e903";
+  color: #010101;
+}
+.icon-review:before {
+  content: "\e904";
+  color: #444d4d;
+}
+.icon-search:before {
+  content: "\e905";
+}
+.icon-star:before {
+  content: "\e906";
+  color: #010101;
+}
+.icon-transcribe:before {
+  content: "\e907";
+  color: #444d4d;
+}
+.icon-translate:before {
+  content: "\e908";
+  color: #444d4d;
+}
 
 
 
@@ -263,44 +270,40 @@ i {
 
 .icon-loading:before {
   // TODO: replace this with a new, animated, loading icon
-  content: "\e911";
+  @extend .icon-clock:before;
 }
 
 .icon-provider-request:before {
 // This is still to be implemented.  Let's use the transcribe icon as a
 // placeholder
-  content: "\e91c";
+  @extend .icon-transcribe:before;
 }
 
 .icon-forward:before {
-  content: "\e90c";
+  @extend .icon-arrow:before;
 }
 .icon-back:before {
-  content: "\e90c";
+  @extend .icon-arrow:before;
   display: inline-block;
   transform: rotate(180deg);
 }
 .icon-up:before {
-  content: "\e90c";
+  @extend .icon-arrow:before;
   display: inline-block;
   transform: rotate(-90deg);
 }
 .icon-down:before {
-  content: "\e90c";
+  @extend .icon-arrow:before;
   display: inline-block;
   transform: rotate(90deg);
 }
 
 .icon-check:before {
-  content: "\e90a";
-}
-
-.icon-close:before {
-  content: "\e913";
+  @extend .icon-approve:before;
 }
 
 .icon-edit:before {
-  content: "\e91c";
+  @extend .icon-transcribe:before;
 }
 
 // sizes

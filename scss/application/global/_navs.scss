@@ -28,7 +28,7 @@
         top: 50%;
         margin-top: -10px;
         font-family: 'amara';
-        content: "\e90c";
+        @extend .icon-forward:before;
         font-size: 17px;
         color: $teal;
       }
