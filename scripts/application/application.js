@@ -26,3 +26,4 @@ require('../shared/compoundField');
 require('./clamp');
 require('./staffControls');
 require('./styleGuide');
+require('../shared/teamRoleSelect');
