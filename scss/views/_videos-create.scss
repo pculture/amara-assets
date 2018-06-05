@@ -4,11 +4,22 @@
   }
 }
 .videosCreateSwitcher-box {
-  padding: 16px;
+  padding: 48px 32px 60px;
   flex-grow: 1;
 
   display: flex;
   flex-direction: column;
+
+  @include respond-to(desktop) {
+    padding: 48px 100px 60px;
+  }
+}
+
+.videosCreateSwitcher-features {
+  padding: 24px 0;
+  @include respond-to(phone) {
+    display: none;
+  }
 }
 
 .videosCreateSwitcher-spacer {
@@ -18,6 +29,14 @@
 .videosCreateSwitcher-button {
   margin-top: 20px;
   text-align: center;
+  padding: 0 20px;
+
+  @include respond-to(laptop) {
+    padding: 0 60px;
+  }
+  @include respond-to(desktop) {
+    padding: 0 100px;
+  }
 }
 
 .videosCreateTabs {

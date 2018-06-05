@@ -44,5 +44,15 @@
 //
 // Styleguide generalLayout
 
-// Need to define something here so pykss picks it up as a source file
-.grid {}
+// Code to implement the overall flow of the page, especially the sticky
+// footer.  It would be nice to key this off a class for <body> but that's not
+// possible because of the way the body-extra block works.
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#page-content {
+  flex: 1;
+}
