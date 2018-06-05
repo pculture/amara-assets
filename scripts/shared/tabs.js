@@ -25,26 +25,30 @@ $.behaviors('.persistentTabs', function(elt) {
     if(!cookieName) {
         return;
     }
-    var currentValue = cookies.get(cookieName);
-    if(currentValue) {
-        var activeTab = $(currentValue);
-        if(activeTab) {
-            var container = activeTab.closest('.tab-content');
-            $('.tab-pane', container).removeClass('active');
-            activeTab.addClass('active');
-        }
+    try {
+        var currentValue = cookies.get(cookieName);
+        if(currentValue) {
+            var activeTab = $(currentValue);
+            if(activeTab) {
+                var container = activeTab.closest('.tab-content');
+                $('.tab-pane', container).removeClass('active');
+                activeTab.addClass('active');
+            }
 
-        var activeLI = $('a[href="' + currentValue + '"]').parent('li');
-        console.log('activeLI1: ', activeLI);
-        if(activeLI) {
-            console.log('activating');
-            activeLI.siblings('li').removeClass('active')
-            activeLI.addClass('active');
-            console.log(activeLI[0]);
+            var activeLI = $('a[href="' + currentValue + '"]').parent('li');
+            if(activeLI) {
+                activeLI.siblings('li').removeClass('active')
+                activeLI.addClass('active');
+            }
         }
     }
+    catch (error) {
+        console.error(error);
+    }
     $('.persistentTab', elt).click(function(evt) {
-        cookies.set(cookieName, $(this).attr('href'));
+        var elt = $(this);
+        var cookieValue = elt.data('persistentTabValue') || elt.attr('href');
+        cookies.set(cookieName, cookieValue);
     });
 });
 
