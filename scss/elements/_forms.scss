@@ -365,26 +365,35 @@ input:checked + label .checkbox-icon {
 
 .form-group {
   &.has-success {
-    .form-control,
-    label,
-    .helpBlock,
-    .input-control { border-color: $state-success-border !important; color: $state-success-text !important; }
+    .form-control, label, .helpBlock, .input-control {
+      border-color: $state-success-border;
+      color: $state-success-text;
+  }
   }
   &.has-warning {
-   .form-control,
-   label,
-   .helpBlock,
-   .input-control { border-color: $state-warning-border !important; color: $state-warning-text !important; }
+   .form-control, label, .helpBlock, .input-control {
+     border-color: $state-warning-border;
+     color: $state-warning-text; }
   }
   &.has-error {
-    .form-control,
-    label,
-    .helpBlock,
-    .input-control { border-color: $state-danger-border !important; color: $state-danger-text !important; }
+    .form-control, label, .helpBlock, .input-control {
+      border-color: $state-danger-border;
+      color: $state-danger-text;
+    }
     .helpBlock {
       i {
         padding: 0 5px 0 0;
       }
+    }
+  }
+}
+
+.bg-sea-green, .bg-plum {
+  .form-group.has-error {
+    .helpBlock {
+      background: $white;
+      padding: 4px 16px;
+      margin-top: 0;
     }
   }
 }
