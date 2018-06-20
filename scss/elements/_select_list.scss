@@ -303,7 +303,12 @@ ul.selectList {
     margin-right: 5px;
   }
   .selectList-memberDetails {
-    width: 280px;
+    width: 35em;
+
+    .member-role {
+	color: $charcoal;
+	font-weight: bold;
+    }
   }
 
   .selectList-itemActions {

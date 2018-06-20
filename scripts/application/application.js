@@ -28,3 +28,4 @@ require('./staffControls');
 require('./styleGuide');
 require('../shared/tabs');
 require('../shared/eventTracking');
+require('../shared/teamRoleSelect');
