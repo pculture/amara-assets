@@ -39,15 +39,3 @@
     }    
   }
 }
-
-@media (max-width: 768px) {
-  #video_details {
-    dl {
-      dt,
-      dd {
-        width: 100%;
-        margin-right: 0;
-      }
-    }
-  }
-}

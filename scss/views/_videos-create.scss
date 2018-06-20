@@ -1,4 +1,6 @@
 .videosCreateSwitcher {
+  margin-top: 20px;
+
   @include respond-to(tablet, 0) {
     display: flex;
   }

@@ -1,10 +1,21 @@
 section {
   position: relative;
   padding: 50px 0;
+  margin: 0 auto;
   clear: both;
   overflow: hidden;
   &:focus {
     outline: none;
+  }
+
+  @include respond-to(tablet) {
+    max-width: $container-sm;
+  }
+  @include respond-to(laptop) {
+    max-width: $container-md;
+  }
+  @include respond-to(desktop) {
+    max-width: $container-lg;
   }
 }
 
