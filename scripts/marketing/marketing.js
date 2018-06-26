@@ -12,6 +12,8 @@ require('../shared/fileUpload');
 require('../shared/compoundField');
 require('./ajax');
 require('../shared/languageSwitcher');
+require('../shared/tabs');
+require('../shared/eventTracking');
 
 var state   = require('./state');
 var slider = require('./slider');

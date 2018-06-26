@@ -43,6 +43,7 @@
 
 .videosCreateTabs {
   margin-top: 60px;
+  margin-bottom: 100px;
 }
 
 .videosCreateTab {
@@ -64,93 +65,5 @@
   @include respond-to(desktop) {
     padding: 16px 350px;
   }
-}
-
-.pricingTable {
-  max-width: 500px;
-  margin: 0 auto;
-
-  @include respond-to(laptop, 0) {
-    display: grid;
-    max-width: none;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(6, auto);
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 20px;
-    margin: 0 auto;
-  }
-}
-
-.pricingTable-header {
-  @extend .bg-plum;
-  font-size: $font-size-h3;
-  padding: 12px 0;
-  margin: 0;
-  text-align: center;
-
-  &.free {
-    @extend .bg-sea-green;
-  }
-}
-
-.pricingTable-price {
-  @extend .bg-charcoal;
-  font-size: $font-size-h1;
-  padding: 20px 0;
-  margin: 0;
-  text-align: center;
-  font-weight: 800;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-
-  @include respond-to(0, laptop) {
-    font-size: $font-size-h2;
-  }
-}
-
-.pricingTable-users {
-  background-color: light($gray);
-  padding: 16px;
-  text-align: center;
-  font-weight: 700;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-}
-
-.pricingTable-usersExtra {
-  font-size: $font-size-small;
-  font-weight: 400;
-}
-
-.pricingTable-features {
-  padding: 20px;
-  margin: 0;
-  background-color: $snow;
-  font-size: $font-size-small;
-  .icon {
-    font-size: 20px;
-    margin-right: 5px;
-  }
-
-  > li {
-    display: flex;
-    margin-bottom: 12px;
-    align-items: center;
-  }
-
-}
-.pricingTable-cta {
-  padding: 12px 20px 24px;
-  background-color: $snow;
-}
-.pricingTable-footer {
-  margin: 8px 20px 100px;
-  font-size: $font-size-small;
 }
 
