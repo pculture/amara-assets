@@ -27,4 +27,4 @@ require('./clamp');
 require('./staffControls');
 require('./styleGuide');
 require('../shared/teamRoleSelect');
-require('../shared/usernamesInviteSelect');
+require('../shared/multipleAutoCompleteSelect');

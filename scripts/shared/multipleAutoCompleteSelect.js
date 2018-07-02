@@ -19,9 +19,9 @@
 
 var $ = require('jquery');
 
-$.behaviors('.usernamesInviteSelect', usernamesInviteSelect);
+$.behaviors('.multipleAutoCompleteSelect', multipleAutoCompleteSelect);
 
-function usernamesInviteSelect(select) {
+function multipleAutoCompleteSelect(select) {
     var select = $(select);
 
     initial_selections = select.data('initial-selections')
