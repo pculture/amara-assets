@@ -1,13 +1,13 @@
 $charcoal:               #222626;
 $gray:                   #9fa0a1;
-$snow:               #F3F4F6;
+$snow:                   #F3F4F6;
 $white:                  #FFFFFF;
 
 $plum:                   #5a2747;
 $teal:                   #30957b;
 $amaranth:               #f3254d;
 $lime:                   #80bd3e;
-$sea-green:              #38957c;
+$sea-green:              #30957b;
 $cream:                  #fffdf8;
 
 // Map color names to tuples of (color, alternate_color) where alternate_color is the text color to use when color is the background
@@ -37,6 +37,11 @@ $font-size-normal: 16px;
 $font-size-small: 14px;
 $font-size-tiny: 13px;
 
+$font-size-mega: 72px;
+$font-size-jumbo: 48px;
+$font-size-h1: 36px;
+$font-size-h2: 24px;
+$font-size-h3: 20px;
 
 // Animations
 $use-fadeInUp       : true;
@@ -46,17 +51,38 @@ $use-fadeInRight    : true;
 $use-pulse          : true;
 
 
-// Media Queries
-$screen-lg-max:           1399px;
-$screen-md-max:           1199px;
-$screen-sm-max:           1023px;
-$screen-xs-max:           767px;
+// Breakpoints
 
-$screen-xl-min:           1400px;
-$screen-lg-min:           1200px;
-$screen-md-min:           1024px;
-$screen-sm-min:           768px;
+// Map names to the min-size for breakpoints.  Must be ordered smallest to largest
+$breakpoints: (
+  phone: 0,
+  tablet: 756px,
+  laptop: 1024px,
+  desktop: 1440px,
+);
+// calc max-size for breakpoints
+$breakpoints-max: (
+  phone: map-get($breakpoints, tablet) - 1,
+  tablet: map-get($breakpoints, laptop) - 1,
+  laptop: map-get($breakpoints, desktop) - 1,
+  desktop: 0,
+);
 
+$max-container-size: 1440px;
+
+
+// Bootstrap variables for breakpoints -- eventually it would be nice to get rid of this stuff
+$screen-md-max:           map-get($breakpoints-max, laptop);
+$screen-sm-max:           map-get($breakpoints-max, tablet);
+$screen-xs-max:           map-get($breakpoints-max, phone);
+
+$screen-lg-min:           $max-container-size;
+$screen-md-min:           map-get($breakpoints, laptop);
+$screen-sm-min:           map-get($breakpoints, tablet);
+
+$container-lg: 1400px;
+$container-md: 1000px;
+$container-sm: 750px;
 
 // Form states and alerts
 // Define colors for form feedback states and, by default, alerts.

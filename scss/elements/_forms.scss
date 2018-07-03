@@ -84,7 +84,6 @@ label {
   max-width: 100%;
   margin-bottom: 0;
   font-weight: 600;
-  color: $charcoal;
 }
 textarea {
   resize: vertical;
@@ -324,7 +323,7 @@ input:checked + label .checkbox-icon {
   background-color: $plum;
   &:after {
     font-family: 'amara';
-    content: "\e90a";
+    @extend .icon-check:before;
     display: block;
     position: absolute;
     height: 16px;
@@ -366,26 +365,35 @@ input:checked + label .checkbox-icon {
 
 .form-group {
   &.has-success {
-    .form-control,
-    label,
-    .helpBlock,
-    .input-control { border-color: $state-success-border !important; color: $state-success-text !important; }
+    .form-control, label, .helpBlock, .input-control {
+      border-color: $state-success-border;
+      color: $state-success-text;
+  }
   }
   &.has-warning {
-   .form-control,
-   label,
-   .helpBlock,
-   .input-control { border-color: $state-warning-border !important; color: $state-warning-text !important; }
+   .form-control, label, .helpBlock, .input-control {
+     border-color: $state-warning-border;
+     color: $state-warning-text; }
   }
   &.has-error {
-    .form-control,
-    label,
-    .helpBlock,
-    .input-control { border-color: $state-danger-border !important; color: $state-danger-text !important; }
+    .form-control, label, .helpBlock, .input-control {
+      border-color: $state-danger-border;
+      color: $state-danger-text;
+    }
     .helpBlock {
       i {
         padding: 0 5px 0 0;
       }
+    }
+  }
+}
+
+.bg-sea-green, .bg-plum {
+  .form-group.has-error {
+    .helpBlock {
+      background: $white;
+      padding: 4px 16px;
+      margin-top: 0;
     }
   }
 }
@@ -396,7 +404,6 @@ input:checked + label .checkbox-icon {
   display: block;
   margin-top: 4px;
   font-size: $font-size-tiny;
-  color: $charcoal;
 }
 
 .helpBlock-radio {
@@ -407,7 +414,6 @@ input:checked + label .checkbox-icon {
 .helpList {
   margin-left: 24px;
   font-size: $font-size-tiny;
-  color: $charcoal;
   list-style-type: disc;
   list-style-position: inside;
 }
@@ -560,3 +566,4 @@ legend {
 }
 
 @import "compound_field";
+@import "button_field";

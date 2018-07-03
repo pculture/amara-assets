@@ -5,6 +5,16 @@
 // that show/hide content already loaded in the page.  Use the `vertical` class
 // to lay the tabs out vertically.
 //
+// The CSS that creates the tabbed look, and the javascript that handles
+// hiding/showing the tabbed content are distinct.  You can have tab-like
+// behavior of showing/hiding content without displaying actual tabs to toggle
+// them.
+//
+// Use the `.persistentTabs` class to save tab clicks in a cookie, so when
+// users reload the page they get their last selected tab.  Use
+// `.persistentTabs' for the container and `.persistentTab' for any tab
+// switchers that you want to remember.
+//
 // Example:
 // <ul class="nav nav-tabs">
 //   <li class="active"><a href="#tab_11" data-toggle="tab">Tab One</a></li>
@@ -27,10 +37,10 @@
 //
 // <div class="row">
 //   <div class="col-xs-12 col-sm-4">
-//     <ul class="nav nav-tabs vertical">
-//       <li class="active"><a href="#tab_21" data-toggle="tab">Tab One</a></li>
-//       <li><a href="#tab_22" data-toggle="tab">Tab Two</a></li>
-//       <li><a href="#tab_23" data-toggle="tab">Tab Three</a></li>
+//     <ul class="nav nav-tabs vertical persistentTabs" data-persistent-tab-cookie="styleguide-tabs">
+//       <li class="active"><a class="persistentTab" href="#tab_21" data-toggle="tab">Tab One</a></li>
+//       <li><a class="persistentTab" href="#tab_22" data-toggle="tab">Tab Two</a></li>
+//       <li><a class="persistentTab" href="#tab_23" data-toggle="tab">Tab Three</a></li>
 //     </ul>
 //   </div>
 //   <div class="col-xs-12 col-sm-8 tab-content">
@@ -43,6 +53,23 @@
 //     <div id="tab_23" class="tab-pane">
 //       Tab Three Content...
 //     </div>
+//   </div>
+// </div>
+//
+// Example:
+//
+// <a class="button plum" href="#tab_31" data-toggle="tab">Tab One</a>
+// <a class="button cta" href="#tab_32" data-toggle="tab">Tab One</a>
+// <a class="button reversed" href="#tab_33" data-toggle="tab">Tab One</a>
+// <div class="tab-content">
+//   <div id="tab_31" class="tab-pane active">
+//     Tab One Content...
+//   </div>
+//   <div id="tab_32" class="tab-pane">
+//     Tab Two Content...
+//   </div>
+//   <div id="tab_33" class="tab-pane">
+//     Tab Three Content...
 //   </div>
 // </div>
 //
@@ -91,7 +118,6 @@ ul.nav-tabs {
 .tab-pane {
   position: relative;
   padding: 15px 0;
-  min-height: 400px;
   .tab-actions {
     text-align: right;
     margin-bottom: 10px;

@@ -182,46 +182,6 @@ Dashboard Sections
   }
 }
 
-#recently_added {
-  .cardGrid {
-    .cardGrid-videoCard {
-      width: 260px;
-      background-color: $charcoal;
-      color: #ffffff;
-      &:after {
-        font-family: 'amara';
-        content: "\e90c";
-        display: block;
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        color: #ffffff;
-        font-size: 25px;
-      }
-      &:last-child {
-        display: flex;
-        &:after {
-          display: none;
-        }
-        span {
-          margin: auto;
-          font-size: 40px;
-          margin-left: 40px;
-          margin-right: 10px;
-          font-weight: 300;
-        }
-        h3 {
-          margin: auto;
-          margin-right: 40px;
-          font-size: 15px;
-          font-weight: 300;
-        }
-      }
-    }
-  }
-}
-
-
 /* -----------------------------------------
  Member Lists on Dashboard
  TODO - refactor

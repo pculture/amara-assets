@@ -85,6 +85,27 @@ button {
     display: block;
     width: 100%;
   }
+
+  &.plum {
+    background-color: $plum;
+  }
+  &.cta {
+    background-color: $teal;
+  }
+
+  &.plum, &.cta {
+    // Make these match the application button styles.  This makes the pricing table look correct.
+    margin: 0;
+    padding: 7px 30px;
+    font-weight: 400;
+    text-transform: none;
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-normal;
+  }
+  &.block {
+    display: block;
+    width: 100%;
+  }
 }
 
 

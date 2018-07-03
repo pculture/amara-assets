@@ -19,6 +19,10 @@
       font-weight: bold;
     }
   }
+
+  .tab-pane {
+    min-height: 400px;
+  }
 }
 .videoDetails-assignments {
   // Temp fix for responsive embedded players
@@ -33,17 +37,5 @@
     .player {
       min-height: 0;
     }    
-  }
-}
-
-@media (max-width: 768px) {
-  #video_details {
-    dl {
-      dt,
-      dd {
-        width: 100%;
-        margin-right: 0;
-      }
-    }
   }
 }

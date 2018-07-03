@@ -39,18 +39,17 @@ dl {
     dd {margin-right: 10px;}
   }
   &.inline-description {
+    display: flex;
+    flex-wrap: wrap;
+
     dt,
     dd {
       display: inline-block;
       margin: 5px 0;
-      float: left;
-      
+      width: 100%;
     }
-    dt {
-      width: 20%;
-    }
+
     dd {
-      width: 79%;
       &.constrain {
         max-height: 95px;
         overflow: hidden;
@@ -81,6 +80,15 @@ dl {
         margin-right: 10px;
       }
     }
+
+    @include respond-to(tablet, 0) {
+      dt {
+        width: 150px;
+      }
+      dd {
+        width: calc(100% - 150px);
+      }
+    }
   }
 }
 
@@ -104,7 +112,7 @@ ul {
   }
   &.bullets {
     padding-left: 20px;
-    list-style-type: disc; 
+    list-style-type: disc;
     list-style-position: outside;
   }
 }

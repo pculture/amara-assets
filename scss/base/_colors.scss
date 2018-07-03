@@ -48,6 +48,14 @@
   .text-#{$name} {
     color: $color !important;
   }
+
+  .text-#{$name}-dark {
+    color: dark($color) !important;
+  }
+
+  .text-#{$name}-light {
+    color: light($color) !important;
+  }
 }
 
 // TODO standardize gradient code

@@ -1,14 +1,15 @@
 @charset "utf-8";
 
+@import "variables";
+
 // 3rd party
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "../node_modules/select2/dist/css/select2";
 
-@import 'functions';
+@import "functions";
 @import "mixins";
-@import "variables";
 @import "utilities";
 @import "animations";
-
 
 @import "base/global";
 @import "base/typography";
@@ -16,6 +17,7 @@
 @import 'base/colors';
 
 // Import layout / global styles
+@import 'layout/base';
 @import "layout/page_header";
 @import "layout/page_content";
 @import "layout/page_footer";
@@ -40,6 +42,7 @@
 @import "elements/consolidate_header";
 @import "elements/language_switcher";
 @import 'elements/select';
+@import 'elements/pricing-table';
 
 // Views
 @import "views/home";

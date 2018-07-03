@@ -1,0 +1,58 @@
+// General Layout on Amara
+//
+// We use the following breakpoints for Amara:
+//
+//   - 1440px: desktop/lg (container size: 1400px)
+//   - 1024px: laptop/md (container size: 1000px)
+//   - 768px:  tablet/sm (container size: 750px)
+//   - <768px: mobile/xs (container size: full width - 30px for padding)
+//
+// When designing new pages, we try to make it look good for all 4 of these
+// sizes.  This typically means using the `respond-to` mixin to create CSS that
+// responds to the different breakpoints (see -mixins.scss).
+//
+// ## Flexbox/CSS grid
+//
+// In general, we use flexbox and CSS grid for laying things out rather than
+// something like bootstrap grid.  We generally assume that browsers support
+// flexbox and CSS grid with a couple exceptions:
+//
+//  - At the mobile widths, we don't assume CSS grid support.  It's not really
+//    needed in any case, since we generally just lay things out in 1 column
+//    there.
+//  - We try to provide basic support for IE and Edge versions that don't
+//    support CSS grid.  For these browsers, we just try to make the pages
+//    functional, not necessarily great looking.  For example, maybe they see
+//    something like the mobile version of the page.
+//
+// ## Development
+//
+// Developing layouts is typically done like this:
+//
+//   - Start with laying out the mobile view.  Typically this means just
+//     displaying things in source-order in a single-column.  Add a max-width
+//     on elements to make things look okay on browsers like IE that don't
+//     support CSS grid, but can have wide widths.
+//   - Use `respond-to` to improve the look for the other breakpoints.
+//
+// ## Tweaking content for specific sizes
+//
+// If you need to change the content based on browser size, use the
+// `.hidden-[size]` and `.visible-[size]` classes.  This will hide/show certain
+// elements based on the browser size.  A typical use would be showing a
+// shorter version of a text string to mobile browsers.
+//
+// Styleguide generalLayout
+
+// Code to implement the overall flow of the page, especially the sticky
+// footer.  It would be nice to key this off a class for <body> but that's not
+// possible because of the way the body-extra block works.
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#page-content {
+  flex: 1;
+}
