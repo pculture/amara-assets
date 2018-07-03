@@ -3,8 +3,9 @@
 @import "variables";
 
 // 3rd party
-@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../node_modules/select2/dist/css/select2";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "~select2/dist/css/select2";
+@import "fontawesome";
 
 @import "functions";
 @import "mixins";
