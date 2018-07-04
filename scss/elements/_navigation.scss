@@ -46,6 +46,7 @@
         border-top: 1px solid $gray;
       }
       a {
+        @include no-underline;
         display: block;
         background-color: #fff;
         background-image: none;
@@ -149,6 +150,7 @@
 // old-style pages and we could probably remove it once we are using only
 // futurueui
 a.topnav-button, button.topnav-button {
+  @include no-underline;
   display: inline-block;
   margin: 0;
   padding: 0 20px;
@@ -229,6 +231,7 @@ a.topnav-button, button.topnav-button {
           }
         }
         a {
+          @include no-underline;
           display: block;
           height: 68px;
           line-height: 68px;

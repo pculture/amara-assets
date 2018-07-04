@@ -22,8 +22,8 @@ section {
 a {
   color: $teal;
   font-weight: 600;
+  text-decoration: underline;
   &:hover, &:focus {
-    text-decoration: none;
     color: $lime;
     outline: none;
     cursor: pointer;

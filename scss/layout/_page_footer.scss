@@ -6,6 +6,7 @@
     float: none;
   }
   a {
+    @include no-underline;
     font-weight: 400;
     color: $plum;
     &:hover {

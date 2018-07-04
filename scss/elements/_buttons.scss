@@ -46,6 +46,7 @@ button {
   background-color: $gray;
   color: #fff;
   @include transition(0.4s);
+  @include no-underline;
   &:focus, &:visited {
     color: #fff;
   }
