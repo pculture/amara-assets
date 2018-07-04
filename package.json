@@ -18,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.0",
     "almond": "^0.3.3",
     "animate-sass": "^0.6.6",
     "bootstrap-sass": "^3.3.7",
@@ -40,6 +41,7 @@
     "jquery": "^3.2.1",
     "jquery-form": "^4.2.2",
     "jquery-mousewheel": "^3.1.13",
+    "node-sass-tilde-importer": "^1.0.2",
     "pump": "^1.0.2",
     "requirejs": "^2.3.5",
     "rjs": "^4.0.2",

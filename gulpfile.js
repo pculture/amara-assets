@@ -11,6 +11,7 @@ var newer = require('gulp-newer');
 var path = require('path');
 var pump = require('pump');
 var sass = require('gulp-sass');
+var tildeImporter = require('node-sass-tilde-importer');
 var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
 var tap = require('gulp-tap');
@@ -19,7 +20,10 @@ var gutil = require('gulp-util');
 
 var paths = {
     images: 'img/**',
-    fonts: 'fonts/**',
+    fonts: [
+        'fonts/**',
+        'node_modules/@fortawesome/fontawesome-free/webfonts/*',
+    ],
     css: 'scss/[^_]*.scss',
     js: [
         'scripts/head/head.js',
@@ -68,7 +72,10 @@ gulp.task('css', function(cb) {
         gulp.src(paths.css),
         newer({'dest': dest_paths.css, ext: '.css', 'extra': 'scss/**/*.scss'}),
         sourcemaps.init(),
-        sass({outputStyle: 'compressed'}).on('error', sass.logError),
+        sass({
+            outputStyle: 'compressed',
+            importer: tildeImporter
+        }).on('error', sass.logError),
         sourcemaps.write('./maps'),
         gulp.dest(dest_paths.css),
     ], cb);
