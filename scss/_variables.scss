@@ -7,7 +7,6 @@ $plum:                   #5a2747;
 $teal:                   #30957b;
 $amaranth:               #f3254d;
 $lime:                   #80bd3e;
-$sea-green:              #30957b;
 $cream:                  #fffdf8;
 
 // Map color names to tuples of (color, alternate_color) where alternate_color is the text color to use when color is the background
@@ -16,7 +15,6 @@ $colorscheme: (
   "teal": ($teal, $white),
   "amaranth": ($amaranth, $white),
   "lime": ($lime, $white),
-  "sea-green": ($sea-green, $white),
 
   "charcoal": ($charcoal, $white),
   "gray": ($gray, $white),
