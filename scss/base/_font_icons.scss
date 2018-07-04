@@ -4,6 +4,8 @@
 // Icons are normally sized the same as the surrounding text.  Use the `icon-sm`,
 // `icon-md`, `icon-lg` classes to manually size them.  Those sizes match up with
 // `avatar-default`, `avatar-md`, and `avatar-lg` respectively.
+//
+// We also load Font Awesome 5, so any of those icons can also be used.
 // 
 // <ul class="styleGuide-iconList">
 //   <li>
@@ -124,21 +126,34 @@
 //   <ul class="inline">
 //     <li>
 //       <span class="avatar">
-//         <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-30.png">
+//         <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-30.png">
 //       </span>
 //       <i class="icon icon-review icon-sm"></i>
 //     </li>
 //     <li>
 //       <span class="avatar avatar-md">
-//         <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-50.png">
+//         <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-50.png">
 //       </span>
 //       <i class="icon icon-review icon-md"></i>
 //     </li>
 //     <li>
 //       <span class="avatar avatar-lg">
-//         <img src="https:s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-100.png">
+//         <img src="https://s3.amazonaws.com/s3.www.universalsubtitles.org/gravatar/avatar-default-100.png">
 //       </span>
 //       <i class="icon icon-review icon-lg"></i>
+//     </li>
+//   </ul>
+//
+// Example:
+//   <ul class="inline">
+//     <li>
+//       <span class="fa fa-address-book"></span>
+//     </li>
+//     <li>
+//       <span class="fab fa-facebook-square"></span>
+//     </li>
+//     <li>
+//       <span class="fas fa-plane"></span>
 //     </li>
 //   </ul>
 //
