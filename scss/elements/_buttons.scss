@@ -1,126 +1,203 @@
+// Tags
+//
+// Used to provide a clickable action to the user.  These should typically be used for things that change state in some way. Use the button classes on an `<a>`, `<button>`, or `<input>` element. Use `<a>` tags for simple navigation.
+//
+// Example:
+// <a class="button" href="#" role="button">Link</a>
+// <button class="button">Button</button>
+// <input class="button" type="button" value="Input">
+// <input class="button" type="submit" value="Submit">
+//
+// Styleguide buttonTags
+
+
 button {
-  padding: 0 20px;
-  color: $link-color;
   border: none;
-  background: none;
   background-color: transparent;
-  appearance: none;
-  i {
-    display: inline-block;
-    font-size: inherit;
+  color: $teal;
+  &:disabled {
+    color: light($gray);
   }
-  &:active,
   &:focus {
     outline: none;
-    text-decoration: none;
-  }
-  &.inline {
-    padding: 0;
-    color: $link-color;
-    border: none;
-    background: none;
-    background-color: transparent;
-    &:hover {
-      color: $link-hover-color;
-    }
-  }
-  &.sort {
-    color: $text-color;
-    text-transform: uppercase;
-    font-style: italic;
-    font-size: 13px;
   }
 }
 
+// Options
+// 
+// Use any of the available button classes to quickly create a styled button.
+// 
+// .small - Small sized button
+// .block - Full width button
+// .cta  - Call-to-action button.  Displayed with a plum color.  A typical use for this is the buttons to create subtitles
+// .cta-reverse  - Reversed call-to-action button.  Used for delete, remove, etc.
+// .borderless  - borderless button.  Used for cancelation, deselection, etc.
+// .inline  - inline button
+// .disabled  - A disabled button
+// 
+// Example:
+// <button type="button" class="button $modifier_class">Click me</button>
+// 
+// Styleguide buttonOptions
 
 .button {
   display: inline-block;
-  padding: 12px 60px;
-  margin-top: 20px;
-  font-family: $headings-font-family;
-  font-weight: 700;
-  text-transform: uppercase;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 7px 30px;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-normal;
+  font-weight: 400;
   text-align: center;
-  font-size: 19px;
-  border: none;
-  background-color: $gray;
+  vertical-align: middle;
+  background-image: none;
+  white-space: nowrap;
+  line-height: 1.42857;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
   color: #fff;
-  @include transition(0.4s);
+  background-color: $teal;
+  border: 1px solid $teal;
   @include no-underline;
-  &:focus, &:visited {
-    color: #fff;
-  }
-  &.button-plum {
-    background-color: $plum !important;
-  }
-  &.button-amaranth {
-    background-color: $amaranth !important;
-  }
-  &.button-lime {
-    background-color: $lime !important;
-    &:hover {
-      background-color: $teal !important;
-    }
-  }
-  &.button-teal {
-    background-color: $teal !important;
-  }
-  &.button-gray {
-    background-color: $gray !important;
-  }
-  &.button-transparent {
-    background-color: transparent;
-    color: $teal;
-    text-transform: capitalize;
-    margin-top: 10px;
-    &:hover {
-      background-color: transparent !important;
-      color: $lime;
-    }
-  }
-  &:hover {
-    background-color: $lime !important;
-    color: $white;
-  }
-  &.button-block {
-    display: block;
-    width: 100%;
-  }
-
-  &.plum {
-    background-color: $plum;
-  }
-  &.cta {
-    background-color: $teal;
-  }
-
-  &.plum, &.cta {
-    // Make these match the application button styles.  This makes the pricing table look correct.
-    margin: 0;
-    padding: 7px 30px;
-    font-weight: 400;
-    text-transform: none;
-    font-family: $font-family-sans-serif;
-    font-size: $font-size-normal;
-  }
+  @include transition(0.4s);
   &.block {
     display: block;
     width: 100%;
+    margin-bottom: 5px;
+  }
+  &.small {
+    padding: 2px 15px;
+    font-size: 13px;
+    line-height: 1.5em;
+  }
+  &.tall {
+    padding: 14px 30px;
+  }
+  &.disabled {
+    background-color: light($gray);
+    border-color: light($gray);
+    color: #393839;
+    cursor: default;
+    &:hover, &:focus {
+      color: #393839;
+      background-color: light($gray);
+      border-color: light($gray);
+    }
+  }
+  &.cta {
+    color: #fff;
+    background-color: $teal;
+    border-color: $teal;
+  }
+  &.cta-reverse {
+    color: $teal;
+    background-color: transparent;
+    border-color: $teal;
+  }
+
+  @each $name, $color_info in $colorscheme {
+    $color: nth($color_info, 1);
+    $alternate: nth($color_info, 2);
+
+    &.#{$name} {
+      background-color: $color;
+      border-color: $color;
+      color: $alternate;
+    }
+  }
+
+  &.inline {
+    display: inline-block;
+    line-height: inherit;
+    padding: 0;
+    color: $teal;
+    background-color: transparent;
+    border-color: transparent;
+    &:hover, &:focus {
+      color: $lime;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+  &.borderless {
+    color: $teal;
+    background-color: transparent;
+    border-color: transparent;
+    &.inline {
+      margin: 0 10px;
+    }
+  }
+  &:hover, &:focus {
+    color: #fff;
+    border-color: $lime;
+    background-color: $lime;
+    outline: none;
+  }
+  i {
+    margin-right: 9px;
+  }
+
+  &.marketing {
+    // buttons on the marketing pages don't fit our general styles.
+    font-size: 19px;
+    text-transform: uppercase;
+    margin: 20px 0 0 0;
+    font-weight: 700;
+    padding: 12px 60px;
+
+    &.transparent {
+      background: none;
+      border-color: transparent;
+      color: teal;
+      text-transform: none;
+    }
   }
 }
 
 
-// Media Queries
-@media(max-width: $screen-md-max) {
-
+.collapseButton-moreLess {
+  color: $charcoal;
+  font-weight: 600;
+  &:before {
+    display: inline-block;
+    position: relative;
+    content: "Less";
+  }
+  i {
+    display: inline-block;
+    margin-left: 10px;
+    transform: rotate(-90deg);
+  }
+  &.collapsed {
+    &:before {
+      content: "More";
+    }
+    i {
+      transform: rotate(90deg);
+    }
+  }
 }
 
-@media(max-width: $screen-sm-max) {
+// Async Buttons
+//
+// Used to provide user interaction feedback for buttons that fire asynchronous events
+//
+// Example:
+// <a class="button asyncButton" href="#" role="button">Link</a>
+// <a class="button asyncButton active" href="#" role="button">Link</a>
+//
+// Styleguide asyncButton
 
-}
-
-@media(max-width: $screen-xs-max) {
-  .button {
-    font-size: 16px;
+.asyncButton {
+  &.active {
+    color: transparent;
+    background-image: url(/images/loading_ellipsis.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    pointer-events: none;
   }
 }
