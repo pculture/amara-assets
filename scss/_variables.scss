@@ -100,3 +100,14 @@ $state-warning-border:           $plum;
 $state-danger-text:              $amaranth;
 $state-danger-bg:                #FAEFF4;
 $state-danger-border:            $amaranth;
+
+// z-index values
+$z-index-behind: -1;
+// page layer
+$z-index-menu: 20;
+$z-index-action-bar: 30;
+// modal dialog layer
+$z-index-overlay: 100;
+$z-index-modal: 110;
+// top layer
+$z-index-tooltip: 200;
