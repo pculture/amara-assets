@@ -12,7 +12,7 @@
   position: relative;
   &:after {
     font-family: 'amara' !important;
-    content: "\e91a";
+    @extend .icon-search:before;
     display: block;
     position: absolute;
     right: 16px;

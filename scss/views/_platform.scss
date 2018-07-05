@@ -32,10 +32,19 @@
   }
 }
 
-// Media Queries
-@media(max-width: $screen-lg-max) {
+.subtitlingPlatform-pricingTable {
+  background-color: $white;
+  padding: 20px;
 
+  @include respond-to(laptop, 0) {
+    padding: 20px 40px;
+  }
+  @include respond-to(desktop) {
+    padding: 20px 80px;
+  }
 }
+
+// Media Queries
 
 @media(max-width: $screen-md-max) {
 

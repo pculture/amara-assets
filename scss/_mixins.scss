@@ -50,3 +50,41 @@
   //   background : linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 75%);
   // }
 }
+
+// Add responsive CSS
+//
+// Use this mixin to wrap CSS that gets applied to only certain devices.  This
+// mixin will target screen devices with min-width = the min width associated with $min-size,
+// and max-width = the max width associated with #max-size.  Use 0 to skip a
+// min/max size.  Use 1 argument to set both min and max size together.
+//
+// Examples:
+//   - respond-to(phone) -- target phones
+//   - respond-to(tablet, laptop) -- target devices with sizes between tablets and small desktops (inclusive)
+//   - respond-to(0, laptop) -- target devices with sizes tablets and below
+//
+
+@mixin respond-to($min-size, $max-size: null) {
+  @if($max-size == null) {
+    $max-size: $min-size;
+  }
+
+  @if(map-has-key($breakpoints, $min-size)) {
+    $min-size: map-get($breakpoints, $min-size);
+  }
+  @if(map-has-key($breakpoints-max, $max-size)) {
+    $max-size: map-get($breakpoints-max, $max-size);
+  }
+  $query: 'only screen';
+
+  @if($min-size != 0) {
+    $query: "#{$query} and (min-width: #{$min-size})";
+  }
+  @if($max-size != 0) {
+    $query: "#{$query} and (max-width: #{$max-size})";
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}

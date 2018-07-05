@@ -1,16 +1,20 @@
+@import 'variables';
+
 // 3rd party
-@import "../node_modules/chartist/dist/chartist";
-@import "../node_modules/select2/dist/css/select2";
-@import "bootstrap/bootstrap-theme.min";
-@import "bootstrap/bootstrap.min";
-// Utils
+@import "~chartist/dist/chartist";
+@import "~select2/dist/css/select2";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "fontawesome";
+
 @import 'functions';
 @import 'mixins';
-@import 'variables';
+
+// Utils
 @import 'base/font_icons';
 @import 'application/utils';
 
 // Layout Elements
+@import 'layout/base';
 @import 'layout/page_header';
 @import 'layout/page_footer';
 @import 'layout/utils';
@@ -30,7 +34,7 @@
 @import 'elements/tabs';
 @import 'application/global/navs';
 @import 'application/global/dropdowns';
-@import 'application/global/lists';
+@import 'elements/lists';
 
 @import 'elements/forms';
 @import 'application/global/progressbars';
@@ -59,6 +63,7 @@
 @import "elements/alerts";
 @import 'elements/tables';
 @import 'elements/video-subtitles-list';
+@import 'elements/pricing-table';
 
 // Views
 @import 'application/views/style_guide';
@@ -69,6 +74,4 @@
 @import 'application/views/messaging_center';
 @import 'application/views/member_directory';
 @import 'application/views/activity_page';
-
-// Responsive
-@import 'application/media_queries';
+@import 'views/videos-create';

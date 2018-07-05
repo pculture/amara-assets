@@ -203,7 +203,7 @@ select.select {
     transform: rotate(90deg);
     @include transition(0.2s);
     &:after {
-      content: "\e90c";
+      @extend .icon-arrow:before;
       speak: none;
     }
   }
@@ -219,7 +219,7 @@ select.select {
     margin-left: 5px;
     font-weight: 400;
     font-family: 'amara' !important;
-    content: "\e90c";
+    @extend .icon-arrow:before;
     speak: none;
     transform: rotate(90deg);
     @include transition(0.2s);

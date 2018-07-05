@@ -102,7 +102,7 @@
   font-size: 12px;
   &:before {
     font-family: 'amara';
-    content: "\e911";
+    @extend .icon-clock:before;
     display: inline-block;
     width: 16px;
     height: 20px;
@@ -161,7 +161,7 @@
   text-align: left;
   &:after {
     font-family: 'amara';
-    content: "\e90c";
+    @extend .icon-forward:before;
     display: block;
     position: absolute;
     bottom: 10px;

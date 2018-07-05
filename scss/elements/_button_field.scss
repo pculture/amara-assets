@@ -1,0 +1,23 @@
+// ButtonField
+//
+// Adds a button on the end of a field.  Useful to display one-field forms in a compact space.
+// buttonFields are compatible with help text below, but not with labels.
+// 
+// Example:
+// <form>
+//   <div class="buttonField">
+//     <input type="text" id="">
+//     <button type="submit" class="buttonField-button button cta">Submit</button>
+//   </div>
+//   <div class="helpBlock">Enter your info, then click the button</div>
+// </form>
+//
+// Styleguide buttonField
+
+.buttonField {
+  display: flex;
+}
+
+.buttonField-button {
+  flex-grow: 0;
+}

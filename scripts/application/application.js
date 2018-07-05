@@ -1,6 +1,6 @@
 // require jquery and all plugins first, this way if other modules depend on jquery they will get the plugins too
 window.jQuery = window.$ = require('jquery');
-require('bootstrap');
+require('bootstrap-sass');
 require('jquery-form')(window, $);
 require('select2')(window, $);
 require('../shared/third-party/behaviors');
@@ -26,5 +26,7 @@ require('../shared/compoundField');
 require('./clamp');
 require('./staffControls');
 require('./styleGuide');
+require('../shared/tabs');
+require('../shared/eventTracking');
 require('../shared/teamRoleSelect');
 require('../shared/multipleAutoCompleteSelect');

@@ -70,7 +70,7 @@ hr {
 // Content Spacing
 .content {
   position: relative;
-  padding: 10px;
+  padding: 20px;
   margin: 0;
   h1, h2, h3, h4 {
     overflow: hidden;
@@ -130,9 +130,6 @@ hr {
 
 
 @media(max-width: 1199px) {
-  .container {
-    width:100%;
-  }
 }
 
 @media(max-width: 991px) {
