@@ -135,6 +135,11 @@ button {
     border-color: $lime;
     background-color: $lime;
     outline: none;
+
+    &.lime {
+      border-color: $teal;
+      background-color: $teal;
+    }
   }
   i {
     margin-right: 9px;
@@ -151,8 +156,11 @@ button {
     &.transparent {
       background: none;
       border-color: transparent;
-      color: teal;
+      color: $teal;
       text-transform: none;
+      &:hover {
+        color: $lime;
+      }
     }
   }
 }
