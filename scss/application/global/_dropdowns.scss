@@ -25,6 +25,7 @@
   background-clip: padding-box;
   li {
     a {
+      @include no-underline;
       display: block;
       padding: 3px 20px;
       clear: both;

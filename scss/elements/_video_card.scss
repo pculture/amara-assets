@@ -173,6 +173,7 @@
 
 .videoCardSimple-summary {
   display: flex;
+  @include no-underline;
   color: #ffffff;
   &:after {
     display: none;
