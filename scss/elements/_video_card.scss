@@ -162,6 +162,7 @@
   &:after {
     font-family: 'amara';
     @extend .icon-forward:before;
+    @include no-underline;
     display: block;
     position: absolute;
     bottom: 10px;
