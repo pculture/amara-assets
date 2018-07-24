@@ -159,6 +159,7 @@
   background-color: $charcoal;
   color: #ffffff;
   text-align: left;
+  @include no-underline;
   &:after {
     font-family: 'amara';
     @extend .icon-forward:before;
