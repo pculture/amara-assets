@@ -76,3 +76,17 @@
     }
   }
 }
+
+.split-button-dropdown-menu {
+  @extend .dropdown-menu;
+  background-color: $teal;
+  right: 0;
+  &:before {
+    content: none;
+  }
+}
+
+.split-button-dropdown-toggle {
+  margin-left: -3px;
+  padding: 7px 15px;
+}
