@@ -77,6 +77,14 @@
   }
 }
 
+.width-100 {
+  width: 100%;
+}
+
+.split-button-full-width {
+  display: flex !important;
+}
+
 .split-button-dropdown-menu {
   @extend .dropdown-menu;
   background-color: $teal;
@@ -87,6 +95,7 @@
 }
 
 .split-button-dropdown-toggle {
-  margin-left: -3px;
-  padding: 7px 15px;
+  margin-left: 2px;
+  padding: 7px 0px;
+  width: 40px !important;
 }
