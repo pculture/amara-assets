@@ -76,26 +76,3 @@
     }
   }
 }
-
-.width-100 {
-  width: 100%;
-}
-
-.split-button-full-width {
-  display: flex !important;
-}
-
-.split-button-dropdown-menu {
-  @extend .dropdown-menu;
-  background-color: $teal;
-  right: 0;
-  &:before {
-    content: none;
-  }
-}
-
-.split-button-dropdown-toggle {
-  margin-left: 2px;
-  padding: 7px 0px;
-  width: 40px !important;
-}

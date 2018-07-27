@@ -19,6 +19,7 @@
   - generalLayout
   - textCenter
   - blockCenter
+  - width100
 
 - - Avatars, Icons, Steps
   - avatars
@@ -29,6 +30,7 @@
   - buttonTags
   - buttonOptions
   - asyncButton
+  - splitButton
 
 - - Forms
   - forms
