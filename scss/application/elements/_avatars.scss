@@ -145,7 +145,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
 
-      content: "\e901";
+      @extend .icon-alert:before;
       display: block;
       position: absolute;
       top: 0;

@@ -12,6 +12,7 @@ Dashboard Sections
     padding: 10px;
   }
   .pageSection {
+    max-width: none;
     &:nth-of-type(even) {
       background: #f8f8f8;
       border-top: 1px solid light($gray);
