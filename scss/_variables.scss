@@ -1,13 +1,12 @@
 $charcoal:               #222626;
 $gray:                   #9fa0a1;
-$snow:                   #F3F4F6;
-$white:                  #FFFFFF;
+$snow:                   #f3f4f6;
+$white:                  #ffffff;
 
 $plum:                   #5a2747;
 $teal:                   #30957b;
 $amaranth:               #f3254d;
 $lime:                   #80bd3e;
-$sea-green:              #30957b;
 $cream:                  #fffdf8;
 
 // Map color names to tuples of (color, alternate_color) where alternate_color is the text color to use when color is the background
@@ -16,7 +15,6 @@ $colorscheme: (
   "teal": ($teal, $white),
   "amaranth": ($amaranth, $white),
   "lime": ($lime, $white),
-  "sea-green": ($sea-green, $white),
 
   "charcoal": ($charcoal, $white),
   "gray": ($gray, $white),
@@ -102,3 +100,14 @@ $state-warning-border:           $plum;
 $state-danger-text:              $amaranth;
 $state-danger-bg:                #FAEFF4;
 $state-danger-border:            $amaranth;
+
+// z-index values
+$z-index-behind: -1;
+// page layer
+$z-index-menu: 20;
+$z-index-action-bar: 30;
+// modal dialog layer
+$z-index-overlay: 100;
+$z-index-modal: 110;
+// top layer
+$z-index-tooltip: 200;

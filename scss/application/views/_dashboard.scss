@@ -12,6 +12,7 @@ Dashboard Sections
     padding: 10px;
   }
   .pageSection {
+    max-width: none;
     &:nth-of-type(even) {
       background: #f8f8f8;
       border-top: 1px solid light($gray);
@@ -55,6 +56,7 @@ Dashboard Sections
 #my_assignments, #available_assignments {
   .zero-state {
     height: 305px;
+    margin-top: 0;
   }
 }
 #available_assignments {
@@ -66,6 +68,7 @@ Dashboard Sections
     li {
       width: 100%;
       a {
+        @include no-underline;
         display: flex;
         color: #ffffff;
         font-size: 15px;
@@ -217,6 +220,9 @@ Dashboard Sections
   padding: 5px;
   vertical-align: middle;
   text-align: left;
+  a {
+    @include no-underline;
+  }
   &:first-child {
     width: 40px;
   }

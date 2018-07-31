@@ -25,12 +25,12 @@
 @import "elements/language_switcher";
 
 // Global
-@import 'application/global/base';
+@import 'base/global';
 @import 'base/typography';
 @import 'base/colors';
 @import 'application/global/grid';
 
-@import 'application/global/buttons';
+@import 'elements/buttons';
 @import 'elements/tabs';
 @import 'application/global/navs';
 @import 'application/global/dropdowns';
@@ -45,7 +45,7 @@
 @import 'application/elements/avatars';
 @import 'application/elements/step_list';
 @import 'application/elements/filtered_list';
-@import 'application/elements/video_card';
+@import 'elements/video_card';
 @import 'elements/select_list';
 @import 'application/elements/subtitles';
 @import 'application/elements/subtitles_list';
@@ -75,3 +75,4 @@
 @import 'application/views/member_directory';
 @import 'application/views/activity_page';
 @import 'views/videos-create';
+@import 'views/team-members';
