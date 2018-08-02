@@ -19,14 +19,15 @@
 
 var $ = require('jquery');
 
-$.behaviors('.videosCreateSwitcher', function(videosCreateSwitcher) {
-    var buttons = $('.videosCreateSwitcher-button', videosCreateSwitcher).children('a[href$="#create-form"], a[href$="#pricing-table"]')
+$.behaviors('.videosCreateSwitcher, #pricing-table', function(containers) {
+    var buttons = $(containers).find('a[href$="#create-form"], a[href$="#pricing-table"]');    
 
-    buttons.click(function() {
+    function auto_scroll() {
         var header_height = $('#page-header').height()
 
         $('html, body').animate({
             scrollTop: $(".videosCreateTabs").offset().top - header_height
-        }, 700);
-    }); 
+        }, 500);
+    }
+    buttons.click(auto_scroll);
 });
