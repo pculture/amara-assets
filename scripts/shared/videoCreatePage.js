@@ -19,14 +19,14 @@
 
 var $ = require('jquery');
 
-$('.videosCreateSwitcher-button > a[href$="#create-form"]').click(function() {
-    $('html, body').animate({
-        scrollTop: $(".videosCreateSwitcher")[0].scrollHeight
-    }, 700);
-});
+$.behaviors('.videosCreateSwitcher', function(videosCreateSwitcher) {
+    var buttons = $('.videosCreateSwitcher-button', videosCreateSwitcher).children('a[href$="#create-form"], a[href$="#pricing-table"]')
 
-$('.videosCreateSwitcher-button > a[href$="#pricing-table"]').click(function() {
-    $('html, body').animate({
-        scrollTop: $(".videosCreateSwitcher")[0].scrollHeight
-    }, 700);
+    buttons.click(function() {
+        var header_height = $('#page-header').height()
+
+        $('html, body').animate({
+            scrollTop: $(".videosCreateTabs").offset().top - header_height
+        }, 700);
+    }); 
 });
