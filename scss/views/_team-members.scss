@@ -1,0 +1,31 @@
+.profileWell {
+  min-height: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  background-color: $snow;
+  color: dark($gray);
+  .icon.icon-mail {
+    margin-left: 15px;
+    font-size: 22px;
+  }
+  .col-xs {
+    flex-basis: auto;
+    flex-grow: 0;
+  }
+  .switch {
+    float: right;
+    margin-top: 13px;
+    margin-bottom: 0;
+    margin-right: 40px;
+  }
+  h3, h4 { color: $charcoal; }
+  hr {
+    border-top: 1px solid light($gray);
+    margin: 1rem -10px;
+  }
+}
+
+

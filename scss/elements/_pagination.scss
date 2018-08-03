@@ -48,7 +48,7 @@
   padding: 4px 12px;
   background-color: $plum;
   color: $white;
-
+  @include no-underline;
 
   &.active {
     color: $plum;

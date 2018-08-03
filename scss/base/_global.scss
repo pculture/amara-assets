@@ -3,7 +3,6 @@ section {
   padding: 50px 0;
   margin: 0 auto;
   clear: both;
-  overflow: hidden;
   &:focus {
     outline: none;
   }
@@ -22,11 +21,26 @@ section {
 a {
   color: $teal;
   font-weight: 600;
+  text-decoration: underline;
   &:hover, &:focus {
-    text-decoration: none;
     color: $lime;
     outline: none;
     cursor: pointer;
+  }
+  &.no-underline {
+    @include no-underline;
+  }
+  &.block {
+    display: inline-block;
+  }
+  &.disabled {
+    cursor: default;
+    color: light($gray);
+    pointer-events: none;
+  }
+  &.text {
+    @include no-underline;
+    color: inherit;
   }
 }
 
@@ -35,21 +49,16 @@ iframe {
 }
 
 ol, ul {
+  list-style: none;
   padding: 0;
 }
 
-
-
-// Media Queries
-
-@media(max-width: $screen-md-max) {
-
-}
-
-@media(max-width: $screen-sm-max) {
-
-}
-
-@media(max-width: $screen-xs-max) {
-
+header {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  &.borderless {
+    border-bottom: none;
+  }
+  h1, h2, h3, h4 { margin: 0; }
 }

@@ -19,18 +19,6 @@ $z-index-modal: 110;
     a {
       font-weight: normal;
     }
-
-    button.cta-reverse {
-    color: #5a2747;
-    background-color: transparent;
-    border-color: #5a2747;
-    border: 1px solid;
-    padding: 7px 30px;
-    text-transform: none;
-    font-size: 15px;
-    font-family: "Open Sans", sans-serif;
-    margin-top: 0;
-    }
 }
 @import "application/elements/dialogs";
 @import "application/elements/searchbar";
