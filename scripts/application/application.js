@@ -30,3 +30,4 @@ require('../shared/tabs');
 require('../shared/eventTracking');
 require('../shared/teamRoleSelect');
 require('../shared/multipleAutoCompleteSelect');
+require('../shared/videoCreatePage');
