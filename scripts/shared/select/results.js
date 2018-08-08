@@ -135,28 +135,52 @@ PowerUserUsernameSelect.prototype.tryMultipleSelect = function(decorated, contai
         }
     }).done(function(result) {
         $.each(result.invitable, function(index, data) {
-            var option = new Option(data['text'], data['id'], true, true);
-            container.$element.append(option).trigger('change')
+            var select = container.$element
+            // this is to avoid duplicate selections and for adding
+            // new options for valid selections since this is not like
+            // the language selector that already has all the options pre-loaded
+            if (select.find("option[value='" + data['id'] + "']").length) {
+                select.val(data['id']).trigger('change');
+            } else { 
+                var option = new Option(data['text'], data['id'], true, true);
+                select.append(option).trigger('change');
+            }
         })
         self.trigger('close');
 
         error_msgs = []
-        unknown = result.unknown.join(", ")
-        invited_already = result.invited_already.join(", ")
-        member_already = result.member_already.join(", ")
 
-        if (unknown) {
-            error_msgs.push("Unknown user(s): " + unknown)
+        if (result.unknown.length > 0) {
+            var unknown = result.unknown.join(", ")
+            if (result.unknown.length > 1) {
+                error_msgs.push("Unknown users: " + unknown)
+            } else {
+                error_msgs.push("Unknown user: " + unknown)    
+            }            
         }
-        if (invited_already) {
-            error_msgs.push("Already have an invite: " + invited_already)
+        if (result.invited_already.length > 0) {
+            var invited_already = result.invited_already.join(", ")
+            if (result.invited_already.length > 1) {
+                error_msgs.push("Already have an invite: " + invited_already)
+            } else {
+                error_msgs.push("Already has an invite: " + invited_already)    
+            }
+            
         }
-        if (member_already) {
-            error_msgs.push("Team member already: " + member_already)
+        if (result.member_already.length > 0) {
+            var member_already = result.member_already.join(", ")
+            if (result.member_already.length > 1) {
+                error_msgs.push("Team members already: " + member_already)
+            } else {
+                error_msgs.push("Team member already: " + member_already)    
+            }            
         }
+
         if (error_msgs.length > 0) {
-            if (result.invitable.length > 0) {
-                error_msgs.push("\n" + result.invitable.length + " user(s) will be added to the username selection box!")
+            if (result.invitable.length > 1) {
+                error_msgs.push("\n" + result.invitable.length + " users will be added to the username selection box!")
+            } if (result.invitable.length == 1) {
+                error_msgs.push("\n" + result.invitable[0]['text'] + " will be added to the username selection box!")
             }
             alert(error_msgs.join("\n"))
         }
