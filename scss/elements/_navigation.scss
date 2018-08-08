@@ -226,8 +226,8 @@ a.topnav-button, button.topnav-button {
         &.active {
           a {
             font-weight: 700;
-            cursor: default;
-            pointer-events: none;
+            cursor: pointer;
+            //pointer-events: none;
           }
         }
         a {
