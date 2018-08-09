@@ -77,6 +77,10 @@ function processAjaxResponse(responseData) {
                 $(window).on('beforeunload', scrollAfterReload);
                 window.location.reload();
                 break;
+
+            case 'redirect':
+                window.location = change[1];
+                break;
         }
     });
 }
