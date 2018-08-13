@@ -1,0 +1,24 @@
+// Action Bar
+//
+// Example:
+// <div id="styleGuide-actionBar" class="actionBar">
+//   <button class="button cta" data-toggle="modal" data-target="#modal_id">Move</button>
+//   <button class="button cta">Mark complete</button>
+//   <button class="button cta">Manage assignments</button>
+//   <button class="button cta-reverse">Delete</button>
+//   <button class="button inline">Deselect</button>
+// </div>
+// <button class="actionBar-open button cta" data-target="#styleGuide-actionBar">Open Action Bar</button>
+// 
+// Styleguide actionBar
+
+.banner-container {
+  width: 100%;
+  max-height: 240px;
+  overflow: hidden;
+  text-align: center;
+
+  img.banner-image {
+    display: inline-block;
+  }
+}
