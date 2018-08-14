@@ -29,3 +29,4 @@ require('../shared/tabs');
 require('../shared/eventTracking');
 require('../shared/teamRoleSelect');
 require('../shared/videoCreatePage');
+require('../shared/dependentCheckboxes');

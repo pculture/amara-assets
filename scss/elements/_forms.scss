@@ -276,10 +276,12 @@ textarea {
   }
   label {
     min-height: 20px;
+    line-height: 20px;
     padding-left: 0px;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
+    display: flex;
   }
 }
 .radio + .radio, .checkbox + .checkbox {
@@ -292,7 +294,7 @@ textarea {
 
 .radio-icon, .checkbox-icon {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 18px;
   height: 18px;
   margin-right: 8px;
@@ -303,34 +305,34 @@ textarea {
 }
 .radio-icon {
   border-radius: 50%;
-  &:after {
+  &:before {
     display: block;
     content: "";
     position: absolute;
-    height: 10px;
-    width: 10px;
-    top: 3px;
-    left: 3px;
+    height: 12px;
+    width: 12px;
+    top: 2px;
+    left: 2px;
     border-radius: 50%;
     background-color: transparent;
   }
 }
-input:checked + label .radio-icon:after {
+input:checked + label .radio-icon:before {
   background-color: $plum;
 }
 
 input:checked + label .checkbox-icon {
   background-color: $plum;
-  &:after {
+  &:before {
     font-family: 'amara';
     @extend .icon-check:before;
     display: block;
     position: absolute;
     height: 16px;
     width: 16px;
-    font-size: 12px;
-    line-height: 12px;
-    top: 2px;
+    font-size: 14px;
+    line-height: 14px;
+    top: 1px;
     left: 0;
     text-align: center;
     color: #fff;
@@ -346,6 +348,68 @@ input:checked + label .checkbox-icon {
 .checkbox-spacer {
     display: inline-block;
     width: 26px;
+}
+
+.dependentCheckboxes {
+  @extend .checkbox;
+  display: flex;
+  background: $snow;
+
+  label {
+    padding: 10px 32px;
+    position: relative;
+    overflow: none;
+    background: $snow;
+  }
+
+  label {
+    // This CSS is pretty crazy, but it generates a chevron that matches the styles we want.
+    &:before {
+      display: block;
+      position: absolute;
+      z-index: $z-index-front;
+      top: -10px;
+      left: 100%;
+      content: ' ';
+      border-style: solid;
+      border-width: 30px 0 30px 13px;
+      border-color: transparent transparent transparent white;
+    }
+
+    &:after {
+      display: block;
+      position: absolute;
+      z-index: $z-index-front;
+      top: 0;
+      left: 100%;
+      content: ' ';
+      border-style: solid;
+      border-width: 20px 0 20px 9px;
+      border-color: transparent transparent transparent $snow;
+    }
+  }
+  input:checked + label {
+    background: light($gray);
+
+    &:before {
+      display: block;
+      position: absolute;
+      z-index: $z-index-front;
+      top: 0;
+      right: -12px;
+      content: ' ';
+      border-style: solid;
+      border-width: 20px 0 20px 13px;
+      border-color: transparent transparent transparent light($gray);
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+  label:last-child:before, input:checked + label:last-child:before {
+    display: none;
+  }
 }
 
 // Field errors
