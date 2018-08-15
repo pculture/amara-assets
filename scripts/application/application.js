@@ -25,7 +25,6 @@ require('../shared/fileUpload');
 require('../shared/compoundField');
 require('./clamp');
 require('./staffControls');
-require('./styleGuide');
 require('../shared/tabs');
 require('../shared/eventTracking');
 require('../shared/teamRoleSelect');
