@@ -81,7 +81,7 @@ button {
     border-color: light($gray);
     color: #393839;
     cursor: default;
-    &:hover, &:focus {
+    &:hover, &.hover, &:focus {
       color: #393839;
       background-color: light($gray);
       border-color: light($gray);
@@ -116,7 +116,7 @@ button {
     color: $teal;
     background-color: transparent;
     border-color: transparent;
-    &:hover, &:focus {
+    &:hover, &.hover, &:focus {
       color: $lime;
       background-color: transparent;
       border-color: transparent;
@@ -130,7 +130,7 @@ button {
       margin: 0 10px;
     }
   }
-  &:hover, &:focus {
+  &:hover, &.hover, &:focus {
     color: #fff;
     border-color: $lime;
     background-color: $lime;
@@ -158,7 +158,7 @@ button {
       border-color: transparent;
       color: $teal;
       text-transform: none;
-      &:hover {
+      &:hover, &.hover {
         color: $lime;
       }
     }
