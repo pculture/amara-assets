@@ -118,6 +118,11 @@ textarea {
   text-align: right;
 }
 
+.form-actions-top {
+  @extend .form-actions;
+  margin-bottom: 8px;
+}
+
 .fieldOptional {
   color: dark($gray);
 }
@@ -420,7 +425,7 @@ input:checked + label .checkbox-icon {
 
 // Fieldsets
 //
-// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header.  Use .fieldsetHelpBlock to display help for the fieldset
+// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header.  Use `.fieldsetHelpBlock` to display help for the fieldset. Don't forget to place a `div.fieldset-footer` or else you will end up with a form that has no border at the bottom
 //
 // Example:
 // <form>
@@ -498,9 +503,33 @@ fieldset > :not(legend) {
 .fieldset-footer {
   border: solid 1px #cccccc;
   border-top: none;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
+.fieldset-footer-shadow {
+  @extend .fieldset-footer;
+  background-color: #f4f4f7;
+  display: flex;
+  color: #9fa0a1;
+}
+
+.fieldset-backtotop-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.fieldset-backtotop-container:hover > .small {
+  text-decoration: underline;
+}
+
+.fieldset-backtotop-chevron {
+  color: #c6c6c7;
+  margin-right: 6px;
 }
 
 .fieldsetHelpBlock {
@@ -514,6 +543,10 @@ fieldset > :not(legend) {
 .buttonFile {
   text-transform: none;
   font-family: $font-family-sans-serif;
+}
+
+.saveChangesButton {
+  visibility: hidden;
 }
 
 @import "compound_field";
