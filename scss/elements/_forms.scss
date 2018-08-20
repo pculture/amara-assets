@@ -538,9 +538,6 @@ fieldset {
   border-bottom: none;
 
   legend {
-    //fix for janky positioning of <legend> tags
-    float: left;
-
     padding-top: 15px;
     padding-left: 20px;
     margin-bottom: 30px;
