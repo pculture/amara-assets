@@ -20,14 +20,25 @@
 
 var $ = require('jquery');
 
-$.behaviors('.dependentCheckboxes', dependentCheckboxes);
+$.behaviors('.multiField.dependent', multiFieldDependent);
 
-function dependentCheckboxes(container) {
+function multiFieldDependent(container) {
+    $('input[type=checkbox]:checked', container).each(function() {
+        $(this).closest('.multiField-input').addClass('checked');
+    });
     $('input[type=checkbox]', container).change(function() {
+        var input = $(this).closest('.multiField-input')
+
         if(this.checked) {
-            $(this).prevAll('input[type=checkbox]').prop('checked', true);
+            var prevInputs = input.prevAll('.multiField-input');
+            var prevCheckboxes = $('input[type=checkbox]', prevInputs);
+            prevCheckboxes.prop('checked', true);
+            prevInputs.add(input).addClass('checked');
         } else {
-            $(this).nextAll('input[type=checkbox]').prop('checked', false);
+            var nextInputs = input.nextAll('.multiField-input');
+            var nextCheckboxes = $('input[type=checkbox]', nextInputs);
+            nextCheckboxes.prop('checked', false);
+            nextInputs.add(input).removeClass('checked');
         }
     });
 }
