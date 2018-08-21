@@ -135,6 +135,16 @@ select.select {
     margin-left: 13px;
     color: $gray;
   }
+  .select2-selection__choice__count {
+    float: right;
+    margin-left: 5px;
+    margin-top: 7px;
+    color: $gray;
+    visibility: hidden;
+  }
+  .select2-selection__choice__overflow {
+    display: none;
+  }
 
   .select2-dropdown {
     border: 1px solid light($gray);
