@@ -371,7 +371,7 @@ input:checked + label .checkbox-icon {
   padding-bottom: 8px;
   background: $snow;
 
-  &:last-of-type {
+  &.last {
     padding-bottom: 0;
   }
 
@@ -380,7 +380,7 @@ input:checked + label .checkbox-icon {
   }
 }
 
-.multiField-chevron, .multiField-triangle {
+.multiField-separator {
   display: none;
 }
 
