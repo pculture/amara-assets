@@ -1,38 +1,116 @@
-// Switches
-//
-// Example:
-// <h4>Ludicrous SPEED</h4>
-// <label class="switch">
-//   <input type="checkbox">
-//   <div class="slider round">
-//     <span class="switchText on">ON</span>
-//     <span class="switchText off">OFF</span>   
-//   </div>
-// </label>
-//
-// Styleguide switch
-
 .switch {
+  &.inline {
+    display: inline;
+  }
+}
+.switch-input {
+  display: none;
+}
+.switch-container {
+  display: inline-flex;
+  min-width: 180px;
+
+  &.inline {
+    min-width: auto;
+  }
+}
+
+.switch-slider {
   position: relative;
+  width: 24px;
+  height: 20px;
+  background-color: $gray;
+  transition: .4s;
+  border-radius: 10px;
+  margin-right: 12px;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    background-color: $white;
+    width: 8px;
+    height: 14px;
+    border-radius: 4px / 7px;
+    transition: .4s;
+  }
+  input:checked + .switch-container & {
+    background-color: $plum;
+    &:after {
+      left: 14px;
+    }
+  }
+
+  &.inline {
+    width: 40px;
+    font-size: 10px;
+    height: 16px;
+
+    &:after {
+      top: 1px;
+      width: 14px;
+      height: 14px;
+      border-radius: 7px;
+    }
+    input:checked + .switch-container & {
+      color: $white;
+
+      &:after {
+        left: 24px;
+      }
+    }
+  }
+}
+
+.switch-onText {
+  display: none;
+
+  input:checked + .switch-container & {
+    display: inline;
+  }
+
+  &.inline {
+    position: absolute;
+    top: 1px;
+    left: 5px;
+  }
+}
+
+.switch-offText {
+  display: inline;
+
+  input:checked + .switch-container & {
+    display: none;
+  }
+  &.inline {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+  }
+}
+
+.aoeuaoeuswitch {
   display: inline-block;
   width: 40px;
-  height: 16px;
+
   /* The slider */
   .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    width: 23px;
+    height: 20px;
     background-color: $gray;
     transition: .4s;
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
   }
   
   .switchText {
-    position: absolute;
-    top: 1px;
-    z-index: 10;
     font-size: 10px;
     @include transition(.5s);
     &.off {
