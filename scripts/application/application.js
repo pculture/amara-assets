@@ -12,8 +12,7 @@ require('../shared/messages');
 require('chartist');
 require('chartist-plugin-tooltip');
 // Amara modules
-require('./ajax');
-require('./dialogs');
+require('../shared/ajax');
 require('./proxyField');
 require('./dependentSelect');
 require('../shared/languageSwitcher');

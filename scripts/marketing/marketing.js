@@ -10,7 +10,7 @@ require('../shared/messages');
 require('../shared/select/main');
 require('../shared/fileUpload');
 require('../shared/compoundField');
-require('./ajax');
+require('../shared/ajax');
 require('../shared/languageSwitcher');
 require('../shared/tabs');
 require('../shared/eventTracking');
