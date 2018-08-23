@@ -118,6 +118,11 @@ textarea {
   text-align: right;
 }
 
+.form-actions-top {
+  @extend .form-actions;
+  margin-bottom: 8px;
+}
+
 .fieldOptional {
   color: dark($gray);
 }
@@ -276,10 +281,13 @@ textarea {
   }
   label {
     min-height: 20px;
+    line-height: 20px;
     padding-left: 0px;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 .radio + .radio, .checkbox + .checkbox {
@@ -292,7 +300,7 @@ textarea {
 
 .radio-icon, .checkbox-icon {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 18px;
   height: 18px;
   margin-right: 8px;
@@ -303,34 +311,34 @@ textarea {
 }
 .radio-icon {
   border-radius: 50%;
-  &:after {
+  &:before {
     display: block;
     content: "";
     position: absolute;
-    height: 10px;
-    width: 10px;
-    top: 3px;
-    left: 3px;
+    height: 12px;
+    width: 12px;
+    top: 2px;
+    left: 2px;
     border-radius: 50%;
     background-color: transparent;
   }
 }
-input:checked + label .radio-icon:after {
+input:checked + label .radio-icon:before {
   background-color: $plum;
 }
 
 input:checked + label .checkbox-icon {
   background-color: $plum;
-  &:after {
+  &:before {
     font-family: 'amara';
     @extend .icon-check:before;
     display: block;
     position: absolute;
     height: 16px;
     width: 16px;
-    font-size: 12px;
-    line-height: 12px;
-    top: 2px;
+    font-size: 14px;
+    line-height: 14px;
+    top: 1px;
     left: 0;
     text-align: center;
     color: #fff;
@@ -347,6 +355,121 @@ input:checked + label .checkbox-icon {
     display: inline-block;
     width: 26px;
 }
+
+
+.multiField-label {
+  float: left;
+  width: 120px;
+  text-align: right;
+  font-weight: normal;
+  line-height: 39px;
+}
+
+.multiField-input {
+  max-width: 400px;
+  margin-left: 140px;
+  margin-right: auto;
+  padding-bottom: 8px;
+  background: $snow;
+
+  &.last {
+    padding-bottom: 0;
+  }
+
+  &.checkbox {
+    margin-left: 0;
+  }
+}
+
+.multiField-separator {
+  display: none;
+}
+
+.multiField-rowEnd {
+  clear: both;
+}
+
+@supports (display: grid) {
+  @include respond-to(tablet, 0) {
+
+    .multiField {
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-auto-flow: column;
+
+      @for $i from 1 through 5 {
+        &.columns-#{$i} { grid-template-columns: repeat(#{$i}, minmax(200px, auto)) 1fr; }
+      }
+      &.checkboxes {
+        grid-template-rows: auto;
+      }
+    }
+
+    .multiField-label {
+      text-align: left;
+      padding-left: 16px;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+    }
+
+    .multiField-input {
+      position: relative;
+      border: 0;
+      margin: 0;
+      padding: 10px 32px;
+      border-right: 4px solid $white;
+      &:first-of-type {
+        padding-left: 16px;
+      }
+      &.noborder {
+        border-right: 0;
+      }
+    }
+
+    .multiField-rowEnd {
+      display: none;
+    }
+
+    .multiField-separator {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 20px;
+      height: 100%;
+      z-index: $z-index-front;
+
+      &.checked {
+        display: none;
+        color: light($gray);
+      }
+
+      &.unchecked {
+        color: $white;
+      }
+
+      &.ordered {
+        margin-left: -10px;
+        color: $white;
+      }
+    }
+
+    .multiField-input.checked {
+      background: light($gray);
+
+      .multiField-separator.checked {
+        display: block;
+      }
+      .multiField-separator.unchecked {
+        display: none;
+      }
+    }
+
+  }
+}
+
 
 // Field errors
 //
@@ -420,12 +543,12 @@ input:checked + label .checkbox-icon {
 
 // Fieldsets
 //
-// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header.  Use .fieldsetHelpBlock to display help for the fieldset
+// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header.  Use `.fieldsetHelpBlock` to display help for the fieldset. Don't forget to place a `div.fieldset-footer` or else you will end up with a form that has no border at the bottom
 //
 // Example:
 // <form>
 //   <fieldset>
-//     <legend>Personal information</legend>
+//     <legend><h3>Personal information</h3></legend>
 //     <div class="form-group">
 //       <label for="name">Name</label>
 //       <input type="text" id="name">
@@ -440,7 +563,7 @@ input:checked + label .checkbox-icon {
 //     </div>
 //   </fieldset>
 //   <fieldset>
-//     <legend>Account information</legend>
+//     <legend><h3>Account information</h3></legend>
 //     <div class="fieldsetHelpBlock">Details for your Amara acount</div>
 //     <div class="form-group">
 //       <label for="username">Username</label>
@@ -455,7 +578,7 @@ input:checked + label .checkbox-icon {
 //       <input type="text" id="password2">
 //     </div>
 //   </fieldset>
-//   <div class="form-actions">
+//   <div class="form-actions fieldset-footer">
 //     <button class="button borderless">Cancel</button>
 //     <button type="submit" class="button cta">Submit</button>
 //   </div>
@@ -464,17 +587,68 @@ input:checked + label .checkbox-icon {
 // Styleguide fieldsets
 
 fieldset {
-  padding-bottom: 20px;
+  border: solid 1px #cccccc;
+  border-top: none;
+  border-bottom: none;
+
+  legend {
+    padding-top: 15px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    height: 55px;
+    background-color: $plum;
+    border-bottom: none;
+    color: $cream;
+
+    h3 {
+      color: $cream !important;
+    }
+  }
+
+  .form-group:last-of-type {
+    margin-bottom: 45px;
+  }
 }
 
-legend {
-  margin-bottom: 12px;
-  border-bottom: 1px solid light($gray);
-  color: $charcoal;
+fieldset > :not(legend) {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.fieldset-footer {
+  border: solid 1px #cccccc;
+  border-top: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
+.fieldset-footer-shadow {
+  @extend .fieldset-footer;
+  background-color: #f4f4f7;
+  display: flex;
+  color: #9fa0a1;
+}
+
+.fieldset-backtotop-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.fieldset-backtotop-container:hover > .small {
+  text-decoration: underline;
+}
+
+.fieldset-backtotop-chevron {
+  color: #c6c6c7;
+  margin-right: 6px;
 }
 
 .fieldsetHelpBlock {
-  margin-top: -8px;
+  margin-top: 0px;
   font-size: $font-size-tiny;
   color: $charcoal;
   margin-bottom: 16px;
@@ -484,6 +658,47 @@ legend {
 .buttonFile {
   text-transform: none;
   font-family: $font-family-sans-serif;
+}
+
+.saveChangesButton {
+  visibility: hidden;
+}
+
+.imageInput-previewContainer {
+  background: url("../img/image-upload-bg.png");
+  margin: 4px 0 16px 0;
+}
+
+.imageInput-thumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.imageInput-input {
+  position: relative;
+}
+
+.imageInput-buttonContainer {
+  position: relative;
+}
+
+.imageInput-fileInput {
+  z-index: $z-index-front;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+.imageInput-displayedInput {
+  position: absolute;
 }
 
 @import "compound_field";
