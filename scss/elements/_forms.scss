@@ -287,6 +287,7 @@ textarea {
     font-weight: normal;
     cursor: pointer;
     display: flex;
+    flex-wrap: wrap;
   }
 }
 .radio + .radio, .checkbox + .checkbox {
@@ -355,67 +356,120 @@ input:checked + label .checkbox-icon {
     width: 26px;
 }
 
-.dependentCheckboxes {
-  @extend .checkbox;
-  display: flex;
+
+.multiField-label {
+  float: left;
+  width: 120px;
+  text-align: right;
+  font-weight: normal;
+  line-height: 39px;
+}
+
+.multiField-input {
+  max-width: 400px;
+  margin-left: 140px;
+  margin-right: auto;
+  padding-bottom: 8px;
   background: $snow;
 
-  label {
-    padding: 10px 32px;
-    position: relative;
-    overflow: none;
-    background: $snow;
+  &.last {
+    padding-bottom: 0;
   }
 
-  label {
-    // This CSS is pretty crazy, but it generates a chevron that matches the styles we want.
-    &:before {
-      display: block;
-      position: absolute;
-      z-index: $z-index-front;
-      top: -10px;
-      left: 100%;
-      content: ' ';
-      border-style: solid;
-      border-width: 30px 0 30px 13px;
-      border-color: transparent transparent transparent white;
-    }
-
-    &:after {
-      display: block;
-      position: absolute;
-      z-index: $z-index-front;
-      top: 0;
-      left: 100%;
-      content: ' ';
-      border-style: solid;
-      border-width: 20px 0 20px 9px;
-      border-color: transparent transparent transparent $snow;
-    }
-  }
-  input:checked + label {
-    background: light($gray);
-
-    &:before {
-      display: block;
-      position: absolute;
-      z-index: $z-index-front;
-      top: 0;
-      right: -12px;
-      content: ' ';
-      border-style: solid;
-      border-width: 20px 0 20px 13px;
-      border-color: transparent transparent transparent light($gray);
-    }
-
-    &:after {
-      display: none;
-    }
-  }
-  label:last-child:before, input:checked + label:last-child:before {
-    display: none;
+  &.checkbox {
+    margin-left: 0;
   }
 }
+
+.multiField-separator {
+  display: none;
+}
+
+.multiField-rowEnd {
+  clear: both;
+}
+
+@supports (display: grid) {
+  @include respond-to(tablet, 0) {
+
+    .multiField {
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-auto-flow: column;
+
+      @for $i from 1 through 5 {
+        &.columns-#{$i} { grid-template-columns: repeat(#{$i}, minmax(200px, auto)) 1fr; }
+      }
+      &.checkboxes {
+        grid-template-rows: auto;
+      }
+    }
+
+    .multiField-label {
+      text-align: left;
+      padding-left: 16px;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+    }
+
+    .multiField-input {
+      position: relative;
+      border: 0;
+      margin: 0;
+      padding: 10px 32px;
+      border-right: 4px solid $white;
+      &:first-of-type {
+        padding-left: 16px;
+      }
+      &.noborder {
+        border-right: 0;
+      }
+    }
+
+    .multiField-rowEnd {
+      display: none;
+    }
+
+    .multiField-separator {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 20px;
+      height: 100%;
+      z-index: $z-index-front;
+
+      &.checked {
+        display: none;
+        color: light($gray);
+      }
+
+      &.unchecked {
+        color: $white;
+      }
+
+      &.ordered {
+        margin-left: -10px;
+        color: $white;
+      }
+    }
+
+    .multiField-input.checked {
+      background: light($gray);
+
+      .multiField-separator.checked {
+        display: block;
+      }
+      .multiField-separator.unchecked {
+        display: none;
+      }
+    }
+
+  }
+}
+
 
 // Field errors
 //
