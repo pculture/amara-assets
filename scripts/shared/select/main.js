@@ -177,12 +177,12 @@ function handleDropdownMultiple(select, options) {
 
     select.on('select2:open', function () {
       container.find('.select2-selection__choice__count').css('display', 'none')
-      container.find('.select2-selection__choice__overflow').css('display','list-item')
+      container.find('.select2-selection__rendered').css('height', 'auto')
     });
 
     select.on('select2:close', function () {
       container.find('.select2-selection__choice__count').css('display', 'list-item')
-      container.find('.select2-selection__choice__overflow').css('display', 'none')
+      container.find('.select2-selection__rendered').css('height', '31px')
     });
   }
 }
@@ -253,12 +253,9 @@ MultipleSelectSingleLine.prototype.update = function(decorated, data) {
       selection_width = measure_width($selection, $selections_rendered)
       selected_total_width += selection_width
       remaining_width = available_width - selected_total_width
-      if (remaining_width < selected_indicator_width) {
-        $selection.addClass('select2-selection__choice__overflow')
-        if (!selected_indicator_added) {
+      if (remaining_width < selected_indicator_width && !selected_indicator_added) {
           selected_indicator.css('visibility', 'visible')
           selected_indicator_added = true
-        }
       } 
       $selections.push($selection);
     }
