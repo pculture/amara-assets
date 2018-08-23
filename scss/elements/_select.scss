@@ -112,7 +112,9 @@ select.select {
     color: $charcoal;
     padding: 0;
     margin: 0;
+  }
 
+  .select2-selection__rendered__multiple {
     /* we fix the height of this to handle multiple select rendering in just a single line
      * this works because selections are 31px tall
      *
@@ -121,9 +123,8 @@ select.select {
      * since there is code there that sets the height of the .select2-selection__rendered 
      * back to 31px when the dropdown is closed
      */
-    height: 31px; 
+    height: 31px;
     overflow: hidden;
-    
   }
 
   .select2-selection__placeholder {

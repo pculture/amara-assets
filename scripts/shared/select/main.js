@@ -296,6 +296,7 @@ function addContainerClasses(select, options) {
   var container = select.data('select2').$container;
   if(options.multiple) {
     container.addClass('multiple');
+    container.find('.select2-selection__rendered').addClass('select2-selection__rendered__multiple')
   }
   if(select.hasClass('selectFilter')) {
     container.addClass('selectFilter');
