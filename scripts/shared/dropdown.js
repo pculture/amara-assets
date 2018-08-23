@@ -58,9 +58,7 @@ function dropdownMenu(menu) {
         } else if (evt.which == keyCodes.down) {
             focusNextLink(link);
         } else if(evt.which == keyCodes.enter) {
-            hideMenu();
-            button.focus();
-            return; // skip preventDefault() to make the link click go through
+            return activateLink(evt, link);
         } else if(evt.which == keyCodes.esc) {
             hideMenu();
             button.focus();
@@ -73,7 +71,24 @@ function dropdownMenu(menu) {
         }
 
         evt.preventDefault();
+    }).on('click', function(evt) {
+        return activateLink(evt, $(this));
     });
+
+    function activateLink(evt, link) {
+        hideMenu();
+        if(link.data('activateArgs')) {
+            // dropdown-js-item -- trigger link-activate
+            button.focus();
+            menu.trigger('link-activate', link.data('activateArgs'));
+            evt.preventDefault();
+        } else {
+            // Regular link item.  return now, skipping preventDefault() to
+            // make the link click go through.  Also, skip calling
+            // button.focus(), since that would stop the click.
+            return;
+        }
+    }
 
     function menuVisible() {
         return menu.css('display') != 'none';
