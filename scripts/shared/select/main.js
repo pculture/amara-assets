@@ -51,6 +51,7 @@ function initSelect(select) {
   focusInputAfterSelection(select, options);
   clearButtonHack(select, options);
   handleClear(select, options);
+  handleDropdownMultiple(select, options);
 
   addContainerClasses(select, options);
 }
@@ -170,11 +171,28 @@ function handleClear(select, options) {
   }
 }
 
+function handleDropdownMultiple(select, options) {
+  if(options.multiple) {
+    var container = select.siblings('span.select2-container')
+
+    select.on('select2:open', function () {
+      container.find('.select2-selection__choice__count').css('display', 'none')
+      container.find('.select2-selection__rendered').css('height', 'auto')
+    });
+
+    select.on('select2:close', function () {
+      container.find('.select2-selection__choice__count').css('display', 'list-item')
+      container.find('.select2-selection__rendered').css('height', '31px')
+    });
+  }
+}
+
 function makeSelectionAdapter(select, options) {
   if(options.multiple) {
     var adapter = MultipleSelection;
     // select2 doesn't create the dropdown arrow for multi-selects, so we need to do it ourselves
     adapter = Utils.Decorate(adapter, AddSelectionArrow);
+    adapter = Utils.Decorate(adapter, MultipleSelectSingleLine);
   } else {
     var adapter = SingleSelection;
   }
@@ -196,6 +214,65 @@ function makeDropdownAdapter(select) {
   return adapter;
 }
 
+/*
+ * Decorator for multiple select
+ * -- render selections in one line
+ * -- when the selections exceed the width of the selector, it gets clipped 
+ *    and instead the total number of selections are shown
+ */
+function MultipleSelectSingleLine() {}
+MultipleSelectSingleLine.prototype.update = function(decorated, data) {
+    this.clear();
+
+    if (data.length === 0) {
+      return;
+    }
+
+    var $selections_rendered = this.$selection.find('.select2-selection__rendered')
+    var available_width = $selections_rendered.width()
+    // the element to indicate how many total selections are currently selected
+    var selected_indicator = '<li class="select2-selection__choice__count">' + data.length + ' selected</li>'
+    $selections_rendered.append(selected_indicator)
+    selected_indicator = $('.select2-selection__choice__count')
+    var selected_indicator_width = selected_indicator.outerWidth(true)
+
+    var selected_indicator_added = false // flag so we only attach the selected_indicator element once
+    var selected_total_width = 0;
+
+    var $selections = [];
+
+    for (var d = 0; d < data.length; d++) {
+      var selection = data[d];
+
+      var formatted = this.display(selection);
+      var $selection = this.selectionContainer();
+
+      $selection.append(formatted);
+      $selection.data('data', selection);
+      
+      selection_width = measure_width($selection, $selections_rendered)
+      selected_total_width += selection_width
+      remaining_width = available_width - selected_total_width
+      if (remaining_width < selected_indicator_width && !selected_indicator_added) {
+          selected_indicator.css('visibility', 'visible')
+          selected_indicator_added = true
+      } 
+      $selections.push($selection);
+    }
+
+    $selections_rendered.append($selections);
+}
+
+// the element needs to be in the DOM for it to have a width
+function measure_width(element, container) {
+  el = element.clone();
+  el.css('visibility','hidden');
+  el.css('position', 'absolute');
+  container.append(el);
+  width = el.outerWidth(true)
+  el.remove()
+  return width
+}
 
 function AddSelectionArrow() { }
 AddSelectionArrow.prototype.render = function (decorated) {
@@ -219,6 +296,7 @@ function addContainerClasses(select, options) {
   var container = select.data('select2').$container;
   if(options.multiple) {
     container.addClass('multiple');
+    container.find('.select2-selection__rendered').addClass('select2-selection__rendered__multiple')
   }
   if(select.hasClass('selectFilter')) {
     container.addClass('selectFilter');
