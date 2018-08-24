@@ -108,6 +108,10 @@ a.topnav-button, button.topnav-button {
     background-color: $plum;
   }
 
+  &.user-menu {
+    text-transform: none;
+  }
+
   &.gray {
     background-color: $snow;
     color: $plum;
@@ -137,6 +141,7 @@ a.topnav-button, button.topnav-button {
 .topnav-search {
   font-size: 18px;
 }
+
 
 
 #mainnav {
