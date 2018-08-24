@@ -94,6 +94,11 @@ function filterBox(filterBox) {
         }).change();
 
         position.below(chooser, filterBox);
+        if(select2) {
+            input.select2('focus');
+        } else {
+            input.focus();
+        }
     }
 
     function removeChooserIfShown() {
