@@ -318,3 +318,7 @@ function templateSelection(data) {
 }
 
 $.behaviors('.select', initSelect);
+
+module.exports = {
+    initSelect: initSelect
+};

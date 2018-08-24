@@ -1,7 +1,7 @@
 .dropdownMenu {
   position: absolute;
   display: none;
-  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5);
+  @include shadow;
   background: $white;
   padding: 6px 0;
 

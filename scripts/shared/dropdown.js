@@ -20,6 +20,7 @@
 
 var $ = require('jquery');
 var keyCodes = require('./keyCodes');
+var position = require('./position');
 
 $.behaviors('.dropdownMenu', dropdownMenu);
 
@@ -98,32 +99,19 @@ function dropdownMenu(menu) {
         if(menuVisible()) {
             return;
         }
-        menu.detach().appendTo($('body'));
+        menu.trigger('show');
+        position.below(menu, button);
+        menu.css('display', 'flex');
         button.attr('aria-expanded', 'true');
-        menu.css({
-            'display': 'flex',
-            'top': eltBottom(button) + 'px',
-            'left': button.offset().left + 'px'
-        });
-
-        if(eltBottom(menu) >= viewportBottom()) {
-            menu.css({
-                'top': (button.offset().top - menu.outerHeight()) + 'px'
-            });
-        }
     }
 
     function hideMenu() {
+        if(!menuVisible()) {
+            return;
+        }
+        menu.trigger('hide');
         button.attr('aria-expanded', 'false');
         menu.css('display', 'none');
-    }
-
-    function eltBottom(elt) {
-        return elt.offset().top + elt.outerHeight();
-    }
-
-    function viewportBottom() {
-        return $(window).scrollTop() + $(window).height();
     }
 
     function focusNextLink(link) {

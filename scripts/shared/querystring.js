@@ -21,15 +21,49 @@
 // querystring -- querystring paramater code
 //
 
+var _ = require('underscore');
+
+function iterQuerystring(callback) {
+    var queryString = window.location.search.substr(1);
+    $.each(queryString.split('&'), function(i, pair) {
+        if (pair === "") return;
+        var parts = pair.split("=");
+        var name = parts[0];
+        var value = parts[1] && decodeURIComponent(parts[1].replace(/\+/g, " "));
+        callback(name, value);
+    });
+}
+
 module.exports = {
     parse: function() {
-        var queryString = window.location.search.substr(1);
         var params = {};
-        $.each(queryString.split('&'), function(i, pair) {
-            if (pair === "") return;
-            var parts = pair.split("=");
-            params[parts[0]] = parts[1] && decodeURIComponent(parts[1].replace(/\+/g, " "));
+        iterQuerystring(function(name, value) {
+            params[name] = value;
         });
         return params;
+    },
+    parseList: function() {
+        var params = [];
+        iterQuerystring(function(name, value) {
+            params.push({
+                name: name,
+                value: value,
+            });
+        });
+        return params;
+    },
+    format: function(data) {
+        var parts = [];
+        if(Array.isArray(data)) {
+            _.each(data, function(param) {
+                parts.push(param.name + '=' + encodeURIComponent(param.value));
+            });
+        } else {
+            _.each(data, function(value, key) {
+                parts.push(key + '=' + encodeURIComponent(value));
+            });
+        }
+        return parts.join('&');
     }
+
 };
