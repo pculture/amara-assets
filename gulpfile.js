@@ -1,7 +1,7 @@
 'use strict';
 
+var log = require('fancy-log');
 var browserify = require('browserify');
-var buffer = require('gulp-buffer');
 var debug = require('gulp-debug');
 var del = require('del');
 var fs = require('fs');
@@ -13,10 +13,10 @@ var pump = require('pump');
 var sass = require('gulp-sass');
 var tildeImporter = require('node-sass-tilde-importer');
 var sourcemaps = require('gulp-sourcemaps');
+var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var tap = require('gulp-tap');
 var uglify = require('gulp-uglify');
-var gutil = require('gulp-util');
 
 var paths = {
     images: 'img/**',
@@ -126,9 +126,7 @@ function run_browserify(script, watch, cb) {
 
     function run(cb) {
         pump([
-            b.bundle().on('error', function(err) {
-                gutil.log(err.name + ': ' + err.message)
-            }),
+            b.bundle().on('error', log.error.bind(log, 'Browserify Error')),
             source(filename),
             buffer(),
             sourcemaps.init({loadMaps: true}),
