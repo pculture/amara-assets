@@ -58,9 +58,9 @@ function filterBox(filterBox) {
 
         var inputSelector = ('[name=' + fieldName + ']');
         var sourceInput = $(inputSelector, filterBox);
-        var select2 = Boolean(sourceInput.is('.select'));
+        var isSelect2 = Boolean(sourceInput.is('.select'));
 
-        if(select2 && sourceInput.data('select2')) {
+        if(isSelect2 && sourceInput.data('select2')) {
             sourceInput.select2('destroy');
         }
         var formField = sourceInput.closest('.form-group').clone();
@@ -73,10 +73,7 @@ function filterBox(filterBox) {
         var applyButton = $('<button class="filterBox-chooserAction cta">').text(gettext('Apply')).appendTo(buttonContainer);
         $('body').append(chooser);
 
-        if(select2) {
-            select.initSelect(input);
-        }
-
+        setupChooserInput(fieldName, input, isSelect2);
         cancelButton.click(removeChooserIfShown);
         applyButton.click(function() {
             removeChooserIfShown();
@@ -94,12 +91,29 @@ function filterBox(filterBox) {
         }).change();
 
         position.below(chooser, filterBox);
-        if(select2) {
+        if(isSelect2) {
             input.select2('focus');
         } else {
             input.focus();
         }
     }
+
+    function setupChooserInput(name, input, isSelect2) {
+        if(filterIsSingleton(name)) {
+            // Pre-select the currently selected value for singletons
+            var currentVal = querystring.parse()[name];
+            if(currentVal) {
+                input.val(currentVal);
+                // for textboxes, select the value as well
+                input.filter(':text').select();
+            }
+        }
+
+        if(isSelect2) {
+            select.initSelect(input);
+        }
+    }
+
 
     function removeChooserIfShown() {
         if(chooser) {
@@ -108,9 +122,13 @@ function filterBox(filterBox) {
         }
     }
 
+    function filterIsSingleton(name) {
+        return singletons.indexOf(name) != -1;
+    }
+
     function addFilterToQuery(name, value) {
         var params = querystring.parseList();
-        if(_.contains(singletons, name)) {
+        if(filterIsSingleton(name)) {
             // remove existing filters before adding a new one
             params = _.filter(params, function(param) {
                 return param.name != name;
@@ -128,7 +146,7 @@ function filterBox(filterBox) {
     }
 
     function addFilterElt(name, value) {
-        if(_.contains(singletons, name)) {
+        if(filterIsSingleton(name)) {
             // remove existing filter elements before adding a new one
             filtersContainer.children().each(function() {
                 var elt = $(this);
