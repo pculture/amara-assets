@@ -184,7 +184,7 @@ function filterBox(filterBox) {
     function labelForInputValue(name, value) {
         var input = $('[name=' + name + ']', filterBox);
 
-        if(input.prop('name') == 'select') {
+        if(input.prop('tagName') == 'SELECT') {
             return $('option[value=' + value + ']', input).text();
         } else {
             return value;
