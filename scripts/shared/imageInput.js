@@ -23,27 +23,50 @@ var $ = require('jquery');
 $.behaviors('.imageInput', imageInput);
 
 function imageInput(container) {
-    var button = $('.imageInput-button', container);
+    container = $(container);
     var buttonContainer = $('.imageInput-buttonContainer', container);
-    var buttonContainer = $('.imageInput-buttonContainer', container);
-    var fileInput = $('.imageInput-fileInput', container);
     var thumbnail = $('.imageInput-thumbnail', container);
     var text = $('.imageInput-text', container);
+    var clearInput = $('.imageInput-clear', container);
+    var fileInput = $('.imageInput-fileInput', container);
+    var button = $('.imageInput-button', container);
+    var hiddenArea = $('.imageInput-hiddenArea', container);
 
     buttonContainer.on('mouseenter', function() {
-        button.addClass('hover');
+        $('.imageInput-button', container).addClass('hover');
     }).on('mouseleave', function() {
-        button.removeClass('hover');
+        $('.imageInput-button', container).removeClass('hover');
     });
 
-    fileInput.on('change', function(evt) {
+    fileInput.on('change', onFileChange);
+    if(button.data('action') == 'remove') {
+        button.on('click', onRemove);
+    }
+
+    function onFileChange(evt) {
+        updatePreviewThumbnail(evt);
+        text.val(evt.target.files[0].name);
+        clearInput.val('');
+        button.text(gettext('Remove')).on('click', onRemove);
+        fileInput.detach().appendTo(hiddenArea);
+    }
+
+    function onRemove(evt) {
+        thumbnail.removeAttr('src');
+        text.val('');
+        clearInput.val('1');
+        button.text(gettext('Browse')).off('click');
+        fileInput.detach().appendTo(buttonContainer);
+        fileInput.val('');
+    }
+
+    function updatePreviewThumbnail(evt) {
         var reader = new FileReader();
         reader.onload = function(){
-            thumbnail.prop('src', reader.result);
+            thumbnail.attr('src', reader.result);
         };
-        text.val(evt.target.files[0].name);
         reader.readAsDataURL(evt.target.files[0]);
+    }
 
-    });
 }
 
