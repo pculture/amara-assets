@@ -33,7 +33,7 @@ function dropdownMenu(menu) {
         if(menuVisible()) {
             hideMenu();
         } else {
-            showMenu()
+            showMenu();
         }
         evt.preventDefault();
     }).keydown(function(evt) {
@@ -47,7 +47,10 @@ function dropdownMenu(menu) {
             focusLastLink();
         } else if(evt.which == keyCodes.esc) {
             hideMenu();
+        } else if(menuVisible() && keyCodeIsAlphaNumeric(evt)) {
+            focusNextLinkWithChar(links.eq(-1), String.fromCharCode(evt.which));
         }
+        evt.stopPropagation();
         evt.preventDefault();
     });
 
@@ -67,10 +70,11 @@ function dropdownMenu(menu) {
             focusFirstLink();
         } else if(evt.which == keyCodes.end) {
             focusLastLink();
-        } else if(evt.which >= 65 && evt.which <= 90) {
+        } else if(keyCodeIsAlphaNumeric(evt)) {
             focusNextLinkWithChar(link, String.fromCharCode(evt.which));
         }
 
+        evt.stopPropagation();
         evt.preventDefault();
     }).on('click', function(evt) {
         return activateLink(evt, $(this));
@@ -89,6 +93,10 @@ function dropdownMenu(menu) {
             // button.focus(), since that would stop the click.
             return;
         }
+    }
+
+    function keyCodeIsAlphaNumeric(evt) {
+        return evt.which >= 65 && evt.which <= 90;
     }
 
     function menuVisible() {
