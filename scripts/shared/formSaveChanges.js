@@ -41,5 +41,6 @@ $.behaviors('.saveChangesButton', function(button) {
         $(button).css('visibility', 'visible')
     }
 
-    inputs.on('input', show_save_button)
+    inputs.on('input', show_save_button);
+    inputs.on('change', show_save_button);
 });
