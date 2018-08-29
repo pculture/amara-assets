@@ -290,12 +290,28 @@ textarea {
     flex-wrap: wrap;
   }
 }
+
 .radio + .radio, .checkbox + .checkbox {
   // undo bootstrap's -5px
   margin-top: 0;
 }
 .radio {
     padding-bottom: 4px;
+}
+
+.radio-inline {
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.li-radio-inline {
+  float: left;
+}
+
+.li-radio-inline:last-of-type {
+  float: none;
 }
 
 .radio-icon, .checkbox-icon {
