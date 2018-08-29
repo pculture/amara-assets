@@ -50,11 +50,7 @@ function processAjaxResponse(responseData) {
                 break;
 
             case 'hideModal':
-                if(change[1]) {
-                    $(change[1]).modal('hide');
-                } else {
-                    closeCurrentModal();
-                }
+                dialogs.closeCurrentModal();
                 break;
 
             case 'showModalProgress':

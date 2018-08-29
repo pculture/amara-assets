@@ -36,28 +36,84 @@ function makeProgressBar(progress, label) {
     }));
 }
 
+$.behaviors('.modal-show', showModalButton);
+$.behaviors('.modal-close', hideModalButton);
+
+function showModalButton(elt) {
+    var elt = $(elt);
+    var modal = $(elt.data('target'));
+    elt.click(function(evt) {
+        showModal(modal);
+        evt.stopPropagation();
+        evt.preventDefault();
+    });
+}
+
+function showModal(modal) {
+    var body = $('body');
+    modal = $(modal);
+
+    if(currentModal) {
+        console.log(modal);
+        currentModal.replaceWith(modal);
+        modal.show();
+    } else {
+        $('<div class="modal-backdrop">').appendTo(body).fadeIn(400, function() {
+            modal.detach().appendTo(body).show();
+        });
+        $('body').css('overflow', 'hidden');
+    }
+
+    if($('.modal-close', modal).length == 0) {
+        setupImplicitClose(modal);
+    }
+
+    currentModal = modal;
+    return modal;
+}
+
+function setupImplicitClose(modal) {
+    // Add a close button
+    var closeButton = $('<button class="modal-closeButton"><span class="icon icon-close"></span></button>');
+    closeButton.appendTo(modal).on('click', onCloseClick);
+
+    // Clicks outside it will close the modal
+    $(document).on('click.modal', function(evt) {
+        if($(evt.target).closest(modal).length == 0) {
+            onCloseClick(evt);
+        }
+    });
+}
+
+function hideModalButton(elt) {
+    $(elt).click(onCloseClick);
+}
+
+function onCloseClick(evt) {
+    closeCurrentModal();
+    evt.stopPropagation();
+    evt.preventDefault();
+}
+
+function closeCurrentModal() {
+    if(currentModal) {
+        if(currentModal.hasClass('removeOnClose')) {
+            currentModal.remove();
+        } else {
+            currentModal.hide();
+        }
+        currentModal = null;
+        $('.modal-backdrop').remove();
+        $(document).off('click.modal');
+        $('body').css('overflow', 'auto');
+    }
+}
+
+
 module.exports = {
     // show/replace the our modal dialog
-    showModal: function(content) {
-        content = $(content);
-        if(currentModal) {
-            currentModal.empty().append(content);
-        } else {
-            currentModal = $('<div class="modal fade" role="dialog"></div>').append(content);
-            currentModal.append(content);
-            $(document.body).append(currentModal);
-            currentModal.modal().on('hidden.bs.modal', function() {
-                currentModal.remove();
-                currentModal = null;
-            });
-        }
-        return currentModal;
-    },
-    closeCurrentModal: function() {
-        if(currentModal) {
-            currentModal.modal('hide');
-        }
-    },
+    showModal: showModal,
+    closeCurrentModal: closeCurrentModal,
     // Show a progress bar on the current modal dialog
     showModalProgress: function(progress, label) {
         if(!currentModal) {
