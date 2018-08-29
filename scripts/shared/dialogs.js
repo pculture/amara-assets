@@ -24,6 +24,7 @@
 
 var $ = require('jquery');
 var _ = require('underscore');
+var bodyScrollLock = require('body-scroll-lock');
 
 var currentModal = null;
 var progressBarTemplate = _.template('<div class="progressBar teal"><div class="progressBar-progress" role="progressbar" style="width: <%- percent %>;"><span class="sr-only"><%- percentLabel %></span></div></div><p class="progressBar-label teal"><%- label %></p>');
@@ -61,7 +62,7 @@ function showModal(modal) {
         $('<div class="modal-backdrop">').appendTo(body).fadeIn(400, function() {
             modal.detach().appendTo(body).show();
         });
-        $('body').css('overflow', 'hidden');
+        bodyScrollLock.disableBodyScroll(modal);
     }
 
     if($('.modal-close', modal).length == 0) {
@@ -97,6 +98,7 @@ function onCloseClick(evt) {
 
 function closeCurrentModal() {
     if(currentModal) {
+        bodyScrollLock.enableBodyScroll(currentModal);
         if(currentModal.hasClass('removeOnClose')) {
             currentModal.remove();
         } else {
@@ -105,7 +107,6 @@ function closeCurrentModal() {
         currentModal = null;
         $('.modal-backdrop').remove();
         $(document).off('click.modal');
-        $('body').css('overflow', 'auto');
     }
 }
 
