@@ -51,9 +51,15 @@
   font-family: $font-family-sans-serif
 }
 
-.modal-subtitle {
+.modal-header {
   margin: 20px;
-  font-family: $font-family-sans-serif
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
+}
+
+.modal-subheader {
+  margin: -20px 20px 20px 20px;
+  color: $gray;
 }
 
 .modal-footer {
