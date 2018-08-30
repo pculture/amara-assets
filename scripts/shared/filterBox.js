@@ -155,6 +155,11 @@ function filterBox(filterBox) {
                 }
             });
         }
+        if(filterBox.data(name + 'Default') == value) {
+            // Don't add the filter box if the value is the default value
+            updateHasFilters();
+            return;
+        }
 
         var elt = $('<div class="filterBox-filter">').text(
                 labelForInput(name) + ': ' + labelForInputValue(name, value));
