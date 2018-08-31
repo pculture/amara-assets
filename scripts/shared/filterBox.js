@@ -146,6 +146,11 @@ function filterBox(filterBox) {
     }
 
     function addFilterElt(name, value) {
+        var inputLabel = labelForInput(name);
+        if(inputLabel === null) {
+            return;
+        }
+
         if(filterIsSingleton(name)) {
             // remove existing filter elements before adding a new one
             filtersContainer.children().each(function() {
@@ -162,7 +167,7 @@ function filterBox(filterBox) {
         }
 
         var elt = $('<div class="filterBox-filter">').text(
-                labelForInput(name) + ': ' + labelForInputValue(name, value));
+                inputLabel + ': ' + labelForInputValue(name, value));
         var closeButton = $('<button class="filter-removeFilter">x</button>').appendTo(elt);
         elt.data('name', name);
         closeButton.on('click', function() { elt.remove(); updateHasFilters(); removeFilterFromQuery(name, value) });
@@ -172,7 +177,7 @@ function filterBox(filterBox) {
     }
 
     function labelForInput(name) {
-        var label = gettext('Unknown');
+        var label = null;
 
         $('.dropdownMenu-link', dropdownMenu).each(function() {
             var link = $(this);
@@ -190,7 +195,7 @@ function filterBox(filterBox) {
         var input = $('[name=' + name + ']', filterBox);
 
         if(input.prop('tagName') == 'SELECT') {
-            return $('option[value=' + value + ']', input).text();
+            return $('option[value=' + value + ']:first', input).text();
         } else {
             return value;
         }
