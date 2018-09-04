@@ -36,7 +36,7 @@ function filterBox(filterBox) {
     if(!singletons) {
         singletons = [];
     } else {
-        singletons = singletons.split();
+        singletons = singletons.split(' ');
     }
 
     var filtersContainer = $('<div class="filterBox-filters">').appendTo(filterBox);
@@ -150,7 +150,6 @@ function filterBox(filterBox) {
         if(inputLabel === null) {
             return;
         }
-
         if(filterIsSingleton(name)) {
             // remove existing filter elements before adding a new one
             filtersContainer.children().each(function() {
