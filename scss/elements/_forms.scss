@@ -299,7 +299,8 @@ textarea {
     padding-bottom: 4px;
 }
 
-.radio-inline {
+// bootstrap has a radio-inline class so we use a different name
+.div-radio-inline {
   display: inline-block;
   padding-left: 0px;
   padding-right: 20px;
@@ -312,6 +313,10 @@ textarea {
 
 .li-radio-inline:last-of-type {
   float: none;
+}
+
+.radio-dynamic-help-text {
+  margin-bottom: 0px;
 }
 
 .radio-icon, .checkbox-icon {
