@@ -82,6 +82,9 @@ function makeOptions(select) {
     options.ajax = ajaxOptions(select);
     options.minimumResultsForSearch = 0;
     options.allowClear = !(select.data('clear') === false);
+    if (select.data('ajax-username-multiple')) {
+      options.type = 'ajax-username-multiple';
+    }
   } else if(select.data('languageOptions')) {
     options.data = Languages.languageChoiceData(select);
     options.type = 'language';

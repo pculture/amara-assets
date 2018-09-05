@@ -46,6 +46,7 @@
     width: 40px;
     font-size: 10px;
     height: 16px;
+    line-height: 16px;
 
     &:after {
       top: 1px;
@@ -72,7 +73,7 @@
 
   &.inline {
     position: absolute;
-    top: 1px;
+    top: 0;
     left: 5px;
   }
 }
@@ -85,7 +86,7 @@
   }
   &.inline {
     position: absolute;
-    top: 1px;
+    top: 0;
     right: 5px;
   }
 }

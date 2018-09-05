@@ -428,6 +428,11 @@ input:checked + label .checkbox-icon {
       }
     }
 
+    .multiField-inputExtender {
+      grid-row: -2 / -1;
+      background: $snow;
+    }
+
     .multiField-rowEnd {
       display: none;
     }
