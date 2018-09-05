@@ -28,6 +28,7 @@
 @import "libs/venobox";
 
 // Import additional elements or project specific styles
+@import "elements/searchbar";
 @import "elements/navigation";
 @import "elements/tabs";
 @import "elements/illustrations";
@@ -54,7 +55,6 @@
 @import "views/about";
 @import "views/volunteer";
 @import "views/recruitment";
-@import "language_selector_hack";
 
 // TODO - Refactor these styles into partials
 

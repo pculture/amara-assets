@@ -14,7 +14,16 @@
   }
 }
 
-@include respond-to(tablet, 0) {
+@include respond-to(laptop, 0) {
+  .modal {
+    left: 50%;
+    right: auto;
+    width: 900px;
+    margin-left: -450px;
+  }
+}
+
+@include respond-to(tablet) {
   .modal {
     left: 50%;
     right: auto;
@@ -33,7 +42,7 @@
   position: fixed;
   display: none;
   z-index: $z-index-overlay;
-  background: rgba($gray, 0.5);
+  background: rgba(dark($gray), 0.7);
   left: 0;
   top: 0;
   right: 0;
