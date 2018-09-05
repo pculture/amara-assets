@@ -35,3 +35,4 @@ require('../shared/multiField');
 require('../shared/formBacktotop');
 require('../shared/formSaveChanges');
 require('../shared/teamSettings');
+require('../shared/dynamicHelpText');

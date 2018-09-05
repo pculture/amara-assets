@@ -19,25 +19,6 @@
 
 var $ = require('jquery');
 
-$.behaviors('.dynamicHelpText', function(selector) {
-    var selector = $(selector);
-    var help_text = selector.siblings('.helpBlock')
-    var choices_help_texts = selector.data('dynamic-choice-help-texts')
-
-    selector.on('change', function() {
-        help_text.html(choices_help_texts[this.value]);
-    });
-});
-
-$.behaviors('.dynamicHelpTextRadio', function(selector) {
-    var radio = $(selector);
-    var help_text = radio.parents('.radio-dynamic-help-text').siblings('.helpBlock')
-
-    radio.on('change', function() {
-        help_text.html($(this).data('dynamic-help-text'))
-    });
-});
-
 $.behaviors('.teamMembershipSetting', function(selector) {
     var radio = $(selector)
     var roles = radio.closest('.form-group').siblings('.teamMembershipSettingRoles')
@@ -72,10 +53,10 @@ $.behaviors('div#subtitleVisibility', function(container) {
         }
     }
 
+    // compute the initial help text
     change_help_text();
 
     switches.on('change', function() {
         change_help_text();
     });
 });
-
