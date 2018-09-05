@@ -76,9 +76,15 @@ function filterBox(filterBox) {
         setupChooserInput(fieldName, input, isSelect2);
         cancelButton.click(removeChooserIfShown);
         applyButton.click(function() {
+            var value = input.val();
             removeChooserIfShown();
-            addFilterToQuery(fieldName, input.val());
-            addFilterElt(fieldName, input.val());
+            if(!Array.isArray(value)) {
+                value = [value];
+            }
+            _.each(value, function(val) {
+                addFilterToQuery(fieldName, val);
+                addFilterElt(fieldName, val);
+            });
         });
         input.on('input change', function() {
             if(input.val() == '') {
@@ -110,6 +116,8 @@ function filterBox(filterBox) {
         }
 
         if(isSelect2) {
+            // Don't allow multiple select here.  Users can open the filter a second time to do that.
+            input.prop('multiple', false);
             select.initSelect(input);
         }
     }
