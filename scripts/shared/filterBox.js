@@ -32,13 +32,6 @@ function filterBox(filterBox) {
     var dropdownMenu = $('.dropdownMenu', filterBox);
     var chooser = null;
 
-    var singletons = filterBox.data('singletonFilters');
-    if(!singletons) {
-        singletons = [];
-    } else {
-        singletons = singletons.split(' ');
-    }
-
     var filtersContainer = $('<div class="filterBox-filters">').appendTo(filterBox);
 
     // create the clear all button
@@ -76,15 +69,14 @@ function filterBox(filterBox) {
         setupChooserInput(fieldName, input, isSelect2);
         cancelButton.click(removeChooserIfShown);
         applyButton.click(function() {
-            var value = input.val();
             removeChooserIfShown();
-            if(!Array.isArray(value)) {
-                value = [value];
+            if(inputIsMultiValued(input)) {
+                var values = input.val();
+            } else {
+                var values = [input.val()];
             }
-            _.each(value, function(val) {
-                addFilterToQuery(fieldName, val);
-                addFilterElt(fieldName, val);
-            });
+            createFilterBoxes(fieldName, values);
+            addFilterToQuery(fieldName, values);
         });
         input.on('input change', function() {
             if(input.val() == '') {
@@ -105,23 +97,22 @@ function filterBox(filterBox) {
     }
 
     function setupChooserInput(name, input, isSelect2) {
-        if(filterIsSingleton(name)) {
-            // Pre-select the currently selected value for singletons
+        // Pre-select the currently selected value for singletons
+        if(inputIsMultiValued(input)) {
+            var currentVal = querystring.parseList()[name];
+        } else {
             var currentVal = querystring.parse()[name];
-            if(currentVal) {
-                input.val(currentVal);
-                // for textboxes, select the value as well
-                input.filter(':text').select();
-            }
+        }
+        if(currentVal) {
+            input.val(currentVal);
+            // for textboxes, select the value as well
+            input.filter(':text').select();
         }
 
         if(isSelect2) {
-            // Don't allow multiple select here.  Users can open the filter a second time to do that.
-            input.prop('multiple', false);
             select.initSelect(input);
         }
     }
-
 
     function removeChooserIfShown() {
         if(chooser) {
@@ -130,57 +121,61 @@ function filterBox(filterBox) {
         }
     }
 
-    function filterIsSingleton(name) {
-        return singletons.indexOf(name) != -1;
-    }
-
-    function addFilterToQuery(name, value) {
+    function addFilterToQuery(filterName, values) {
         var params = querystring.parseList();
-        if(filterIsSingleton(name)) {
-            // remove existing filters before adding a new one
-            params = _.filter(params, function(param) {
-                return param.name != name;
-            });
-        }
-        params.push({name: name, value: value});
+        params[filterName] = values;
         ajax.update('?' + querystring.format(params));
     }
 
-    function removeFilterFromQuery(name, value) {
-        var params = _.filter(querystring.parseList(), function(param) {
-            return param.name != name || param.value != value;
+    function removeFilterValueFromQuery(filterName, value) {
+        var params = querystring.parseList();
+        _.each(params, function(values, name) {
+            if(name == filterName) {
+                var index = values.indexOf(value);
+                if(index > -1) {
+                    values.splice(index, 1);
+                    params[name] = values;
+                }
+            }
         });
         ajax.update('?' + querystring.format(params));
     }
 
-    function addFilterElt(name, value) {
+    function createFilterBoxes(name, values) {
         var inputLabel = labelForInput(name);
         if(inputLabel === null) {
             return;
         }
-        if(filterIsSingleton(name)) {
-            // remove existing filter elements before adding a new one
-            filtersContainer.children().each(function() {
-                var elt = $(this);
-                if(elt.data('name') == name) {
-                    elt.remove();
-                }
-            });
-        }
-        if(filterBox.data(name + 'Default') == value) {
-            // Don't add the filter box if the value is the default value
-            updateHasFilters();
-            return;
-        }
+        // remove existing filter elements before adding a new one
+        filtersContainer.children().each(function() {
+            var elt = $(this);
+            if(elt.data('name') == name) {
+                elt.remove();
+            }
+        });
+        _.each(values, function(value) {
+            if(filterBox.data(name + 'Default') == value) {
+                // Don't add the filter box if the value is the default value
+                return;
+            }
 
-        var elt = $('<div class="filterBox-filter">').text(
-                inputLabel + ': ' + labelForInputValue(name, value));
-        var closeButton = $('<button class="filter-removeFilter">x</button>').appendTo(elt);
-        elt.data('name', name);
-        closeButton.on('click', function() { elt.remove(); updateHasFilters(); removeFilterFromQuery(name, value) });
+            var elt = $('<div class="filterBox-filter">').text(
+                    inputLabel + ': ' + labelForInputValue(name, value));
+            var closeButton = $('<button class="filter-removeFilter">x</button>').appendTo(elt);
+            elt.data('name', name);
+            closeButton.on('click', function() { elt.remove(); updateHasFilters(); removeFilterValueFromQuery(name, value) });
 
-        filtersContainer.append(elt);
+            filtersContainer.append(elt);
+        });
         updateHasFilters();
+    }
+
+    function inputIsMultiValued(input) {
+        if(input.prop('type') == 'select-multiple') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function labelForInput(name) {
@@ -223,6 +218,6 @@ function filterBox(filterBox) {
     };
 
     // Add existing querystring args as filters
-    _.each(querystring.parseList(), function(param) { addFilterElt(param.name, param.value) });
+    _.each(querystring.parseList(), function(values, name) { createFilterBoxes(name, values) });
 }
 
