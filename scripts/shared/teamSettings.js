@@ -24,7 +24,7 @@ $.behaviors('.teamMembershipSetting', function(selector) {
     var roles = radio.closest('.form-group').siblings('.teamMembershipSettingRoles')
 
     // show the inviter roles checkboxes if membership_policy is by invitation
-    if (radio.is(':checked') && radio.value == 0) {
+    if (radio.is(':checked') && radio.val() == 0) {
         roles.show();
     }
     

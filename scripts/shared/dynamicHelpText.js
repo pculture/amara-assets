@@ -31,9 +31,11 @@ $.behaviors('.dynamicHelpText', function(selector) {
 
 $.behaviors('.dynamicHelpTextRadio', function(selector) {
     var radio = $(selector);
-    var help_text = radio.parents('.radio-dynamic-help-text').siblings('.helpBlock')
+    var container = radio.closest('.form-group');
+    var help_text = radio.parents('.radio-dynamic-help-text').siblings('.dynamicHelpTextContainer');
 
     radio.on('change', function() {
-        help_text.html($(this).data('dynamic-help-text'))
+        help_text.html($(this).data('dynamic-help-text'));
+        container.removeClass('has-error');
     });
 });
