@@ -1,0 +1,53 @@
+.contentHeader {
+  background-color: $plum;
+  align-items: center;
+  height: 56px;
+  padding: 8px;
+
+  .form-group {
+    margin: 0;
+  }
+
+  .search {
+      opacity: 0.37;
+      padding-right: 8px;
+      flex-direction: row-reverse;
+      flex-grow: 4;
+
+  }
+
+  .addButton {
+    flex-direction: row-reverse;
+    display: inline-block;
+    background-color: $teal;
+    text-align: center;
+    align-items: center;
+    float: right;
+    width: 40px;
+    height: 39px;
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .fa-plus {
+      color: #ffffff;
+    }
+
+    .p {
+      color: #ffffff;
+    }
+
+  }
+
+  .addButton:hover {
+      width: 150px;
+  }
+
+  .title {
+      font-size: 20px;
+      color: #ffffff;
+      flex-direction: row;
+  }
+    
+}
