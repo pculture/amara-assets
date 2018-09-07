@@ -43,12 +43,13 @@ module.exports = {
         return params;
     },
     parseList: function() {
-        var params = [];
+        var params = {};
         iterQuerystring(function(name, value) {
-            params.push({
-                name: name,
-                value: value,
-            });
+            if(params[name] === undefined) {
+                params[name] = [value];
+            } else {
+                params[name].push(value);
+            }
         });
         return params;
     },
@@ -60,7 +61,13 @@ module.exports = {
             });
         } else {
             _.each(data, function(value, key) {
-                parts.push(key + '=' + encodeURIComponent(value));
+                if(Array.isArray(value)) {
+                    _.each(value, function(singleValue) {
+                        parts.push(key + '=' + encodeURIComponent(singleValue));
+                    });
+                } else {
+                    parts.push(key + '=' + encodeURIComponent(value));
+                }
             });
         }
         return parts.join('&');
