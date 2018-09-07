@@ -14,6 +14,7 @@ require('./ajax');
 require('../shared/languageSwitcher');
 require('../shared/tabs');
 require('../shared/eventTracking');
+require('../shared/contentHeader');
 
 var state   = require('./state');
 var slider = require('./slider');
