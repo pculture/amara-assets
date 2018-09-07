@@ -1,0 +1,31 @@
+.listView {
+  display: grid;
+
+  @for $i from 1 through 5 {
+    &.columns-#{$i} {
+      grid-template-columns: repeat($i, auto);
+    }
+  }
+
+  > * {
+    padding: 10px;
+  }
+}
+
+.listView-header {
+  background: $snow;
+}
+
+.listView-action {
+  visibility: hidden;
+  color: $gray;
+  font-size: $font-size-tiny;
+
+  &:hover {
+    color: $lime;
+  }
+
+  &.visible {
+    visibility: visible;
+  }
+}
