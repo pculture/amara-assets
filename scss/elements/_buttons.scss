@@ -14,7 +14,6 @@
 button {
   border: none;
   background-color: transparent;
-  color: $teal;
   &:disabled {
     color: light($gray);
   }
