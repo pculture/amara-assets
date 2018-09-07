@@ -5,7 +5,6 @@ import datetime
 import email
 import gzip
 import mimetypes
-import optparse
 import os
 import time
 
@@ -18,10 +17,9 @@ from assets import util
 class Command(BaseCommand):
     help = """Upload assets media to S3 """
 
-    option_list = BaseCommand.option_list + (
-        optparse.make_option('--no-gzip', dest='gzip', action='store_false',
-                             default=True, help="Don't gzip files"),
-    )
+    def add_arguments(self, parser):
+        parser.add_argument('--no-gzip', dest='gzip', action='store_false',
+                            default=True, help="Don't gzip files")
 
     def handle(self, *args, **options):
         self.setup_connection()
