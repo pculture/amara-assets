@@ -24,28 +24,34 @@ $.behaviors('.listView', listView);
 
 function listView(container) {
     container = $(container);
-    var cells = container.children();
+    var cells = container.children().not('.listView-secondaryRow');
     var columnCount = calcColumnCount();
-    var hoverRow = -1;
+    var hoverRow = undefined;
+    var expandedRow = undefined;
 
+    setupCellRows();
     cells.mouseenter(function() {
-        onRowHover(Math.floor($(this).index() / columnCount));
+        onRowHover($(this).data('row'));
     });
     container.mouseleave(function() {
-        onRowHover(-1);
+        onRowHover(undefined);
+    });
+
+    $('.listView-expand', container).click(function(evt) {
+        toggleRowExpanded($(this).closest(cells).data('row'));
+        evt.preventDefault();
     });
 
     function calcColumnCount() {
-        for(var i = 0; i < 10; i++) {
-            if(container.hasClass('columns-' + i)) {
-                return i;
-            }
-        }
-        return 1;
+        var columnSpec = container.css('grid-template-columns').split(/\s+/);
+        var realColumns = columnSpec.filter(function(spec) {
+            return spec.trim()[0] != '[';
+        });
+        return realColumns.length;
     }
 
+
     function onRowHover(row) {
-        console.log('onRowHover ', row);
         if(row == hoverRow) {
             return;
         }
@@ -54,10 +60,62 @@ function listView(container) {
         hoverRow = row;
     }
 
+    function toggleRowExpanded(row) {
+        if(expandedRow == row) {
+            row = undefined; // if the row is already expanded, then collapse it
+        }
+        collapseRow(expandedRow);
+        expandRow(row);
+        expandedRow = row;
+    }
+
+    var expandAnimationTime = 250;
+
+    function expandRow(row) {
+        var cells = cellsForRow(row);
+        cells.addClass('expanded');
+        var secondaryData = $('.listView-secondary', cells); // extra data inside each column
+        var secondaryRow = cells.filter('.listView-secondaryRow'); // extra row at the end of each column
+
+        secondaryRow.slideDown(expandAnimationTime);
+        secondaryData.slideDown(expandAnimationTime);
+    }
+
+    function collapseRow(row) {
+        var cells = cellsForRow(row);
+        cells.removeClass('expanded');
+        var secondaryData = $('.listView-secondary', cells); // extra data inside each column
+        var secondaryRow = cells.filter('.listView-secondaryRow'); // extra row at the end of each column
+
+        secondaryRow.slideUp(expandAnimationTime);
+        secondaryData.slideUp(expandAnimationTime);
+    }
+
     function cellsForRow(row) {
-        if(row == -1) {
+        if(row === undefined) {
             return $();
         }
-        return cells.slice(row * columnCount, row * columnCount + columnCount);
+        var rv = cells.slice(row * columnCount, row * columnCount + columnCount);
+        // Add the secondary row, if it is present
+        rv = rv.add(cells.eq(row * columnCount + columnCount - 1).next('.listView-secondaryRow'));
+        return rv;
+    }
+
+    function handleMenuItemActivate(evt, action) {
+        if(action == 'expand') {
+            toggleRowExpanded(evt.data);
+        }
+    }
+
+    function setupCellRows() {
+        for(var i=0; ; i++) {
+            var cells = cellsForRow(i);
+            if(cells.length > 0) {
+                cells.data('row', i);
+            } else {
+                return;
+            }
+            $('.dropdownMenu', cells).on('link-activate', i, handleMenuItemActivate);
+        }
     }
 }
