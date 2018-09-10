@@ -1,6 +1,7 @@
-/* Amara, universalsubtitles.org
+/*
+ * Amara, universalsubtitles.org
  *
- * Copyright (C) 2015 Participatory Culture Foundation
+ * Copyright (C) 2018 Participatory Culture Foundation
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -17,19 +18,18 @@
  * http://www.gnu.org/licenses/agpl-3.0.html.
  */
 
-//
-// querystring -- querystring paramater code
-//
-
 module.exports = {
-    parse: function() {
-        var queryString = window.location.search.substr(1);
-        var params = {};
-        $.each(queryString.split('&'), function(i, pair) {
-            if (pair === "") return;
-            var parts = pair.split("=");
-            params[parts[0]] = parts[1] && decodeURIComponent(parts[1].replace(/\+/g, " "));
-        });
-        return params;
-    }
+    'tab': 9,
+    'return': 13,
+    'enter': 13,
+    'esc': 27,
+    'space': 32,
+    'pageup': 33,
+    'pagedown': 34,
+    'end': 35,
+    'home': 36,
+    'left': 37,
+    'up': 38,
+    'right': 39,
+    'down': 40
 };
