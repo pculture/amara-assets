@@ -76,7 +76,9 @@ function listView(container) {
         cells.addClass('expanded');
         var secondaryData = $('.listView-secondary', cells); // extra data inside each column
         var secondaryRow = cells.filter('.listView-secondaryRow'); // extra row at the end of each column
+        var expandIcon = $('.listView-expand', cells);
 
+        expandIcon.addClass('text-plum');
         secondaryRow.slideDown(expandAnimationTime);
         secondaryData.slideDown(expandAnimationTime);
     }
@@ -86,7 +88,9 @@ function listView(container) {
         cells.removeClass('expanded');
         var secondaryData = $('.listView-secondary', cells); // extra data inside each column
         var secondaryRow = cells.filter('.listView-secondaryRow'); // extra row at the end of each column
+        var expandIcon = $('.listView-expand', cells);
 
+        expandIcon.removeClass('text-plum');
         secondaryRow.slideUp(expandAnimationTime);
         secondaryData.slideUp(expandAnimationTime);
     }
