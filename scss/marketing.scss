@@ -3,7 +3,7 @@
 @import "variables";
 
 // 3rd party
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "bootstrap";
 @import "~select2/dist/css/select2";
 @import "fontawesome";
 
@@ -28,12 +28,14 @@
 @import "libs/venobox";
 
 // Import additional elements or project specific styles
+@import "elements/searchbar";
 @import "elements/navigation";
 @import "elements/tabs";
 @import "elements/illustrations";
 @import "elements/canvas";
 @import "elements/slider";
 @import "elements/blockquotes";
+@import "elements/dialogs";
 @import "elements/buttons";
 @import "elements/forms";
 @import "elements/video_card";
@@ -44,6 +46,7 @@
 @import "elements/language_switcher";
 @import 'elements/select';
 @import 'elements/pricing-table';
+@import 'elements/dropdowns';
 
 // Views
 @import "views/home";
@@ -52,7 +55,6 @@
 @import "views/about";
 @import "views/volunteer";
 @import "views/recruitment";
-@import "language_selector_hack";
 
 // TODO - Refactor these styles into partials
 

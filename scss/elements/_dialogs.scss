@@ -1,0 +1,91 @@
+.modal {
+  position: fixed;
+  z-index: $z-index-modal;
+  display: none;
+  top: 97px;
+  left: 10px;
+  right: 10px;
+  background: $white;
+  box-shadow: 5px 5px 8px 0 rgba(0, 0, 0, 0.13);
+
+  // Hack to override bootstrap's styles
+  .tab-pane {
+    padding: 0;
+  }
+}
+
+@include respond-to(laptop, 0) {
+  .modal {
+    left: 50%;
+    right: auto;
+    width: 900px;
+    margin-left: -450px;
+  }
+}
+
+@include respond-to(tablet) {
+  .modal {
+    left: 50%;
+    right: auto;
+    width: 700px;
+    margin-left: -350px;
+  }
+}
+
+.modal-content {
+  padding: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  display: none;
+  z-index: $z-index-overlay;
+  background: rgba(dark($gray), 0.7);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-tabs {
+  padding: 0 20px;
+}
+
+.modal-title {
+  @extend .bg-teal;
+  padding: 12px 20px;
+  margin: 0;
+  font-family: $font-family-sans-serif
+}
+
+.modal-header {
+  margin: 20px;
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
+}
+
+.modal-subheader {
+  margin: -20px 20px 20px 20px;
+  color: $gray;
+}
+
+.modal-footer {
+  padding: 8px;
+  text-align: right;
+  background: $snow;
+}
+
+.modal-closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $snow;
+  padding: 12px;
+  @include transition(0.5s);
+
+  &:hover {
+    background: $lime;
+  }
+}

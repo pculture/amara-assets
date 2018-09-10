@@ -50,11 +50,7 @@ function processAjaxResponse(responseData) {
                 break;
 
             case 'hideModal':
-                if(change[1]) {
-                    $(change[1]).modal('hide');
-                } else {
-                    closeCurrentModal();
-                }
+                dialogs.closeCurrentModal();
                 break;
 
             case 'showModalProgress':
@@ -175,7 +171,6 @@ function ajaxForm(form) {
             history.pushState(url, "", url);
         }
     }
-
 }
 
 function ajaxLink(link) {
@@ -214,6 +209,21 @@ function ajaxLink(link) {
     });
 }
 
+// Call an ajax function to update the page
+function update(url, options) {
+    if(options === undefined) {
+        options = {};
+    }
+    $.ajax(url, {
+        success: processAjaxResponse,
+    });
+    if(options.pushState) {
+        history.pushState(url, "", url);
+    } else {
+        history.replaceState(url, "", url);
+    }
+}
+
 function ajaxRefresh(body) {
     var seconds = $(body).data('seconds');
     var query = $(body).data('query');
@@ -239,3 +249,7 @@ function ajaxRefresh(body) {
 
     scheduleRefresh();
 }
+
+module.exports = {
+    update: update
+};

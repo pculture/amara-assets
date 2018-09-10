@@ -20,13 +20,14 @@
  */
 
 var $ = require('jquery');
+var dialogs = require('../shared/dialogs');
 
 $(function() {
     $('header').click(function(evt) {
         if(evt.ctrlKey) {
             var staffControls = $('#staff-controls');
             if(staffControls) {
-                staffControls.modal('show');
+                dialogs.showModal(staffControls);
                 evt.preventDefault();
                 return false;
             }
