@@ -48,6 +48,23 @@ h1, .text-raleway {
   font-family: $headings-font-family;
 }
 
+@mixin font-h1 {
+  font-size: $font-size-h1;
+  line-height: 1.25;
+  font-family: $headings-font-family;
+}
+
+@mixin font-h2 {
+  font-size: $font-size-h2;
+  line-height: 1.25;
+  font-family: $font-family-sans-serif;
+}
+
+@mixin font-h3 {
+  font-size: $font-size-h3;
+  line-height: 1.25;
+  font-family: $font-family-sans-serif;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;

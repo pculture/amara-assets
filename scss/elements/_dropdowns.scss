@@ -1,0 +1,49 @@
+.dropdownMenu {
+  position: absolute;
+  display: none;
+  @include shadow;
+  background: $white;
+  padding: 6px 0;
+
+  z-index: $z-index-menu;
+
+  flex-direction: column;
+}
+
+.dropdownMenu-item {
+  &.separator {
+    border-top: 1px solid dark($snow);
+  }
+}
+
+.dropdownMenu-link {
+  display: flex;
+  align-items: center;
+
+  @include no-underline;
+  color: inherit;
+  font-weight: normal;
+  padding: 4px 8px;
+  color: light($charcoal);
+
+  &:hover, &:focus {
+    background: $snow;
+    color: light($charcoal);
+  }
+
+  &.disabled {
+    color: light($gray);
+    cursor: not-allowed;
+
+    &:hover, &:focus {
+      background: $white;
+      color: light($gray);
+    }
+  }
+}
+
+.dropdownMenu-text {
+  flex-grow: 1;
+
+  padding-right: 48px;
+}

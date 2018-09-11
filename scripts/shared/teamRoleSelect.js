@@ -22,14 +22,13 @@ var cookies = require('browser-cookies');
 
 $.behaviors('.teamMemberRoleSelect', function(selector) {
     var selector = $(selector);
-    var targets = $('.projectsAndLanguagesSelectors')
 
     selector.on('change', function() {
         new_value = this.value
         if (new_value == 'proj_lang_manager') {
-            targets.show()
+            $('.projectsAndLanguagesSelectors').show();
         } else {
-            targets.hide()
+            $('.projectsAndLanguagesSelectors').hide();
         }
     });
 });
