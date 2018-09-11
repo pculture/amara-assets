@@ -1,11 +1,12 @@
 .workflowDiagramContainer {
-  width:1000px; 
+  width:100%; 
   height: 130px; 
   background-color: $snow;
+  display: flex;
 }
 
 .workflowDiagramSegment {
-  min-width:200px;
+  min-width: 125px;
   height: 100%;
   padding-left: 50px;
   background-color: $lime;
@@ -19,14 +20,18 @@
   }
 
   &.last {
+    min-width: 150px;
+    padding-left: 30px;
     background-color: $snow;
     align-items: center;
     color: black;
+    flex: 1;
   }
 }
 
-.workflowDiagramContent {
-  display: flex;
+.workflowDiagramSegment .segmentLabel {
+  font-size: 18px;
+  padding-top: 5px;
 }
 
 .workflowDiagramSeparator {
