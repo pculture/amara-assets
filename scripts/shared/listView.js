@@ -40,6 +40,7 @@ function ListViewDOM(elt) {
     this.checkAll = $('.checkAll', elt);
     this.dropdownMenus = $('.dropdownMenu', elt);
     this.dropdownMenusByRow = {};
+    this.showDetailsByRow = {};
     this.expandButtons = $('.listView-expand', elt);
     this.walkCells();
 }
@@ -64,6 +65,7 @@ ListViewDOM.prototype = {
                 this.headerRowCount++;
             }
             this.dropdownMenusByRow[i] = $('.dropdownMenu', cells);
+            this.showDetailsByRow[i] = $('.listView-showDetails', cells);
         }
     },
     cellsForRow: function(row) {
@@ -115,6 +117,7 @@ ListViewExpansion.prototype = {
         $('.listView-secondary', cells).slideDown(250);
         cells.filter('.listView-secondaryRow').slideDown(250);
         $('.listView-expand', cells).addClass('text-plum');
+        this.updateShowDetailsText(row, gettext('Hide Details'));
     },
     collapseRow: function(row) {
         var cells = this.dom.cellsForRow(row);
@@ -123,6 +126,12 @@ ListViewExpansion.prototype = {
         $('.listView-secondary', cells).slideUp(250);
         cells.filter('.listView-secondaryRow').slideUp(250);
         $('.listView-expand', cells).removeClass('text-plum');
+        this.updateShowDetailsText(row, gettext('Show Details'));
+    },
+    updateShowDetailsText: function(row, text) {
+        if(row != null && this.dom.showDetailsByRow[row].length > 0) {
+            $('.dropdownMenu-text', this.dom.showDetailsByRow[row]).text(text);
+        }
     },
     onExpandClick: function(evt) {
         this.toggleRowExpanded(this.dom.calcRow(evt.target));
