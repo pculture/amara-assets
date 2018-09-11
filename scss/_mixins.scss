@@ -91,7 +91,7 @@
 @mixin no-underline() {
   text-decoration: none;
 
-  &:hover, &:focus {
+  &:hover {
     text-decoration: none;
   }
 }

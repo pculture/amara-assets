@@ -17,9 +17,6 @@ button {
   &:disabled {
     color: light($gray);
   }
-  &:focus {
-    outline: none;
-  }
   padding: 0;
 }
 
@@ -46,7 +43,6 @@ button {
     color: #fff;
     border-color: $lime;
     background-color: $lime;
-    outline: none;
   }
 }
 
