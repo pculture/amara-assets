@@ -18,7 +18,8 @@
  * http://www.gnu.org/licenses/agpl-3.0.html.
  */
 
-$ = require('jquery');
+var $ = require('jquery');
+var keyCodes = require('./keyCodes');
 
 $.behaviors('.listView', listView);
 
@@ -26,15 +27,45 @@ function listView(container) {
     container = $(container);
     var cells = container.children().not('.listView-secondaryRow');
     var columnCount = calcColumnCount();
-    var hoverRow = undefined;
-    var expandedRow = undefined;
+    var rowCount = null;
+    var headerRowCount = 0;
+    var hoverRow = null;
+    var expandedRow = null;
+    var selectedRow = null;
 
     setupCellRows();
+
     cells.mouseenter(function() {
         onRowHover($(this).data('row'));
     });
     container.mouseleave(function() {
-        onRowHover(undefined);
+        onRowHover(null);
+    })
+    container.on('keydown', function(evt) {
+        if(evt.which == keyCodes.up) {
+            selectPreviousRow();
+            evt.preventDefault();
+        } else if(evt.which == keyCodes.down) {
+            selectNextRow();
+            evt.preventDefault();
+        } else if(evt.which == keyCodes.space) {
+            toggleCheckbox();
+            evt.preventDefault();
+        } else if(evt.which == keyCodes.enter) {
+            activateMenu();
+            evt.preventDefault();
+        } else if(evt.ctrlKey && String.fromCharCode(evt.which).toLowerCase() == 'a') {
+            selectAll();
+            evt.preventDefault();
+        }
+    }).on('focusout', removeSelectedStyles).on('focusin', addSelectedStyles);
+
+    $('.dropdownMenu', container).on('focus-button', function() {
+        // When we hide dropdowns inside the listview, don't focus the button.
+        // Instead, focus the listView, so the user can continue working with
+        // it.
+        container.focus();
+        return false;
     });
 
     $('.listView-expand', container).click(function(evt) {
@@ -55,14 +86,14 @@ function listView(container) {
         if(row == hoverRow) {
             return;
         }
-        $('.listView-action', cellsForRow(hoverRow)).removeClass('visible');
-        $('.listView-action', cellsForRow(row)).addClass('visible');
+        $('.listView-action', cellsForRow(hoverRow)).removeClass('hover');
+        $('.listView-action', cellsForRow(row)).addClass('hover');
         hoverRow = row;
     }
 
     function toggleRowExpanded(row) {
         if(expandedRow == row) {
-            row = undefined; // if the row is already expanded, then collapse it
+            row = null; // if the row is already expanded, then collapse it
         }
         collapseRow(expandedRow);
         expandRow(row);
@@ -96,7 +127,7 @@ function listView(container) {
     }
 
     function cellsForRow(row) {
-        if(row === undefined) {
+        if(row === null) {
             return $();
         }
         var rv = cells.slice(row * columnCount, row * columnCount + columnCount);
@@ -116,10 +147,73 @@ function listView(container) {
             var cells = cellsForRow(i);
             if(cells.length > 0) {
                 cells.data('row', i);
+                if(cells.is('.listView-header')) {
+                    headerRowCount = i + 1;
+                }
             } else {
+                rowCount = i;
                 return;
             }
             $('.dropdownMenu', cells).on('link-activate', i, handleMenuItemActivate);
         }
     }
+
+
+    function selectNextRow() {
+        if(selectedRow === null) {
+            selectRow(headerRowCount);
+        } else if(selectedRow + 1 < rowCount) {
+            selectRow(selectedRow + 1);
+        } else {
+            selectRow(null);
+        }
+    }
+
+    function selectPreviousRow() {
+        if(selectedRow === null) {
+            selectRow(rowCount - 1);
+        } else if(selectedRow - 1 >= headerRowCount) {
+            selectRow(selectedRow - 1);
+        } else {
+            selectRow(null);
+        }
+    }
+
+    function selectRow(row) {
+        removeSelectedStyles();
+        selectedRow = row;
+        addSelectedStyles();
+    }
+
+    function removeSelectedStyles() {
+        var cells = cellsForRow(selectedRow);
+        cells.first().removeClass('selected');
+        $('.listView-action', cells).last().removeClass('selected');
+    }
+
+    function addSelectedStyles() {
+        var cells = cellsForRow(selectedRow);
+        cells.first().addClass('selected');
+        $('.listView-action', cells).last().addClass('selected');
+    }
+
+    function toggleCheckbox() {
+        var checkbox = $(':checkbox', cellsForRow(selectedRow).filter('.listView-checkbox'));
+        checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
+    }
+
+    function activateMenu() {
+        var action = $('.listView-action', cellsForRow(selectedRow)).last();
+        if(action.data('menu')) {
+            action.trigger('key-activate');
+        } else {
+            action.click();
+        }
+    }
+
+    function selectAll() {
+        var checkAll = $('.checkAll', container);
+        checkAll.prop('checked', !checkAll.prop('checked')).trigger('change');
+    }
+
 }
