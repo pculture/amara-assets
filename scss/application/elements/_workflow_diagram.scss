@@ -1,0 +1,49 @@
+.workflowDiagramContainer {
+  width:1000px; 
+  height: 130px; 
+  background-color: $snow;
+}
+
+.workflowDiagramSegment {
+  min-width:200px;
+  height: 100%;
+  padding-left: 50px;
+  background-color: $lime;
+  color: $white;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center; 
+
+  &.first {
+    padding-left: 20px;
+  }
+
+  &.last {
+    background-color: $snow;
+    align-items: center;
+    color: black;
+  }
+}
+
+.workflowDiagramContent {
+  display: flex;
+}
+
+.workflowDiagramSeparator {
+  display: inline;
+  margin-left: -5px; //hack to close the gap between the segment and separator
+}
+
+.workflowDiagramSeparatorSVG {
+  position: absolute;
+  z-index: $z-index-front;
+}
+
+.workflowDiagramSeparatorSVG .triangle {
+  fill: $lime;
+}
+
+
+.workflowDiagramSeparatorSVG .gap {
+  fill: $white;
+}
