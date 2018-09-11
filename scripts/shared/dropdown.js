@@ -54,7 +54,6 @@ function dropdownMenu(menu) {
         evt.stopPropagation();
         evt.preventDefault();
     }).on('key-activate', function(evt) {
-        console.log('key-activate');
         showMenu();
         focusFirstLink();
     });
@@ -165,7 +164,6 @@ function dropdownMenu(menu) {
 
     function focusButton() {
         var rv = menu.triggerHandler('focus-button');
-        console.log(rv);
         if(rv !== false) {
             button.focus();
         }

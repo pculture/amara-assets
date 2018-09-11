@@ -23,197 +23,232 @@ var keyCodes = require('./keyCodes');
 
 $.behaviors('.listView', listView);
 
-function listView(container) {
-    container = $(container);
-    var cells = container.children().not('.listView-secondaryRow');
-    var columnCount = calcColumnCount();
-    var rowCount = null;
-    var headerRowCount = 0;
-    var hoverRow = null;
-    var expandedRow = null;
-    var selectedRow = null;
+// ListView is fairly complicated, so we split up the implentation into several parts:
+//
+//   ListViewDOM       -- Tracks the various HTML elements inside list view (cells, rows, action buttons, etc).
+//   ListViewExpansion -- Handles expanding rows
+//   ListViewMouse     -- Handle mouse hover
+//   ListViewKeys      -- Handle keyboard controls
 
-    setupCellRows();
 
-    cells.mouseenter(function() {
-        onRowHover($(this).data('row'));
-    });
-    container.mouseleave(function() {
-        onRowHover(null);
-    })
-    container.on('keydown', function(evt) {
-        if(evt.which == keyCodes.up) {
-            selectPreviousRow();
-            evt.preventDefault();
-        } else if(evt.which == keyCodes.down) {
-            selectNextRow();
-            evt.preventDefault();
-        } else if(evt.which == keyCodes.space) {
-            toggleCheckbox();
-            evt.preventDefault();
-        } else if(evt.which == keyCodes.enter) {
-            activateMenu();
-            evt.preventDefault();
-        } else if(evt.ctrlKey && String.fromCharCode(evt.which).toLowerCase() == 'a') {
-            selectAll();
-            evt.preventDefault();
-        }
-    }).on('focusout', removeSelectedStyles).on('focusin', addSelectedStyles);
+function ListViewDOM(elt) {
+    this.elt = $(elt);
+    this.cells = this.elt.children().not('.listView-secondaryRow');
+    this.columnCount = this.calcColumnCount();
+    this.headerRowCount = 0;
+    this.rowCount = 0;
+    this.checkAll = $('.checkAll', elt);
+    this.dropdownMenus = $('.dropdownMenu', elt);
+    this.dropdownMenusByRow = {};
+    this.expandButtons = $('.listView-expand', elt);
+    this.walkCells();
+}
 
-    $('.dropdownMenu', container).on('focus-button', function() {
-        // When we hide dropdowns inside the listview, don't focus the button.
-        // Instead, focus the listView, so the user can continue working with
-        // it.
-        container.focus();
-        return false;
-    });
-
-    $('.listView-expand', container).click(function(evt) {
-        toggleRowExpanded($(this).closest(cells).data('row'));
-        evt.preventDefault();
-    });
-
-    function calcColumnCount() {
-        var columnSpec = container.css('grid-template-columns').split(/\s+/);
+ListViewDOM.prototype = {
+    calcColumnCount: function() {
+        var columnSpec = this.elt.css('grid-template-columns').split(/\s+/);
         var realColumns = columnSpec.filter(function(spec) {
             return spec.trim()[0] != '[';
         });
         return realColumns.length;
-    }
-
-
-    function onRowHover(row) {
-        if(row == hoverRow) {
-            return;
+    },
+    walkCells: function() {
+        for(var i=0; ; i++) {
+            var cells = this.cellsForRow(i);
+            if(cells.length == 0) {
+                return;
+            }
+            cells.data('row', i);
+            this.rowCount++;
+            if(cells.is('.listView-header')) {
+                this.headerRowCount++;
+            }
+            this.dropdownMenusByRow[i] = $('.dropdownMenu', cells);
         }
-        $('.listView-action', cellsForRow(hoverRow)).removeClass('hover');
-        $('.listView-action', cellsForRow(row)).addClass('hover');
-        hoverRow = row;
-    }
-
-    function toggleRowExpanded(row) {
-        if(expandedRow == row) {
-            row = null; // if the row is already expanded, then collapse it
-        }
-        collapseRow(expandedRow);
-        expandRow(row);
-        expandedRow = row;
-    }
-
-    var expandAnimationTime = 250;
-
-    function expandRow(row) {
-        var cells = cellsForRow(row);
-        cells.addClass('expanded');
-        var secondaryData = $('.listView-secondary', cells); // extra data inside each column
-        var secondaryRow = cells.filter('.listView-secondaryRow'); // extra row at the end of each column
-        var expandIcon = $('.listView-expand', cells);
-
-        expandIcon.addClass('text-plum');
-        secondaryRow.slideDown(expandAnimationTime);
-        secondaryData.slideDown(expandAnimationTime);
-    }
-
-    function collapseRow(row) {
-        var cells = cellsForRow(row);
-        cells.removeClass('expanded');
-        var secondaryData = $('.listView-secondary', cells); // extra data inside each column
-        var secondaryRow = cells.filter('.listView-secondaryRow'); // extra row at the end of each column
-        var expandIcon = $('.listView-expand', cells);
-
-        expandIcon.removeClass('text-plum');
-        secondaryRow.slideUp(expandAnimationTime);
-        secondaryData.slideUp(expandAnimationTime);
-    }
-
-    function cellsForRow(row) {
+    },
+    cellsForRow: function(row) {
         if(row === null) {
             return $();
         }
-        var rv = cells.slice(row * columnCount, row * columnCount + columnCount);
+        var start = row * this.columnCount;
+        var end = start + this.columnCount;
+        var rv = this.cells.slice(start, end);
         // Add the secondary row, if it is present
-        rv = rv.add(cells.eq(row * columnCount + columnCount - 1).next('.listView-secondaryRow'));
+        rv = rv.add(this.cells.eq(end - 1).next('.listView-secondaryRow'));
         return rv;
+    },
+    actionsForRow: function(row) {
+        return $('.listView-action', this.cellsForRow(row));
+    },
+    checkboxForRow: function(row) {
+        return $(':checkbox', this.cellsForRow(row).filter('.listView-checkbox'));
+    },
+    calcRow: function(elt) {
+        // Calulate which row an element is in
+        return $(elt).closest(this.cells).data('row');
     }
+};
 
-    function handleMenuItemActivate(evt, action) {
+function ListViewExpansion(dom) {
+    this.dom = dom;
+    this.expandedRow = null;
+
+    this.dom.expandButtons.on('click', this.onExpandClick.bind(this));
+    _.each(this.dom.dropdownMenusByRow, function(menu, row) {
+        menu.on('link-activate', null, row, this.onLinkActivate.bind(this));
+    }, this);
+}
+
+ListViewExpansion.prototype = {
+    toggleRowExpanded: function(row) {
+        if(this.expandedRow == row) {
+            row = null; // if the row is already expanded, then collapse it
+        }
+        this.collapseRow(this.expandedRow);
+        this.expandRow(row);
+        this.expandedRow = row;
+    },
+    expandRow: function(row) {
+        var cells = this.dom.cellsForRow(row);
+        cells.addClass('expanded');
+
+        $('.listView-secondary', cells).slideDown(250);
+        cells.filter('.listView-secondaryRow').slideDown(250);
+        $('.listView-expand', cells).addClass('text-plum');
+    },
+    collapseRow: function(row) {
+        var cells = this.dom.cellsForRow(row);
+        cells.removeClass('expanded');
+
+        $('.listView-secondary', cells).slideUp(250);
+        cells.filter('.listView-secondaryRow').slideUp(250);
+        $('.listView-expand', cells).removeClass('text-plum');
+    },
+    onExpandClick: function(evt) {
+        this.toggleRowExpanded(this.dom.calcRow(evt.target));
+        evt.preventDefault();
+    },
+    onLinkActivate: function(evt, action) {
         if(action == 'expand') {
-            toggleRowExpanded(evt.data);
+            this.toggleRowExpanded(evt.data);
         }
     }
+};
 
-    function setupCellRows() {
-        for(var i=0; ; i++) {
-            var cells = cellsForRow(i);
-            if(cells.length > 0) {
-                cells.data('row', i);
-                if(cells.is('.listView-header')) {
-                    headerRowCount = i + 1;
-                }
-            } else {
-                rowCount = i;
-                return;
-            }
-            $('.dropdownMenu', cells).on('link-activate', i, handleMenuItemActivate);
+function ListViewMouse(dom) {
+    this.dom = dom;
+    this.hoverRow = null;
+
+    dom.cells.mouseenter(this.onMouseEnterCell.bind(this));
+    dom.elt.mouseleave(this.onMouseLeaveListView.bind(this));
+}
+
+ListViewMouse.prototype = {
+    onMouseEnterCell: function(evt) {
+        this.setHoverRow($(evt.target).data('row'));
+    },
+    onMouseLeaveListView: function(evt) {
+        this.setHoverRow(null);
+    },
+    setHoverRow: function(row) {
+        if(row == this.hoverRow) {
+            return;
         }
+        this.dom.actionsForRow(this.hoverRow).removeClass('hover');
+        this.dom.actionsForRow(row).addClass('hover');
+        this.hoverRow = row;
     }
+};
 
+function ListViewKeys(dom) {
+    this.dom = dom;
+    this.selectedRow = null;
 
-    function selectNextRow() {
-        if(selectedRow === null) {
-            selectRow(headerRowCount);
-        } else if(selectedRow + 1 < rowCount) {
-            selectRow(selectedRow + 1);
+    dom.elt.on('keydown', this.onKeyDown.bind(this));
+    dom.elt.on('focusout', this.removeSelectedStyles.bind(this));
+    dom.elt.on('focusin', this.addSelectedStyles.bind(this));
+    this.dom.dropdownMenus.on('focus-button', this.onDropdownMenuFocusButton.bind(this));
+}
+
+ListViewKeys.prototype = {
+    onKeyDown: function(evt) {
+        if(evt.which == keyCodes.up) {
+            this.selectPreviousRow();
+        } else if(evt.which == keyCodes.down) {
+            this.selectNextRow();
+        } else if(evt.which == keyCodes.space) {
+            this.toggleCheckbox();
+        } else if(evt.which == keyCodes.enter) {
+            this.activateMenu();
+        } else if(evt.ctrlKey && String.fromCharCode(evt.which).toLowerCase() == 'a') {
+            this.selectAll();
         } else {
-            selectRow(null);
+            // Unhandled key, return now to avoid calling preventDefault();
+            return;
         }
-    }
-
-    function selectPreviousRow() {
-        if(selectedRow === null) {
-            selectRow(rowCount - 1);
-        } else if(selectedRow - 1 >= headerRowCount) {
-            selectRow(selectedRow - 1);
+        evt.preventDefault();
+    },
+    selectNextRow: function() {
+        if(this.selectedRow === null) {
+            this.selectRow(this.dom.headerRowCount);
+        } else if(this.selectedRow + 1 < this.dom.rowCount) {
+            this.selectRow(this.selectedRow + 1);
         } else {
-            selectRow(null);
+            this.selectRow(null);
         }
-    }
-
-    function selectRow(row) {
-        removeSelectedStyles();
-        selectedRow = row;
-        addSelectedStyles();
-    }
-
-    function removeSelectedStyles() {
-        var cells = cellsForRow(selectedRow);
-        cells.first().removeClass('selected');
-        $('.listView-action', cells).last().removeClass('selected');
-    }
-
-    function addSelectedStyles() {
-        var cells = cellsForRow(selectedRow);
-        cells.first().addClass('selected');
-        $('.listView-action', cells).last().addClass('selected');
-    }
-
-    function toggleCheckbox() {
-        var checkbox = $(':checkbox', cellsForRow(selectedRow).filter('.listView-checkbox'));
-        checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
-    }
-
-    function activateMenu() {
-        var action = $('.listView-action', cellsForRow(selectedRow)).last();
+    },
+    selectPreviousRow: function() {
+        if(this.selectedRow === null) {
+            this.selectRow(this.dom.rowCount - 1);
+        } else if(this.selectedRow - 1 >= this.dom.headerRowCount) {
+            this.selectRow(this.selectedRow - 1);
+        } else {
+            this.selectRow(null);
+        }
+    },
+    selectRow: function(row) {
+        this.removeSelectedStyles();
+        this.selectedRow = row;
+        this.addSelectedStyles();
+    },
+    removeSelectedStyles: function() {
+        this.dom.cellsForRow(this.selectedRow).first().removeClass('selected');
+        this.dom.actionsForRow(this.selectedRow).last().removeClass('selected');
+    },
+    addSelectedStyles: function() {
+        this.dom.cellsForRow(this.selectedRow).first().addClass('selected');
+        this.dom.actionsForRow(this.selectedRow).last().addClass('selected');
+    },
+    toggleCheckbox: function() {
+        var checkbox = this.dom.checkboxForRow(this.selectedRow);
+        if(checkbox.length > 0) {
+            checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
+        }
+    },
+    activateMenu: function() {
+        var action = this.dom.actionsForRow(this.selectedRow).last();
         if(action.data('menu')) {
             action.trigger('key-activate');
         } else {
             action.click();
         }
+    },
+    selectAll: function() {
+        this.dom.checkAll.prop('checked', !this.dom.checkAll.prop('checked')).trigger('change');
+    },
+    onDropdownMenuFocusButton() {
+        // When we hide dropdowns inside the listview, don't focus the button.
+        // Instead, focus the listView, so the user can continue working with
+        // it.
+        this.dom.elt.focus();
+        return false;
     }
+};
 
-    function selectAll() {
-        var checkAll = $('.checkAll', container);
-        checkAll.prop('checked', !checkAll.prop('checked')).trigger('change');
-    }
+function listView(elt) {
+    var dom = new ListViewDOM(elt);
+    var expansion = new ListViewExpansion(dom);
+    var mouse = new ListViewMouse(dom);
+    var keys = new ListViewKeys(dom);
 
 }
