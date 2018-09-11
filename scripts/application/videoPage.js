@@ -19,15 +19,16 @@
  */
 
 var $ = require('jquery');
+var dialogs = require('../shared/dialogs');
 
-$.behaviors('table.video_urls button[data-toggle=url-modal]', openUrlModalButton);
+$.behaviors('.videoPage-showUrlDialog', showUrlDialog);
 
-function openUrlModalButton(button) {
+function showUrlDialog(button) {
     button = $(button);
     button.click(function(evt) {
         var row = $(this).closest('tr');
         var dialog = $(button.data('target'));
-        dialog.modal('show');
+        dialogs.showModal(dialog);
         $('.url', dialog).text(row.data('url'));
         $('input[name=id]', dialog).val(row.data('id'));
     });

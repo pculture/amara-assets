@@ -12,8 +12,7 @@ require('../shared/messages');
 require('chartist');
 require('chartist-plugin-tooltip');
 // Amara modules
-require('./ajax');
-require('./dialogs');
+require('../shared/ajax');
 require('./proxyField');
 require('./dependentSelect');
 require('../shared/languageSwitcher');
@@ -34,3 +33,7 @@ require('../shared/videoCreatePage');
 require('../shared/multiField');
 require('../shared/formBacktotop');
 require('../shared/formSaveChanges');
+require('../shared/dropdown');
+require('../shared/filterBox');
+require('../shared/listView');
+require('../shared/checkAll');
