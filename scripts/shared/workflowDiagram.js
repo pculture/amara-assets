@@ -31,7 +31,6 @@ $.behaviors('.workflowDiagramContainer', function(container) {
     // total space occupied by the separators
     var separator_space = workflow_segments.length * separator_width
     
-    var total_duration = calc_total_duration() 
     // total available space for the segments to occupy
     var segments_space = calc_segments_space()
     var last_space = calc_last_space()
@@ -59,6 +58,7 @@ $.behaviors('.workflowDiagramContainer', function(container) {
 
     function calc_spacing() {
         var spaces = []
+        var total_duration = calc_total_duration()
 
         $.each(workflow_segments, function(i, segment) {
             var duration = $(segment).data('duration')
@@ -74,5 +74,8 @@ $.behaviors('.workflowDiagramContainer', function(container) {
             var duration_text = duration + duration_text_unit
             $(s.children('span')[1]).html(duration_text);
         })
+
+        total_duration_units = total_duration > 1 ? ' days' : ' day'
+        $(workflow_segment_last.children('span')[1]).html(total_duration + total_duration_units)
     }
 });
