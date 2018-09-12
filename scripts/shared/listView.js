@@ -245,7 +245,7 @@ ListViewKeys.prototype = {
     selectAll: function() {
         this.dom.checkAll.prop('checked', !this.dom.checkAll.prop('checked')).trigger('change');
     },
-    onDropdownMenuFocusButton() {
+    onDropdownMenuFocusButton: function() {
         // When we hide dropdowns inside the listview, don't focus the button.
         // Instead, focus the listView, so the user can continue working with
         // it.
