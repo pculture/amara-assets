@@ -176,7 +176,7 @@ function ListViewKeys(dom) {
     this.selectedRow = null;
 
     dom.elt.on('keydown', this.onKeyDown.bind(this));
-    dom.elt.on('focusout', this.removeSelectedStyles.bind(this));
+    dom.elt.on('focusout', this.onFocusOut.bind(this));
     dom.elt.on('focusin', this.addSelectedStyles.bind(this));
     this.dom.dropdownMenus.on('focus-button', this.onDropdownMenuFocusButton.bind(this));
 }
@@ -225,6 +225,11 @@ ListViewKeys.prototype = {
     removeSelectedStyles: function() {
         this.dom.cellsForRow(this.selectedRow).first().removeClass('selected');
         this.dom.actionsForRow(this.selectedRow).last().removeClass('selected');
+    },
+    onFocusOut: function(evt) {
+        if($(evt.relatedTarget).closest(this.dom.dropdownMenus).length == 0) {
+            this.removeSelectedStyles();
+        }
     },
     addSelectedStyles: function() {
         this.dom.cellsForRow(this.selectedRow).first().addClass('selected');
