@@ -13,7 +13,6 @@ require('../shared/compoundField');
 require('../shared/ajax');
 require('../shared/languageSwitcher');
 require('../shared/tabs');
-require('../shared/eventTracking');
 require('../shared/dropdown');
 require('../shared/listView');
 require('../shared/checkAll');
