@@ -47,7 +47,9 @@ function ListViewDOM(elt) {
 
 ListViewDOM.prototype = {
     calcColumnCount: function() {
-        var columnSpec = this.elt.css('grid-template-columns').split(/\s+/);
+        var columnSpec = this.elt.css('grid-template-columns');
+        // Crazy regex, but it should split the css into parts
+        columnSpec = columnSpec.match(/[^ (]+(\([^)]+\))?/g)
         var realColumns = columnSpec.filter(function(spec) {
             return spec.trim()[0] != '[';
         });
