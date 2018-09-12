@@ -58,24 +58,21 @@ $.behaviors('.workflowDiagramContainer', function(container) {
     }
 
     function calc_spacing() {
-        // workflow_segment_last.outerWidth(last_space)
         var spaces = []
-
-        console.log(segments_space)
 
         $.each(workflow_segments, function(i, segment) {
             var duration = $(segment).data('duration')
             spaces.push(Math.floor(segments_space * (duration / total_duration)))
         })
 
-        console.log(spaces)
-
         $.each(workflow_segments, function(i, segment) {
-            $(segment).outerWidth(spaces[i])
+            var s = $(segment)
+            s.outerWidth(spaces[i])
+
+            var duration = s.data('duration')
+            var duration_text_unit = duration > 1 ? ' days' : ' day'
+            var duration_text = duration + duration_text_unit
+            $(s.children('span')[1]).html(duration_text);
         })
-    }
-
-    function normalize_spacing(spacing) {
-
     }
 });
