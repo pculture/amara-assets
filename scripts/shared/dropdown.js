@@ -101,6 +101,13 @@ function DropDownMenu(menu) {
 
 DropDownMenu.prototype = {
     show: function(button) {
+        if(this.menu.triggerHandler('show', {
+            dropdownMenu: this,
+            button: button,
+        }) === false) {
+            return;
+        }
+
         if(this.shown) {
             if(button == this.openerButton) {
                 return;
@@ -115,15 +122,21 @@ DropDownMenu.prototype = {
         button.attr('aria-expanded', 'true');
         this.openerButton = button;
         this.shown = true;
+        this.setupClickHandler();
     },
     hide: function() {
         if(!this.shown) {
             return;
         }
+        if(this.menu.triggerHandler('hide', { dropdownMenu: this, }) === false) {
+            return;
+        }
+
         this.menu.css('display', 'none');
         this.openerButton.attr('aria-expanded', 'false');
         this.openerButton = null;
         this.shown = false;
+        this.removeClickHandler();
     },
     toggle: function(button) {
         if(this.shown && this.openerButton === button) {
@@ -202,7 +215,10 @@ DropDownMenu.prototype = {
         if(link.data('activateArgs')) {
             // dropdown-js-item -- trigger link-activate
             this.focusButton(button);
-            this.menu.trigger('link-activate', link.data('activateArgs'));
+            this.menu.trigger($.Event('link-activate', {
+                openerButton: button,
+                dropdownMenu: this
+            }), link.data('activateArgs'));
             evt.preventDefault();
         } else {
             // Regular link item.  Don't call preventDefault() to make the link
@@ -215,5 +231,17 @@ DropDownMenu.prototype = {
         if(rv !== false) {
             button.focus();
         }
+    },
+    setupClickHandler: function() {
+        $(document).on('click.dropdown', function(evt) {
+            var target = $(evt.target);
+            if(target.closest(this.menu).length == 0 &&
+                    target.closest(this.openerButton).length == 0) {
+                this.hide();
+            }
+        }.bind(this));
+    },
+    removeClickHandler: function() {
+        $(document).off('click.dropdown');
     }
 };

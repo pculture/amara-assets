@@ -8,7 +8,7 @@
     grid-template-columns: auto [secondary-row-start] 1fr 1fr auto [secondary-row-end];
   }
   &.videoUrls {
-    grid-template-columns: [secondary-row-start] 1fr minmax(auto, auto) [secondary-row-end];
+    grid-template-columns: [secondary-row-start] 1fr minmax(auto, auto) auto [secondary-row-end];
   }
   margin: 0 -10px;
 }
