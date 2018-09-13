@@ -18,17 +18,36 @@
  * http://www.gnu.org/licenses/agpl-3.0.html.
  */
 
+// position -- position elements in various ways
+
 $ = require('jquery');
 
-$.behaviors('.trackClicks', handleTrackedClicks);
-
-function handleTrackedClicks(container) {
-    var category = $(container).data('eventCategory');
-
-    $('.trackClicks-item', container).click(function() {
-        var action = $(this).data('eventAction');
-        if(category && action) {
-            sendAnalytics(category, action);
-        }
-    });
+function eltBottom(elt) {
+    return elt.offset().top + elt.outerHeight();
 }
+
+function viewportBottom() {
+    return $(window).scrollTop() + $(window).height();
+}
+
+// position an element below another element.
+//
+// If the element being positioned would be offscreen, then position it on top instead.
+function below(elt, reference) {
+    elt.detach().appendTo($('body'));
+    elt.css({
+        'position': 'absolute',
+        'top': eltBottom(reference) + 'px',
+        'left': reference.offset().left + 'px'
+    });
+
+    if(eltBottom(elt) >= viewportBottom()) {
+        elt.css({
+            'top': (reference.offset().top - elt.outerHeight()) + 'px'
+        });
+    }
+}
+
+module.exports = {
+    below: below
+};
