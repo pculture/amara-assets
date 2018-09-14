@@ -22,8 +22,16 @@
 
 $ = require('jquery');
 
+function eltTop(elt) {
+    return elt.offset().top;
+}
+
 function eltBottom(elt) {
     return elt.offset().top + elt.outerHeight();
+}
+
+function viewportTop() {
+    return $(window).scrollTop();
 }
 
 function viewportBottom() {
@@ -41,7 +49,7 @@ function below(elt, reference) {
         'left': reference.offset().left + 'px'
     });
 
-    if(eltBottom(elt) >= viewportBottom()) {
+    if(eltBottom(elt) >= viewportBottom() && eltTop(elt) > viewportTop()) {
         elt.css({
             'top': (reference.offset().top - elt.outerHeight()) + 'px'
         });

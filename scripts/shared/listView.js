@@ -97,7 +97,7 @@ function ListViewExpansion(dom) {
 
     this.dom.expandButtons.on('click', this.onExpandClick.bind(this));
     _.each(this.dom.dropdownMenusByRow, function(menu, row) {
-        menu.on('link-activate', null, row, this.onLinkActivate.bind(this));
+        menu.on('link-activate', null, parseInt(row), this.onLinkActivate.bind(this));
     }, this);
 }
 
@@ -106,8 +106,12 @@ ListViewExpansion.prototype = {
         if(this.expandedRow == row) {
             row = null; // if the row is already expanded, then collapse it
         }
-        this.collapseRow(this.expandedRow);
-        this.expandRow(row);
+        if(this.expandedRow) {
+            this.collapseRow(this.expandedRow);
+        }
+        if(row) {
+            this.expandRow(row);
+        }
         this.expandedRow = row;
     },
     expandRow: function(row) {
@@ -118,6 +122,7 @@ ListViewExpansion.prototype = {
         cells.filter('.listView-secondaryRow').slideDown(250);
         $('.listView-expand', cells).addClass('text-plum');
         this.updateShowDetailsText(row, gettext('Hide Details'));
+        this.dom.elt.trigger($.Event('row-expanded', { row: row}));
     },
     collapseRow: function(row) {
         var cells = this.dom.cellsForRow(row);
@@ -127,6 +132,7 @@ ListViewExpansion.prototype = {
         cells.filter('.listView-secondaryRow').slideUp(250);
         $('.listView-expand', cells).removeClass('text-plum');
         this.updateShowDetailsText(row, gettext('Show Details'));
+        this.dom.elt.trigger($.Event('row-collapsed', { row: row}));
     },
     updateShowDetailsText: function(row, text) {
         if(row != null && this.dom.showDetailsByRow[row].length > 0) {
@@ -176,6 +182,7 @@ function ListViewKeys(dom) {
     dom.elt.on('keydown', this.onKeyDown.bind(this));
     dom.elt.on('focusout', this.removeSelectedStyles.bind(this));
     dom.elt.on('focusin', this.addSelectedStyles.bind(this));
+    dom.elt.on('row-expanded', this.onRowExpanded.bind(this));
     this.dom.dropdownMenus.on('focus-button', this.onDropdownMenuFocusButton.bind(this));
 }
 
@@ -245,12 +252,18 @@ ListViewKeys.prototype = {
     selectAll: function() {
         this.dom.checkAll.prop('checked', !this.dom.checkAll.prop('checked')).trigger('change');
     },
-    onDropdownMenuFocusButton() {
+    onDropdownMenuFocusButton: function() {
         // When we hide dropdowns inside the listview, don't focus the button.
         // Instead, focus the listView, so the user can continue working with
         // it.
         this.dom.elt.focus();
         return false;
+    },
+    onRowExpanded: function(evt) {
+        // If there is a currently expanded row, change it to the expanded one
+        if(this.selectedRow) {
+            this.selectRow(evt.row);
+        }
     }
 };
 
