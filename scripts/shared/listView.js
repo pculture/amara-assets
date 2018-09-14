@@ -97,7 +97,7 @@ function ListViewExpansion(dom) {
 
     this.dom.expandButtons.on('click', this.onExpandClick.bind(this));
     _.each(this.dom.dropdownMenusByRow, function(menu, row) {
-        menu.on('link-activate', null, row, this.onLinkActivate.bind(this));
+        menu.on('link-activate', null, parseInt(row), this.onLinkActivate.bind(this));
     }, this);
 }
 
@@ -106,8 +106,12 @@ ListViewExpansion.prototype = {
         if(this.expandedRow == row) {
             row = null; // if the row is already expanded, then collapse it
         }
-        this.collapseRow(this.expandedRow);
-        this.expandRow(row);
+        if(this.expandedRow) {
+            this.collapseRow(this.expandedRow);
+        }
+        if(row) {
+            this.expandRow(row);
+        }
         this.expandedRow = row;
     },
     expandRow: function(row) {
@@ -256,7 +260,10 @@ ListViewKeys.prototype = {
         return false;
     },
     onRowExpanded: function(evt) {
-        this.selectRow(evt.row);
+        // If there is a currently expanded row, change it to the expanded one
+        if(this.selectedRow) {
+            this.selectRow(evt.row);
+        }
     }
 };
 
