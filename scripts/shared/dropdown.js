@@ -28,6 +28,7 @@ function dropdownMenu(menu) {
     menu = $(menu);
     var button = $('#' + menu.attr('aria-labeledby'));
     var links = $('.dropdownMenu-link', menu).not('.disabled');
+    button.data('menu', menu);
 
     button.click(function(evt) {
         if(menuVisible()) {
@@ -52,6 +53,13 @@ function dropdownMenu(menu) {
         }
         evt.stopPropagation();
         evt.preventDefault();
+    }).on('key-activate', function(evt) {
+        showMenu();
+        focusFirstLink();
+    });
+
+    menu.on('hide', function(evt) {
+        hideMenu();
     });
 
     links.on('keydown', function(evt) {
@@ -65,7 +73,7 @@ function dropdownMenu(menu) {
             return activateLink(evt, link);
         } else if(evt.which == keyCodes.esc) {
             hideMenu();
-            button.focus();
+            focusButton();
         } else if(evt.which == keyCodes.home) {
             focusFirstLink();
         } else if(evt.which == keyCodes.end) {
@@ -84,13 +92,13 @@ function dropdownMenu(menu) {
         hideMenu();
         if(link.data('activateArgs')) {
             // dropdown-js-item -- trigger link-activate
-            button.focus();
+            focusButton();
             menu.trigger('link-activate', link.data('activateArgs'));
             evt.preventDefault();
         } else {
             // Regular link item.  return now, skipping preventDefault() to
             // make the link click go through.  Also, skip calling
-            // button.focus(), since that would stop the click.
+            // focusButton, since that would stop the click.
             return;
         }
     }
@@ -107,7 +115,7 @@ function dropdownMenu(menu) {
         if(menuVisible()) {
             return;
         }
-        menu.trigger('show');
+        $('.dropdownMenu:visible').not(menu).trigger('hide');
         position.below(menu, button);
         menu.css('display', 'flex');
         button.attr('aria-expanded', 'true');
@@ -117,7 +125,6 @@ function dropdownMenu(menu) {
         if(!menuVisible()) {
             return;
         }
-        menu.trigger('hide');
         button.attr('aria-expanded', 'false');
         menu.css('display', 'none');
     }
@@ -152,6 +159,13 @@ function dropdownMenu(menu) {
                 currentLink.focus();
                 return;
             }
+        }
+    }
+
+    function focusButton() {
+        var rv = menu.triggerHandler('focus-button');
+        if(rv !== false) {
+            button.focus();
         }
     }
 }
