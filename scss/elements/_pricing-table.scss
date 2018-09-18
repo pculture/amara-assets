@@ -15,7 +15,7 @@
 
 .pricingTable-header {
   @extend .bg-plum;
-  font-size: $font-size-h3;
+  @include font-h3;
   padding: 12px 0;
   margin: 0;
   text-align: center;
@@ -27,7 +27,7 @@
 
 .pricingTable-price {
   @extend .bg-charcoal;
-  font-size: $font-size-h1;
+  @include font-h1;
   padding: 20px 0;
   margin: 0;
   text-align: center;
@@ -39,7 +39,7 @@
   align-content: center;
 
   @include respond-to(0, laptop) {
-    font-size: $font-size-h2;
+    @include font-h2;
   }
 }
 

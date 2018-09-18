@@ -1,0 +1,84 @@
+.filterBox {
+  padding: 16px;
+
+  display: flex;
+}
+
+.filterBox-filters {
+  flex-grow: 1;
+}
+
+.filterBox-filter {
+  background: $snow;
+  padding: 1px 0 1px 8px;
+  margin-right: 8px;
+  border: 1px solid dark($snow);
+  font-size: $font-size-small;
+  display: inline-flex;
+  align-items: center;
+}
+
+.filter-removeFilter {
+  margin-left: 8px;
+  font-size: $font-size-tiny;
+  line-height: 1;
+  color: $gray;
+}
+
+.filterBox-button {
+  color: light($gray);
+  font-weight: normal;
+}
+
+.filterBox.hasFilters .filterBox-buttonText {
+  display: none;
+}
+
+.filterBox-clearAllButton {
+  display: none;
+
+  color: $gray;
+  font-size: $font-size-small;
+  @include button-hover;
+
+  .filterBox.hasFilters & {
+    display: block;
+  }
+}
+
+.filterBox-fields {
+  display: none;
+}
+
+
+.filterBox-chooser {
+  z-index: $z-index-menu;
+  background: $white;
+  @include shadow;
+  width: 300px;
+}
+
+.filterBox-chooserField {
+  padding: 8px;
+}
+
+@include respond-to(tablet, 0) {
+  .filterBox-chooser {
+    width: 400px;
+  }
+}
+
+.filterBox-chooserActions {
+  text-align: right;
+  background: $snow;
+  padding: 8px;
+  display: flex;
+}
+
+.filterBox-chooserAction {
+  @extend .button;
+  display: block;
+  width: 100%;
+  font-size: $font-size-small;
+  padding: 5px;
+}

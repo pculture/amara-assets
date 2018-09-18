@@ -84,10 +84,15 @@ gulp.task('css', function(cb) {
 
 gulp.task('js', function(cb) {
     var cb_count = 0;
-    function one_cb() {
-      if(++cb_count >= paths.js.length) {
-          cb();
-      }
+    var sent_error = false;
+    function one_cb(err) {
+        if(sent_error) {
+          return;
+        } else if(err !== undefined) {
+            cb(err);
+        } else if(++cb_count >= paths.js.length) {
+            cb();
+        }
     }
     paths.js.forEach(function(script) {
         bundle_js(script, false, one_cb);
@@ -161,21 +166,6 @@ function extensionScripts(script) {
     } else {
         return [];
     }
-}
-
-function isSourceJSNewer(script, cb) {
-    var newerSourceFile = false;
-    var sources = [script];
-    sources.push.apply(sources, extensionScripts(script));
-    var dest = path.join(dest_paths.js, path.basename(script));
-    function callCallback() {
-        cb(newerSourceFile)
-    }
-    pump([
-        gulp.src(sources),
-        newer({dest: dest, extra: path.dirname(script) + '/**'}),
-        tap((file) => {newerSourceFile = true;})
-    ], callCallback);
 }
 
 gulp.task('build', ['images', 'fonts', 'css', 'js']);

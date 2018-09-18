@@ -78,71 +78,6 @@
     > ul > li {
       margin-left: 4px;
     }
-    ul {
-      display: inline-block;
-      li.dropdown {
-        &.open {
-          ul.dropdown-menu {
-            display: block;
-            left: auto;
-            right: 0;
-          }
-        }
-        ul.dropdown-menu {
-          display: none;
-        }
-      }
-    }
-    .dropdown {
-      .button {
-        background-color: $amaranth;
-        color: #fff;
-        .user-notifications {
-          display: inline-block;
-          height: 27px;
-          width: 25px;
-          position: absolute;
-          top: 0;
-          right: 0;
-          background-color: #cd0027;
-          text-transform: none;
-          .notification-circle {
-            border-radius: 50%;
-            width: 14px;
-            height: 14px;
-            position: absolute;
-            top: 6px;
-            left: 5px;
-            background-color: #fff;
-            color: #cd0027;
-          }
-        }
-      }
-    }
-    .count {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      line-height: 20px;
-    }
-  }
-  
-  #user-menu {
-    text-transform: none;
-    .caret {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            margin-left: 2px;
-            vertical-align: middle;
-            border-top: 4px solid $cream;
-            border-right: 4px solid transparent;
-            border-left: 4px solid transparent;
-            @include transition(.2s);
-    }
-    .dropdown.open & .caret {
-            transform: rotate(180deg);
-    }
   }
 }
 
@@ -171,6 +106,10 @@ a.topnav-button, button.topnav-button {
 
   &.plum {
     background-color: $plum;
+  }
+
+  &.user-menu {
+    text-transform: none;
   }
 
   &.gray {
@@ -202,6 +141,7 @@ a.topnav-button, button.topnav-button {
 .topnav-search {
   font-size: 18px;
 }
+
 
 
 #mainnav {

@@ -1,0 +1,76 @@
+.listView {
+  display: grid;
+
+  // Below here are column layouts for specific listViews.  Make sure to add
+  // the named lines for where to place the secondary row.  It should take up
+  // the entire row, except for the checkbox column (if present).
+  &.styleguide-example {
+    grid-template-columns: auto [secondary-row-start] 1fr 1fr auto [secondary-row-end];
+  }
+}
+
+.listView > * {
+  padding: 10px;
+
+  &.expanded {
+    background: $snow;
+    border-top: 1px solid light($gray);
+    margin-top: -1px; // Avoid making the cell move downward when it expands
+  }
+  &.selected {
+    padding-left: 4px;
+    border-left: 6px solid $lime;
+  }
+}
+
+.listView-header {
+  background: $snow;
+}
+
+.listView-secondary {
+  color: $gray;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.listView-secondaryRow {
+  color: $gray;
+  display: none;
+  grid-column: secondary-row;
+
+  &.expanded {
+    border-top: 0;
+    border-bottom: 1px solid light($gray);
+  }
+}
+
+.listView-checkbox {
+  &.expanded {
+    grid-row-end: span 2; // Make the checkbox cell take up 2 rows, to align the secondary row with the main content.
+    border-bottom: 1px solid light($gray);
+  }
+}
+
+.listView-actions {
+  display: flex;
+  align-items: start;
+}
+
+
+.listView-action {
+  visibility: hidden;
+  color: $gray;
+  font-size: $font-size-tiny;
+  margin: 0 4px;
+
+  &:hover {
+    color: $lime;
+  }
+
+  &.hover, &.selected {
+    visibility: visible;
+  }
+}
