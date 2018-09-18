@@ -74,6 +74,10 @@ function processAjaxResponse(responseData) {
                 // Force a GET request on reload
                 window.location = window.location.href;
                 break;
+
+            case 'redirect':
+                window.location = change[1];
+                break;
         }
     });
 }
