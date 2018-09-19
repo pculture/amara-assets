@@ -39,6 +39,9 @@ function filterBox(filterBox) {
     clearAllButton.text(gettext('Clear Filters '));
     clearAllButton.append('<span class="fa fa-times-circle">');
     clearAllButton.on('click', clearAllFilters);
+    filtersContainer.on('click', function() {
+        dropdownMenu.trigger('show');
+    });
 
     dropdownMenu.on('link-activate', function(evt, fieldName) {
         buildChooser(fieldName);
@@ -159,8 +162,9 @@ function filterBox(filterBox) {
                 return;
             }
 
-            var elt = $('<div class="filterBox-filter">').text(
-                    inputLabel + ': ' + labelForInputValue(name, value));
+            var elt = $('<div class="filterBox-filter">');
+            elt.append($('<span class="filterBox-filterText">').text(
+                        inputLabel + ': ' + labelForInputValue(name, value)));
             var closeButton = $('<button class="filter-removeFilter">x</button>').appendTo(elt);
             elt.data('name', name);
             closeButton.on('click', function() { elt.remove(); updateHasFilters(); removeFilterValueFromQuery(name, value) });
