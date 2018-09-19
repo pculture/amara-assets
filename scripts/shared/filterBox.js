@@ -39,8 +39,10 @@ function filterBox(filterBox) {
     clearAllButton.text(gettext('Clear Filters '));
     clearAllButton.append('<span class="fa fa-times-circle">');
     clearAllButton.on('click', clearAllFilters);
-    filtersContainer.on('click', function() {
-        dropdownMenu.trigger('show');
+    filtersContainer.on('click', function(evt) {
+        if(filtersContainer.is(evt.target)) {
+            dropdownMenu.trigger('show');
+        }
     });
 
     dropdownMenu.on('link-activate', function(evt, fieldName) {
