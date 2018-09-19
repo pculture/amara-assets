@@ -1,10 +1,3 @@
-// TODO move code from _language_selector_hack.scss to here
-.languageSwitcher_list {
-  margin-bottom: 20px;
-  max-height: 400px;
-  overflow-y: auto;
-}
-
 @include respond-to(tablet) {
   .languageSwitcher_list {
     display: grid;
