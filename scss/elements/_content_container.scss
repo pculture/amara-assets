@@ -1,0 +1,44 @@
+.contentHeader {
+  background-color: $plum;
+  align-items: center;
+  height: 56px;
+  padding: 8px;
+
+  .form-group {
+    margin: 0;
+  }
+
+  .search {
+      opacity: 0.37;
+      padding-right: 8px;
+      flex-direction: row-reverse;
+      flex-grow: 4;
+
+  }
+
+  .title {
+      font-size: 20px;
+      color: #ffffff;
+      flex-direction: row;
+  }
+    
+}
+
+.contentHeader-addButton {
+  display: flex;
+  align-items: center;
+  @extend .bg-teal;
+  text-align: left;
+  padding: 0 13px;
+  height: 39px;
+  @include transition(0.5s);
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+.contentHeader-addButtonText {
+  margin-left: 4px;
+  display: none;
+}
+
