@@ -10,6 +10,9 @@
 
 .searchbar {
   position: relative;
+  input {
+    padding-right: 32px;
+  }
   &:after {
     font-family: 'amara' !important;
     @extend .icon-search:before;
