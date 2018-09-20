@@ -6,11 +6,12 @@
 
 .filterBox-filters {
   flex-grow: 1;
+  cursor: pointer;
 }
 
 .filterBox-filter {
   background: $snow;
-  padding: 1px 0 1px 8px;
+  padding: 1px 4px 1px 4px;
   margin-right: 8px;
   border: 1px solid dark($snow);
   font-size: $font-size-small;
@@ -28,6 +29,7 @@
 .filterBox-button {
   color: light($gray);
   font-weight: normal;
+  margin-right: 8px;
 }
 
 .filterBox.hasFilters .filterBox-buttonText {
