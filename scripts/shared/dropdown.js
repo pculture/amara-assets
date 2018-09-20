@@ -153,7 +153,7 @@ DropDownMenu.prototype = {
         this.openerButton = null;
         this.shown = false;
         this.removeClickHandler();
-        if(context.event) {
+        if(context.event && !context.skipPreventDefault) {
             context.event.preventDefault();
             context.event.stopPropagation();
         }
@@ -231,9 +231,9 @@ DropDownMenu.prototype = {
     },
     activateLink: function(evt, link) {
         var button = this.openerButton;
-        this.hide({button: button, event: evt });
         if(link.data('activateArgs')) {
             // dropdown-js-item -- trigger link-activate
+            this.hide({button: button, event: evt });
             this.focusButton(button);
             this.menu.trigger($.Event('link-activate', {
                 openerButton: button,
@@ -241,6 +241,7 @@ DropDownMenu.prototype = {
             }), link.data('activateArgs'));
             evt.preventDefault();
         } else {
+            this.hide({button: button, event: evt, skipPreventDefault:true });
             // Regular link item.  Don't call preventDefault() to make the link
             // click go through.  Also, skip calling focusButton, since that would
             // stop the click.
