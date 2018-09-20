@@ -18,12 +18,13 @@
  * http://www.gnu.org/licenses/agpl-3.0.html.
  */
 
-$ = require('jquery');
-_ = require('underscore');
-position = require('./position');
-querystring = require('./querystring');
-select = require('./select/main');
-ajax = require('./ajax');
+var $ = require('jquery');
+var _ = require('underscore');
+var position = require('./position');
+var querystring = require('./querystring');
+var select = require('./select/main');
+var ajax = require('./ajax');
+var filters = require('./filters');
 
 $.behaviors('.filterBox', filterBox);
 
@@ -81,7 +82,7 @@ function filterBox(filterBox) {
                 var values = [input.val()];
             }
             createFilterBoxes(fieldName, values);
-            addFilterToQuery(fieldName, values);
+            filters.add(fieldName, values);
         });
         input.on('input change', function() {
             if(input.val() == '') {
@@ -126,26 +127,6 @@ function filterBox(filterBox) {
         }
     }
 
-    function addFilterToQuery(filterName, values) {
-        var params = querystring.parseList();
-        params[filterName] = values;
-        ajax.update('?' + querystring.format(params));
-    }
-
-    function removeFilterValueFromQuery(filterName, value) {
-        var params = querystring.parseList();
-        _.each(params, function(values, name) {
-            if(name == filterName) {
-                var index = values.indexOf(value);
-                if(index > -1) {
-                    values.splice(index, 1);
-                    params[name] = values;
-                }
-            }
-        });
-        ajax.update('?' + querystring.format(params));
-    }
-
     function createFilterBoxes(name, values) {
         var inputLabel = labelForInput(name);
         if(inputLabel === null) {
@@ -169,7 +150,7 @@ function filterBox(filterBox) {
                         inputLabel + ': ' + labelForInputValue(name, value)));
             var closeButton = $('<button class="filter-removeFilter">x</button>').appendTo(elt);
             elt.data('name', name);
-            closeButton.on('click', function() { elt.remove(); updateHasFilters(); removeFilterValueFromQuery(name, value) });
+            closeButton.on('click', function() { elt.remove(); updateHasFilters(); filters.remove(name, value); });
 
             filtersContainer.append(elt);
         });
@@ -219,7 +200,7 @@ function filterBox(filterBox) {
 
     function clearAllFilters() {
         filtersContainer.empty();
-        ajax.update('?');
+        filters.clear();
         updateHasFilters();
     };
 
