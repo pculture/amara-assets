@@ -32,6 +32,9 @@ function videourlDropdown(menu) {
         if(data.button.data('primary')) {
             makePrimaryButton.addClass('disabled').prop('disabled', true);
             deleteButton.addClass('disabled').prop('disabled', true);
+        } else if(data.button.data('original')) {
+            makePrimaryButton.removeClass('disabled').prop('disabled', false);
+            deleteButton.addClass('disabled').prop('disabled', true);
         } else {
             makePrimaryButton.removeClass('disabled').prop('disabled', false);
             deleteButton.removeClass('disabled').prop('disabled', false);
