@@ -18,13 +18,15 @@
 
 
 from django.conf import settings
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
+
+from django.views.static import serve
 
 from assets import util
 
-urlpatterns = patterns('')
+urlpatterns = []
 if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^assets/(?P<path>.*)$', 'django.views.static.serve',
-         {'document_root': util.dist_dir(), 'show_indexes': True}),
+    urlpatterns.append(
+        url(r'^assets/(?P<path>.*)$', serve,
+            {'document_root': util.dist_dir(), 'show_indexes': True})
     )
