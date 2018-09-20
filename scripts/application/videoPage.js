@@ -26,12 +26,15 @@ $.behaviors('#videourl-dropdown', videourlDropdown);
 function videourlDropdown(menu) {
     menu = $(menu);
     menu.on('show', function(evt, data) {
-        var button = $('.videourl-make-primary .dropdownMenu-link', data.dropdownMenu.menu);
+        var makePrimaryButton = $('.videourl-make-primary .dropdownMenu-link', data.dropdownMenu.menu);
+        var deleteButton = $('.videourl-delete .dropdownMenu-link', data.dropdownMenu.menu);
 
         if(data.button.data('primary')) {
-            button.addClass('disabled').prop('disabled', true);
+            makePrimaryButton.addClass('disabled').prop('disabled', true);
+            deleteButton.addClass('disabled').prop('disabled', true);
         } else {
-            button.removeClass('disabled').prop('disabled', false);
+            makePrimaryButton.removeClass('disabled').prop('disabled', false);
+            deleteButton.removeClass('disabled').prop('disabled', false);
         }
     });
 
