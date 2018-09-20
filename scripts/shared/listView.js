@@ -19,6 +19,7 @@
  */
 
 var $ = require('jquery');
+var _ = require('underscore');
 var keyCodes = require('./keyCodes');
 
 $.behaviors('.listView', listView);
