@@ -25,12 +25,15 @@ var position = require('./position');
 // Create a jquery plugin to handle dropdown stuff.  API:
 //
 //   - $(elt).dropdown(): initialize dropdown code (not needed if you add the .dropdownMenu class)
-//   - $(elt).dropdown('show'): show the dropdown
-//   - $(elt).dropdown('hide'): hide the dropdown
-//   - $(elt).dropdown('toggle'): toggle the dropdown
+//   - $(elt).dropdown('show', context): show the dropdown
+//   - $(elt).dropdown('hide', context): hide the dropdown
+//   - $(elt).dropdown('toggle', context): toggle the dropdown
 //   - $(elt).dropdown('focusFirstLink'): focus the first link
 //   - $(elt).dropdown('focusLastLink'): focus the last link
-//   - In general, you can call any method of the DropDownMenu class.
+//
+//   In general, you can call any method of the DropDownMenu class.  The "context" param is a dict with these keys:
+//     - button -- button element that caused the dropdown to show/hide (if applicable)
+//     - event -- current jQuery event
 // 
 $.fn.dropdown = function(action) {
     if(action === undefined) {
@@ -62,24 +65,24 @@ function dropdownMenuButton(button) {
     }
 
     button.click(function(evt) {
-        menu.dropdown('toggle', button);
+        menu.dropdown('toggle', {button: button, event: evt});
         evt.preventDefault();
     }).keydown(function(evt) {
         if(evt.which == keyCodes.enter ||
                 evt.which == keyCodes.space ||
                 evt.which == keyCodes.down) {
-            menu.dropdown('show', button);
+            menu.dropdown('show', {button: button, event: evt});
             menu.dropdown('focusFirstLink');
         } else if(evt.which == keyCodes.up) {
-            menu.dropdown('show', button);
+            menu.dropdown('show', {button: button, event: evt});
             menu.dropdown('focusLastLink');
         } else if(evt.which == keyCodes.esc) {
-            menu.dropdown('hide');
+            menu.dropdown('hide', {button: button, event: evt});
         }
         evt.stopPropagation();
         evt.preventDefault();
     }).on('key-activate', function(evt) {
-        menu.dropdown('show', button);
+        menu.dropdown('show', {button: button, event: evt});
         menu.dropdown('focusFirstLink');
     });
 }
@@ -100,31 +103,44 @@ function DropDownMenu(menu) {
 }
 
 DropDownMenu.prototype = {
-    show: function(button) {
+    show: function(context) {
+        if(context === undefined) {
+            context = {};
+        }
         if(this.menu.triggerHandler('show', {
             dropdownMenu: this,
-            button: button,
+            button: context.button,
+            event: context.event
         }) === false) {
             return;
         }
 
         if(this.shown) {
-            if(button == this.openerButton) {
+            if(context.button && context.button == this.openerButton) {
                 return;
             } else {
-                this.hide();
+                this.hide(context);
             }
         }
         // hide all other menus;
-        $('.dropdownMenu:visible').not(this.menu).dropdown('hide');
-        position.below(this.menu, button);
+        $('.dropdownMenu:visible').not(this.menu).dropdown('hide', context);
+        position.below(this.menu, context.button);
         this.menu.css('display', 'flex');
-        button.attr('aria-expanded', 'true');
-        this.openerButton = button;
+        if(context.button) {
+            context.button.attr('aria-expanded', 'true');
+        }
+        this.openerButton = context.button;
         this.shown = true;
-        this.setupClickHandler();
+        this.setupClickHandler(context.event);
+        if(context.event) {
+            context.event.preventDefault();
+            context.event.stopPropagation();
+        }
     },
-    hide: function() {
+    hide: function(context) {
+        if(context === undefined) {
+            context = {};
+        }
         if(!this.shown) {
             return;
         }
@@ -137,12 +153,16 @@ DropDownMenu.prototype = {
         this.openerButton = null;
         this.shown = false;
         this.removeClickHandler();
+        if(context.event) {
+            context.event.preventDefault();
+            context.event.stopPropagation();
+        }
     },
-    toggle: function(button) {
-        if(this.shown && this.openerButton === button) {
-            this.hide();
+    toggle: function(context) {
+        if(this.shown && this.openerButton === context.button) {
+            this.hide(context);
         } else {
-            this.show(button);
+            this.show(context);
         }
     },
     focusedLinkIndex: function() {
@@ -211,7 +231,7 @@ DropDownMenu.prototype = {
     },
     activateLink: function(evt, link) {
         var button = this.openerButton;
-        this.hide();
+        this.hide({button: button, event: evt });
         if(link.data('activateArgs')) {
             // dropdown-js-item -- trigger link-activate
             this.focusButton(button);
@@ -232,12 +252,13 @@ DropDownMenu.prototype = {
             button.focus();
         }
     },
-    setupClickHandler: function() {
+    setupClickHandler: function(openerEvent) {
         $(document).on('click.dropdown', function(evt) {
             var target = $(evt.target);
-            if(target.closest(this.menu).length == 0 &&
+            if(evt != openerEvent &&
+                    target.closest(this.menu).length == 0 &&
                     target.closest(this.openerButton).length == 0) {
-                this.hide();
+                this.hide({event:evt});
             }
         }.bind(this));
     },
