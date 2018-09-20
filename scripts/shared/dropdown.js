@@ -58,6 +58,10 @@ function dropdownMenu(menu) {
         focusFirstLink();
     });
 
+    menu.on('show', function(evt) {
+        showMenu();
+    });
+
     menu.on('hide', function(evt) {
         hideMenu();
     });
