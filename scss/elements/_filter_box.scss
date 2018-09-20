@@ -42,6 +42,7 @@
   color: $gray;
   font-size: $font-size-small;
   @include button-hover;
+  padding: 4px;
 
   .filterBox.hasFilters & {
     display: block;
