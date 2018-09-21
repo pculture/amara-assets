@@ -10,6 +10,12 @@
   &.videoUrls {
     grid-template-columns: [secondary-row-start] 1fr minmax(auto, auto) auto [secondary-row-end];
   }
+  &.memberDirectory {
+    grid-template-columns: [secondary-row-start] auto auto auto auto [secondary-row-end];
+  }
+  &.memberDirectory.admin {
+    grid-template-columns: auto [secondary-row-start] auto auto auto auto auto [secondary-row-end];
+  }
   margin: 0 -10px;
 }
 
@@ -36,6 +42,7 @@
 .listView-secondary {
   color: $gray;
   display: none;
+  margin-top: 4px;
 
   &.visible {
     display: block;
