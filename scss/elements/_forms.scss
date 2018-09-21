@@ -588,6 +588,7 @@ fieldset {
   border: solid 1px #cccccc;
   border-top: none;
   border-bottom: none;
+  padding-bottom: 25px;
 
   legend {
     padding-top: 15px;
@@ -601,10 +602,6 @@ fieldset {
     h3 {
       color: $cream !important;
     }
-  }
-
-  .form-group:last-of-type {
-    margin-bottom: 45px;
   }
 }
 
