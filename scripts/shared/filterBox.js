@@ -30,6 +30,7 @@ $.behaviors('.filterBox', filterBox);
 function filterBox(filterBox) {
     filterBox = $(filterBox);
     var dropdownMenu = $('.dropdownMenu', filterBox);
+    var button = $('.filterBox-button', filterBox);
     var chooser = null;
 
     var filtersContainer = $('<div class="filterBox-filters">').appendTo(filterBox);
@@ -41,7 +42,8 @@ function filterBox(filterBox) {
     clearAllButton.on('click', clearAllFilters);
     filtersContainer.on('click', function(evt) {
         if(filtersContainer.is(evt.target)) {
-            dropdownMenu.trigger('show');
+            dropdownMenu.trigger('toggle');
+            button.focus();
         }
     });
 

@@ -66,6 +66,14 @@ function dropdownMenu(menu) {
         hideMenu();
     });
 
+    menu.on('toggle', function(evt) {
+        if(menuVisible()) {
+            hideMenu();
+        } else {
+            showMenu();
+        }
+    });
+
     links.on('keydown', function(evt) {
         var link = $(this);
 
