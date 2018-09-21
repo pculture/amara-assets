@@ -58,8 +58,20 @@ function dropdownMenu(menu) {
         focusFirstLink();
     });
 
+    menu.on('show', function(evt) {
+        showMenu();
+    });
+
     menu.on('hide', function(evt) {
         hideMenu();
+    });
+
+    menu.on('toggle', function(evt) {
+        if(menuVisible()) {
+            hideMenu();
+        } else {
+            showMenu();
+        }
     });
 
     links.on('keydown', function(evt) {
