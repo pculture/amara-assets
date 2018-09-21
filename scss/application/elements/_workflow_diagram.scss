@@ -21,7 +21,10 @@
 
   &.last {
     min-width: 150px;
+    max-width: 150px;
     padding-left: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
     background-color: $snow;
     align-items: center;
     color: black;

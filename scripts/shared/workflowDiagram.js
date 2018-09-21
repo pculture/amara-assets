@@ -21,29 +21,17 @@ var $ = require('jquery');
 
 $.behaviors('.workflowDiagramContainer', function(container) {
     var container = $(container);
-    var container_width = container.width()
-    var workflow_segments = container.find('.workflowStep')
-    var workflow_segment_last = container.find('.last')
-
-    /* total width of the svg triangle and "gap" 
-       used to separate segments of the workflow diagram */
-    var separator_width = 35 
-    // total space occupied by the separators
-    var separator_space = workflow_segments.length * separator_width
     
-    // total available space for the segments to occupy
-    var segments_space = calc_segments_space()
-    var last_space = calc_last_space()
-    calc_spacing()
+    /*
+     * function call to calculate the spacing
+     */
+    calc_spacing(container)
 
-    /* we always allocate the last 1/3 of the space for the Complete step */
-    function calc_segments_space() {
-        var segments_space = Math.floor(container_width * 0.67)
-        var separator_space = separator_width * workflow_segments.length
-        return segments_space - separator_space
-    }
+    /*
+     * function definitions
+     */
 
-    function calc_total_duration() {
+    function calc_total_duration(workflow_segments) {
         var total_duration = 0
         $.each(workflow_segments, function(i, segment) {
             total_duration += $(segment).data('duration')
@@ -51,14 +39,18 @@ $.behaviors('.workflowDiagramContainer', function(container) {
         return total_duration
     }
 
-    function calc_last_space() {
-        var last_space = Math.floor(container_width * 0.33)
-        return last_space - separator_space
-    }
+    function calc_spacing(container) {
+        var container_width = container.width()
+        var workflow_segments = container.find('.workflowStep')
+        var workflow_segment_last = container.find('.last')
 
-    function calc_spacing() {
+        /* the last segment will always be 150px */
+        var last_width = 150    
+        // total available space for the segments to occupy
+        var segments_space = Math.floor(container_width - last_width)
+
         var spaces = []
-        var total_duration = calc_total_duration()
+        var total_duration = calc_total_duration(workflow_segments)
 
         $.each(workflow_segments, function(i, segment) {
             var duration = $(segment).data('duration')
@@ -78,4 +70,8 @@ $.behaviors('.workflowDiagramContainer', function(container) {
         total_duration_units = total_duration > 1 ? ' days' : ' day'
         $(workflow_segment_last.children('span')[1]).html(total_duration + total_duration_units)
     }
+
+    $(window).on('resize', function() {
+        calc_spacing(container)
+    })
 });
