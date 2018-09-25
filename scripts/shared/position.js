@@ -22,12 +22,25 @@
 
 $ = require('jquery');
 
-function eltBottom(elt) {
-    return elt.offset().top + elt.outerHeight();
+function boundsForElt(elt) {
+    var offset = elt.offset();
+    return {
+        left: offset.left,
+        top: offset.top,
+        right: offset.left + elt.outerWidth(),
+        bottom: offset.top + elt.outerHeight()
+    };
 }
 
-function viewportBottom() {
-    return $(window).scrollTop() + $(window).height();
+function boundsForViewport() {
+    var $window = $(window);
+    var scrollTop = $window.scrollTop();
+    return {
+        left: 0,
+        top: scrollTop,
+        right: $window.width(),
+        bottom: scrollTop + $window.height()
+    };
 }
 
 // position an element below another element.
@@ -35,17 +48,35 @@ function viewportBottom() {
 // If the element being positioned would be offscreen, then position it on top instead.
 function below(elt, reference) {
     elt.detach().appendTo($('body'));
-    elt.css({
-        'position': 'absolute',
-        'top': eltBottom(reference) + 'px',
-        'left': reference.offset().left + 'px'
-    });
 
-    if(eltBottom(elt) >= viewportBottom()) {
-        elt.css({
-            'top': (reference.offset().top - elt.outerHeight()) + 'px'
-        });
+    var referenceBounds = boundsForElt(reference);
+    var viewportBounds = boundsForViewport();
+    var height = elt.outerHeight();
+    var width = elt.outerWidth();
+
+
+    // By default we position the element below the reference elt.  But we position it on top if:
+    //   - The element would go below the bottom of the screen
+    //   - There's room above the reference element to show it there
+    if(referenceBounds.bottom + height >= viewportBounds.bottom &&
+            height < referenceBounds.top - viewportBounds.top) {
+        var top = referenceBounds.top - height + 'px';
+    } else {
+        var top = referenceBounds.bottom + 'px';
     }
+
+    // Do the same thing for left/right
+    if(referenceBounds.left + width >= viewportBounds.right &&
+            width < referenceBounds.left - viewportBounds.left) {
+        var left = referenceBounds.right - width + 'px';
+    } else {
+        var left = referenceBounds.left + 'px';
+    }
+    elt.css({
+        position: 'absolute',
+        left: left,
+        top: top
+    })
 }
 
 module.exports = {

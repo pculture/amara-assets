@@ -19,16 +19,15 @@
  */
 
 $ = require('jquery');
+$.behaviors('.contentHeader', contentHeader);
 
-$.behaviors('.trackClicks', handleTrackedClicks);
+function contentHeader(container) {
+    container = $(container);
+    var buttonText = $('.contentHeader-addButtonText', container);
 
-function handleTrackedClicks(container) {
-    var category = $(container).data('eventCategory');
-
-    $('.trackClicks-item', container).click(function() {
-        var action = $(this).data('eventAction');
-        if(category && action) {
-            sendAnalytics(category, action);
-        }
+    container.hover(function() {
+        buttonText.animate({width:'show'}, 200);
+    }, function() {
+        buttonText.animate({width:'hide'}, 200);
     });
 }

@@ -90,9 +90,6 @@ textarea {
 }
 select {
   appearance: none;
-  &:focus {
-   outline: none;
-  }
 }
 input,
 select,
@@ -105,9 +102,6 @@ textarea {
   border: 1px solid light($gray);
   background-color: #fff;
   color: $charcoal;
-  &:focus {
-    outline: none;
-  }
 }
 
 .form-group {
@@ -184,7 +178,6 @@ textarea {
   text-align: right;
   filter: alpha(opacity=0);
   opacity: 0;
-  outline: none;
   background: white;
   cursor: inherit;
   display: block;
