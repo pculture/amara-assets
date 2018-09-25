@@ -20,16 +20,31 @@
     border-bottom: 2px solid dark($snow);
   }
   &.striped {
-    tr:nth-of-type(odd) {
+    tr:nth-child(odd) {
       background: $white;
     }
-    tr:nth-of-type(even) {
+    tr:nth-child(even) {
       background: $snow;
     }
-    td {
-
+  }
+  // A secondary tbody is used to start new set of rows inside a table.  This means:
+  // - The first row should look like a header row
+  // - If the table is striped, the strips starting with the second row
+  tbody.secondary :first-child td {
+    padding-top: 32px;
+    background: $white;
+    border-bottom: 2px solid dark($snow);
+    font-weight: bold;
+  }
+  &.striped tbody.secondary {
+    tr:nth-child(even) {
+      background: $white;
+    }
+    tr:nth-child(odd) {
+      background: $snow;
     }
   }
+
   &.lined {
     td {
       border-bottom: 1px solid dark($snow);

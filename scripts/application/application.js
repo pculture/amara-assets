@@ -19,6 +19,7 @@ require('../shared/languageSwitcher');
 require('../shared/select/main');
 require('./selectList');
 require('./videoPage');
+require('./teamSettingsPages');
 require('./videoSubtitles');
 require('../shared/fileUpload');
 require('../shared/imageInput');
