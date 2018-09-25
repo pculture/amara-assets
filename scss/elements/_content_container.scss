@@ -1,0 +1,55 @@
+.contentHeader {
+  background-color: $plum;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.contentHeader-title {
+  @include font-h3;
+  color: $white;
+  padding-left: 8px;
+  padding-right: 40px;
+}
+
+.contentHeader-search {
+  position: relative;
+  padding-right: 8px;
+  flex-grow: 1;
+  &:after {
+    @extend .searchbar:after;
+    color: $plum;
+  }
+}
+
+.contentHeader-searchBar {
+  border: none;
+  background: mix($plum, $white, 63%);
+  line-height: 24px;
+  padding-right: 32px;
+  color: $white;
+
+  &::placeholder {
+    color: $plum;
+  }
+}
+
+
+.contentHeader-addButton {
+  display: flex;
+  align-items: center;
+  @extend .bg-teal;
+  text-align: left;
+  padding: 0 13px;
+  height: 39px;
+  @include transition(0.5s);
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+.contentHeader-addButtonText {
+  margin-left: 4px;
+  display: none;
+}
+
