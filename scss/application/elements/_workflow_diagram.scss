@@ -5,6 +5,12 @@
   display: flex;
 }
 
+@include respond-to(0, tablet) {
+  .workflowDiagramContainer {
+    max-width: 90vw; // prevent spilling over for small widths
+  }
+}
+
 .workflowDiagramSegment {
   min-width: 125px;
   height: 100%;
