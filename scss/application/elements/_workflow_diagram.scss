@@ -3,6 +3,7 @@
   height: 130px; 
   background-color: $snow;
   display: flex;
+  margin-bottom: 8px;
 }
 
 @include respond-to(0, tablet) {

@@ -36,6 +36,5 @@ require('../shared/dropdown');
 require('../shared/filterBox');
 require('../shared/listView');
 require('../shared/checkAll');
-require('../shared/workflowDiagram');
 require('../shared/workflowSettings');
 require('../shared/contentHeader');
