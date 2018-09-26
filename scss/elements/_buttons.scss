@@ -14,13 +14,10 @@
 button {
   border: none;
   background-color: transparent;
-  color: $teal;
   &:disabled {
     color: light($gray);
   }
-  &:focus {
-    outline: none;
-  }
+  padding: 0;
 }
 
 // Options
@@ -39,6 +36,15 @@ button {
 // <button type="button" class="button $modifier_class">Click me</button>
 // 
 // Styleguide buttonOptions
+
+@mixin button-hover {
+  @include transition(0.4s);
+  &:hover, &.hover, &:focus {
+    color: #fff;
+    border-color: $lime;
+    background-color: $lime;
+  }
+}
 
 .button {
   display: inline-block;
@@ -62,7 +68,6 @@ button {
   background-color: $teal;
   border: 1px solid $teal;
   @include no-underline;
-  @include transition(0.4s);
   &.block {
     display: block;
     width: 100%;
@@ -75,17 +80,6 @@ button {
   }
   &.tall {
     padding: 14px 30px;
-  }
-  &.disabled {
-    background-color: light($gray);
-    border-color: light($gray);
-    color: #393839;
-    cursor: default;
-    &:hover, &.hover, &:focus {
-      color: #393839;
-      background-color: light($gray);
-      border-color: light($gray);
-    }
   }
   &.cta {
     color: #fff;
@@ -108,6 +102,17 @@ button {
       color: $alternate;
     }
   }
+  &.disabled {
+    background-color: light($gray);
+    border-color: light($gray);
+    color: #393839;
+    cursor: default;
+    &:hover, &.hover, &:focus {
+      color: #393839;
+      background-color: light($gray);
+      border-color: light($gray);
+    }
+  }
 
   &.inline {
     display: inline-block;
@@ -123,19 +128,15 @@ button {
     }
   }
   &.borderless {
-    color: $teal;
+    color: $gray;
     background-color: transparent;
     border-color: transparent;
     &.inline {
       margin: 0 10px;
     }
   }
+  @include button-hover;
   &:hover, &.hover, &:focus {
-    color: #fff;
-    border-color: $lime;
-    background-color: $lime;
-    outline: none;
-
     &.lime {
       border-color: $teal;
       background-color: $teal;

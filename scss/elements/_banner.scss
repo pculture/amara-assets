@@ -1,0 +1,14 @@
+// css for team banners
+.banner-container {
+  max-width: 940px;
+  max-height: 235px;
+  overflow: hidden;
+  text-align: center;
+
+  img.banner-image {
+    position: relative;
+    margin-left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);  
+  }
+}

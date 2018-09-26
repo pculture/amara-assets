@@ -1,7 +1,8 @@
 'use strict';
 
+var log = require('fancy-log');
 var browserify = require('browserify');
-var buffer = require('gulp-buffer');
+var watchify = require('watchify');
 var debug = require('gulp-debug');
 var del = require('del');
 var fs = require('fs');
@@ -13,10 +14,10 @@ var pump = require('pump');
 var sass = require('gulp-sass');
 var tildeImporter = require('node-sass-tilde-importer');
 var sourcemaps = require('gulp-sourcemaps');
+var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var tap = require('gulp-tap');
 var uglify = require('gulp-uglify');
-var gutil = require('gulp-util');
 
 var paths = {
     images: 'img/**',
@@ -81,62 +82,64 @@ gulp.task('css', function(cb) {
     ], cb);
 });
 
-gulp.task('js', function(task_cb) {
-    var count = 0;
-    function single_cb() {
-        count += 1;
-        if(count == paths.js.length) {
-            task_cb();
+gulp.task('js', function(cb) {
+    var cb_count = 0;
+    var sent_error = false;
+    function one_cb(err) {
+        if(sent_error) {
+          return;
+        } else if(err !== undefined) {
+            cb(err);
+        } else if(++cb_count >= paths.js.length) {
+            cb();
         }
     }
     paths.js.forEach(function(script) {
-        isSourceJSNewer(script, (newer) => {
-            if(newer) {
-                run_browserify(script, false, single_cb);
-            } else {
-                single_cb();
-            }
-        });
+        bundle_js(script, false, one_cb);
     });
 });
 
-function run_browserify(script, watch, cb) {
-    var opts = {debug: true, cache: {}, pluginCache: {}};
+function bundle_js(script, watch, cb) {
+    var b = browserify({
+        entries: [script],
+        debug: true,
+        cache: {},
+        packageCache: {}
+    });
     var filename = path.basename(script);
-
-    var b = browserify(script, opts);
     extensionScripts(filename).forEach(function (filename) {
         // Add the file as a stream, because it's the only way I can make
         // it use the package.json file from amara-assets
         b.add(fs.createReadStream(filename));
     });
 
-    if(watch) {
-        var watchify = require('watchify');
-        b.plugin(watchify);
-        b.on('update', function() {
-            console.log('updating ' + script);
-            run(function() {
-                console.log('finished building ' + script);
-            });
-        });
-    }
-    b.transform("browserify-shim");
-    run(cb);
-
-    function run(cb) {
-        pump([
-            b.bundle().on('error', function(err) {
-                gutil.log(err.name + ': ' + err.message)
+    function rebundle() {
+        log.info('starting ' + script);
+        var pipeline = [
+            b.bundle().on('error', function(error) {
+                log.error(error.message);
             }),
             source(filename),
             buffer(),
-            sourcemaps.init({loadMaps: true}),
-            uglify({compress: {drop_debugger: false}}),
-            sourcemaps.write('./maps'),
-            gulp.dest(dest_paths.js),
-        ], cb);
+        ];
+        if(!process.env.SKIP_UGLIFY) {
+            pipeline.push.apply(pipeline, [
+                sourcemaps.init({loadMaps: true}),
+                uglify({compress: {drop_debugger: false}}),
+                sourcemaps.write('./maps'),
+            ]);
+        }
+        pipeline.push(gulp.dest(dest_paths.js));
+
+        pump(pipeline, cb).on('end', log.info.bind(log, 'finished ' + script));
     }
+
+    if(watch) {
+        log.info('watch: ', script);
+        b.plugin(watchify);
+        b.on('update', rebundle);
+    }
+    rebundle();
 }
 
 function findJSExtensions() {
@@ -165,28 +168,13 @@ function extensionScripts(script) {
     }
 }
 
-function isSourceJSNewer(script, cb) {
-    var newerSourceFile = false;
-    var sources = [script];
-    sources.push.apply(sources, extensionScripts(script));
-    var dest = path.join(dest_paths.js, path.basename(script));
-    function callCallback() {
-        cb(newerSourceFile)
-    }
-    pump([
-        gulp.src(sources),
-        newer({dest: dest, extra: path.dirname(script) + '/**'}),
-        tap((file) => {newerSourceFile = true;})
-    ], callCallback);
-}
-
 gulp.task('build', ['images', 'fonts', 'css', 'js']);
 gulp.task('watch', function () {
     gulp.watch(paths.images, ['images']);
     gulp.watch(paths.fonts, ['fonts']);
     gulp.watch('scss/**', ['css']);
     paths.js.forEach(function(script) {
-        run_browserify(script, true);
+        bundle_js(script, true);
     });
 });
 gulp.task('default', ['build', 'watch']);

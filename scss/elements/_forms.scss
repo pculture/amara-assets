@@ -90,9 +90,6 @@ textarea {
 }
 select {
   appearance: none;
-  &:focus {
-   outline: none;
-  }
 }
 input,
 select,
@@ -105,9 +102,6 @@ textarea {
   border: 1px solid light($gray);
   background-color: #fff;
   color: $charcoal;
-  &:focus {
-    outline: none;
-  }
 }
 
 .form-group {
@@ -184,7 +178,6 @@ textarea {
   text-align: right;
   filter: alpha(opacity=0);
   opacity: 0;
-  outline: none;
   background: white;
   cursor: inherit;
   display: block;
@@ -426,6 +419,11 @@ input:checked + label .checkbox-icon {
       &.noborder {
         border-right: 0;
       }
+    }
+
+    .multiField-inputExtender {
+      grid-row: -2 / -1;
+      background: $snow;
     }
 
     .multiField-rowEnd {

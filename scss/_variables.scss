@@ -19,7 +19,7 @@ $colorscheme: (
   "charcoal": ($charcoal, $white),
   "gray": ($gray, $white),
   "snow": ($snow, $plum),
-  "white": ($white, $gray),
+  "white": ($white, $charcoal),
 );
 
 $body-bg:                #ffffff;
@@ -105,8 +105,9 @@ $state-danger-border:            $amaranth;
 $z-index-behind: -1;
 $z-index-front: 1;
 // page layer
-$z-index-menu: 20;
-$z-index-action-bar: 30;
+$z-index-header: 10;
+$z-index-menu: 11;
+$z-index-action-bar: 12;
 // modal dialog layer
 $z-index-overlay: 100;
 $z-index-modal: 110;

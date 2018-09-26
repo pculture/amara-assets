@@ -1,4 +1,16 @@
-// TODO move code from _language_selector_hack.scss to here
-.languageSwitcher_list {
-        margin-bottom: 20px;
+@include respond-to(tablet) {
+  .languageSwitcher_list {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@include respond-to(laptop, 0) {
+  .languageSwitcher_list {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+.languageSwitcher-item {
+  font-weight: normal;
 }

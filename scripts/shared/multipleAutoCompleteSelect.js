@@ -1,7 +1,6 @@
-/*
- * Amara, universalsubtitles.org
+/* Amara, universalsubtitles.org
  *
- * Copyright (C) 2018 Participatory Culture Foundation
+ * Copyright (C) 2017 Participatory Culture Foundation
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -18,17 +17,16 @@
  * http://www.gnu.org/licenses/agpl-3.0.html.
  */
 
-$ = require('jquery');
+var $ = require('jquery');
 
-$.behaviors('.trackClicks', handleTrackedClicks);
+$.behaviors('.multipleAutoCompleteSelect', multipleAutoCompleteSelect);
 
-function handleTrackedClicks(container) {
-    var category = $(container).data('eventCategory');
+function multipleAutoCompleteSelect(select) {
+    var select = $(select);
 
-    $('.trackClicks-item', container).click(function() {
-        var action = $(this).data('eventAction');
-        if(category && action) {
-            sendAnalytics(category, action);
-        }
-    });
+    initial_selections = select.data('initial-selections')
+    $.each(initial_selections, function(index, data) {
+        var option = new Option(data['text'], data['id'], true, true);
+        select.append(option).trigger('change')
+    })
 }

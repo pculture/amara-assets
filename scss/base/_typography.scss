@@ -13,7 +13,7 @@
 //   - small: 14px (less prominent elemens like filter fields)
 //   - tiny: 13px (help text, and other fine print)
 //
-//  Use the .text-small or .text-tiny classes to change the font size
+//  Use the .text-small or .text-tiny classes to change the font size.  Line-height is always 20px.
 // 
 // <h3><em>Titling</em></h3>
 // <h1>Raleway</h1>
@@ -39,7 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-family-sans-serif;
-  line-height: 1.4;
+  line-height: 20px;
   font-size: $font-size-normal;
   color: $text-color;
 }
@@ -48,6 +48,23 @@ h1, .text-raleway {
   font-family: $headings-font-family;
 }
 
+@mixin font-h1 {
+  font-size: $font-size-h1;
+  line-height: 1.25;
+  font-family: $headings-font-family;
+}
+
+@mixin font-h2 {
+  font-size: $font-size-h2;
+  line-height: 1.25;
+  font-family: $font-family-sans-serif;
+}
+
+@mixin font-h3 {
+  font-size: $font-size-h3;
+  line-height: 1.25;
+  font-family: $font-family-sans-serif;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
@@ -115,7 +132,16 @@ em {
 }
 
 
+// Text Utilities
 
+.text-nocase { text-transform: none !important; }
+.text-capitalize { text-transform: capitalize !important; }
+.text-lowercase { text-transform: lowercase !important; }
+.text-uppercase { text-transform: uppercase !important; }
+
+.italic {
+  font-style: italic;
+}
 
 // Media Queries
 @media(max-width: $screen-md-max) {
