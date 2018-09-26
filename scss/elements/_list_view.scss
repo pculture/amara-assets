@@ -1,16 +1,22 @@
 .listView {
   display: grid;
 
-  // Below here are column layouts for specific listViews.  Make sure to add
-  // the named lines for where to place the secondary row.  It should take up
+  // Below here are column layouts for specific listViews.  If you have a
+  // secondary row, make sure you create named lines for it.  It should take up
   // the entire row, except for the checkbox column (if present).
   &.styleguide-example {
     grid-template-columns: auto [secondary-row-start] 1fr 1fr auto [secondary-row-end];
   }
+  &.videoUrls {
+    grid-template-columns: [secondary-row-start] 1fr minmax(auto, auto) auto [secondary-row-end];
+  }
+  margin: 0 -10px;
 }
 
 .listView > * {
   padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &.expanded {
     background: $snow;
@@ -63,7 +69,7 @@
 .listView-action {
   visibility: hidden;
   color: $gray;
-  font-size: $font-size-tiny;
+  font-size: $font-size-normal;
   margin: 0 4px;
 
   &:hover {

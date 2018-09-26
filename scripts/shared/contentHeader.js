@@ -18,8 +18,12 @@
  * http://www.gnu.org/licenses/agpl-3.0.html.
  */
 
-$ = require('jquery');
+var $ = require('jquery');
+var filters = require('./filters');
+var keyCodes = require('./keyCodes');
+
 $.behaviors('.contentHeader', contentHeader);
+$.behaviors('.contentHeader-searchBar', contentHeaderSearchBar);
 
 function contentHeader(container) {
     container = $(container);
@@ -29,5 +33,15 @@ function contentHeader(container) {
         buttonText.animate({width:'show'}, 200);
     }, function() {
         buttonText.animate({width:'hide'}, 200);
+    });
+}
+
+function contentHeaderSearchBar(input) {
+    var input = $(input);
+    input.on('keypress', function(evt) {
+        if(evt.which == keyCodes.enter) {
+            filters.add(input.attr('name'), input.val());
+            evt.preventDefault();
+        }
     });
 }
