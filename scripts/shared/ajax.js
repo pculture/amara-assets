@@ -223,7 +223,7 @@ function update(url, options) {
     });
     if(options.pushState) {
         history.pushState(url, "", url);
-    } else {
+    } else if(!options.keepState) {
         history.replaceState(url, "", url);
     }
 }
