@@ -49,7 +49,7 @@ function boundsForViewport() {
 // Pass drop_to_left=true to drop the dropdown to the left instead (right edge of dropdown aligned with right edge of ref)
 //
 // If the element being positioned would be offscreen, then position it on top instead.
-function below(elt, reference, drop_to_left=false) {
+function below(elt, reference, drop_to_left) {
     elt.detach().appendTo($('body'));
 
     var referenceBounds = boundsForElt(reference);
