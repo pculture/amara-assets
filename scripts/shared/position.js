@@ -43,10 +43,13 @@ function boundsForViewport() {
     };
 }
 
-// position an element below another element.
+// Position an element below another element.
+//
+// By default, the element "drops" to the right (left edge of dropdown aligned with left edge of reference). 
+// Pass drop_to_left=true to drop the dropdown to the left instead (right edge of dropdown aligned with right edge of ref)
 //
 // If the element being positioned would be offscreen, then position it on top instead.
-function below(elt, reference) {
+function below(elt, reference, drop_to_left=false) {
     elt.detach().appendTo($('body'));
 
     var referenceBounds = boundsForElt(reference);
@@ -66,11 +69,20 @@ function below(elt, reference) {
     }
 
     // Do the same thing for left/right
-    if(referenceBounds.left + width >= viewportBounds.right &&
-            width < referenceBounds.left - viewportBounds.left) {
-        var left = referenceBounds.right - width + 'px';
+    if (drop_to_left) {
+        if(referenceBounds.right - width <= viewportBounds.left &&
+            width < viewportBounds.right - referenceBounds.right) {
+            var left = referenceBounds.left + 'px';
+        } else {
+            var left = referenceBounds.right - width + 'px';
+        }   
     } else {
-        var left = referenceBounds.left + 'px';
+        if(referenceBounds.left + width >= viewportBounds.right &&
+            width < referenceBounds.left - viewportBounds.left) {
+            var left = referenceBounds.right - width + 'px';
+        } else {
+            var left = referenceBounds.left + 'px';
+        }  
     }
     elt.css({
         position: 'absolute',

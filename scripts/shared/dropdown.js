@@ -98,6 +98,7 @@ function DropDownMenu(menu) {
     this.menu = menu;
     this.links = $('.dropdownMenu-link', menu).not('.disabled'),
     this.shown = false;
+    this.dropLeft = menu.hasClass('dropdownMenuLeft')
     this.openerButton = null;
     this.setupEventHandlers();
 }
@@ -124,7 +125,7 @@ DropDownMenu.prototype = {
         }
         // hide all other menus;
         $('.dropdownMenu:visible').not(this.menu).dropdown('hide', context);
-        position.below(this.menu, context.button);
+        position.below(this.menu, context.button, this.dropLeft);
         this.menu.css('display', 'flex');
         if(context.button) {
             context.button.attr('aria-expanded', 'true');
