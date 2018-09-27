@@ -19,6 +19,7 @@
  */
 
 var $ = require('jquery');
+var _ = require('underscore');
 var keyCodes = require('./keyCodes');
 
 $.behaviors('.listView', listView);
@@ -47,7 +48,9 @@ function ListViewDOM(elt) {
 
 ListViewDOM.prototype = {
     calcColumnCount: function() {
-        var columnSpec = this.elt.css('grid-template-columns').split(/\s+/);
+        var columnSpec = this.elt.css('grid-template-columns');
+        // Crazy regex, but it should split the css into parts
+        columnSpec = columnSpec.match(/[^ (]+(\([^)]+\))?/g)
         var realColumns = columnSpec.filter(function(spec) {
             return spec.trim()[0] != '[';
         });
@@ -180,7 +183,7 @@ function ListViewKeys(dom) {
     this.selectedRow = null;
 
     dom.elt.on('keydown', this.onKeyDown.bind(this));
-    dom.elt.on('focusout', this.removeSelectedStyles.bind(this));
+    dom.elt.on('focusout', this.onFocusOut.bind(this));
     dom.elt.on('focusin', this.addSelectedStyles.bind(this));
     dom.elt.on('row-expanded', this.onRowExpanded.bind(this));
     this.dom.dropdownMenus.on('focus-button', this.onDropdownMenuFocusButton.bind(this));
@@ -230,6 +233,11 @@ ListViewKeys.prototype = {
     removeSelectedStyles: function() {
         this.dom.cellsForRow(this.selectedRow).first().removeClass('selected');
         this.dom.actionsForRow(this.selectedRow).last().removeClass('selected');
+    },
+    onFocusOut: function(evt) {
+        if($(evt.relatedTarget).closest(this.dom.dropdownMenus).length == 0) {
+            this.removeSelectedStyles();
+        }
     },
     addSelectedStyles: function() {
         this.dom.cellsForRow(this.selectedRow).first().addClass('selected');
