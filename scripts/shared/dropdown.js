@@ -58,6 +58,7 @@ $.behaviors('.dropdownMenu-button', dropdownMenuButton);
 function dropdownMenuButton(button) {
     var button = $(button);
     var menu = $();
+    var disabled = button.hasClass('disabled');
 
     if(button.data('target')) {
         menu = $('#' + button.data('target'));
@@ -65,9 +66,15 @@ function dropdownMenuButton(button) {
     }
 
     button.click(function(evt) {
+        if (disabled) {
+            return;
+        }
         menu.dropdown('toggle', {button: button, event: evt});
         evt.preventDefault();
     }).keydown(function(evt) {
+        if (disabled) {
+            return;
+        }
         if(evt.which == keyCodes.enter ||
                 evt.which == keyCodes.space ||
                 evt.which == keyCodes.down) {
@@ -82,6 +89,9 @@ function dropdownMenuButton(button) {
         evt.stopPropagation();
         evt.preventDefault();
     }).on('key-activate', function(evt) {
+        if (disabled) {
+            return;
+        }
         menu.dropdown('show', {button: button, event: evt});
         menu.dropdown('focusFirstLink');
     });
