@@ -1,0 +1,19 @@
+.badge {
+  font-size: $font-size-tiny;
+  color: $white;
+  background: rgba($gray, 0.8);
+  padding: 0 4px;
+
+  &.plum {
+    background: rgba($plum, 0.8);
+  }
+  &.amaranth {
+    background: rgba($amaranth, 0.8);
+  }
+  &.lime {
+    background: rgba($lime, 0.8);
+  }
+  &.teal {
+    background: rgba($teal, 0.8);
+  }
+}

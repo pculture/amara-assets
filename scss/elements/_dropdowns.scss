@@ -18,6 +18,7 @@
 .dropdownMenu-link {
   display: flex;
   align-items: center;
+  width: 100%;
 
   @include no-underline;
   color: inherit;
@@ -43,6 +44,7 @@
 
 .dropdownMenu-text {
   flex-grow: 1;
+  text-align: left;
 
   padding-right: 48px;
 }
