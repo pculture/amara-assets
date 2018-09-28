@@ -75,12 +75,38 @@
 
 .listView-action {
   visibility: hidden;
+  position: relative;
   color: $gray;
-  font-size: $font-size-tiny;
-  margin: 0 4px;
+  font-size: $font-size-normal;
+  // Make actions easier to click on by:
+  //    - Making sure they're square rather than thin
+  //    - Extending their boundary into the padding of the row
+  min-width: 40px;
+  padding: 10px;
+  margin: -10px 4px;
+  border-radius: 50%;
 
   &:hover {
     color: $lime;
+  }
+  &:after {
+    position: absolute;
+    z-index: $z-index-behind;
+    content: "";
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    border-radius: 50%;
+
+    @include transition(0.2s, all, linear);
+  }
+  &:hover:after {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $snow;
   }
 
   &.hover, &.selected {
