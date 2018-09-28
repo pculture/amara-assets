@@ -4,12 +4,12 @@
   max-width: 940px;
   max-height: 235px;
   overflow: hidden;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  img.banner-image {
-    position: relative;
-    margin-left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);  
+  img.banner-image {  
+    flex-shrink: 0; 
   }
 }
