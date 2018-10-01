@@ -683,6 +683,10 @@ fieldset > :not(legend) {
   visibility: hidden;
 }
 
+.imageInput-text {
+  min-width: 0; // bug fix for Firefox not respecting flex shrinking 
+}
+
 .imageInput-previewContainer {
   background: url("../img/image-upload-bg.png");
   margin: 4px 0 16px 0;
