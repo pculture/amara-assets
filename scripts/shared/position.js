@@ -49,7 +49,18 @@ function boundsForViewport() {
 function below(elt, reference) {
     elt.detach().appendTo($('body'));
 
-    var referenceBounds = boundsForElt(reference);
+    if(reference.pageX) {
+        // position relative to a mouse click
+        var referenceBounds = {
+            left: reference.pageX,
+            right: reference.pageX,
+            top: reference.pageY,
+            bottom: reference.pageY
+        };
+    } else {
+        // position relative to an element
+        var referenceBounds = boundsForElt(reference);
+    }
     var viewportBounds = boundsForViewport();
     var height = elt.outerHeight();
     var width = elt.outerWidth();

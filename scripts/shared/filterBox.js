@@ -43,7 +43,7 @@ function filterBox(filterBox) {
     clearAllButton.on('click', clearAllFilters);
     filtersContainer.on('click', function(evt) {
         if(filtersContainer.is(evt.target)) {
-            dropdownMenu.dropdown('toggle', {button: button, event: evt});
+            dropdownMenu.dropdown('toggle', {event: evt});
             button.focus();
         }
     });
