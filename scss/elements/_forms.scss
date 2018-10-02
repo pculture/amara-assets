@@ -373,7 +373,7 @@ input:checked + label .checkbox-icon {
 
 .multiField-label {
   float: left;
-  width: 150px;
+  width: 120px;
   text-align: right;
   font-weight: normal;
   line-height: 39px;
@@ -486,6 +486,20 @@ input:checked + label .checkbox-icon {
       }
     }
 
+  }
+}
+
+.subtitleVisibilityLabel {
+  width: 155px;
+}
+
+.subtitleVisibilityInput {
+  margin-left: 160px;
+}
+
+@include respond-to(tablet, 0) {
+  .subtitleVisibilityInput {
+    margin: 0;
   }
 }
 
