@@ -45,11 +45,16 @@ function boundsForViewport() {
 
 // Position an element below another element.
 //
+// Args:
+// 1) elt - the element to be positioned
+// 2) reference - the reference element where elt will be positioned against
+// 3) options - dictionary of additional options: dropLeft
+//
 // By default, the element "drops" to the right (left edge of dropdown aligned with left edge of reference). 
-// Pass drop_to_left=true to drop the dropdown to the left instead (right edge of dropdown aligned with right edge of ref)
+// Add a dropLeft key with a value of true to drop the dropdown to the left instead (right edge of dropdown aligned with right edge of ref)
 //
 // If the element being positioned would be offscreen, then position it on top instead.
-function below(elt, reference, drop_to_left) {
+function below(elt, reference, options) {
     elt.detach().appendTo($('body'));
 
     var referenceBounds = boundsForElt(reference);
@@ -69,7 +74,7 @@ function below(elt, reference, drop_to_left) {
     }
 
     // Do the same thing for left/right
-    if (drop_to_left) {
+    if (options.dropLeft) {
         if(referenceBounds.right - width <= viewportBounds.left &&
             width < viewportBounds.right - referenceBounds.right) {
             var left = referenceBounds.left + 'px';
