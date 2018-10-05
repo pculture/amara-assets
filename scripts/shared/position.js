@@ -21,6 +21,7 @@
 // position -- position elements in various ways
 
 $ = require('jquery');
+_ = require('underscore');
 
 function boundsForElt(elt) {
     var offset = elt.offset();
@@ -55,6 +56,12 @@ function boundsForViewport() {
 //
 // If the element being positioned would be offscreen, then position it on top instead.
 function below(elt, reference, options) {
+    if(options === undefined) {
+        options = {};
+    }
+    options = _.defaults(options, {
+        dropLeft: false
+    });
     elt.detach().appendTo($('body'));
 
     if(reference.pageX) {
