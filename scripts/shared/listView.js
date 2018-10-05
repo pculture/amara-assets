@@ -94,7 +94,7 @@ ListViewDOM.prototype = {
         // Calulate which row an element is in
         return $(elt).closest(this.cells).data('row');
     },
-    selectionValueForRow: function(row) {
+    selectionCheckboxValueForRow: function(row) {
         return $('input[name=selection]', this.cellsForRow(row)).val();
     }
 };
@@ -289,7 +289,14 @@ ListViewLinkHandler.prototype = {
     onLinkActivate: function(evt, arg1, arg2, arg3) {
         if(arg1 == 'listview-form') {
             var row = this.dom.calcRow(evt.openerButton);
-            var selection = this.dom.selectionValueForRow(row);
+            if(evt.openerButton && evt.openerButton.data('selection')) {
+                // selection hard-coded on the dropdown button
+                var selection = evt.openerButton.data('selection');
+            } else {
+                // calculate the selection based on the checkbox for the row
+                var selection = this.dom.selectionCheckboxValueForRow(row);
+            }
+            console.log(row, selection);
             if(selection) {
                 var url = '?' + querystring.format({
                     form: arg2,
