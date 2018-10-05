@@ -21,16 +21,35 @@
 var $ = require('jquery');
 var dialogs = require('../shared/dialogs');
 
-$.behaviors('.videoPage-showUrlDialog', showUrlDialog);
+$.behaviors('#videourl-dropdown', videourlDropdown);
 
-function showUrlDialog(button) {
-    button = $(button);
-    button.click(function(evt) {
-        var row = $(this).closest('tr');
-        var dialog = $(button.data('target'));
+function videourlDropdown(menu) {
+    menu = $(menu);
+    menu.on('show', function(evt, data) {
+        var makePrimaryButton = $('.videourl-make-primary .dropdownMenu-link', data.dropdownMenu.menu);
+        var deleteButton = $('.videourl-delete .dropdownMenu-link', data.dropdownMenu.menu);
+
+        if(data.button.data('primary')) {
+            makePrimaryButton.addClass('disabled').prop('disabled', true);
+            deleteButton.addClass('disabled').prop('disabled', true);
+        } else if(data.button.data('original')) {
+            makePrimaryButton.removeClass('disabled').prop('disabled', false);
+            deleteButton.addClass('disabled').prop('disabled', true);
+        } else {
+            makePrimaryButton.removeClass('disabled').prop('disabled', false);
+            deleteButton.removeClass('disabled').prop('disabled', false);
+        }
+    });
+
+    // Map link actions to the dialogs they open
+    var dialogMap = {
+        "make-primary": "make-url-primary-dialog",
+        "delete": "delete-url-dialog"
+    };
+    menu.on('link-activate', function(evt, action) {
+        var dialog = $('#' + dialogMap[action]);
         dialogs.showModal(dialog);
-        $('.url', dialog).text(row.data('url'));
-        $('input[name=id]', dialog).val(row.data('id'));
+        $('input[name=id]', dialog).val(evt.openerButton.data('videourl'));
+        $('.modal-header', dialog).text(evt.openerButton.data('url'));
     });
 }
-
