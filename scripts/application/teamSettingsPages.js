@@ -32,7 +32,7 @@ function permissionsTableDynamicRow(row) {
     });
 
     function handleChange(evt) {
-        var span = spans.eq(evt.data - 1);
+        var span = spans.eq(evt.data);
         var checked = $(this).prop('checked');
         span.toggleClass('text-lime fa-check', checked);
         span.toggleClass('text-amaranth fa-times', !checked);
