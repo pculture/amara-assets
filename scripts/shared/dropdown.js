@@ -64,10 +64,20 @@ function dropdownMenuButton(button) {
         button.data('menu', menu);
     }
 
+    function is_disabled() {
+        return button.hasClass('disabled');
+    }
+
     button.click(function(evt) {
+        if (is_disabled()) {
+            return;
+        }
         menu.dropdown('toggle', {button: button, event: evt});
         evt.preventDefault();
     }).keydown(function(evt) {
+        if (is_disabled()) {
+            return;
+        }
         if(evt.which == keyCodes.enter ||
                 evt.which == keyCodes.space ||
                 evt.which == keyCodes.down) {
@@ -82,6 +92,9 @@ function dropdownMenuButton(button) {
         evt.stopPropagation();
         evt.preventDefault();
     }).on('key-activate', function(evt) {
+        if (is_disabled()) {
+            return;
+        }
         menu.dropdown('show', {button: button, event: evt});
         menu.dropdown('focusFirstLink');
     });
@@ -100,6 +113,10 @@ function DropDownMenu(menu) {
     this.shown = false;
     this.openerButton = null;
     this.setupEventHandlers();
+
+    // additional options for position.below
+    this.below_options = {}
+    this.below_options.dropLeft = menu.hasClass('dropdownMenuLeft')
 }
 
 DropDownMenu.prototype = {
@@ -124,7 +141,7 @@ DropDownMenu.prototype = {
         }
         // hide all other menus;
         $('.dropdownMenu:visible').not(this.menu).dropdown('hide', context);
-        position.below(this.menu, context.button);
+        position.below(this.menu, context.button, this.below_options);
         this.menu.css('display', 'flex');
         if(context.button) {
             context.button.attr('aria-expanded', 'true');
