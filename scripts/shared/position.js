@@ -57,6 +57,10 @@ function boundsForViewport() {
 function below(elt, reference, options) {
     elt.detach().appendTo($('body'));
 
+    if (options === undefined) {
+        options = {}
+    }
+
     var referenceBounds = boundsForElt(reference);
     var viewportBounds = boundsForViewport();
     var height = elt.outerHeight();
