@@ -45,11 +45,11 @@ $.behaviors('div#subtitleVisibility', function(container) {
 
     function change_help_text() {
         if (drafts.is(':checked')) {
-            help_text.html('All subtitles are visible to anyone.')
+            help_text.html(gettext('All subtitles are visible to anyone.'))
         } else if (completed.is(':checked')) {
-            help_text.html('In progress subtitles are visible to team members only.  Completed subtitles are visible to anyone.')
+            help_text.html(gettext('In progress subtitles are visible to team members only.  Completed subtitles are visible to anyone.'))
         } else {
-            help_text.html('All subtitles are visible only to team members.')
+            help_text.html(gettext('All subtitles are visible only to team members.'))
         }
     }
 
