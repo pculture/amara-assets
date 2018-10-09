@@ -122,8 +122,8 @@ $.behaviors('#workflowSettingsForm', function(form) {
         var total_duration = calc_total_duration(workflow_segments)
 
         $.each(workflow_segments, function(i, segment) {
-            var duration = $(segment).data('duration')
-            spaces.push(Math.floor(segments_space * (duration / total_duration)))
+            var duration = parseInt($(segment).data('duration')) || 0
+            spaces.push(Math.floor(segments_space * (duration / total_duration)) || 0)
         })
 
         $.each(workflow_segments, function(i, segment) {
@@ -136,7 +136,7 @@ $.behaviors('#workflowSettingsForm', function(form) {
                 var duration_text_unit = duration > 1 ? ' days' : ' day'    
                 duration_text = duration + duration_text_unit
             } else {
-                duration_text = 'Indefinite'
+                duration_text = 'No time limit'
             }
             $(s.children('span')[1]).html(duration_text);
         })
@@ -197,7 +197,7 @@ $.behaviors('#workflowSettingsForm', function(form) {
             hide_review_time_field();
 
             review_time_input.val('')
-            wfd_review.data('duration', '')
+            wfd_review.data('duration', 0)
             hide_review_wfd();
         }
         calc_wfd_spacing(wfd_container);
@@ -211,7 +211,7 @@ $.behaviors('#workflowSettingsForm', function(form) {
             hide_approve_time_field();
 
             approve_time_input.val('')
-            wfd_approve.data('duration', '')
+            wfd_approve.data('duration', 0)
             hide_approve_wfd();
         }
         calc_wfd_spacing(wfd_container);
