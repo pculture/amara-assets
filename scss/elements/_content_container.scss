@@ -53,3 +53,34 @@
   display: none;
 }
 
+
+.contentFooter {
+  background: $snow;
+  padding: 8px 20px;
+  font-size: $font-size-small;
+}
+
+.contentFooter-paginator {
+  text-align: right;
+  > li {
+    display: inline-block;
+  }
+  margin: 0;
+  padding: 0;
+}
+.contentFooter-paginatorLink {
+  display: inline-block;
+  color: $gray;
+  font-weight: normal;
+  @include no-underline;
+  padding: 4px;
+
+  &.current {
+    color: $charcoal;
+  }
+
+  &:hover {
+    color: $white;
+    background: $lime;
+  }
+}
