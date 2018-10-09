@@ -132,7 +132,16 @@ em {
 }
 
 
+// Text Utilities
 
+.text-nocase { text-transform: none !important; }
+.text-capitalize { text-transform: capitalize !important; }
+.text-lowercase { text-transform: lowercase !important; }
+.text-uppercase { text-transform: uppercase !important; }
+
+.italic {
+  font-style: italic;
+}
 
 // Media Queries
 @media(max-width: $screen-md-max) {

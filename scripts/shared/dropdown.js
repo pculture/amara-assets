@@ -22,162 +22,265 @@ var $ = require('jquery');
 var keyCodes = require('./keyCodes');
 var position = require('./position');
 
-$.behaviors('.dropdownMenu', dropdownMenu);
+// Create a jquery plugin to handle dropdown stuff.  API:
+//
+//   - $(elt).dropdown(): initialize dropdown code (not needed if you add the .dropdownMenu class)
+//   - $(elt).dropdown('show', context): show the dropdown
+//   - $(elt).dropdown('hide', context): hide the dropdown
+//   - $(elt).dropdown('toggle', context): toggle the dropdown
+//   - $(elt).dropdown('focusFirstLink'): focus the first link
+//   - $(elt).dropdown('focusLastLink'): focus the last link
+//
+//   In general, you can call any method of the DropDownMenu class.  The "context" param is a dict with these keys:
+//     - button -- button element that caused the dropdown to show/hide (if applicable)
+//     - event -- current jQuery event
+// 
+$.fn.dropdown = function(action) {
+    if(action === undefined) {
+        return this.each(setupDropdownMenu);
+    } else {
+        var extraArgs = Array.prototype.slice.call(arguments, 1);
+        return this.each(function() {
+            var dropdown = $(this).data('dropdown');
+            var method = dropdown[action];
+            if(method) {
+                method.apply(dropdown, extraArgs);
+            } else {
+                throw "Unknown dropdown action: " + action;
+            }
+        });
+    }
+}
 
-function dropdownMenu(menu) {
-    menu = $(menu);
-    var button = $('#' + menu.attr('aria-labeledby'));
-    var links = $('.dropdownMenu-link', menu).not('.disabled');
-    button.data('menu', menu);
+$.behaviors('.dropdownMenu', setupDropdownMenu);
+$.behaviors('.dropdownMenu-button', dropdownMenuButton);
+
+function dropdownMenuButton(button) {
+    var button = $(button);
+    var menu = $();
+
+    if(button.data('target')) {
+        menu = $('#' + button.data('target'));
+        button.data('menu', menu);
+    }
+
+    function is_disabled() {
+        return button.hasClass('disabled');
+    }
 
     button.click(function(evt) {
-        if(menuVisible()) {
-            hideMenu();
-        } else {
-            showMenu();
+        if (is_disabled()) {
+            return;
         }
+        menu.dropdown('toggle', {button: button, event: evt});
         evt.preventDefault();
     }).keydown(function(evt) {
+        if (is_disabled()) {
+            return;
+        }
         if(evt.which == keyCodes.enter ||
                 evt.which == keyCodes.space ||
                 evt.which == keyCodes.down) {
-            showMenu();
-            focusFirstLink();
+            menu.dropdown('show', {button: button, event: evt});
+            menu.dropdown('focusFirstLink');
         } else if(evt.which == keyCodes.up) {
-            showMenu();
-            focusLastLink();
+            menu.dropdown('show', {button: button, event: evt});
+            menu.dropdown('focusLastLink');
         } else if(evt.which == keyCodes.esc) {
-            hideMenu();
-        } else if(menuVisible() && keyCodeIsAlphaNumeric(evt)) {
-            focusNextLinkWithChar(links.eq(-1), String.fromCharCode(evt.which));
+            menu.dropdown('hide', {button: button, event: evt});
         }
         evt.stopPropagation();
         evt.preventDefault();
     }).on('key-activate', function(evt) {
-        showMenu();
-        focusFirstLink();
+        if (is_disabled()) {
+            return;
+        }
+        menu.dropdown('show', {button: button, event: evt});
+        menu.dropdown('focusFirstLink');
     });
+}
 
-    menu.on('show', function(evt) {
-        showMenu();
-    });
+function setupDropdownMenu(menu) {
+    menu = $(menu);
+    if(!menu.data('dropdown')) {
+        menu.data('dropdown', new DropDownMenu(menu));
+    }
+}
 
-    menu.on('hide', function(evt) {
-        hideMenu();
-    });
+function DropDownMenu(menu) {
+    this.menu = menu;
+    this.links = $('.dropdownMenu-link', menu).not('.disabled'),
+    this.shown = false;
+    this.openerButton = null;
+    this.setupEventHandlers();
 
-    menu.on('toggle', function(evt) {
-        if(menuVisible()) {
-            hideMenu();
+    // additional options for position.below
+    this.below_options = {}
+    this.below_options.dropLeft = menu.hasClass('dropdownMenuLeft')
+}
+
+DropDownMenu.prototype = {
+    show: function(context) {
+        if(context === undefined) {
+            context = {};
+        }
+        if(this.menu.triggerHandler('show', {
+            dropdownMenu: this,
+            button: context.button,
+            event: context.event
+        }) === false) {
+            return;
+        }
+
+        if(this.shown) {
+            if(context.button && context.button == this.openerButton) {
+                return;
+            } else {
+                this.hide(context);
+            }
+        }
+        // hide all other menus;
+        $('.dropdownMenu:visible').not(this.menu).dropdown('hide', context);
+        position.below(this.menu, context.button, this.below_options);
+        this.menu.css('display', 'flex');
+        if(context.button) {
+            context.button.attr('aria-expanded', 'true');
+        }
+        this.openerButton = context.button;
+        this.shown = true;
+        this.setupClickHandler(context.event);
+        if(context.event) {
+            context.event.preventDefault();
+            context.event.stopPropagation();
+        }
+    },
+    hide: function(context) {
+        if(context === undefined) {
+            context = {};
+        }
+        if(!this.shown) {
+            return;
+        }
+        if(this.menu.triggerHandler('hide', { dropdownMenu: this, }) === false) {
+            return;
+        }
+
+        this.menu.css('display', 'none');
+        this.openerButton.attr('aria-expanded', 'false');
+        this.openerButton = null;
+        this.shown = false;
+        this.removeClickHandler();
+        if(context.event && !context.skipPreventDefault) {
+            context.event.preventDefault();
+            context.event.stopPropagation();
+        }
+    },
+    toggle: function(context) {
+        if(this.shown && this.openerButton === context.button) {
+            this.hide(context);
         } else {
-            showMenu();
+            this.show(context);
         }
-    });
-
-    links.on('keydown', function(evt) {
-        var link = $(this);
-
-        if(evt.which == keyCodes.up) {
-            focusPrevLink(link);
-        } else if (evt.which == keyCodes.down) {
-            focusNextLink(link);
-        } else if(evt.which == keyCodes.enter) {
-            return activateLink(evt, link);
-        } else if(evt.which == keyCodes.esc) {
-            hideMenu();
-            focusButton();
-        } else if(evt.which == keyCodes.home) {
-            focusFirstLink();
-        } else if(evt.which == keyCodes.end) {
-            focusLastLink();
-        } else if(keyCodeIsAlphaNumeric(evt)) {
-            focusNextLinkWithChar(link, String.fromCharCode(evt.which));
-        }
-
-        evt.stopPropagation();
-        evt.preventDefault();
-    }).on('click', function(evt) {
-        return activateLink(evt, $(this));
-    });
-
-    function activateLink(evt, link) {
-        hideMenu();
-        if(link.data('activateArgs')) {
-            // dropdown-js-item -- trigger link-activate
-            focusButton();
-            menu.trigger('link-activate', link.data('activateArgs'));
-            evt.preventDefault();
+    },
+    focusedLinkIndex: function() {
+        var link = this.links.filter(':focus');
+        if(link.length > 0) {
+            return this.links.index(link);
         } else {
-            // Regular link item.  return now, skipping preventDefault() to
-            // make the link click go through.  Also, skip calling
-            // focusButton, since that would stop the click.
-            return;
+            return -1;
         }
-    }
-
-    function keyCodeIsAlphaNumeric(evt) {
-        return evt.which >= 65 && evt.which <= 90;
-    }
-
-    function menuVisible() {
-        return menu.css('display') != 'none';
-    }
-
-    function showMenu() {
-        if(menuVisible()) {
-            return;
-        }
-        $('.dropdownMenu:visible').not(menu).trigger('hide');
-        position.below(menu, button);
-        menu.css('display', 'flex');
-        button.attr('aria-expanded', 'true');
-    }
-
-    function hideMenu() {
-        if(!menuVisible()) {
-            return;
-        }
-        button.attr('aria-expanded', 'false');
-        menu.css('display', 'none');
-    }
-
-    function focusNextLink(link) {
-        var index = (links.index(link) + 1) % links.length;
-        links.get(index).focus();
-    }
-
-    function focusPrevLink(link) {
-        var index = links.index(link) - 1;
-        links.get(index).focus();
-    }
-
-    function focusFirstLink() {
-        links.get(0).focus();
-    }
-
-    function focusLastLink() {
-        links.get(-1).focus();
-    }
-
-    function focusNextLinkWithChar(link, character) {
-        var startingIndex = i = links.index(link);
+    },
+    focusFirstLink: function() {
+        this.links.get(0).focus();
+    },
+    focusLastLink: function() {
+        this.links.get(-1).focus();
+    },
+    focusNextLink: function() {
+        var index = (this.focusedLinkIndex() + 1) % this.links.length;
+        this.links.get(index).focus();
+    },
+    focusPrevLink: function() {
+        var index = this.focusedLinkIndex() - 1;
+        this.links.get(index).focus();
+    },
+    focusNextLinkWithChar: function(character) {
+        var startingIndex = i = this.focusedLinkIndex();
         while(true) {
-            i = (i + 1) % links.length;
+            i = (i + 1) % this.links.length;
             if(i == startingIndex) {
                 return;
             }
-            var currentLink = links.eq(i);
+            var currentLink = this.links.eq(i);
             if(currentLink.text().trim()[0].toUpperCase() == character) {
                 currentLink.focus();
                 return;
             }
         }
-    }
+    },
+    setupEventHandlers: function() {
+        var self = this;
 
-    function focusButton() {
-        var rv = menu.triggerHandler('focus-button');
+        this.links.on('keydown', function(evt) {
+            if(evt.which == keyCodes.up) {
+                self.focusPrevLink();
+            } else if (evt.which == keyCodes.down) {
+                self.focusNextLink();
+            } else if(evt.which == keyCodes.enter) {
+                self.activateLink(evt, $(this));
+            } else if(evt.which == keyCodes.esc) {
+                var button = self.openerButton;
+                self.hide();
+                self.focusButton(button);
+            } else if(evt.which == keyCodes.home) {
+                self.focusFirstLink();
+            } else if(evt.which == keyCodes.end) {
+                self.focusLastLink();
+            } else if(keyCodes.isAlpha(evt.which)) {
+                self.focusNextLinkWithChar(String.fromCharCode(evt.which));
+            }
+
+            evt.stopPropagation();
+            evt.preventDefault();
+        }).on('click', function(evt) {
+            self.activateLink(evt, $(this));
+        });
+    },
+    activateLink: function(evt, link) {
+        var button = this.openerButton;
+        if(link.data('activateArgs')) {
+            // dropdown-js-item -- trigger link-activate
+            this.hide({button: button, event: evt });
+            this.focusButton(button);
+            this.menu.trigger($.Event('link-activate', {
+                openerButton: button,
+                dropdownMenu: this
+            }), link.data('activateArgs'));
+            evt.preventDefault();
+        } else {
+            this.hide({button: button, event: evt, skipPreventDefault:true });
+            // Regular link item.  Don't call preventDefault() to make the link
+            // click go through.  Also, skip calling focusButton, since that would
+            // stop the click.
+        }
+    },
+    focusButton: function(button) {
+        var rv = this.menu.triggerHandler('focus-button');
         if(rv !== false) {
             button.focus();
         }
+    },
+    setupClickHandler: function(openerEvent) {
+        $(document).on('click.dropdown', function(evt) {
+            var target = $(evt.target);
+            if(evt != openerEvent &&
+                    target.closest(this.menu).length == 0 &&
+                    target.closest(this.openerButton).length == 0) {
+                this.hide({event:evt});
+            }
+        }.bind(this));
+    },
+    removeClickHandler: function() {
+        $(document).off('click.dropdown');
     }
-}
+};
