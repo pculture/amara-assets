@@ -71,7 +71,8 @@ function processAjaxResponse(responseData) {
 
             case 'reloadPage':
                 $(window).on('beforeunload', scrollAfterReload);
-                window.location.reload();
+                // Force a GET request on reload
+                window.location = window.location.href;
                 break;
 
             case 'redirect':
