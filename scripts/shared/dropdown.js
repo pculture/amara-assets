@@ -141,7 +141,11 @@ DropDownMenu.prototype = {
         }
         // hide all other menus;
         $('.dropdownMenu:visible').not(this.menu).dropdown('hide', context);
-        position.below(this.menu, context.button, this.below_options);
+        if(context.button) {
+            position.below(this.menu, context.button, this.below_options);
+        } else {
+            position.below(this.menu, context.event, this.below_options);
+        }
         this.menu.css('display', 'flex');
         if(context.button) {
             context.button.attr('aria-expanded', 'true');
@@ -166,8 +170,10 @@ DropDownMenu.prototype = {
         }
 
         this.menu.css('display', 'none');
-        this.openerButton.attr('aria-expanded', 'false');
-        this.openerButton = null;
+        if(this.openerButton) {
+            this.openerButton.attr('aria-expanded', 'false');
+            this.openerButton = null;
+        }
         this.shown = false;
         this.removeClickHandler();
         if(context.event && !context.skipPreventDefault) {
@@ -251,7 +257,9 @@ DropDownMenu.prototype = {
         if(link.data('activateArgs')) {
             // dropdown-js-item -- trigger link-activate
             this.hide({button: button, event: evt });
-            this.focusButton(button);
+            if(button) {
+                this.focusButton(button);
+            }
             this.menu.trigger($.Event('link-activate', {
                 openerButton: button,
                 dropdownMenu: this
