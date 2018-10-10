@@ -43,4 +43,5 @@ $.behaviors('.saveChangesButton', function(button) {
 
     inputs.on('input', show_save_button);
     inputs.on('change', show_save_button);
+    inputs.on('customchange', show_save_button); // use this for form controls that normally do not fire 'change' or 'input'
 });

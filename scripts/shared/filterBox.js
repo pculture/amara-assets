@@ -33,6 +33,7 @@ function filterBox(filterBox) {
     var dropdownMenu = $('.dropdownMenu', filterBox);
     var button = $('.filterBox-button', filterBox);
     var chooser = null;
+    var lastFiltersClickEvent = null;
 
     var filtersContainer = $('<div class="filterBox-filters">').appendTo(filterBox);
 
@@ -43,18 +44,23 @@ function filterBox(filterBox) {
     clearAllButton.on('click', clearAllFilters);
     filtersContainer.on('click', function(evt) {
         if(filtersContainer.is(evt.target)) {
-            dropdownMenu.dropdown('toggle', {button: button, event: evt});
-            button.focus();
+            lastFiltersClickEvent = evt;
+            dropdownMenu.dropdown('toggle', {event: evt});
         }
     });
 
     dropdownMenu.on('link-activate', function(evt, fieldName) {
-        buildChooser(fieldName);
+        if(lastFiltersClickEvent && !evt.openerButton) {
+            // dropdown was opened by a click in the filters container.  Use that to position the chooser dialog.
+            buildChooser(fieldName, lastFiltersClickEvent);
+        } else {
+            buildChooser(fieldName, filterBox);
+        }
     }).on('show', function() {
         removeChooserIfShown();
     });
 
-    function buildChooser(fieldName) {
+    function buildChooser(fieldName, positioner) {
         removeChooserIfShown();
 
         var inputSelector = ('[name=' + fieldName + ']');
@@ -96,7 +102,7 @@ function filterBox(filterBox) {
             }
         }).change();
 
-        position.below(chooser, filterBox);
+        position.below(chooser, positioner);
         if(isSelect2) {
             input.select2('focus');
         } else {

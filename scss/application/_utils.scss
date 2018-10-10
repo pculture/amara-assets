@@ -17,6 +17,14 @@
   }
 }
 
+.col2-laptop {
+  column-count: 2;
+  column-gap: 20px;
+  @include respond-to(0, tablet) {
+    column-count: 1;
+  }
+}
+
 .break-50 { max-width: 50%; }
 .break-60 { max-width: 60%; }
 .break-70 { max-width: 70%; }

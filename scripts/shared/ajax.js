@@ -71,7 +71,8 @@ function processAjaxResponse(responseData) {
 
             case 'reloadPage':
                 $(window).on('beforeunload', scrollAfterReload);
-                window.location.reload();
+                // Force a GET request on reload
+                window.location = window.location.href;
                 break;
 
             case 'redirect':
@@ -223,7 +224,7 @@ function update(url, options) {
     });
     if(options.pushState) {
         history.pushState(url, "", url);
-    } else {
+    } else if(!options.keepState) {
         history.replaceState(url, "", url);
     }
 }
