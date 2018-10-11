@@ -23,6 +23,10 @@
   @include respond-to(0, tablet) {
     column-count: 1;
   }
+
+  div {
+    page-break-inside: avoid;
+  }
 }
 
 .break-50 { max-width: 50%; }
