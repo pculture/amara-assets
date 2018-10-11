@@ -55,8 +55,9 @@
 
 
 .contentFooter {
+  display: flex;
   background: $snow;
-  padding: 8px 20px;
+  padding: 12px 20px;
   font-size: $font-size-small;
 }
 
@@ -67,13 +68,14 @@
   }
   margin: 0;
   padding: 0;
+  flex-grow: 1;
 }
 .contentFooter-paginatorLink {
   display: inline-block;
   color: $gray;
   font-weight: normal;
   @include no-underline;
-  padding: 4px;
+  padding: 0 4px;
 
   &.current {
     color: $charcoal;
