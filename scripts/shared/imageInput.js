@@ -58,6 +58,7 @@ function imageInput(container) {
         button.text(gettext('Browse')).off('click');
         fileInput.detach().appendTo(buttonContainer);
         fileInput.val('');
+        fileInput.trigger('customchange'); // to trigger .saveChangesButton
     }
 
     function updatePreviewThumbnail(evt) {
