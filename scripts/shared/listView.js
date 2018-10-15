@@ -24,6 +24,8 @@ var ajax = require('./ajax');
 var querystring = require('./querystring');
 var keyCodes = require('./keyCodes');
 
+var longTouchDelay = 500;
+
 $.behaviors('.listView', listView);
 
 // ListView is fairly complicated, so we split up the implentation into several parts:
@@ -86,6 +88,22 @@ ListViewDOM.prototype = {
     },
     actionsForRow: function(row) {
         return $('.listView-action', this.cellsForRow(row));
+    },
+    activateMainAction: function(row) {
+        var action = this.actionsForRow(row).last();
+        if(action.data('menu')) {
+            action.trigger('key-activate');
+        } else {
+            action.click();
+        }
+    },
+    activateMainActionFromClick: function(row, evt) {
+        var action = this.actionsForRow(row).last();
+        if(action.data('menu')) {
+            action.data('menu').dropdown('show', { event: evt });
+        } else {
+            action.click();
+        }
     },
     checkboxForRow: function(row) {
         return $(':checkbox', this.cellsForRow(row).filter('.listView-checkbox'));
@@ -161,9 +179,15 @@ ListViewExpansion.prototype = {
 function ListViewMouse(dom) {
     this.dom = dom;
     this.hoverRow = null;
+    this.touchTimer = null;
+    this.touchStartEvt = null;
 
     dom.cells.mouseenter(this.onMouseEnterCell.bind(this));
     dom.elt.mouseleave(this.onMouseLeaveListView.bind(this));
+    dom.cells.on('touchstart', this.onTouchStart.bind(this));
+    dom.cells.on('touchend', this.onTouchEnd.bind(this));
+    dom.cells.on('touchcancel', this.onTouchCancel.bind(this));
+    dom.cells.on('touchmove', this.onTouchMove.bind(this));
 }
 
 ListViewMouse.prototype = {
@@ -180,6 +204,37 @@ ListViewMouse.prototype = {
         this.dom.actionsForRow(this.hoverRow).removeClass('hover');
         this.dom.actionsForRow(row).addClass('hover');
         this.hoverRow = row;
+    },
+    onTouchStart: function(evt) {
+        if(evt.touches.length == 1) {
+            this.touchStartEvt = evt;
+            this.startTouchTimer();
+        }
+        evt.preventDefault();
+    },
+    onTouchEnd: function(evt) {
+        this.cancelTouchTimer();
+    },
+    onTouchCancel: function(evt) {
+        this.cancelTouchTimer();
+    },
+    onTouchMove: function(evt) {
+        this.cancelTouchTimer();
+    },
+    startTouchTimer: function() {
+        this.cancelTouchTimer();
+        this.touchTimer = setTimeout(this.onTouchTimer.bind(this), longTouchDelay);
+    },
+    cancelTouchTimer: function() {
+        if(this.touchTimer) {
+            clearTimeout(this.touchTimer);
+        }
+        this.touchTimer = null;
+    },
+    onTouchTimer: function() {
+        this.touchTimer = null;
+        var row = this.dom.calcRow(this.touchStartEvt.target);
+        this.dom.activateMainActionFromClick(row, this.touchStartEvt);
     }
 };
 
@@ -255,12 +310,7 @@ ListViewKeys.prototype = {
         }
     },
     activateMenu: function() {
-        var action = this.dom.actionsForRow(this.selectedRow).last();
-        if(action.data('menu')) {
-            action.trigger('key-activate');
-        } else {
-            action.click();
-        }
+        this.dom.activateMainAction(this.selectedRow);
     },
     selectAll: function() {
         this.dom.checkAll.prop('checked', !this.dom.checkAll.prop('checked')).trigger('change');
