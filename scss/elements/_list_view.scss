@@ -236,4 +236,20 @@
       tablet: (".listView-actions", ".videoUrls-badges"),
     ));
   }
+
+  &.memberSubtitlesCompleted {
+    @include listView((
+      phone: ('.memberSubtitlesCompleted-video', '.memberSubtitlesCompleted-language'),
+      tablet: ('.memberSubtitlesCompleted-date'),
+    ));
+  }
+
+  &.assignmentHistory {
+    @include listView((
+      phone: ('.assignmentHistory-video', '.assignmentHistory-language'),
+      tablet: ('.assignmentHistory-type'),
+      laptop: ('.assignmentHistory-date'),
+      desktop: ('.assignmentHistory-status'),
+    ));
+  }
 }
