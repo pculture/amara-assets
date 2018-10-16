@@ -1,6 +1,8 @@
 .listView {
   display: grid;
 
+  margin: 0 0 40px;
+
   // Below here are column layouts for specific listViews.  If you have a
   // secondary row, make sure you create named lines for it.  It should take up
   // the entire row, except for the checkbox column (if present).
@@ -16,7 +18,6 @@
   &.memberDirectory.admin {
     grid-template-columns: auto [secondary-row-start] auto auto auto auto auto [secondary-row-end];
   }
-  margin: 0 -10px 40px;
 }
 
 .listView > * {
