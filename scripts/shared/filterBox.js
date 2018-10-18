@@ -110,7 +110,6 @@ function filterBox(filterBox) {
             input.focus();
         }
         if(input.is(':text')) {
-            console.log('textbox');
             input.on('keydown', function(evt) {
                 if(evt.which == keyCodes.enter && input.val() != '') {
                     applyButton.click();
