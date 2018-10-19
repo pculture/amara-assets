@@ -25,6 +25,7 @@ var querystring = require('./querystring');
 var select = require('./select/main');
 var ajax = require('./ajax');
 var filters = require('./filters');
+var keyCodes = require('./keyCodes');
 
 $.behaviors('.filterBox', filterBox);
 
@@ -107,6 +108,15 @@ function filterBox(filterBox) {
             input.select2('focus');
         } else {
             input.focus();
+        }
+        if(input.is(':text')) {
+            input.on('keydown', function(evt) {
+                if(evt.which == keyCodes.enter && input.val() != '') {
+                    applyButton.click();
+                } else if(evt.which == keyCodes.esc) {
+                    removeChooserIfShown();
+                }
+            });
         }
     }
 
