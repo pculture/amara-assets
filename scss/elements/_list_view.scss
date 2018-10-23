@@ -238,16 +238,16 @@
   &.memberSubtitlesCompleted {
     @include listView((
       phone: ('.memberSubtitlesCompleted-video', '.memberSubtitlesCompleted-language'),
-      tablet: ('.memberSubtitlesCompleted-date'),
+      tablet: ('.memberSubtitlesCompleted-video', '.memberSubtitlesCompleted-language', '.memberSubtitlesCompleted-date'),
     ));
   }
 
   &.assignmentHistory {
     @include listView((
       phone: ('.assignmentHistory-video', '.assignmentHistory-language'),
-      tablet: ('.assignmentHistory-type'),
-      laptop: ('.assignmentHistory-date'),
-      desktop: ('.assignmentHistory-status'),
-    ));
+      tablet: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type'),
+      laptop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date'),
+      desktop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date', '.assignmentHistory-status'),
+    ), $collapsed: ('.assignmentHistory-status'));
   }
 }
