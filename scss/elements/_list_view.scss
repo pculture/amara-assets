@@ -103,19 +103,25 @@
 @mixin listView-grid-template-columns($columns) {
   $items: ();
   $saw-checkbox: false;
+  $saw-actions: false;
 
   @each $column in $columns {
-    $items: append($items, auto);
+    $items: append($items, minmax(auto, 1fr));
     @if $column == ".listView-checkbox" {
       $saw-checkbox: true;
+    } @else if $column == ".listView-actions" {
+      $saw-actions: true;
     }
   }
 
-  // Set the first column to expand.  If we saw the a checkbox column, assume that it's the first column, and instead set the second column to expand
+  // Make the checkbox/actions columns not expand.
   @if $saw-checkbox {
-    $items: set-nth($items, 2, minmax(auto, 1fr));
-  } @else {
-    $items: set-nth($items, 1, minmax(auto, 1fr));
+    // Assume the checkbox is in the first column
+    $items: set-nth($items, 1, auto);
+  }
+  @if $saw-actions {
+    // Assume the actions is in the first column
+    $items: set-nth($items, -1, auto);
   }
 
   grid-template-columns: $items;
