@@ -415,6 +415,7 @@ input:checked + label .checkbox-icon {
         &.columns-#{$i} { grid-template-columns: repeat(#{$i}, minmax(100px, auto)) 1fr; }
       }
       &.checkboxes {
+        margin-top: 4px;
         grid-template-rows: auto;
       }
     }
