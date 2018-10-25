@@ -44,6 +44,10 @@
     border-top: 0;
     border-bottom: 1px solid light($gray);
   }
+
+  &.visible {
+    display: block;
+  }
 }
 
 .listView-checkbox {
@@ -227,6 +231,13 @@
     @include listView((
       phone: (".projectList-title"),
       tablet: (".listView-actions", ".projectList-description"),
+    ));
+  }
+
+  &.integrationList {
+    @include listView((
+      phone: (".integrationList-channel"),
+      tablet: (".listView-actions"),
     ));
   }
 
