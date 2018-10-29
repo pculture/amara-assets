@@ -61,6 +61,12 @@
   font-size: $font-size-small;
 }
 
+.contentFooter-paginatorCount {
+  text-align: right;
+  color: $gray;
+  margin-right: 8px;
+  flex-grow: 1;
+}
 .contentFooter-paginator {
   text-align: right;
   > li {
@@ -68,7 +74,6 @@
   }
   margin: 0;
   padding: 0;
-  flex-grow: 1;
 }
 .contentFooter-paginatorLink {
   display: inline-block;

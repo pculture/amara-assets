@@ -27,9 +27,10 @@ $.behaviors('.contentHeader-searchBar', contentHeaderSearchBar);
 
 function contentHeader(container) {
     container = $(container);
+    var addButton = $('.contentHeader-addButton', container);
     var buttonText = $('.contentHeader-addButtonText', container);
 
-    container.hover(function() {
+    addButton.hover(function() {
         buttonText.animate({width:'show'}, 200);
     }, function() {
         buttonText.animate({width:'hide'}, 200);

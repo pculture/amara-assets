@@ -36,6 +36,13 @@
   }
 }
 
+.listView.expandable > * {
+  cursor: pointer;
+  &.expanded {
+    cursor: auto;
+  }
+}
+
 .listView-header {
   background: $snow;
 }

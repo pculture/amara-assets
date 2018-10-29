@@ -6,7 +6,6 @@
 
 .filterBox-filters {
   flex-grow: 1;
-  cursor: pointer;
 }
 
 .filterBox-filter {
@@ -29,6 +28,7 @@
 .filterBox-button {
   color: light($gray);
   font-weight: normal;
+  padding: 4px 8px;
   margin-right: 8px;
 }
 
@@ -62,7 +62,11 @@
 }
 
 .filterBox-chooserField {
-  padding: 8px;
+  padding: 16px 8px;
+
+  .form-group {
+    margin: 0;
+  }
 }
 
 @include respond-to(tablet, 0) {

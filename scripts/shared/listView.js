@@ -44,7 +44,6 @@ function ListViewDOM(elt) {
     this.dropdownMenus = $('.dropdownMenu', elt);
     this.dropdownMenusByRow = {};
     this.showDetailsByRow = {};
-    this.expandButtons = $('.listView-expand', elt);
     this.walkCells();
 }
 
@@ -103,7 +102,9 @@ function ListViewExpansion(dom) {
     this.dom = dom;
     this.expandedRow = null;
 
-    this.dom.expandButtons.on('click', this.onExpandClick.bind(this));
+    if(this.dom.elt.is('.expandable')) {
+        this.dom.cells.on('click', this.onExpandRowClick.bind(this));
+    }
     _.each(this.dom.dropdownMenusByRow, function(menu, row) {
         menu.on('link-activate', null, parseInt(row), this.onLinkActivate.bind(this));
     }, this);
@@ -112,25 +113,26 @@ function ListViewExpansion(dom) {
 ListViewExpansion.prototype = {
     toggleRowExpanded: function(row) {
         if(this.expandedRow == row) {
-            row = null; // if the row is already expanded, then collapse it
-        }
-        if(this.expandedRow) {
-            this.collapseRow(this.expandedRow);
-        }
-        if(row) {
+            this.collapseRow(row);
+        } else {
             this.expandRow(row);
         }
-        this.expandedRow = row;
     },
     expandRow: function(row) {
+        if(this.expandedRow) {
+            if(this.expandedRow == row) {
+                return;
+            }
+            this.collapseRow(this.expandedRow);
+        }
         var cells = this.dom.cellsForRow(row);
         cells.addClass('expanded');
 
         $('.listView-secondary', cells).slideDown(250);
         cells.filter('.listView-secondaryRow').slideDown(250);
-        $('.listView-expand', cells).addClass('text-plum');
         this.updateShowDetailsText(row, gettext('Hide Details'));
         this.dom.elt.trigger($.Event('row-expanded', { row: row}));
+        this.expandedRow = row;
     },
     collapseRow: function(row) {
         var cells = this.dom.cellsForRow(row);
@@ -138,18 +140,23 @@ ListViewExpansion.prototype = {
 
         $('.listView-secondary', cells).slideUp(250);
         cells.filter('.listView-secondaryRow').slideUp(250);
-        $('.listView-expand', cells).removeClass('text-plum');
         this.updateShowDetailsText(row, gettext('Show Details'));
         this.dom.elt.trigger($.Event('row-collapsed', { row: row}));
+        this.expandedRow = null;
     },
     updateShowDetailsText: function(row, text) {
         if(row != null && this.dom.showDetailsByRow[row].length > 0) {
             $('.dropdownMenu-text', this.dom.showDetailsByRow[row]).text(text);
         }
     },
-    onExpandClick: function(evt) {
+    onExpandRowClick: function(evt) {
+        if($(evt.target).closest('a, button').length > 0) {
+            // Allow link/button clicks to go through
+            return;
+        }
         this.toggleRowExpanded(this.dom.calcRow(evt.target));
         evt.preventDefault();
+        evt.stopPropagation();
     },
     onLinkActivate: function(evt, action) {
         if(action == 'expand') {

@@ -34,7 +34,6 @@ function filterBox(filterBox) {
     var dropdownMenu = $('.dropdownMenu', filterBox);
     var button = $('.filterBox-button', filterBox);
     var chooser = null;
-    var lastFiltersClickEvent = null;
 
     var filtersContainer = $('<div class="filterBox-filters">').appendTo(filterBox);
 
@@ -43,20 +42,9 @@ function filterBox(filterBox) {
     clearAllButton.text(gettext('Clear Filters '));
     clearAllButton.append('<span class="fa fa-times-circle">');
     clearAllButton.on('click', clearAllFilters);
-    filtersContainer.on('click', function(evt) {
-        if(filtersContainer.is(evt.target)) {
-            lastFiltersClickEvent = evt;
-            dropdownMenu.dropdown('toggle', {event: evt});
-        }
-    });
 
     dropdownMenu.on('link-activate', function(evt, fieldName) {
-        if(lastFiltersClickEvent && !evt.openerButton) {
-            // dropdown was opened by a click in the filters container.  Use that to position the chooser dialog.
-            buildChooser(fieldName, lastFiltersClickEvent);
-        } else {
-            buildChooser(fieldName, filterBox);
-        }
+        buildChooser(fieldName, filterBox);
     }).on('show', function() {
         removeChooserIfShown();
     });
@@ -72,9 +60,15 @@ function filterBox(filterBox) {
             sourceInput.select2('destroy');
         }
         var formField = sourceInput.closest('.form-group').clone();
+        var formLabel = $('label', formField);
         var input = $(inputSelector, formField);
 
         chooser = $('<div class="filterBox-chooser">');
+        if(formLabel.length > 0) {
+            // convert label to a title for the dialog
+            chooser.append($('<h4>', { 'class': 'modal-title'}).text(formLabel.text()));
+            formLabel.remove();
+        }
         chooser.append($('<div class="filterBox-chooserField">').append(formField));
         var buttonContainer = $('<div class="filterBox-chooserActions">').appendTo(chooser);
         var cancelButton = $('<button class="filterBox-chooserAction borderless">').text(gettext('Cancel')).appendTo(buttonContainer);
