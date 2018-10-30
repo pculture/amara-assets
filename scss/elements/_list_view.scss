@@ -210,6 +210,13 @@
     ));
   }
 
+  &.styleguide2Example {
+    @include listView((
+      phone: (".styleguide2Example-title", ".styleguide2Example-language"),
+      tablet: (".listView-checkbox", ".listView-actions"),
+    ));
+  }
+
   &.memberDirectory {
     @include listView((
       phone: (".memberDirectory-name", ".memberDirectory-role"),
@@ -238,6 +245,14 @@
     @include listView((
       phone: (".integrationList-channel"),
       tablet: (".listView-actions"),
+    ));
+  }
+
+  &.syncHistoryList {
+    @include listView((
+      phone: (".syncHistoryList-title"),
+      tablet: (".syncHistoryList-language"),
+      laptop: (".syncHistoryList-channel", ".syncHistoryList-platform", "listView-actions"),
     ));
   }
 
