@@ -361,18 +361,9 @@ ListViewLinkHandler.prototype = {
 };
 
 function listView(elt) {
-    // var dom = new ListViewDOM(elt);
-    // var expansion = new ListViewExpansion(dom);
-    // var mouse = new ListViewMouse(dom);
-    // var keys = new ListViewKeys(dom);
-    // var linkHandler = new ListViewLinkHandler(dom);
-    $(elt).each(function(index) {
-        console.log(this);
-        var elt = this;
-        var dom = new ListViewDOM(elt);
-        var expansion = new ListViewExpansion(dom);
-        var mouse = new ListViewMouse(dom);
-        var keys = new ListViewKeys(dom);
-        var linkHandler = new ListViewLinkHandler(dom);
-    })
+    var dom = new ListViewDOM(elt);
+    var expansion = new ListViewExpansion(dom);
+    var mouse = new ListViewMouse(dom);
+    var keys = new ListViewKeys(dom);
+    var linkHandler = new ListViewLinkHandler(dom);
 }
