@@ -275,6 +275,7 @@ a.topnav-button, button.topnav-button {
     }
   }
   .primarynav {
+    margin-right: 0;
     ul {
       display: block;
       position: relative;
@@ -295,6 +296,7 @@ a.topnav-button, button.topnav-button {
           background-color: #fff;
           color: $charcoal;
           font-weight: 400;
+          text-decoration: none;
           &:hover, &:focus {
             background-color: $snow;
           }
