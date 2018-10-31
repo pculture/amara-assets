@@ -17,6 +17,7 @@ require('../shared/dropdown');
 require('../shared/listView');
 require('../shared/checkAll');
 require('../shared/contentHeader');
+require('../shared/menuToggle');
 
 var state   = require('./state');
 var slider = require('./slider');
