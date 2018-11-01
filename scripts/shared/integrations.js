@@ -24,7 +24,8 @@ $.behaviors('.syncHistoryList-action-sync', function(btn) {
 
     btn.on('click', function() {
         var btn = $(this)
-        var span = btn.find('span')
+        var icon_tooltip = btn.siblings('.syncHistoryIconTooltip')
+        var icon = icon_tooltip.find('.syncHistoryIcon')
         var ajax_url = btn.data('ajax-url')
         var pk = btn.data('sl-pk')
 
@@ -34,22 +35,27 @@ $.behaviors('.syncHistoryList-action-sync', function(btn) {
             data: { 'pk': pk },
 
             beforeSend: function() {
-                span.removeClass('fa-cloud-upload-alt')
-                span.addClass('fa-spinner fa-spin')
-                btn.css('visibility', 'visible')
+                // remove the previously existing icon
+                icon.removeClass('fa-check')
+                icon.removeClass('text-lime')
+                icon.removeClass('fa-exclamation-triangle')
+                icon.removeClass('text-amaranth')
+
+                icon.addClass('fa-spinner fa-spin')
+                icon_tooltip.attr('title', _('Subtitle export in progress'))
             },
 
             complete: function() {
-                btn.css('visibility', '')
-                span.removeClass('fa-spinner fa-spin')
-                span.addClass('fa-cloud-upload-alt')
+                icon.removeClass('fa-spinner fa-spin')
             },
 
             success: function() {
-                console.log('success')
+                icon.addClass('fa-check text-lime')
+                icon_tooltip.attr('title', _('Subtitle export successful'))
             },
             error: function() {
-                console.log('error')
+                icon.addClass('fa-exclamation-triangle text-amaranth')
+                icon_tooltip.attr('title', _('Subtitle export failed'))
             }
         })
 
