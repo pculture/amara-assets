@@ -244,9 +244,8 @@
   &.syncHistoryList {
     @include listView((
       phone: (".syncHistoryList-title"),
-      tablet: (".syncHistoryList-language"),
-      laptop: (".syncHistoryList-channel", ".syncHistoryList-platform", ".listView-actions"),
-      desktop: (".syncHistoryList-date"),
+      tablet: (".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
+      desktop: (".syncHistoryList-channel", ".syncHistoryList-platform")
     ));
   }
 
