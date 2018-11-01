@@ -18,6 +18,9 @@
   &.memberDirectory.admin {
     grid-template-columns: auto [secondary-row-start] auto auto auto auto auto [secondary-row-end];
   }
+  &.projects {
+    grid-template-columns: [secondary-row-start] auto auto auto [secondary-row-end];
+  }
 }
 
 .listView > * {
