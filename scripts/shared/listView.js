@@ -181,6 +181,7 @@ function ListViewMouse(dom) {
     this.hoverRow = null;
     this.touchTimer = null;
     this.touchStartEvt = null;
+    this.showedContextMenu = false;
 
     dom.cells.mouseenter(this.onMouseEnterCell.bind(this));
     dom.elt.mouseleave(this.onMouseLeaveListView.bind(this));
@@ -209,17 +210,27 @@ ListViewMouse.prototype = {
         if(evt.touches.length == 1) {
             this.touchStartEvt = evt;
             this.startTouchTimer();
+            $(window).on('contextmenu.listviewmouse', function(evt) {
+                // Prevent the default context menu since we're going to present our own
+                evt.preventDefault();
+                evt.stopPropagation();
+            });
         }
-        evt.preventDefault();
+        this.showedContextMenu = false;
     },
     onTouchEnd: function(evt) {
         this.cancelTouchTimer();
+        $(window).off('contextmenu.listviewmouse');
+        this.showedContextMenu = false;
     },
     onTouchCancel: function(evt) {
-        this.cancelTouchTimer();
+        this.onTouchEnd(evt);
     },
     onTouchMove: function(evt) {
         this.cancelTouchTimer();
+        if(this.showedContextMenu) {
+            evt.preventDefault();
+        }
     },
     startTouchTimer: function() {
         this.cancelTouchTimer();
@@ -233,6 +244,7 @@ ListViewMouse.prototype = {
     },
     onTouchTimer: function() {
         this.touchTimer = null;
+        this.showedContextMenu = true;
         var row = this.dom.calcRow(this.touchStartEvt.target);
         this.dom.activateMainActionFromClick(row, this.touchStartEvt);
     }
