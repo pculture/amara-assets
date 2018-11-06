@@ -230,7 +230,7 @@
 
   &.projectList {
     @include listView((
-      phone: (".projectList-title"),
+      phone: (".projectList-title", ".projectList-description"),
       tablet: (".projectList-title", ".projectList-description", ".listView-actions"),
     ));
   }
@@ -238,7 +238,7 @@
   &.videoUrls {
     @include listView((
       phone: (".videoUrls-url"),
-      tablet: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
+      laptop: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
     ));
   }
 }
