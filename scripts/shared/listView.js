@@ -39,7 +39,7 @@ $.behaviors('.listView', listView);
 function ListViewDOM(elt) {
     this.elt = $(elt);
     this.cells = this.elt.children().not('.listView-secondaryRow');
-    this.columnCount = this.calcColumnCount();
+    this.columnCount = parseInt(this.elt.css('column-count'));
     this.headerRowCount = 0;
     this.rowCount = 0;
     this.checkAll = $('.checkAll', elt);
@@ -51,15 +51,6 @@ function ListViewDOM(elt) {
 }
 
 ListViewDOM.prototype = {
-    calcColumnCount: function() {
-        var columnSpec = this.elt.css('grid-template-columns');
-        // Crazy regex, but it should split the css into parts
-        columnSpec = columnSpec.match(/[^ (]+(\([^)]+\))?/g)
-        var realColumns = columnSpec.filter(function(spec) {
-            return spec.trim()[0] != '[';
-        });
-        return realColumns.length;
-    },
     walkCells: function() {
         for(var i=0; ; i++) {
             var cells = this.cellsForRow(i);
@@ -181,6 +172,7 @@ function ListViewMouse(dom) {
     this.hoverRow = null;
     this.touchTimer = null;
     this.touchStartEvt = null;
+    this.sawTouch = false
     this.showedContextMenu = false;
 
     dom.cells.mouseenter(this.onMouseEnterCell.bind(this));
@@ -193,7 +185,12 @@ function ListViewMouse(dom) {
 
 ListViewMouse.prototype = {
     onMouseEnterCell: function(evt) {
-        this.setHoverRow($(evt.target).data('row'));
+        // Enable the hover CSS, only if we're not on a touch device.  For
+        // those we get mouseenter events when the user touches a row, which
+        // feels weird..
+        if(!this.sawTouch) {
+            this.setHoverRow($(evt.target).data('row'));
+        }
     },
     onMouseLeaveListView: function(evt) {
         this.setHoverRow(null);
@@ -207,6 +204,7 @@ ListViewMouse.prototype = {
         this.hoverRow = row;
     },
     onTouchStart: function(evt) {
+        this.sawTouch = true;
         if(evt.touches.length == 1) {
             this.touchStartEvt = evt;
             this.startTouchTimer();
@@ -358,7 +356,6 @@ ListViewLinkHandler.prototype = {
                 // calculate the selection based on the checkbox for the row
                 var selection = this.dom.selectionCheckboxValueForRow(row);
             }
-            console.log(row, selection);
             if(selection) {
                 var url = '?' + querystring.format({
                     form: arg2,

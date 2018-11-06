@@ -156,6 +156,7 @@
     @error("phone breakpoint must be present in listview()");
   }
   $spec: map-remove($spec, phone);
+  $column-count: length($phone);
 
   @include listView-grid-template-columns($phone, $collapsed);
 
@@ -190,7 +191,13 @@
           grid-column-start: 2;
         }
       }
+      $column-count: max($column-count, length($columns));
     }
+  }
+
+  & {
+    // Use column-count to give this info to the JS code.  It's ignore since we're using display: grid.
+    column-count: $column-count;
   }
 }
 
