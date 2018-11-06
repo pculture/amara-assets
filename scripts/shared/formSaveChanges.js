@@ -63,4 +63,7 @@ $.behaviors('.saveChangesButton', function(button) {
             return;
         }
     });
+
+    inputs.on('customchange', show_save_button); // use this for form controls that normally do not fire 'change' or 'input'
+
 });

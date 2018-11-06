@@ -283,12 +283,33 @@ textarea {
     flex-wrap: wrap;
   }
 }
+
 .radio + .radio, .checkbox + .checkbox {
   // undo bootstrap's -5px
   margin-top: 0;
 }
 .radio {
     padding-bottom: 4px;
+}
+
+// bootstrap has a radio-inline class so we use a different name
+.div-radio-inline {
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.li-radio-inline {
+  float: left;
+}
+
+.li-radio-inline:last-of-type {
+  float: none;
+}
+
+.radio-dynamic-help-text {
+  margin-bottom: 0px;
 }
 
 .radio-icon, .checkbox-icon {
@@ -391,9 +412,10 @@ input:checked + label .checkbox-icon {
       grid-auto-flow: column;
 
       @for $i from 1 through 5 {
-        &.columns-#{$i} { grid-template-columns: repeat(#{$i}, minmax(200px, auto)) 1fr; }
+        &.columns-#{$i} { grid-template-columns: repeat(#{$i}, minmax(100px, auto)) 1fr; }
       }
       &.checkboxes {
+        margin-top: 4px;
         grid-template-rows: auto;
       }
     }
@@ -465,6 +487,20 @@ input:checked + label .checkbox-icon {
       }
     }
 
+  }
+}
+
+.subtitleVisibilityLabel {
+  width: 155px;
+}
+
+.subtitleVisibilityInput {
+  margin-left: 160px;
+}
+
+@include respond-to(tablet, 0) {
+  .subtitleVisibilityInput {
+    margin: 0;
   }
 }
 
@@ -588,6 +624,7 @@ fieldset {
   border: solid 1px #cccccc;
   border-top: none;
   border-bottom: none;
+  padding-bottom: 25px;
 
   legend {
     padding-top: 15px;
@@ -601,10 +638,6 @@ fieldset {
     h3 {
       color: $cream !important;
     }
-  }
-
-  .form-group:last-of-type {
-    margin-bottom: 45px;
   }
 }
 
@@ -660,6 +693,10 @@ fieldset > :not(legend) {
 
 .saveChangesButton {
   visibility: hidden;
+}
+
+.imageInput-text {
+  min-width: 0; // bug fix for Firefox not respecting flex shrinking 
 }
 
 .imageInput-previewContainer {
