@@ -112,6 +112,7 @@ function DropDownMenu(menu) {
     this.links = $('.dropdownMenu-link', menu).not('.disabled'),
     this.shown = false;
     this.openerButton = null;
+    this.showData = null;
     this.setupEventHandlers();
 
     // additional options for position.below
@@ -151,6 +152,7 @@ DropDownMenu.prototype = {
             context.button.attr('aria-expanded', 'true');
         }
         this.openerButton = context.button;
+        this.showData = context.data;
         this.shown = true;
         this.setupClickHandler(context.event);
         if(context.event) {
@@ -262,6 +264,7 @@ DropDownMenu.prototype = {
             }
             this.menu.trigger($.Event('link-activate', {
                 openerButton: button,
+                showData: this.showData,
                 dropdownMenu: this
             }), link.data('activateArgs'));
             evt.preventDefault();

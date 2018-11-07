@@ -91,7 +91,10 @@ ListViewDOM.prototype = {
     activateMainActionFromClick: function(row, evt) {
         var action = this.actionsForRow(row).last();
         if(action.data('menu')) {
-            action.data('menu').dropdown('show', { event: evt });
+            action.data('menu').dropdown('show', {
+                event: evt,
+                data: { selection: this.calcSelection(action)},
+            });
         } else {
             action.click();
         }
@@ -103,8 +106,13 @@ ListViewDOM.prototype = {
         // Calulate which row an element is in
         return $(elt).closest(this.cells).data('row');
     },
-    selectionCheckboxValueForRow: function(row) {
-        return $('input[name=selection]', this.cellsForRow(row)).val();
+    calcSelection: function(button) {
+        if(button.data('selection')) {
+            return button.data('selection');
+        } else {
+            var row = this.calcRow(button);
+            return $('input[name=selection]', this.cellsForRow(row)).val();
+        }
     }
 };
 
@@ -348,23 +356,22 @@ function ListViewLinkHandler(dom) {
 ListViewLinkHandler.prototype = {
     onLinkActivate: function(evt, arg1, arg2, arg3) {
         if(arg1 == 'listview-form') {
-            var row = this.dom.calcRow(evt.openerButton);
-            if(evt.openerButton && evt.openerButton.data('selection')) {
-                // selection hard-coded on the dropdown button
-                var selection = evt.openerButton.data('selection');
+            var selection = null;
+            if(evt.showData && evt.showData.selection) {
+                var selection = evt.showData.selection;
+            } else if(evt.openerButton) {
+                var selection = this.dom.calcSelection(evt.openerButton);
             } else {
-                // calculate the selection based on the checkbox for the row
-                var selection = this.dom.selectionCheckboxValueForRow(row);
+                console.log('No selection found when handling action: listview-form, ' + arg2);
+                return;
             }
-            if(selection) {
-                var url = '?' + querystring.format({
-                    form: arg2,
-                    selection: selection
-                });
-                ajax.update(url, {
-                    keepState: true
-                });
-            }
+            var url = '?' + querystring.format({
+                form: arg2,
+                selection: selection
+            });
+            ajax.update(url, {
+                keepState: true
+            });
         }
     }
 };
