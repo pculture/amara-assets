@@ -125,6 +125,7 @@ DropDownMenu.prototype = {
         if(context === undefined) {
             context = {};
         }
+        // The 'show' event gets sent early, so handlers have an opportunity to prevent the action
         if(this.menu.triggerHandler('show', {
             dropdownMenu: this,
             button: context.button,
@@ -159,6 +160,12 @@ DropDownMenu.prototype = {
             context.event.preventDefault();
             context.event.stopPropagation();
         }
+        // The 'shown' event gets sent late, so handlers know the action has succeeded
+        this.menu.triggerHandler('shown', {
+            dropdownMenu: this,
+            openerButton: context.button,
+            event: context.event
+        });
     },
     hide: function(context) {
         if(context === undefined) {
@@ -167,11 +174,13 @@ DropDownMenu.prototype = {
         if(!this.shown) {
             return;
         }
-        if(this.menu.triggerHandler('hide', { dropdownMenu: this, }) === false) {
+        // The 'hide' event gets sent early, so handlers have an opportunity to prevent the action
+        if(this.menu.triggerHandler('hide', { dropdownMenu: this, openerButton: this.openerButton }) === false) {
             return;
         }
 
         this.menu.css('display', 'none');
+        var oldOpenerButton = this.openerButton;
         if(this.openerButton) {
             this.openerButton.attr('aria-expanded', 'false');
             this.openerButton = null;
@@ -182,6 +191,8 @@ DropDownMenu.prototype = {
             context.event.preventDefault();
             context.event.stopPropagation();
         }
+        // The 'hidden' event gets sent late, so handlers know the action has succeeded
+        this.menu.triggerHandler('hidden', { dropdownMenu: this, openerButton: oldOpenerButton});
     },
     toggle: function(context) {
         if(this.shown && this.openerButton === context.button) {

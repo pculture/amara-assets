@@ -42,12 +42,16 @@ function ListViewDOM(elt) {
     this.columnCount = parseInt(this.elt.css('column-count'));
     this.headerRowCount = 0;
     this.rowCount = 0;
+    this.hoverRow = null; // row being hovered over by the mouse
+    this.contextMenuRow = null; // row with an active context menu
     this.checkAll = $('.checkAll', elt);
     this.dropdownMenus = $('.dropdownMenu', elt);
     this.dropdownMenusByRow = {};
     this.showDetailsByRow = {};
     this.expandButtons = $('.listView-expand', elt);
     this.walkCells();
+    this.dropdownMenus.on('shown', this.onDropdownShown.bind(this));
+    this.dropdownMenus.on('hidden', this.onDropdownHidden.bind(this));
 }
 
 ListViewDOM.prototype = {
@@ -113,6 +117,35 @@ ListViewDOM.prototype = {
             var row = this.calcRow(button);
             return $('input[name=selection]', this.cellsForRow(row)).val();
         }
+    },
+    setHoverRow: function(row) {
+        if(row == this.hoverRow) {
+            return;
+        }
+        this.hoverRow = row;
+        this.updateHoverRow();
+    },
+    onDropdownShown: function(evt, data) {
+        this.contextMenuRow = this.calcRow(data.openerButton);
+        this.updateHoverRow();
+    },
+    onDropdownHidden: function(evt, data) {
+        this.contextMenuRow = null;
+        this.updateHoverRow();
+    },
+    updateHoverRow: function(evt, data) {
+        if(this.contextMenuRow) {
+            // If there's a context menu shown, then keep this as the hover
+            // row, regardless of where the mouse goes.
+            var row = this.contextMenuRow;
+        } else {
+            var row = this.hoverRow;
+        }
+        $('.hover', this.elt).removeClass('hover');
+        if(row !== null && row !== undefined) {
+            this.actionsForRow(row).addClass('hover');
+            this.cellsForRow(row).addClass('hover');
+        }
     }
 };
 
@@ -177,7 +210,6 @@ ListViewExpansion.prototype = {
 
 function ListViewMouse(dom) {
     this.dom = dom;
-    this.hoverRow = null;
     this.touchTimer = null;
     this.touchStartEvt = null;
     this.sawTouch = false
@@ -197,19 +229,11 @@ ListViewMouse.prototype = {
         // those we get mouseenter events when the user touches a row, which
         // feels weird..
         if(!this.sawTouch) {
-            this.setHoverRow($(evt.target).data('row'));
+            this.dom.setHoverRow($(evt.target).data('row'));
         }
     },
     onMouseLeaveListView: function(evt) {
-        this.setHoverRow(null);
-    },
-    setHoverRow: function(row) {
-        if(row == this.hoverRow) {
-            return;
-        }
-        this.dom.actionsForRow(this.hoverRow).removeClass('hover');
-        this.dom.actionsForRow(row).addClass('hover');
-        this.hoverRow = row;
+        this.dom.setHoverRow(null);
     },
     onTouchStart: function(evt) {
         this.sawTouch = true;

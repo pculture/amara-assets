@@ -19,6 +19,9 @@
     padding-left: 4px;
     border-left: 6px solid $lime;
   }
+  &.hover {
+    background: $snow;
+  }
 }
 
 .listView-header {
