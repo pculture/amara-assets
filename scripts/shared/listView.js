@@ -97,7 +97,10 @@ ListViewDOM.prototype = {
         if(action.data('menu')) {
             action.data('menu').dropdown('show', {
                 event: evt,
-                data: { selection: this.calcSelection(action)},
+                data: {
+                    row: row,
+                    selection: this.calcSelection(action)
+                }
             });
         } else {
             action.click();

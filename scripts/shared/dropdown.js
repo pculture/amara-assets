@@ -126,11 +126,13 @@ DropDownMenu.prototype = {
             context = {};
         }
         // The 'show' event gets sent early, so handlers have an opportunity to prevent the action
-        if(this.menu.triggerHandler('show', {
+        var showEventData = {
             dropdownMenu: this,
+            showData: context.data,
             button: context.button,
             event: context.event
-        }) === false) {
+        };
+        if(this.menu.triggerHandler('show', showEventData) === false) {
             return;
         }
 
@@ -161,11 +163,7 @@ DropDownMenu.prototype = {
             context.event.stopPropagation();
         }
         // The 'shown' event gets sent late, so handlers know the action has succeeded
-        this.menu.triggerHandler('shown', {
-            dropdownMenu: this,
-            openerButton: context.button,
-            event: context.event
-        });
+        this.menu.triggerHandler('shown', showEventData);
     },
     hide: function(context) {
         if(context === undefined) {
@@ -175,24 +173,25 @@ DropDownMenu.prototype = {
             return;
         }
         // The 'hide' event gets sent early, so handlers have an opportunity to prevent the action
+        var hideEventData = { dropdownMenu: this, showData: this.showData, openerButton: this.openerButton };
         if(this.menu.triggerHandler('hide', { dropdownMenu: this, openerButton: this.openerButton }) === false) {
             return;
         }
 
         this.menu.css('display', 'none');
-        var oldOpenerButton = this.openerButton;
         if(this.openerButton) {
             this.openerButton.attr('aria-expanded', 'false');
             this.openerButton = null;
         }
         this.shown = false;
+        this.showData = null;
         this.removeClickHandler();
         if(context.event && !context.skipPreventDefault) {
             context.event.preventDefault();
             context.event.stopPropagation();
         }
         // The 'hidden' event gets sent late, so handlers know the action has succeeded
-        this.menu.triggerHandler('hidden', { dropdownMenu: this, openerButton: oldOpenerButton});
+        this.menu.triggerHandler('hidden', hideEventData);
     },
     toggle: function(context) {
         if(this.shown && this.openerButton === context.button) {
@@ -268,6 +267,7 @@ DropDownMenu.prototype = {
     activateLink: function(evt, link) {
         var button = this.openerButton;
         if(link.data('activateArgs')) {
+            var showData = this.showData;
             // dropdown-js-item -- trigger link-activate
             this.hide({button: button, event: evt });
             if(button) {
@@ -275,7 +275,7 @@ DropDownMenu.prototype = {
             }
             this.menu.trigger($.Event('link-activate', {
                 openerButton: button,
-                showData: this.showData,
+                showData: showData,
                 dropdownMenu: this
             }), link.data('activateArgs'));
             evt.preventDefault();

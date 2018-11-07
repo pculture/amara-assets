@@ -25,14 +25,25 @@ $.behaviors('#videourl-dropdown', videourlDropdown);
 
 function videourlDropdown(menu) {
     menu = $(menu);
+    var listview = $('.listView.videoUrls');
+    var openerButton = null;
+
     menu.on('show', function(evt, data) {
         var makePrimaryButton = $('.videourl-make-primary .dropdownMenu-link', data.dropdownMenu.menu);
         var deleteButton = $('.videourl-delete .dropdownMenu-link', data.dropdownMenu.menu);
 
-        if(data.button.data('primary')) {
+        if(data.button) {
+            openerButton = data.button;
+        } else if(data.showData && data.showData.row !== undefined) {
+            openerButton = $('.dropdownMenu-button', listview).eq(data.showData.row);
+        } else {
+            console.log("videourlDropdown: can't calculate button");
+            return false;
+        }
+        if(openerButton.data('primary')) {
             makePrimaryButton.addClass('disabled').prop('disabled', true);
             deleteButton.addClass('disabled').prop('disabled', true);
-        } else if(data.button.data('original')) {
+        } else if(openerButton.data('original')) {
             makePrimaryButton.removeClass('disabled').prop('disabled', false);
             deleteButton.addClass('disabled').prop('disabled', true);
         } else {
@@ -49,7 +60,7 @@ function videourlDropdown(menu) {
     menu.on('link-activate', function(evt, action) {
         var dialog = $('#' + dialogMap[action]);
         dialogs.showModal(dialog);
-        $('input[name=id]', dialog).val(evt.openerButton.data('videourl'));
-        $('.modal-header', dialog).text(evt.openerButton.data('url'));
+        $('input[name=id]', dialog).val(openerButton.data('videourl'));
+        $('.modal-header', dialog).text(openerButton.data('url'));
     });
 }
