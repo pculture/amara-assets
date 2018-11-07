@@ -236,4 +236,11 @@
       tablet: (".listView-actions", ".videoUrls-badges"),
     ));
   }
+
+  &.videoFeedsList {
+    @include listView((
+      phone: (".videoFeedsList-title"),
+      tablet: (".listView-actions"),
+    ));
+  }
 }
