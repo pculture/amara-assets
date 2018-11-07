@@ -77,3 +77,46 @@ $.behaviors('.team-permissionsTableDynamicRow', function(row) {
         span.toggleClass('text-amaranth fa-times', !checked);
     }
 });
+
+$.behaviors('.syncHistoryList-action-sync', function(btn) {
+    var btn = $(btn);
+
+    btn.on('click', function() {
+        var btn = $(this)
+        var icon_tooltip = btn.siblings('.syncHistoryIconTooltip')
+        var icon = icon_tooltip.find('.syncHistoryIcon')
+        var ajax_url = btn.data('ajax-url')
+        var pk = btn.data('sl-pk')
+
+        $.ajax({
+            url: ajax_url,
+            method: 'GET',
+            data: { 'pk': pk },
+
+            beforeSend: function() {
+                // remove the previously existing icon
+                icon.removeClass('fa-check')
+                icon.removeClass('text-lime')
+                icon.removeClass('fa-exclamation-triangle')
+                icon.removeClass('text-amaranth')
+
+                icon.addClass('fa-spinner fa-spin')
+                icon_tooltip.attr('title', _('Subtitle export in progress'))
+            },
+
+            complete: function() {
+                icon.removeClass('fa-spinner fa-spin')
+            },
+
+            success: function() {
+                icon.addClass('fa-check text-lime')
+                icon_tooltip.attr('title', _('Subtitle export successful'))
+            },
+            error: function() {
+                icon.addClass('fa-exclamation-triangle text-amaranth')
+                icon_tooltip.attr('title', _('Subtitle export failed'))
+            }
+        })
+
+    });
+});
