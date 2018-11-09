@@ -33,6 +33,15 @@ function boundsForElt(elt) {
     };
 }
 
+function boundsFromEventPoint(eventObj) {
+    return {
+        left: eventObj.pageX,
+        right: eventObj.pageX,
+        top: eventObj.pageY,
+        bottom: eventObj.pageY
+    };
+}
+
 function boundsForViewport() {
     var $window = $(window);
     var scrollTop = $window.scrollTop();
@@ -66,12 +75,10 @@ function below(elt, reference, options) {
 
     if(reference.pageX) {
         // position relative to a mouse click
-        var referenceBounds = {
-            left: reference.pageX,
-            right: reference.pageX,
-            top: reference.pageY,
-            bottom: reference.pageY
-        };
+        var referenceBounds = boundsFromEventPoint(reference);
+    } else if(reference.touches) {
+        // position relative to a touch event
+        var referenceBounds = boundsFromEventPoint(reference.touches[0]);
     } else {
         // position relative to an element
         var referenceBounds = boundsForElt(reference);
