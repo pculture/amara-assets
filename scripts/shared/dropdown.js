@@ -157,7 +157,7 @@ DropDownMenu.prototype = {
         this.openerButton = context.button;
         this.showData = context.data;
         this.shown = true;
-        this.setupClickHandler(context.event);
+        this.setupClickHandler();
         if(context.event) {
             context.event.preventDefault();
             context.event.stopPropagation();
@@ -292,17 +292,20 @@ DropDownMenu.prototype = {
             button.focus();
         }
     },
-    setupClickHandler: function(openerEvent) {
-        $(document).on('click.dropdown', function(evt) {
-            var target = $(evt.target);
-            if(evt != openerEvent &&
-                    target.closest(this.menu).length == 0 &&
-                    target.closest(this.openerButton).length == 0) {
-                this.hide({event:evt});
-            }
-        }.bind(this));
+    setupClickHandler: function() {
+        this.clickHandler = this.onClickWithOpenDropdown.bind(this);
+        document.addEventListener('click', this.clickHandler, true);
     },
     removeClickHandler: function() {
-        $(document).off('click.dropdown');
+        document.removeEventListener('click', this.clickHandler, true);
+        this.clickHandler = null;
+    },
+    onClickWithOpenDropdown: function(evt) {
+        console.log('click');
+        var target = $(evt.target);
+        if(target.closest(this.menu).length == 0 &&
+                target.closest(this.openerButton).length == 0) {
+            this.hide({event:evt, skipPreventDefault: true});
+        }
     }
 };
