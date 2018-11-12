@@ -249,7 +249,7 @@
   &.videoFeedsList {
     @include listView((
       phone: (".videoFeedsList-title"),
-      tablet: (".listView-actions"),
+      tablet: (".videoFeedsList-title", ".listView-actions"),
     ));
   }
 }
