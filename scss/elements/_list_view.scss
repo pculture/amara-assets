@@ -246,15 +246,15 @@
   &.integrationList {
     @include listView((
       phone: (".integrationList-channel"),
-      tablet: (".listView-actions"),
+      tablet: (".integrationList-channel", ".listView-actions"),
     ));
   }
 
   &.syncHistoryList {
     @include listView((
       phone: (".syncHistoryList-title"),
-      tablet: (".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
-      desktop: (".syncHistoryList-channel", ".syncHistoryList-platform")
+      tablet: (".syncHistoryList-title", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
+      desktop: (".syncHistoryList-title", ".syncHistoryList-channel", ".syncHistoryList-platform", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
     ));
   }
 
