@@ -359,7 +359,22 @@ input:checked + label .checkbox-icon {
   }
 }
 
-.radio, .checkbox {
+input:checked[disabled] + label, input:checked:disabled + label {
+  .checkbox-icon {
+    background: inherit;
+    border: 0;
+
+    &:before {
+      color: $lime;
+      font-size: 18px;
+      line-height: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.radio {
     input:disabled + label, input[disabled] + label {
         color: dark($gray);
     }
