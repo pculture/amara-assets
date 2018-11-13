@@ -39,27 +39,21 @@ $.behaviors('.listView', listView);
 function ListViewDOM(elt) {
     this.elt = $(elt);
     this.cells = this.elt.children().not('.listView-secondaryRow');
-    this.columnCount = this.calcColumnCount();
+    this.columnCount = parseInt(this.elt.css('column-count'));
     this.headerRowCount = 0;
     this.rowCount = 0;
+    this.hoverRow = null; // row being hovered over by the mouse
+    this.contextMenuRow = null; // row with an active context menu
     this.checkAll = $('.checkAll', elt);
     this.dropdownMenus = $('.dropdownMenu', elt);
     this.dropdownMenusByRow = {};
     this.showDetailsByRow = {};
-    this.expandButtons = $('.listView-expand', elt);
     this.walkCells();
+    this.dropdownMenus.on('shown', this.onDropdownShown.bind(this));
+    this.dropdownMenus.on('hidden', this.onDropdownHidden.bind(this));
 }
 
 ListViewDOM.prototype = {
-    calcColumnCount: function() {
-        var columnSpec = this.elt.css('grid-template-columns');
-        // Crazy regex, but it should split the css into parts
-        columnSpec = columnSpec.match(/[^ (]+(\([^)]+\))?/g)
-        var realColumns = columnSpec.filter(function(spec) {
-            return spec.trim()[0] != '[';
-        });
-        return realColumns.length;
-    },
     walkCells: function() {
         for(var i=0; ; i++) {
             var cells = this.cellsForRow(i);
@@ -100,7 +94,13 @@ ListViewDOM.prototype = {
     activateMainActionFromClick: function(row, evt) {
         var action = this.actionsForRow(row).last();
         if(action.data('menu')) {
-            action.data('menu').dropdown('show', { event: evt });
+            action.data('menu').dropdown('show', {
+                event: evt,
+                data: {
+                    row: row,
+                    selection: this.calcSelection(action)
+                }
+            });
         } else {
             action.click();
         }
@@ -112,8 +112,42 @@ ListViewDOM.prototype = {
         // Calulate which row an element is in
         return $(elt).closest(this.cells).data('row');
     },
-    selectionCheckboxValueForRow: function(row) {
-        return $('input[name=selection]', this.cellsForRow(row)).val();
+    calcSelection: function(button) {
+        if(button.data('selection')) {
+            return button.data('selection');
+        } else {
+            var row = this.calcRow(button);
+            return $('input[name=selection]', this.cellsForRow(row)).val();
+        }
+    },
+    setHoverRow: function(row) {
+        if(row == this.hoverRow) {
+            return;
+        }
+        this.hoverRow = row;
+        this.updateHoverRow();
+    },
+    onDropdownShown: function(evt, data) {
+        this.contextMenuRow = this.calcRow(data.openerButton);
+        this.updateHoverRow();
+    },
+    onDropdownHidden: function(evt, data) {
+        this.contextMenuRow = null;
+        this.updateHoverRow();
+    },
+    updateHoverRow: function(evt, data) {
+        if(this.contextMenuRow) {
+            // If there's a context menu shown, then keep this as the hover
+            // row, regardless of where the mouse goes.
+            var row = this.contextMenuRow;
+        } else {
+            var row = this.hoverRow;
+        }
+        $('.hover', this.elt).removeClass('hover');
+        if(row !== null && row !== undefined) {
+            this.actionsForRow(row).addClass('hover');
+            this.cellsForRow(row).addClass('hover');
+        }
     }
 };
 
@@ -121,7 +155,9 @@ function ListViewExpansion(dom) {
     this.dom = dom;
     this.expandedRow = null;
 
-    this.dom.expandButtons.on('click', this.onExpandClick.bind(this));
+    if(this.dom.elt.is('.expandable')) {
+        this.dom.cells.on('click', this.onExpandRowClick.bind(this));
+    }
     _.each(this.dom.dropdownMenusByRow, function(menu, row) {
         menu.on('link-activate', null, parseInt(row), this.onLinkActivate.bind(this));
     }, this);
@@ -130,25 +166,26 @@ function ListViewExpansion(dom) {
 ListViewExpansion.prototype = {
     toggleRowExpanded: function(row) {
         if(this.expandedRow == row) {
-            row = null; // if the row is already expanded, then collapse it
-        }
-        if(this.expandedRow) {
-            this.collapseRow(this.expandedRow);
-        }
-        if(row) {
+            this.collapseRow(row);
+        } else {
             this.expandRow(row);
         }
-        this.expandedRow = row;
     },
     expandRow: function(row) {
+        if(this.expandedRow) {
+            if(this.expandedRow == row) {
+                return;
+            }
+            this.collapseRow(this.expandedRow);
+        }
         var cells = this.dom.cellsForRow(row);
         cells.addClass('expanded');
 
         $('.listView-secondary', cells).slideDown(250);
         cells.filter('.listView-secondaryRow').slideDown(250);
-        $('.listView-expand', cells).addClass('text-plum');
         this.updateShowDetailsText(row, gettext('Hide Details'));
         this.dom.elt.trigger($.Event('row-expanded', { row: row}));
+        this.expandedRow = row;
     },
     collapseRow: function(row) {
         var cells = this.dom.cellsForRow(row);
@@ -156,18 +193,23 @@ ListViewExpansion.prototype = {
 
         $('.listView-secondary', cells).slideUp(250);
         cells.filter('.listView-secondaryRow').slideUp(250);
-        $('.listView-expand', cells).removeClass('text-plum');
         this.updateShowDetailsText(row, gettext('Show Details'));
         this.dom.elt.trigger($.Event('row-collapsed', { row: row}));
+        this.expandedRow = null;
     },
     updateShowDetailsText: function(row, text) {
         if(row != null && this.dom.showDetailsByRow[row].length > 0) {
             $('.dropdownMenu-text', this.dom.showDetailsByRow[row]).text(text);
         }
     },
-    onExpandClick: function(evt) {
+    onExpandRowClick: function(evt) {
+        if($(evt.target).closest('a, button').length > 0) {
+            // Allow link/button clicks to go through
+            return;
+        }
         this.toggleRowExpanded(this.dom.calcRow(evt.target));
         evt.preventDefault();
+        evt.stopPropagation();
     },
     onLinkActivate: function(evt, action) {
         if(action == 'expand') {
@@ -178,9 +220,10 @@ ListViewExpansion.prototype = {
 
 function ListViewMouse(dom) {
     this.dom = dom;
-    this.hoverRow = null;
     this.touchTimer = null;
     this.touchStartEvt = null;
+    this.sawTouch = false
+    this.showedContextMenu = false;
 
     dom.cells.mouseenter(this.onMouseEnterCell.bind(this));
     dom.elt.mouseleave(this.onMouseLeaveListView.bind(this));
@@ -192,34 +235,42 @@ function ListViewMouse(dom) {
 
 ListViewMouse.prototype = {
     onMouseEnterCell: function(evt) {
-        this.setHoverRow($(evt.target).data('row'));
+        // Enable the hover CSS, only if we're not on a touch device.  For
+        // those we get mouseenter events when the user touches a row, which
+        // feels weird..
+        if(!this.sawTouch) {
+            this.dom.setHoverRow($(evt.target).data('row'));
+        }
     },
     onMouseLeaveListView: function(evt) {
-        this.setHoverRow(null);
-    },
-    setHoverRow: function(row) {
-        if(row == this.hoverRow) {
-            return;
-        }
-        this.dom.actionsForRow(this.hoverRow).removeClass('hover');
-        this.dom.actionsForRow(row).addClass('hover');
-        this.hoverRow = row;
+        this.dom.setHoverRow(null);
     },
     onTouchStart: function(evt) {
+        this.sawTouch = true;
         if(evt.touches.length == 1) {
             this.touchStartEvt = evt;
             this.startTouchTimer();
+            $(window).on('contextmenu.listviewmouse', function(evt) {
+                // Prevent the default context menu since we're going to present our own
+                evt.preventDefault();
+                evt.stopPropagation();
+            });
         }
-        evt.preventDefault();
+        this.showedContextMenu = false;
     },
     onTouchEnd: function(evt) {
         this.cancelTouchTimer();
+        $(window).off('contextmenu.listviewmouse');
+        this.showedContextMenu = false;
     },
     onTouchCancel: function(evt) {
-        this.cancelTouchTimer();
+        this.onTouchEnd(evt);
     },
     onTouchMove: function(evt) {
         this.cancelTouchTimer();
+        if(this.showedContextMenu) {
+            evt.preventDefault();
+        }
     },
     startTouchTimer: function() {
         this.cancelTouchTimer();
@@ -233,6 +284,7 @@ ListViewMouse.prototype = {
     },
     onTouchTimer: function() {
         this.touchTimer = null;
+        this.showedContextMenu = true;
         var row = this.dom.calcRow(this.touchStartEvt.target);
         this.dom.activateMainActionFromClick(row, this.touchStartEvt);
     }
@@ -338,24 +390,22 @@ function ListViewLinkHandler(dom) {
 ListViewLinkHandler.prototype = {
     onLinkActivate: function(evt, arg1, arg2, arg3) {
         if(arg1 == 'listview-form') {
-            var row = this.dom.calcRow(evt.openerButton);
-            if(evt.openerButton && evt.openerButton.data('selection')) {
-                // selection hard-coded on the dropdown button
-                var selection = evt.openerButton.data('selection');
+            var selection = null;
+            if(evt.showData && evt.showData.selection) {
+                var selection = evt.showData.selection;
+            } else if(evt.openerButton) {
+                var selection = this.dom.calcSelection(evt.openerButton);
             } else {
-                // calculate the selection based on the checkbox for the row
-                var selection = this.dom.selectionCheckboxValueForRow(row);
+                console.log('No selection found when handling action: listview-form, ' + arg2);
+                return;
             }
-            console.log(row, selection);
-            if(selection) {
-                var url = '?' + querystring.format({
-                    form: arg2,
-                    selection: selection
-                });
-                ajax.update(url, {
-                    keepState: true
-                });
-            }
+            var url = '?' + querystring.format({
+                form: arg2,
+                selection: selection
+            });
+            ajax.update(url, {
+                keepState: true
+            });
         }
     }
 };

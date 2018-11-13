@@ -19,30 +19,13 @@
  */
 
 var $ = require('jquery');
-var filters = require('./filters');
-var keyCodes = require('./keyCodes');
 
-$.behaviors('.contentHeader', contentHeader);
-$.behaviors('.contentHeader-searchBar', contentHeaderSearchBar);
-
-function contentHeader(container) {
-    container = $(container);
-    var addButton = $('.contentHeader-addButton', container);
-    var buttonText = $('.contentHeader-addButtonText', container);
-
-    addButton.hover(function() {
-        buttonText.animate({width:'show'}, 200);
-    }, function() {
-        buttonText.animate({width:'hide'}, 200);
+$.behaviors('.menuToggle', function(elt) {
+    elt = $(elt);
+    var target = $(elt.data('target'));
+    elt.click(function(evt) {
+        target.slideToggle();
+        evt.preventDefault();
+        evt.stopPropagation();
     });
-}
-
-function contentHeaderSearchBar(input) {
-    var input = $(input);
-    input.on('keypress', function(evt) {
-        if(evt.which == keyCodes.enter) {
-            filters.add(input.attr('name'), input.val());
-            evt.preventDefault();
-        }
-    });
-}
+});

@@ -19,6 +19,16 @@
     padding-left: 4px;
     border-left: 6px solid $lime;
   }
+  &.hover {
+    background: $snow;
+  }
+}
+
+.listView.expandable > * {
+  cursor: pointer;
+  &.expanded {
+    cursor: auto;
+  }
 }
 
 .listView-header {
@@ -56,6 +66,7 @@
 .listView-actions {
   display: flex;
   align-items: start;
+  overflow: visible;
 }
 
 
@@ -156,6 +167,7 @@
     @error("phone breakpoint must be present in listview()");
   }
   $spec: map-remove($spec, phone);
+  $column-count: length($phone);
 
   @include listView-grid-template-columns($phone, $collapsed);
 
@@ -190,7 +202,13 @@
           grid-column-start: 2;
         }
       }
+      $column-count: max($column-count, length($columns));
     }
+  }
+
+  & {
+    // Use column-count to give this info to the JS code.  It's ignore since we're using display: grid.
+    column-count: $column-count;
   }
 }
 
@@ -223,7 +241,7 @@
 
   &.projectList {
     @include listView((
-      phone: (".projectList-title"),
+      phone: (".projectList-title", ".projectList-description"),
       tablet: (".projectList-title", ".projectList-description", ".listView-actions"),
     ));
   }
@@ -231,7 +249,7 @@
   &.videoUrls {
     @include listView((
       phone: (".videoUrls-url"),
-      tablet: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
+      laptop: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
     ));
   }
 
