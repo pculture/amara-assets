@@ -253,13 +253,6 @@
     ));
   }
 
-  &.memberSubtitlesCompleted {
-    @include listView((
-      phone: ('.memberSubtitlesCompleted-video', '.memberSubtitlesCompleted-language'),
-      tablet: ('.memberSubtitlesCompleted-video', '.memberSubtitlesCompleted-language', '.memberSubtitlesCompleted-date'),
-    ));
-  }
-
   &.assignmentHistory {
     @include listView((
       phone: ('.assignmentHistory-video', '.assignmentHistory-language'),
