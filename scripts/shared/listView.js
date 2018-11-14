@@ -203,7 +203,7 @@ ListViewExpansion.prototype = {
         }
     },
     onExpandRowClick: function(evt) {
-        if($(evt.target).closest('a, button').length > 0) {
+        if($(evt.target).closest('a, button, input, textarea, .checkbox').length > 0) {
             // Allow link/button clicks to go through
             return;
         }
