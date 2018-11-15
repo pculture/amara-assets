@@ -13,6 +13,8 @@ require('chartist');
 require('chartist-plugin-tooltip');
 // Amara modules
 require('../shared/ajax');
+require('../shared/selectRange');
+require('../shared/copyText');
 require('./proxyField');
 require('./dependentSelect');
 require('../shared/languageSwitcher');
