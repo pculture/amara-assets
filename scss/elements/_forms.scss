@@ -694,11 +694,10 @@ fieldset > :not(legend) {
 }
 
 .fieldsetHelpBlock {
-  margin-top: 0px;
-  font-size: $font-size-tiny;
+  font-size: $font-size-small;
   color: $charcoal;
-  margin-bottom: 16px;
-  font-style: italic;
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
 
 .buttonFile {
