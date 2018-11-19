@@ -26,7 +26,6 @@ require('../shared/fileUpload');
 require('../shared/imageInput');
 require('../shared/compoundField');
 require('./clamp');
-require('./staffControls');
 require('../shared/tabs');
 require('../shared/teamRoleSelect');
 require('../shared/multipleAutoCompleteSelect');
