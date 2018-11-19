@@ -259,7 +259,7 @@
 
   &.syncHistoryList {
     @include listView((
-      phone: (".syncHistoryList-title"),
+      phone: (".syncHistoryList-title", ".listView-actions"),
       tablet: (".syncHistoryList-title", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
       desktop: (".syncHistoryList-title", ".syncHistoryList-channel", ".syncHistoryList-platform", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
     ));
