@@ -575,75 +575,48 @@ input:checked + label .checkbox-icon {
   list-style-position: inside;
 }
 
-// Fieldsets
-//
-// Use fieldsets to group related fields in a form together.  This can help simplify forms with lots of inputs.  Use the legend element to provide a header.  Use `.fieldsetHelpBlock` to display help for the fieldset. Don't forget to place a `div.fieldset-footer` or else you will end up with a form that has no border at the bottom
-//
-// Example:
-// <form>
-//   <fieldset>
-//     <legend><h3>Personal information</h3></legend>
-//     <div class="form-group">
-//       <label for="name">Name</label>
-//       <input type="text" id="name">
-//     </div>
-//     <div class="form-group">
-//       <label for="email">Email</label>
-//       <input type="text" id="email">
-//     </div>
-//     <div class="form-group">
-//       <label for="phone_number">Phone number</label>
-//       <input type="text" id="phone_number">
-//     </div>
-//   </fieldset>
-//   <fieldset>
-//     <legend><h3>Account information</h3></legend>
-//     <div class="fieldsetHelpBlock">Details for your Amara acount</div>
-//     <div class="form-group">
-//       <label for="username">Username</label>
-//       <input type="text" id="username">
-//     </div>
-//     <div class="form-group">
-//       <label for="password1">Password</label>
-//       <input type="text" id="password1">
-//     </div>
-//     <div class="form-group">
-//       <label for="password2">Confirm password</label>
-//       <input type="text" id="password2">
-//     </div>
-//   </fieldset>
-//   <div class="form-actions fieldset-footer">
-//     <button class="button borderless">Cancel</button>
-//     <button type="submit" class="button cta">Submit</button>
-//   </div>
-// </form>
-//
-// Styleguide fieldsets
-
 fieldset {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
   border: solid 1px #cccccc;
   border-top: none;
   border-bottom: none;
-  padding-bottom: 25px;
+
+  padding: 70px 20px 25px 20px;
+  // Note: padding-top needs to make room for legend, which is absolutely positioned
 
   legend {
-    padding-top: 15px;
-    padding-left: 20px;
-    margin-bottom: 30px;
-    height: 55px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    padding: 15px 20px;
+    margin: 0;
+    border: none;
     background-color: $plum;
-    border-bottom: none;
     color: $cream;
 
     h3 {
-      color: $cream !important;
+      color: inherit!important;
+      margin: 0;
+      line-height: 1;
     }
   }
-}
 
-fieldset > :not(legend) {
-  margin-left: 20px;
-  margin-right: 20px;
+  fieldset {
+    // Handle nested fieldsets
+    margin: 0 -20px;
+    border: none;
+
+    legend {
+      background-color: $snow;
+      color: $charcoal;
+    }
+  }
+
 }
 
 .fieldset-footer {
