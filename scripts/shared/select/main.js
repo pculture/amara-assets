@@ -179,12 +179,10 @@ function handleDropdownMultiple(select, options) {
     var container = select.siblings('span.select2-container')
 
     select.on('select2:open', function () {
-      container.find('.select2-selection__choice__count').css('display', 'none')
       container.find('.select2-selection__rendered').css('height', 'auto')
     });
 
     select.on('select2:close', function () {
-      container.find('.select2-selection__choice__count').css('display', 'list-item')
       container.find('.select2-selection__rendered').css('height', '31px')
     });
   }
@@ -234,13 +232,8 @@ MultipleSelectSingleLine.prototype.update = function(decorated, data) {
     var $selections_rendered = this.$selection.find('.select2-selection__rendered')
     var available_width = $selections_rendered.width()
     // the element to indicate how many total selections are currently selected
-    var selected_indicator = '<li class="select2-selection__choice__count">' + data.length + ' selected</li>'
+    var selected_indicator = '<li class="select2-selection__choice__count">' + data.length + _(' selected') + '</li>'
     $selections_rendered.append(selected_indicator)
-    selected_indicator = $('.select2-selection__choice__count')
-    var selected_indicator_width = selected_indicator.outerWidth(true)
-
-    var selected_indicator_added = false // flag so we only attach the selected_indicator element once
-    var selected_total_width = 0;
 
     var $selections = [];
 
@@ -252,14 +245,6 @@ MultipleSelectSingleLine.prototype.update = function(decorated, data) {
 
       $selection.append(formatted);
       $selection.data('data', selection);
-      
-      selection_width = measure_width($selection, $selections_rendered)
-      selected_total_width += selection_width
-      remaining_width = available_width - selected_total_width
-      if (remaining_width < selected_indicator_width && !selected_indicator_added) {
-          selected_indicator.css('visibility', 'visible')
-          selected_indicator_added = true
-      } 
       $selections.push($selection);
     }
 
@@ -267,8 +252,10 @@ MultipleSelectSingleLine.prototype.update = function(decorated, data) {
 }
 
 // the element needs to be in the DOM for it to have a width
-function measure_width(element, container) {
+// `display` is the css display that the element should assume when being measured
+function measure_width(element, container, display) {
   el = element.clone();
+  el.css('display', display)
   el.css('visibility','hidden');
   el.css('position', 'absolute');
   container.append(el);

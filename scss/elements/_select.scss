@@ -26,6 +26,7 @@
 // Example:
 //   <select class="select" data-placeholder="Select an option">
 //     <option></option>
+//     <option>Very long selection option to demonstrate how the select box will look like if you have a single selection that is very long</option>
 //     <option>Option 1</option>
 //     <option>Option 2</option>
 //   </select>
@@ -38,9 +39,12 @@
 //     <option>Option 3</option>
 //     <option>Option 4</option>
 //     <option>Option 5</option>
+//     <option>Very long selection option to demonstrate how the select box will look like if you</option>
 //     <option>Option 6</option>
 //     <option>Option 7</option>
 //     <option>Option 8</option>
+//     <option>Option 9</option>
+//     <option>Option 10</option>
 //   </select>
 //
 // Example:
@@ -148,16 +152,21 @@ select.select {
     margin-left: 13px;
     color: $gray;
   }
+
+  /* indicator used in multiple selects to show how many selections are selected */
   .select2-selection__choice__count {
-    float: right;
-    padding-left: 5px;
     padding-top: 7px;
     height: 31px;
     color: $gray;
-    visibility: hidden;
-  }
-  .select2-selection__choice__overflow {
-    display: none;
+    
+    /* Absolute positioning is used to allow for single selections that are very long. 
+     * This allows a very long selection to be clipped instead of being entirely invisible
+     * and ending up with an empty selector that reads '1 selected'
+     */
+    padding-left: 3px;
+    position: absolute;
+    right: 39px; // this might need to be changed if the width of the dropdown arrow changes
+    background: $white; // customize this if the selector has a different background color
   }
 
   .select2-dropdown {
