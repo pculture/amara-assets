@@ -57,6 +57,11 @@ function processAjaxResponse(responseData) {
                 dialogs.showModalProgress(change[1], change[2]);
                 break;
 
+            case 'addAccordionSection':
+                var elt = $(change[1]);
+                elt.accordion('addSection', change[2], $(change[3]));
+                break;
+
             case 'performRequest':
                 setTimeout(function() {
                     $.ajax(change[1], {
@@ -78,6 +83,9 @@ function processAjaxResponse(responseData) {
             case 'redirect':
                 window.location = change[1];
                 break;
+
+            default:
+                console.warn('Error handling ajax update: ', change);
         }
     });
 }

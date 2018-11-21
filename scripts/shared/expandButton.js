@@ -26,9 +26,9 @@ function expandButton(expandButton) {
     var buttonText = $('.expandButton-text', expandButton);
 
     expandButton.hover(function() {
-        buttonText.animate({width:'show'}, 200);
+        buttonText.stop().animate({width:'show'}, 200);
     }, function() {
-        buttonText.animate({width:'hide'}, 200);
+        buttonText.stop().animate({width:'hide'}, 200);
     });
 }
 

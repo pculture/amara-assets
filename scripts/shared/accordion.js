@@ -84,10 +84,10 @@ Accordion.prototype = {
     addSection(header, content) {
         var section = $('<div class="accordion-section">');
         section.append(
-                $('<div class="accordion-title">')
+                $('<h3 class="accordion-title">')
                 .text(header)
                 .append('<span class="accordion-caret">'));
-        section.append($('<div class="accordion-content">').text(content));
+        section.append($('<div class="accordion-content">').append(content));
 
         this.elt.append(section);
         this.expandSection(section);
