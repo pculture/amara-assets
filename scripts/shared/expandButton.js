@@ -19,17 +19,16 @@
  */
 
 var $ = require('jquery');
-var filters = require('./filters');
-var keyCodes = require('./keyCodes');
+$.behaviors('.expandButton', expandButton);
 
-$.behaviors('.contentHeader-searchBar', contentHeaderSearchBar);
+function expandButton(expandButton) {
+    expandButton = $(expandButton);
+    var buttonText = $('.expandButton-text', expandButton);
 
-function contentHeaderSearchBar(input) {
-    var input = $(input);
-    input.on('keypress', function(evt) {
-        if(evt.which == keyCodes.enter) {
-            filters.add(input.attr('name'), input.val());
-            evt.preventDefault();
-        }
+    expandButton.hover(function() {
+        buttonText.animate({width:'show'}, 200);
+    }, function() {
+        buttonText.animate({width:'hide'}, 200);
     });
 }
+

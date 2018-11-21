@@ -34,26 +34,6 @@
   }
 }
 
-
-.contentHeader-addButton {
-  display: flex;
-  align-items: center;
-  @extend .bg-teal;
-  text-align: left;
-  padding: 0 13px;
-  height: 39px;
-  @include transition(0.5s);
-  overflow: hidden;
-  white-space: nowrap;
-
-}
-
-.contentHeader-addButtonText {
-  margin-left: 4px;
-  display: none;
-}
-
-
 .contentFooter {
   display: flex;
   background: $snow;

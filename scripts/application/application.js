@@ -41,6 +41,7 @@ require('../shared/listView');
 require('../shared/checkAll');
 require('../shared/workflowSettings');
 require('../shared/contentHeader');
+require('../shared/expandButton');
 require('../shared/actionBar');
 require('../shared/menuToggle');
 require('../shared/accordion');
