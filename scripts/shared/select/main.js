@@ -56,6 +56,15 @@ function initSelect(select) {
   addContainerClasses(select, options);
 }
 
+function reloadSelect(elt) {
+    // Reloading data is tricky because select2 doesn't expect to have multiple
+    // options with the same value, like we do with languages in both the
+    // popular and all sections.  So destroy the select2, and rebuild it from
+    // scratch.
+    elt.select2('destroy');
+    initSelect(elt);
+}
+
 function makeOptions(select) {
   var options = {
     extraOptions: select.data('extraOptions'),
@@ -323,5 +332,6 @@ function templateSelection(data) {
 $.behaviors('.select', initSelect);
 
 module.exports = {
-    initSelect: initSelect
+    initSelect: initSelect,
+    reloadSelect: reloadSelect
 };

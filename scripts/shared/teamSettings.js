@@ -18,6 +18,8 @@
  */
 
 var $ = require('jquery');
+var dialogs = require('./dialogs');
+var select = require('./select/main');
 
 $.behaviors('.teamMembershipSetting', function(selector) {
     var radio = $(selector)
@@ -76,4 +78,41 @@ $.behaviors('.team-permissionsTableDynamicRow', function(row) {
         span.toggleClass('text-lime fa-check', checked);
         span.toggleClass('text-amaranth fa-times', !checked);
     }
+});
+
+$.behaviors('.teamSettingsMessaging', function(page) {
+    var addLanguageForm = $('.teamSettingsMessaging-addLanguage');
+    var addLanguageField = $('select[name=language]', addLanguageForm);
+    var addLanguageButton = $('button.cta', addLanguageForm);
+    var localizedForms = $('.teamSettingsMessaging-localizedForms');
+    var mainFormFields = $('.teamSettingsMessaging-mainForm .form-fields');
+    var mainFormFooter = $('.teamSettingsMessaging-mainForm .fieldset-footer-shadow');
+    var totalFormsInput = $(':input[name=form-TOTAL_FORMS]');
+
+    addLanguageButton.on('click', function(evt) {
+        var languageCode = addLanguageField.val();
+        var selectedOption = $('option:selected', addLanguageField);
+        var languageLabel = selectedOption.text()
+        var newFormNumber = parseInt(totalFormsInput.val());
+        var prefix = 'form-' + newFormNumber;
+
+        var fields = mainFormFields.clone();
+        $(':input', fields).val('');
+        $(':input[name=form-0-language_code]', fields).val(languageCode);
+        $('fieldset.full-width', fields).removeClass('full-width');
+        $(':input', fields).each(function() {
+            var name = $(this).attr('name');
+            $(this).attr('name', name.replace('form-0', prefix));
+        });
+
+        var allContent = $('<div>').append(fields).append(mainFormFooter.clone());
+        localizedForms.accordion('addSection', languageLabel, allContent);
+        allContent.updateBehaviors();
+        totalFormsInput.val(newFormNumber + 1);
+        $('option[value=' + languageCode + ']', addLanguageField).remove();
+        select.reloadSelect(addLanguageField);
+        dialogs.closeCurrentModal();
+
+        return false;
+    });
 });
