@@ -43,3 +43,4 @@ require('../shared/workflowSettings');
 require('../shared/contentHeader');
 require('../shared/actionBar');
 require('../shared/menuToggle');
+require('../shared/accordion');
