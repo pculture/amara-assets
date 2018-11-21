@@ -586,26 +586,41 @@ fieldset {
 
   padding: 70px 20px 25px 20px;
   // Note: padding-top needs to make room for legend, which is absolutely positioned
+}
 
-  legend {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+legend {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 
-    padding: 15px 20px;
+  padding: 15px 20px;
+  margin: 0;
+  border: none;
+  background-color: $plum;
+  color: $cream;
+
+  display: flex;
+  align-items: middle;
+
+  h3 {
+    color: inherit!important;
     margin: 0;
-    border: none;
-    background-color: $plum;
-    color: $cream;
-
-    h3 {
-      color: inherit!important;
-      margin: 0;
-      line-height: 1;
-    }
+    line-height: 1;
+    flex-grow: 1;
   }
+}
 
+.legend-extra {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+fieldset {
   // Handle nested fieldsets
   fieldset.full-width {
     margin: -20px -20px 0 -20px;

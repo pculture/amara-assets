@@ -215,6 +215,7 @@ button {
   display: flex;
   align-items: center;
   @extend .bg-teal;
+  font-size: $font-size-normal;
   text-align: left;
   padding: 0 13px;
   height: 39px;
