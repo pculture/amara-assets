@@ -53,9 +53,9 @@ function Accordion(elt) {
 
 Accordion.prototype = {
     onClick: function(evt) {
-        var section = $(evt.target).closest('.accordion-section', this.elt);
-        if(section.length) {
-            this.toggleSection(section);
+        var title = $(evt.target).closest('.accordion-title', this.elt);
+        if(title.length) {
+            this.toggleSection(title.closest('.accordion-section'));
         }
     },
     expandSection(section) {

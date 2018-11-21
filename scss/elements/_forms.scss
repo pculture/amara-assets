@@ -606,15 +606,16 @@ fieldset {
     }
   }
 
-  fieldset {
-    // Handle nested fieldsets
+  // Handle nested fieldsets
+  fieldset.full-width {
     margin: -20px -20px 0 -20px;
     border: none;
 
-    legend {
-      background-color: $snow;
-      color: $charcoal;
-    }
+  }
+
+  fieldset legend {
+    background-color: $snow;
+    color: $charcoal;
   }
 
 }
