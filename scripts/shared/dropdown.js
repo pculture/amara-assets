@@ -21,6 +21,7 @@
 var $ = require('jquery');
 var keyCodes = require('./keyCodes');
 var position = require('./position');
+var copyText = require('./copyText');
 
 // Create a jquery plugin to handle dropdown stuff.  API:
 //
@@ -266,24 +267,32 @@ DropDownMenu.prototype = {
     },
     activateLink: function(evt, link) {
         var button = this.openerButton;
-        if(link.data('activateArgs')) {
+        var activateArgs = link.data('activateArgs');
+        if(activateArgs) {
             var showData = this.showData;
             // dropdown-js-item -- trigger link-activate
             this.hide({button: button, event: evt });
             if(button) {
                 this.focusButton(button);
             }
+            this.linkActivateDefault(activateArgs, button);
             this.menu.trigger($.Event('link-activate', {
                 openerButton: button,
                 showData: showData,
                 dropdownMenu: this
-            }), link.data('activateArgs'));
+            }), activateArgs);
             evt.preventDefault();
         } else {
             this.hide({button: button, event: evt, skipPreventDefault:true });
             // Regular link item.  Don't call preventDefault() to make the link
             // click go through.  Also, skip calling focusButton, since that would
             // stop the click.
+        }
+    },
+    linkActivateDefault: function(args, openerButton) {
+        // Handle default link-activate actions.
+        if(args[0] == 'copy-text') {
+            copyText(openerButton.data(args[1]));
         }
     },
     focusButton: function(button) {

@@ -5,6 +5,8 @@ require('inview');
 require('select2')(window, $);
 require('./animations');
 require('../shared/third-party/behaviors');
+require('../shared/selectRange');
+require('../shared/copyText');
 require('../shared/announcements');
 require('../shared/messages');
 require('../shared/select/main');
