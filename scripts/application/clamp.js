@@ -30,6 +30,11 @@ function clamp(container) {
     contentUpdate.add(checkOverflow);
     checkOverflow();
 
+    // this is to handle the case if clamped content is hidden inside a .tab-pane
+    $('a[data-toggle="tab"].clamp-trigger').on('shown.bs.tab', function() {
+        checkOverflow()
+    })
+
     $('.clamp-expand', container).click(function() {
         container.addClass('expanded');
     });
