@@ -19,7 +19,18 @@
 
 var $ = require('jquery');
 
+$.behaviors('.multipleSelect', multipleSelect);
 $.behaviors('.multipleAutoCompleteSelect', multipleAutoCompleteSelect);
+
+function multipleSelect(select) {
+    var select = $(select);
+
+    initial_selections = select.data('initial-selections')
+    console.log("Setting initial selections")
+    console.log(initial_selections)
+    select.val(initial_selections)
+    select.trigger('change')
+}
 
 function multipleAutoCompleteSelect(select) {
     var select = $(select);

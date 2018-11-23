@@ -14,6 +14,7 @@
 //  - Use the data-placeholder attribute to change the text when nothing is selected.  Make sure to include a blank option if you do this.
 //  - Use the disabled attribute to disable changing the selection
 //  - Use the multiple attribute to allow multiple selection
+//  - To set initial selections for a multiple select, set a `data-initial-selections` attribute which should be a list of the values to be initially selected (example in `teams.forms.ChangeMemberRoleForm`)
 //  - Use the data-extra-optoins to include extra options that get displayed
 //    specially.  These options are always available for ajax selects.
 //  - Once the user selects an option, will get an extra option to clear the
@@ -31,10 +32,10 @@
 //   </select>
 //
 // Example:
-//   <select multiple class="select" data-placeholder="Multiple select">
+//   <select multiple class="select multipleSelect" data-placeholder="Multiple select" data-initial-selections="[&quot;1&quot;,&quot;2&quot;]">
 //     <option></option>
-//     <option>Option 1</option>
-//     <option>Option 2</option>
+//     <option value="1">Option 1</option>
+//     <option value="2">Option 2</option>
 //     <option>Option 3</option>
 //     <option>Option 4</option>
 //     <option>Option 5</option>

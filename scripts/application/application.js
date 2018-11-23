@@ -28,7 +28,7 @@ require('../shared/compoundField');
 require('./clamp');
 require('../shared/tabs');
 require('../shared/teamRoleSelect');
-require('../shared/multipleAutoCompleteSelect');
+require('../shared/multipleSelect');
 require('../shared/videoCreatePage');
 require('../shared/multiField');
 require('../shared/formBacktotop');
