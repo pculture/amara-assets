@@ -1,8 +1,6 @@
-
-/*
- * Amara, universalsubtitles.org
+/* Amara, universalsubtitles.org
  *
- * Copyright (C) 2017 Participatory Culture Foundation
+ * Copyright (C) 2015 Participatory Culture Foundation
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -20,17 +18,11 @@
  */
 
 var $ = require('jquery');
-var dialogs = require('../shared/dialogs');
 
-$(function() {
-    $('header').click(function(evt) {
-        if(evt.ctrlKey) {
-            var staffControls = $('#staff-controls');
-            if(staffControls) {
-                dialogs.showModal(staffControls);
-                evt.preventDefault();
-                return false;
-            }
-        }
-    });
-});
+$.fn.selectRange = function(start, end) {
+    var e = this[0];
+    if (!e) return;
+    else if (e.setSelectionRange) { e.focus(); e.setSelectionRange(start, end); } /* WebKit */ 
+    else if (e.createTextRange) { var range = e.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); } /* IE */
+    else if (e.selectionStart) { e.selectionStart = start; e.selectionEnd = end; }
+};
