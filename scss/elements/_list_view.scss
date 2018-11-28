@@ -2,31 +2,13 @@
   display: grid;
 
   margin: 0 0 40px;
-
-  // Below here are column layouts for specific listViews.  If you have a
-  // secondary row, make sure you create named lines for it.  It should take up
-  // the entire row, except for the checkbox column (if present).
-  &.styleguide-example {
-    grid-template-columns: auto [secondary-row-start] 1fr 1fr auto [secondary-row-end];
-  }
-  &.videoUrls {
-    grid-template-columns: [secondary-row-start] 1fr minmax(auto, auto) auto [secondary-row-end];
-  }
-  &.memberDirectory {
-    grid-template-columns: [secondary-row-start] auto auto auto auto [secondary-row-end];
-  }
-  &.memberDirectory.admin {
-    grid-template-columns: auto [secondary-row-start] auto auto auto auto auto [secondary-row-end];
-  }
-  &.projects {
-    grid-template-columns: [secondary-row-start] auto auto auto [secondary-row-end];
-  }
 }
 
 .listView > * {
   padding: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 
   &.expanded {
     background: $snow;
@@ -36,6 +18,16 @@
   &.selected {
     padding-left: 4px;
     border-left: 6px solid $lime;
+  }
+  &.hover {
+    background: $snow;
+  }
+}
+
+.listView.expandable > * {
+  cursor: pointer;
+  &.expanded {
+    cursor: auto;
   }
 }
 
@@ -56,7 +48,7 @@
 .listView-secondaryRow {
   color: $gray;
   display: none;
-  grid-column: secondary-row;
+  grid-column: 1 / -1;
 
   &.expanded {
     border-top: 0;
@@ -74,6 +66,7 @@
 .listView-actions {
   display: flex;
   align-items: start;
+  overflow: visible;
 }
 
 
@@ -87,7 +80,7 @@
   //    - Extending their boundary into the padding of the row
   min-width: 40px;
   padding: 10px;
-  margin: -10px 4px;
+  margin: -10px -6px;
   border-radius: 50%;
 
   &:hover {
@@ -115,5 +108,155 @@
 
   &.hover, &.selected {
     visibility: visible;
+  }
+}
+
+@mixin listView-grid-template-columns($columns, $collapsed) {
+  $items: ();
+
+  @each $column in $columns {
+    $size: 1fr;
+    @if index($collapsed, $column) {
+      $size: auto;
+    }
+
+    $items: append($items, $size);
+  }
+
+  grid-template-columns: $items;
+}
+
+// Mixin to define a listview
+//
+// Args:
+//   $spec: Mapping of breakpoint names to lists of CSS classes that should be
+//     visible at that breakpoint and above, in left-to-right order.
+//   $collapsed: List of CSS classes of columns that we don't give extra
+//     space to.  By default this is listView-actions and listView-checkbox.
+//
+// Rules:
+//   - Every child of the listView element should have a CSS class based on the
+//     column their in (either a standard listView class like listView-checkbox,
+//     or else something specific to your particular element like videoUrls-url).
+//   - Each of those classes should be in exactly one of the above lists
+//   - The listView-secondary class is a special case, since it has special
+//     rules about when its visible.
+//
+//  Failure to follow the rules will result in a crazy layout
+//
+@mixin listView($spec, $collapsed: null) {
+  // Little bit of defensive programming
+  @each $breakpoint, $classes in $spec {
+    @each $class in $classes {
+      @if str-index($class, 'listview') {
+        @error('Invalid class: ' + $class + ': make sure to use "listView" instead of "listview"');
+      }
+      @if str-slice($class, 1, 1) != "." {
+        @error('Invalid class: ' + $class + ': make sure you start with a period');
+      }
+    }
+  }
+  @if $collapsed == null {
+    $collapsed: ();
+  }
+  $collapsed: join($collapsed, ('.listView-actions', '.listView-checkbox'));
+  
+  // Use a mobile-first approach and define the styles for $phone outside of any media query.
+  $phone: map-get($spec, phone);
+  @if $phone == null {
+    @error("phone breakpoint must be present in listview()");
+  }
+  $spec: map-remove($spec, phone);
+  $column-count: length($phone);
+
+  @include listView-grid-template-columns($phone, $collapsed);
+
+  @if index($phone, ".listView-checkbox") {
+    .listView-secondaryRow {
+      grid-column-start: 2;
+    }
+  }
+
+  // Hide CSS classes not visible at the phone width
+  @each $breakpoint, $classes in $spec {
+    @each $class in $classes {
+      @if index($phone, $class) == null {
+        > #{$class} {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // For each breakpoint, update the layout and show the new columns
+  @each $breakpoint, $columns in $spec {
+    @include respond-to($breakpoint, 0) {
+      @include listView-grid-template-columns($columns, $collapsed);
+      @each $class in $columns {
+        > #{$class} {
+          display: block;
+        }
+      }
+      @if index($columns, ".listView-checkbox") {
+        .listView-secondaryRow {
+          grid-column-start: 2;
+        }
+      }
+      $column-count: max($column-count, length($columns));
+    }
+  }
+
+  & {
+    // Use column-count to give this info to the JS code.  It's ignore since we're using display: grid.
+    column-count: $column-count;
+  }
+}
+
+// Styles for individual list views
+
+.listView {
+  &.styleguideExample {
+    @include listView((
+      phone: (".styleguideExample-title", ".styleguideExample-language"),
+      tablet: (".listView-checkbox", ".styleguideExample-title", ".styleguideExample-language", ".listView-actions"),
+    ));
+  }
+
+  &.memberDirectory {
+    @include listView((
+      phone: (".memberDirectory-name", ".memberDirectory-role"),
+      laptop: (".memberDirectory-name", ".memberDirectory-role", ".memberDirectory-experience"),
+      desktop: (".memberDirectory-name", ".memberDirectory-role", ".memberDirectory-joined", ".memberDirectory-experience"),
+    ));
+  }
+
+  &.memberDirectory-admin {
+    @include listView((
+      phone: (".memberDirectory-name", ".memberDirectory-role"),
+      tablet: (".listView-checkbox", ".memberDirectory-name", ".memberDirectory-role", ".listView-actions"),
+      laptop: (".listView-checkbox", ".memberDirectory-name", ".memberDirectory-role", ".memberDirectory-experience", ".listView-actions"),
+      desktop: (".listView-checkbox", ".memberDirectory-name", ".memberDirectory-role", ".memberDirectory-joined", ".memberDirectory-experience", ".listView-actions"),
+    ));
+  }
+
+  &.projectList {
+    @include listView((
+      phone: (".projectList-title", ".projectList-description"),
+      tablet: (".projectList-title", ".projectList-description", ".listView-actions"),
+    ));
+  }
+
+  &.videoUrls {
+    @include listView((
+      phone: (".videoUrls-url"),
+      laptop: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
+    ));
+  }
+
+  &.videoFeedsList {
+    @include listView((
+      phone: (".videoFeedsList-title"),
+      tablet: (".videoFeedsList-title", ".listView-actions"),
+    ));
   }
 }
