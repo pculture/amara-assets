@@ -93,6 +93,3 @@ Accordion.prototype = {
         this.expandSection(section);
     }
 };
-
-
-

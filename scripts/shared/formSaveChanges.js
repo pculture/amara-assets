@@ -21,7 +21,6 @@ var $ = require('jquery');
 
 $.behaviors('.saveChangesButton', function(button) {
     var form = $(button).closest('form');   
-    var inputs = form.find(':input');
     var has_changes = false;
 
     var form_initial_data = JSON.stringify(form.serializeArray())
@@ -43,8 +42,8 @@ $.behaviors('.saveChangesButton', function(button) {
         $(button).css('visibility', 'visible');
     }
 
-    inputs.on('input', show_save_button);
-    inputs.on('change', show_save_button);
+    form.on('input', show_save_button);
+    form.on('change', show_save_button);
 
     // unbind so that the check for unsaved changes does not fire on form submit
     form.submit(function() {
@@ -64,6 +63,6 @@ $.behaviors('.saveChangesButton', function(button) {
         }
     });
 
-    inputs.on('customchange', show_save_button); // use this for form controls that normally do not fire 'change' or 'input'
+    form.on('customchange', show_save_button); // use this for form controls that normally do not fire 'change' or 'input'
 
 });

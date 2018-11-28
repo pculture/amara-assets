@@ -86,7 +86,6 @@ $.behaviors('.teamSettingsMessaging', function(page) {
     var addLanguageButton = $('button.cta', addLanguageForm);
     var localizedForms = $('.teamSettingsMessaging-localizedForms');
     var mainFormFields = $('.teamSettingsMessaging-mainForm .form-fields');
-    var mainFormFooter = $('.teamSettingsMessaging-mainForm .fieldset-footer-shadow');
     var totalFormsInput = $(':input[name=form-TOTAL_FORMS]');
 
     addLanguageButton.on('click', function(evt) {
@@ -105,7 +104,7 @@ $.behaviors('.teamSettingsMessaging', function(page) {
             $(this).attr('name', name.replace('form-0', prefix));
         });
 
-        var allContent = $('<div>').append(fields).append(mainFormFooter.clone());
+        var allContent = $('<div>').append(fields).append($('<div class="fieldset-footer">'));
         localizedForms.accordion('addSection', languageLabel, allContent);
         allContent.updateBehaviors();
         totalFormsInput.val(newFormNumber + 1);
