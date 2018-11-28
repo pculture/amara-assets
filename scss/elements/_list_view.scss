@@ -252,4 +252,11 @@
       laptop: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
     ));
   }
+
+  &.videoFeedsList {
+    @include listView((
+      phone: (".videoFeedsList-title"),
+      tablet: (".videoFeedsList-title", ".listView-actions"),
+    ));
+  }
 }
