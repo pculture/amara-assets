@@ -559,7 +559,6 @@ input:checked + label .checkbox-icon {
 
 .helpBlock {
   display: block;
-  margin-top: 4px;
   font-size: $font-size-tiny;
 }
 
@@ -667,11 +666,10 @@ fieldset {
 }
 
 .fieldsetHelpBlock {
-  margin-top: 0px;
+  margin-top: -20px;
+  margin-bottom: 20px;
   font-size: $font-size-tiny;
   color: $charcoal;
-  margin-bottom: 16px;
-  font-style: italic;
 }
 
 .buttonFile {
