@@ -123,17 +123,17 @@ $.behaviors('.syncHistoryList-action-sync', function(btn) {
 
 $.behaviors('.syncSubtitlesYoutube', function(checkbox) {
     var sync_subtitles_checkbox = $(checkbox)
-    var sync_metadata_checkbox = sync_subtitles_checkbox.closest('.form-group').siblings('.syncMetadataYoutubeContainer')
+    var sync_metadata_container = sync_subtitles_checkbox.closest('.form-group').siblings('.syncMetadataYoutubeContainer')
 
     if (sync_subtitles_checkbox.is(':checked')) {
-        sync_metadata_checkbox.css('display', 'block')
+        sync_metadata_container.css('display', 'block')
     }
 
     sync_subtitles_checkbox.on('change', function() {
         if (sync_subtitles_checkbox.is(':checked')) {
-            sync_metadata_checkbox.show()
+            sync_metadata_container.show()
         } else {
-            sync_metadata_checkbox.hide()
+            sync_metadata_container.hide()
         }
     })
 });
