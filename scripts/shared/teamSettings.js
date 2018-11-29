@@ -137,3 +137,14 @@ $.behaviors('.syncSubtitlesYoutube', function(checkbox) {
         }
     })
 });
+
+$.behaviors('.videoFeedsList-import', function(btn) {
+    var btn = $(btn);
+    var icon = btn.find('span.fa');
+
+    btn.on('click', function() {
+        icon.removeClass('fa-cloud-download-alt');
+        icon.addClass('fa-spinner fa-spin');
+        icon.css('visibility', 'visible');
+    });
+});

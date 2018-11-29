@@ -21,7 +21,8 @@ var $ = require('jquery');
 
 $.behaviors('.saveChangesButton', function(button) {
     var form = $(button).closest('form');   
-    var inputs = form.find(':input') ;
+    var inputs = form.find(':input');
+    var has_changes = false;
 
     var form_initial_data = JSON.stringify(form.serializeArray())
 
@@ -38,10 +39,31 @@ $.behaviors('.saveChangesButton', function(button) {
     }
 
     function show_save_button() {
-        $(button).css('visibility', 'visible')
+        has_changes = true;
+        $(button).css('visibility', 'visible');
     }
 
     inputs.on('input', show_save_button);
     inputs.on('change', show_save_button);
+
+    // unbind so that the check for unsaved changes does not fire on form submit
+    form.submit(function() {
+        $(window).unbind('beforeunload');
+    });
+
+    // used for showing a confirmation dialog before exit of the page
+    $(window).on('beforeunload', function(e) {
+        if (has_changes) {
+            /* almost all browsers don't support custom messages on the dialog anymore
+             * but we keep this just so we have a nice not-null not-undefined return value
+             * in order to trigger the dialog
+             */
+            return 'You have unsaved changes on this page. Are you sure you want to leave?';
+        } else {
+            return;
+        }
+    });
+
     inputs.on('customchange', show_save_button); // use this for form controls that normally do not fire 'change' or 'input'
+
 });
