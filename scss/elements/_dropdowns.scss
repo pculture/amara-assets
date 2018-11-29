@@ -16,19 +16,26 @@
 }
 
 .dropdownMenu-link {
-  display: flex;
-  align-items: center;
+  position: relative;
   width: 100%;
+  text-align: left;
 
   @include no-underline;
   color: inherit;
   font-weight: normal;
-  padding: 4px 8px;
+  padding: 4px 28px 4px 28px;
   color: light($charcoal);
 
   &:hover, &:focus {
     background: $snow;
     color: light($charcoal);
+  }
+
+  &.header {
+    background: inherit;
+    text-align: center;
+    color: $gray;
+    cursor: normal;
   }
 
   &.disabled {
@@ -42,9 +49,10 @@
   }
 }
 
-.dropdownMenu-text {
-  flex-grow: 1;
-  text-align: left;
-
-  padding-right: 48px;
+.dropdownMenu-icon {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  font-size: 14px;
+  line-height: 20px;
 }
