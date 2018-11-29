@@ -40,7 +40,7 @@ function ListViewDOM(elt) {
     this.elt = $(elt);
     this.cells = this.elt.children().not('.listView-secondaryRow');
     this.columnCount = parseInt(this.elt.css('column-count'));
-    this.headerRowCount = 0;
+    this.hasHeader = false;
     this.rowCount = 0;
     this.hoverRow = null; // row being hovered over by the mouse
     this.contextMenuRow = null; // row with an active context menu
@@ -63,7 +63,7 @@ ListViewDOM.prototype = {
             cells.data('row', i);
             this.rowCount++;
             if(cells.is('.listView-header')) {
-                this.headerRowCount++;
+                this.hasHeader = true;
             }
             this.dropdownMenusByRow[i] = $('.dropdownMenu', cells);
             this.showDetailsByRow[i] = $('.listView-showDetails', cells);
@@ -208,7 +208,7 @@ ListViewExpansion.prototype = {
             return;
         }
         var row = this.dom.calcRow(evt.target);
-        if(row >= this.dom.headerRowCount) {
+        if(!(row == 0 && this.dom.hasHeader)) {
             this.toggleRowExpanded(row);
         }
         evt.preventDefault();
@@ -322,9 +322,17 @@ ListViewKeys.prototype = {
         }
         evt.preventDefault();
     },
+    firstRow: function() {
+        if(this.dom.hasHeader && this.dom.actionsForRow(0).length == 0 && 
+                this.dom.checkboxForRow(0).length == 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    },
     selectNextRow: function() {
         if(this.selectedRow === null) {
-            this.selectRow(this.dom.headerRowCount);
+            this.selectRow(this.firstRow());
         } else if(this.selectedRow + 1 < this.dom.rowCount) {
             this.selectRow(this.selectedRow + 1);
         } else {
@@ -334,7 +342,7 @@ ListViewKeys.prototype = {
     selectPreviousRow: function() {
         if(this.selectedRow === null) {
             this.selectRow(this.dom.rowCount - 1);
-        } else if(this.selectedRow - 1 >= this.dom.headerRowCount) {
+        } else if(this.selectedRow - 1 >= this.firstRow()) {
             this.selectRow(this.selectedRow - 1);
         } else {
             this.selectRow(null);
