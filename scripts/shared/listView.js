@@ -207,7 +207,10 @@ ListViewExpansion.prototype = {
             // Allow link/button clicks to go through
             return;
         }
-        this.toggleRowExpanded(this.dom.calcRow(evt.target));
+        var row = this.dom.calcRow(evt.target);
+        if(row >= this.dom.headerRowCount) {
+            this.toggleRowExpanded(row);
+        }
         evt.preventDefault();
         evt.stopPropagation();
     },
