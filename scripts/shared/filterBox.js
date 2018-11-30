@@ -44,6 +44,10 @@ function filterBox(filterBox) {
     clearAllButton.on('click', clearAllFilters);
 
     dropdownMenu.on('link-activate', function(evt, fieldName) {
+        if(fieldName == 'update-filter') {
+            // menu item that updates the filter without needing a dialog
+            return;
+        }
         buildChooser(fieldName, filterBox);
     }).on('show', function() {
         removeChooserIfShown();
