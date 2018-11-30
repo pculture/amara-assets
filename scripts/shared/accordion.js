@@ -58,14 +58,14 @@ Accordion.prototype = {
             this.toggleSection(title.closest('.accordion-section'));
         }
     },
-    expandSection(section) {
+    expandSection: function(section) {
         var self = this;
         section = $(section);
         $('.accordion-section.expanded', this.elt).each(function() { self.collapseSection(this); })
         $('.accordion-content', section).slideDown();
         section.addClass('expanded');
     },
-    toggleSection(section) {
+    toggleSection: function(section) {
         section = $(section);
         if(section.hasClass('expanded')) {
             this.collapseSection(section);
@@ -73,7 +73,7 @@ Accordion.prototype = {
             this.expandSection(section);
         }
     },
-    collapseSection(section) {
+    collapseSection: function(section) {
         section = $(section);
         // Note, need to set display: block before calling slideUp().
         // Otherwise sliding up elements that were initially shown doesn't work
@@ -81,7 +81,7 @@ Accordion.prototype = {
         $('.accordion-content', section).css('display', 'block').slideUp();
         section.removeClass('expanded');
     },
-    addSection(header, content) {
+    addSection: function(header, content) {
         var section = $('<div class="accordion-section">');
         section.append(
                 $('<h3 class="accordion-title">')
