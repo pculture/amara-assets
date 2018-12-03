@@ -260,6 +260,7 @@
       laptop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date'),
       desktop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date', '.assignmentHistory-status'),
     ), $collapsed: ('.assignmentHistory-status'));
+  }
 
   &.videoFeedsList {
     @include listView((
