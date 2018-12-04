@@ -272,6 +272,15 @@
     ));
   }
 
+  &.assignmentHistory {
+    @include listView((
+      phone: ('.assignmentHistory-video', '.assignmentHistory-language'),
+      tablet: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type'),
+      laptop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date'),
+      desktop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date', '.assignmentHistory-status'),
+    ), $collapsed: ('.assignmentHistory-status'));
+  }
+
   &.videoFeedsList {
     @include listView((
       phone: (".videoFeedsList-title"),

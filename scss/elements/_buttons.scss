@@ -26,6 +26,7 @@ button {
 // 
 // .small - Small sized button
 // .block - Full width button
+// .blockLeft - Left-aligned full width button.  Good for displaying buttons in a list.
 // .cta  - Call-to-action button.  Displayed with a plum color.  A typical use for this is the buttons to create subtitles
 // .cta-reverse  - Reversed call-to-action button.  Used for delete, remove, etc.
 // .borderless  - borderless button.  Used for cancelation, deselection, etc.
@@ -72,6 +73,13 @@ button {
     display: block;
     width: 100%;
     margin-bottom: 5px;
+  }
+  &.blockLeft {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    padding-left: 40px;
   }
   &.small {
     padding: 2px 15px;
