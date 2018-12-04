@@ -54,6 +54,10 @@
     border-top: 0;
     border-bottom: 1px solid light($gray);
   }
+
+  &.visible {
+    display: block;
+  }
 }
 
 .listView-checkbox {
@@ -246,10 +250,32 @@
     ));
   }
 
+  &.integrationList {
+    @include listView((
+      phone: (".integrationList-channel"),
+      tablet: (".integrationList-channel", ".listView-actions"),
+    ));
+  }
+
+  &.syncHistoryList {
+    @include listView((
+      phone: (".syncHistoryList-title", ".listView-actions"),
+      tablet: (".syncHistoryList-title", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
+      desktop: (".syncHistoryList-title", ".syncHistoryList-channel", ".syncHistoryList-platform", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
+    ));
+  }
+
   &.videoUrls {
     @include listView((
       phone: (".videoUrls-url"),
       laptop: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
+    ));
+  }
+
+  &.videoFeedsList {
+    @include listView((
+      phone: (".videoFeedsList-title"),
+      tablet: (".videoFeedsList-title", ".listView-actions"),
     ));
   }
 }

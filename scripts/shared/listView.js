@@ -416,5 +416,4 @@ function listView(elt) {
     var mouse = new ListViewMouse(dom);
     var keys = new ListViewKeys(dom);
     var linkHandler = new ListViewLinkHandler(dom);
-
 }
