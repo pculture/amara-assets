@@ -310,6 +310,10 @@ i {
   @extend .icon-transcribe:before;
 }
 
+.icon-subtitles:before {
+  @extend .icon-transcribe:before;
+}
+
 // sizes
 .icon-sm {
   font-size: 25px;

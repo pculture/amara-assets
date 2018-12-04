@@ -19,6 +19,8 @@
  */
 
 var $ = require('jquery');
+var filters = require('./filters');
+var querystring = require('./querystring');
 var keyCodes = require('./keyCodes');
 var position = require('./position');
 var copyText = require('./copyText');
@@ -114,11 +116,13 @@ function DropDownMenu(menu) {
     this.shown = false;
     this.openerButton = null;
     this.showData = null;
-    this.setupEventHandlers();
 
     // additional options for position.below
     this.below_options = {}
     this.below_options.dropLeft = menu.hasClass('dropdownMenuLeft')
+
+    this.setupEventHandlers();
+    this.updateFilterChecks();
 }
 
 DropDownMenu.prototype = {
@@ -293,7 +297,30 @@ DropDownMenu.prototype = {
         // Handle default link-activate actions.
         if(args[0] == 'copy-text') {
             copyText(openerButton.data(args[1]));
+        } else if(args[0] == 'update-filter') {
+            var name = args[1];
+            var value = args[2];
+            filters.add(name, value);
+            this.updateFilterChecks();
         }
+
+    },
+    updateFilterChecks: function() {
+        var qs = querystring.parseList();
+        this.links.each(function() {
+            var link = $(this);
+            var activateArgs = link.data('activateArgs');
+            if(activateArgs && activateArgs[0] == 'update-filter') {
+                var name = activateArgs[1];
+                var value = activateArgs[2];
+                var isDefault = (activateArgs.length >= 4 && activateArgs[3] == 'default');
+                $('.dropdownMenu-icon', link).remove();
+                if((qs[name] && qs[name].indexOf(value) > -1) ||
+                        (qs[name] === undefined && isDefault)) {
+                    link.prepend($('<span class="fa fa-check dropdownMenu-icon">'));
+                }
+            }
+        });
     },
     focusButton: function(button) {
         var rv = this.menu.triggerHandler('focus-button');
@@ -310,7 +337,6 @@ DropDownMenu.prototype = {
         this.clickHandler = null;
     },
     onClickWithOpenDropdown: function(evt) {
-        console.log('click');
         var target = $(evt.target);
         if(target.closest(this.menu).length == 0 &&
                 target.closest(this.openerButton).length == 0) {
