@@ -54,6 +54,10 @@
     border-top: 0;
     border-bottom: 1px solid light($gray);
   }
+
+  &.visible {
+    display: block;
+  }
 }
 
 .listView-checkbox {
@@ -246,11 +250,35 @@
     ));
   }
 
+  &.integrationList {
+    @include listView((
+      phone: (".integrationList-channel"),
+      tablet: (".integrationList-channel", ".listView-actions"),
+    ));
+  }
+
+  &.syncHistoryList {
+    @include listView((
+      phone: (".syncHistoryList-title", ".listView-actions"),
+      tablet: (".syncHistoryList-title", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
+      desktop: (".syncHistoryList-title", ".syncHistoryList-channel", ".syncHistoryList-platform", ".syncHistoryList-language", ".syncHistoryList-date", ".listView-actions"),
+    ));
+  }
+
   &.videoUrls {
     @include listView((
       phone: (".videoUrls-url"),
       laptop: (".videoUrls-url", ".videoUrls-badges", ".listView-actions"),
     ));
+  }
+
+  &.assignmentHistory {
+    @include listView((
+      phone: ('.assignmentHistory-video', '.assignmentHistory-language'),
+      tablet: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type'),
+      laptop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date'),
+      desktop: ('.assignmentHistory-video', '.assignmentHistory-language', '.assignmentHistory-type', '.assignmentHistory-date', '.assignmentHistory-status'),
+    ), $collapsed: ('.assignmentHistory-status'));
   }
 
   &.videoFeedsList {

@@ -15,9 +15,13 @@ section {
   }
 }
 
-a {
+.a-tag-font {
   color: $teal;
   font-weight: 600;
+}
+
+a {
+  @extend .a-tag-font;
   text-decoration: underline;
   &:hover {
     color: $lime;

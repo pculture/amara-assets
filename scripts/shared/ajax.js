@@ -217,7 +217,8 @@ function ajaxLink(link) {
     };
 
     link.click(function() {
-        $.ajax(link.attr('data-href'), ajaxParams);
+        var url = link.data('href') || link.attr('href');
+        $.ajax(url, ajaxParams);
         return (link.attr('data-nav') === "true");
     });
 }

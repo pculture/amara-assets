@@ -1,0 +1,47 @@
+.memberProfile {
+  padding: 60px 40px 0;
+  width: 100%;
+
+  > * {
+    padding: 12px 0;
+  }
+
+}
+
+.memberProfile-joined {
+  color: $gray;
+  font-size: $font-size-tiny;
+  margin-top: 4px;
+}
+
+@include respond-to(tablet, 0) {
+  .memberProfile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .memberProfile-image {
+    margin-right: 20px;
+  }
+
+  .memberProfile-details {
+    flex-grow: 1;
+  }
+
+  .memberProfile-actions {
+    width: 100%;
+  }
+}
+
+@include respond-to(laptop, 0) {
+  .memberProfile-actions {
+    width: auto;
+    margin-left: 20px;
+  }
+}
+
+@include respond-to(desktop) {
+  .memberProfile-actions {
+    width: 400px;
+  }
+}
